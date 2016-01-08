@@ -1,0 +1,10 @@
+<ion-view view-title="Categories">
+  <ion-content>
+    <ion-list>
+      <p ng-show="loading" class="text-center">Loading...</p>
+      <ion-item ng-repeat="category in categories" href="#/app/categories/{{category.slug}}">
+        {{category.label}}
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>

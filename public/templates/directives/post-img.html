@@ -1,0 +1,13 @@
+<div class="row" ng-show="vm.loaded">
+  <div class="col-md-3"><img class="img-responsive" bh-holder="{{vm.post.image_width}}x{{vm.post.image_height}}" bh-src="{{vm.post.featured_image_url}}"/>
+  </div>
+  <div class="col-md-9">
+    <h3 class="post-title"><a href="#/post/{{vm.post.slug}}">{{vm.post.title}}</a></h3>
+    <p>
+      <span class="category-color"><i>By</i></span>
+      <span class="post-author">{{vm.post.author}}</span>
+      <span class="post-published">{{vm.post.published_at | date : format : timezone}} </span>
+    </p>
+    <p class="home-post-summary">{{vm.post.summary}}</p>
+  </div>
+</div>

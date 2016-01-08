@@ -1,0 +1,90 @@
+<div class='row row-eq-height'>
+  <div class='col-md-8 row-eq-height'>
+    <bh-home-category template="flexslider" slug="spotlight" bh-posts="{{::getP('spotlight')}}"bh-category="{{::getC('spotlight')}}">
+    </bh-home-category>
+  </div>
+  <div class='col-md-4'>
+    <center><img src='/assets/cid/issue.png' class="img-responsive" /></center>
+  </div>
+ </div>
+ 
+ 
+ 
+<!-- <div class='row'>
+  <div class='col-md-8' ng-include="'/templates/desktop/home.slider.html'" data-onload="::getC('spotlight', 5)"></div>
+  <div class='col-md-4'>
+    <center><img src='/assets/cid/issue.png' class="img-responsive" /></center>
+  </div>
+</div> -->
+
+<div class='row row-eq-height'>
+  <div class='col-md-8 row-eq-height'>
+    <bh-home-category template="business" slug="business" bh-posts="{{::getP('business')}}"bh-category="{{::getC('business')}}">
+    </bh-home-category>
+  </div>
+  <div class='col-md-4 row-eq-height'>
+    <bh-home-category template="std" slug="policy" bh-posts="{{::getP('policy')}}" bh-category="{{::getC('policy')}}">
+    </bh-home-category>
+  </div>
+</div>
+
+<div class='row'><div class='col-md-12 section-separator'></div></div>
+
+<div class='row'>
+  <div class='col-md-4' ng-repeat="slug in ['industry', 'internet', 'society']">
+    <bh-home-category template="std" slug="{{slug}}" bh-posts="{{::getP(slug)}}" bh-category="{{::getC(slug)}}"></bh-home-category>
+  </div>
+</div>
+
+<div class='row'><div class='col-md-12 section-separator'></div></div>
+
+<div class='row'>
+  <div class='col-md-4'>
+    <center><img src='/assets/cid/ad2.png' class="img-responsive" /></center>
+  </div>
+  <div class='col-md-8'>
+    <center class='cid-ad-grey'><img src='/assets/cid/ad1.png' class="img-responsive" /></center>
+  </div>
+</div>
+
+<div class='row'><div class='col-md-12 section-separator'></div></div>
+
+<div class='row'>
+  <div class='col-md-12'>
+    <bh-home-category template="column" bh-posts="{{::getP('column')}}" bh-category="{{::getC('column')}}">
+    </bh-home-category>
+  </div>
+</div>
+
+<div class='row'>
+  <div class='col-md-12 section-separator'></div>
+</div>
+
+<div class='row row-eq-height'>
+  <div class='col-md-6 row-eq-height' ng-repeat="slug in ['oneroadonebelt', 'environment']">
+    <bh-home-category template="solo" bh-posts="{{::getP(slug)}}" bh-category="{{::getC(slug)}}"></bh-home-category>
+  </div>
+</div>
+
+<div class='row'>
+  <div class='col-md-12 section-separator'></div>
+</div>
+
+<div class='row row-eq-height'>
+  <div class='col-md-4 row-eq-height'>
+    <bh-home-category template="std" bh-posts="{{::getP('culture')}}" bh-category="{{::getC('culture')}}"></bh-home-category>
+  </div>
+  <div class='col-md-8 row-eq-height'>
+    <bh-home-category template="carousel" bh-posts="{{::getP('travel')}}" bh-category="{{::getC('travel')}}"></bh-home-category>
+  </div>
+  
+</div>
+
+<hr>
+
+<div class='row'>
+  <div class="col-md-2"><h2>Partners:</h2></div>
+  <div class="col-md-10">
+    <img ng-repeat="i in [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16]" ng-src="/assets/cid/partner-{{i}}.png" class="logo-partner" />
+  </div>
+</div>

@@ -1,0 +1,57 @@
+body {
+  font-family: crimson, "Times New Roman", Times, serif;
+}
+
+h1, h2, h3 {
+  font-family: dax, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+h1, h2 {
+  font-weight: bold;
+}
+
+h1 {
+  font-size: 35px;
+  
+}
+
+h2 {
+  font-size: 26px;
+}
+
+h3 {
+  font-size: 20px;
+}
+
+p {
+  font-size: 16px;
+}
+
+.post-body h1 {
+  font-size: 28px;
+}
+
+.post-body h2 {
+  font-size: 24px;
+}
+
+.post-body h3 {
+  font-size: 20px;
+}
+
+.post-body p {
+  font-size: 20px;
+}
+p.loading {
+  position: relative;
+}
+
+@media (min-width: 992px) {
+.row-eq-height, bh-home-category {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display:         flex;
+}
+}
+

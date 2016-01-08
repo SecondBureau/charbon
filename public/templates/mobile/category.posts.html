@@ -1,0 +1,11 @@
+<ion-view view-title="{{category.label}}">
+  <ion-content>
+    <ion-list>
+      <ion-item ng-repeat="post in posts" href="#/app/posts/{{post.id}}" class="item-thumbnail-left">
+        <img ng-src="{{post.featured_image_url}}">
+        <h2>{{post.title}}</h2>
+        <p>{{post.summary}}</p>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>
