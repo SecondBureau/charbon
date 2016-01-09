@@ -32,6 +32,12 @@ gem 'haml'
 #gem "camaleon_cms", github: 'owen2345/camaleon-cms'
 gem "camaleon_cms"
 
+# An opinionated micro-framework for creating REST-like APIs in Ruby. http://www.ruby-grape.org
+gem 'grape'
+gem 'hashie-forbidden_attributes'
+gem 'grape-jbuilder'
+
+
 gem "faker"
 gem 'slugify'
 

@@ -3,7 +3,6 @@ angular.module('bahnhof.services')
 
 .factory('Categories', ['$filter', '$http', '$q', 'ENV', function($filter, $http, $q, ENV) {
   var categories = [];
- // var loading = false;
   var categories_endpoint = ENV.apiEndpoint + "categories"
 
   return {

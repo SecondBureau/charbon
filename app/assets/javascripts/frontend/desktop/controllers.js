@@ -32,7 +32,7 @@ angular.module('bahnhof.controllers', [])
     if (angular.isArray($scope.homePosts))
       return $scope.homePosts;
     if (angular.isUndefined($scope.homePosts))
-      $scope.homePosts = Posts.search(searchString);
+      $scope.homePosts = Posts.homePosts(searchString);
     if ($scope.homePosts && angular.isFunction($scope.homePosts.then)) {
       return $scope.homePosts.then(function(response) {
         $scope.homePosts = response.data;
@@ -116,8 +116,8 @@ angular.module('bahnhof.controllers', [])
         $scope.category = Categories.get($stateParams.categorySlug);
         var cid = "";
         if (angular.isObject($scope.category))
-          cid = '"cid":' + $scope.category.id;
-        Posts.get(cid, offset, limit).then(function(response){
+          search = '"category":' + $scope.category.id;
+        Posts.search(search, offset, limit).then(function(response){
           $scope.pagination = angular.fromJson(response.headers('x-pagination'));
           $scope.posts = $scope.posts || [];
           Array.prototype.push.apply($scope.posts, response.data);

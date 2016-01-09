@@ -52,12 +52,12 @@ angular.module('bahnhof.services')
     //   return $filter('filter')(posts, {slug: slug}, true)[0];
     // },
     
-    search: function(search) {
+    homePosts: function(search) {
       if (homePosts.length > 0) {
         return homePosts;
       } else {
       return $http({
-          url: posts_endpoint, 
+          url: posts_endpoint + '/home', 
           method: "GET",
           params: {q: search}
        }).then(function(response){
@@ -67,9 +67,9 @@ angular.module('bahnhof.services')
       });
     }
     },
+  
     
-    get: function(search, offset, limit) {
-      //return $filter('filter')(posts, {category_id: categoryId}, true);
+    search: function(search, offset, limit) {
       return $http({
           url: posts_endpoint, 
           method: "GET",

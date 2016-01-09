@@ -36,50 +36,50 @@ themes = {
   
   firstname = Faker::Name.first_name
   lastname  = Faker::Name.last_name
+  twitter = "#{firstname.downcase}_#{lastname.downcase}"
   role = 'client'
   email   = "#{firstname.downcase}.#{lastname.downcase}@local.net"
   password = 'secret'
   
   u = CamaleonCms::User.create(username: "#{firstname.downcase}#{lastname.downcase}", role: role, email: email, password: password, password_confirmation:password)
   
-  u.set_meta_from_form({first_name: firstname, last_name: lastname})
+  u.set_meta_from_form({first_name: firstname, last_name: lastname, twitter: twitter})
 
 end
 
+userids = CamaleonCms::User.all.collect{|u| u.id}
+
 [
-    { id: 0, order: 2, slug: 'business', label: 'Business', footer1: true, navbar: true, class: 'home-block-border', show_featured_on_home:false },
-    { id: 1, order: 99, slug: 'people', label: 'People', show_featured_on_home:true },
-    { id: 2, order: 99, slug: 'culture', label: 'Culture', footer2: true, show_featured_on_home:false },
-    { id: 3, order: 6, slug: 'society', label: 'Society', footer1: true, navbar: true, show_featured_on_home:true },
-    { id: 4, order: 99, slug: 'ecology', label: 'Ecology', show_featured_on_home:true },
-    { id: 5, order: 99, slug: 'exhibitions', label: 'Exhibitions', show_featured_on_home:true },
-    { id: 6, order: 99, slug: 'books', label: 'Books', navbar: true, show_featured_on_home:true },
-    { id: 7, order: 99, slug: 'snapshots', label: 'Snapshots', show_featured_on_home:true },
-    { id: 8, order: 3, slug: 'policy', label: 'Policy', footer1: true, class: 'home-block-reverse', show_featured_on_home:false },
-    { id: 9, order: 4, slug: 'industry', label: 'Industry', footer1: true, navbar: true, show_featured_on_home:true },
-    { id: 10, order: 5, slug: 'internet', label: 'Internet', footer1: true, navbar: true, show_featured_on_home:true },
-    { id: 11, order: 99, slug: 'column', label: 'Column', show_featured_on_home:true },
-    { id: 12, order: 7, slug: 'oneroadonebelt', label: 'One Road One Belt', footer1: true, class: 'home-block-reverse', navbar: true, show_featured_on_home:false },
-    { id: 13, order: 99, slug: 'environment', label: 'Environment', additional_navbar:true, footer2: true, class: 'home-block-reverse', show_featured_on_home:true },
-    { id: 14, order: 99, slug: 'travel', label: 'Travel / Image', additional_navbar: true, footer2: true, show_featured_on_home:true },
-    { id: 20, order: 1, slug: 'spotlight', label: 'Spotlight', footer1: true, navbar: true, show_featured_on_home:true }
+    { id: 0, order: 2, slug: 'business', label: 'Business', footer1: true, navbar: true, class: 'home-block-border', show_featured_on_home: false },
+    { id: 1, order: 99, slug: 'people', label: 'People', show_featured_on_home: true },
+    { id: 2, order: 99, slug: 'culture', label: 'Culture', footer2: true, show_featured_on_home: false },
+    { id: 3, order: 6, slug: 'society', label: 'Society', footer1: true, navbar: true, show_featured_on_home: true },
+    { id: 4, order: 99, slug: 'ecology', label: 'Ecology', show_featured_on_home: true },
+    { id: 5, order: 99, slug: 'exhibitions', label: 'Exhibitions', show_featured_on_home: true },
+    { id: 6, order: 99, slug: 'books', label: 'Books', navbar: true, show_featured_on_home: true },
+    { id: 7, order: 99, slug: 'snapshots', label: 'Snapshots', show_featured_on_home: true },
+    { id: 8, order: 3, slug: 'policy', label: 'Policy', footer1: true, class: 'home-block-reverse', show_featured_on_home: false },
+    { id: 9, order: 4, slug: 'industry', label: 'Industry', footer1: true, navbar: true, show_featured_on_home: true },
+    { id: 10, order: 5, slug: 'internet', label: 'Internet', footer1: true, navbar: true, show_featured_on_home: true },
+    { id: 11, order: 99, slug: 'column', label: 'Column', show_featured_on_home: true },
+    { id: 12, order: 7, slug: 'oneroadonebelt', label: 'One Road One Belt', footer1: true, class: 'home-block-reverse', navbar: true, show_featured_on_home: false },
+    { id: 13, order: 99, slug: 'environment', label: 'Environment', additional_navbar:true, footer2: true, class: 'home-block-reverse', show_featured_on_home: true },
+    { id: 14, order: 99, slug: 'travel', label: 'Travel / Image', additional_navbar: true, footer2: true, show_featured_on_home: true },
+    { id: 20, order: 1, slug: 'spotlight', label: 'Spotlight', footer1: true, navbar: true, show_featured_on_home: true }
   ].each do |c|
     
     puts c.inspect
     if (category = CamaleonCms::Category.find_by_slug(c[:slug])).nil?
       category = CamaleonCms::Category.create(name: c[:label], slug: c[:slug], parent_id: category_parent_id)
     end
-    if (meta = CamaleonCms::Meta.find_by_key("_#{category.slug}")).nil?
-      meta = CamaleonCms::Meta.new(key: "_#{category.slug}", objectid: category.id, object_class: "Category")
-    end
-    value = {}
-    value[:footer1]  = c[:footer1] unless c[:footer1].blank?
-    value[:footer2]  = c[:footer2] unless c[:footer2].blank?
-    value[:navbar]   = c[:navbar] unless c[:navbar].blank?
-    value[:class]   = c[:class] unless c[:class].blank?
-    value[:show_featured_on_home]   = c[:show_featured_on_home] unless c[:show_featured_on_home].blank?
-    meta.value = value.to_json
-    meta.save
+    # if (meta = CamaleonCms::Meta.find_by_key("_#{category.slug}")).nil?
+ #      meta = CamaleonCms::Meta.new(key: "_#{category.slug}", objectid: category.id, object_class: "Category")
+ #    end
+    category.set_option(:footer1, c[:footer1]) unless c[:footer1].blank?
+    category.set_option(:footer2, c[:footer2]) unless c[:footer2].blank?
+    category.set_option(:navbar, c[:navbar]) unless c[:navbar].blank?
+    category.set_option(:class, c[:class]) unless c[:class].blank?
+    category.set_option(:show_featured_on_home, c[:show_featured_on_home]) unless c[:show_featured_on_home].blank?
 
     (rand(15) + 5).times do
       
@@ -112,7 +112,7 @@ end
         slug:title.slugify, 
         content:content , 
         published_at:"#{Faker::Date.backward(30)}", 
-        user_id:1,
+        user_id: userids.shuffle.first,
         data_categories: [category.id]
       }
       
@@ -126,7 +126,9 @@ end
       puts p.inspect
       
       
-      p.set_thumb(url)
+      p.set_thumb url
+      p.set_meta 'thumb_dimensions', "#{width}x#{height}"
+      p.set_summary Faker::Hipster.paragraph(4)
       
       # if (meta = CamaleonCms::Meta.find_by_key("_#{p.slug}")).nil?
       #   meta = CamaleonCms::Meta.new(key: "_#{p.slug}", objectid: p.id, object_class: "Post")
