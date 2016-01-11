@@ -50,7 +50,8 @@ angular.module('bahnhof.controllers', [])
           return $filter('filter')(response.data, {category_id: category.id}, true);
         })
       } else {
-        return $filter('filter')(posts, {category_id: category.id}, true);
+        if (angular.isArray(posts))
+          return $filter('filter')(posts, {category_id: category.id}, true);
       } 
     }
     } 

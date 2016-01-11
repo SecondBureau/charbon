@@ -1,20 +1,5 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Charbon</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
-
-<%= yield %>
-
-</body>
-</html>
-
-<!DOCTYPE html>
-<html>
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
@@ -23,7 +8,7 @@
     <%= javascript_include_tag 'bahnhof', 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
 
-    <link rel="shortcut icon" type="image/png" href="asset_path(favicon.png)"/>    
+    <link rel="shortcut icon" type="image/png" href="<%= asset_path('cid/favicon.png') %>"/>    
     
   </head>
   
