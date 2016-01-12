@@ -1,5 +1,9 @@
-angular.module('bahnhof.directives')
-.directive("bhHolder",['preLoader', function(preLoader) {
+angular
+  .module('bahnhof')
+  .directive('bhHolder', bhHolder);
+
+
+function bhHolder(preLoader) {
   return({
     link: link,
     priority: 200,
@@ -20,4 +24,4 @@ angular.module('bahnhof.directives')
     })
 
   }
- }])
+ }

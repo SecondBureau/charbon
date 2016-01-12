@@ -1,8 +1,9 @@
-angular.module('bahnhof.services')
 
+angular
+  .module('bahnhof')
+  .factory('Posts', Posts);
 
-
-.factory('Posts', ['$filter', '$http', '$q', 'ENV',  function($filter, $http, $q, ENV) {
+function Posts($filter, $http, $q, ENV) {
 
   var posts = [];
   var postIds = [];
@@ -80,5 +81,4 @@ angular.module('bahnhof.services')
       });
     }
   }
-}])
-;
+}

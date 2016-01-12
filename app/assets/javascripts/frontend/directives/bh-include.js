@@ -1,6 +1,8 @@
-angular.module('bahnhof.directives')
+angular
+  .module('bahnhof')
+  .directive('bhInclude', bhInclude);
 
-.directive("bhInclude",function( ) {
+function bhInclude() {
   return({
     link: link,
     restrict: "A",
@@ -29,5 +31,5 @@ angular.module('bahnhof.directives')
       scope[key] = value;
     }
   };
- })
+ }
 

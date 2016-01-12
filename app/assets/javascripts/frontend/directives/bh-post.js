@@ -1,6 +1,9 @@
-angular.module('bahnhof.directives')
-
-.directive("bhPost", function($stateParams, Posts) {
+angular
+  .module('bahnhof')
+  .directive('bhPost', bhPost);
+  
+  
+function bhPost($stateParams, Posts) {
     
   var controller = function () {
     var vm = this;
@@ -26,4 +29,4 @@ angular.module('bahnhof.directives')
         return 'templates/directives/post-' + tpl + '.html';
         }
       };
-  });
+  }

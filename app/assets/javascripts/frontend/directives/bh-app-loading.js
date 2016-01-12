@@ -1,5 +1,9 @@
-angular.module('bahnhof.directives')
-.directive("bhAppLoading",function( ) {
+angular
+  .module('bahnhof')
+  .directive('bhAppLoading', bhAppLoading);
+
+
+function bhAppLoading() {
   return({
     link: link,
     restrict: "C"
@@ -14,4 +18,4 @@ angular.module('bahnhof.directives')
       
       //});
   }
- })
+ }

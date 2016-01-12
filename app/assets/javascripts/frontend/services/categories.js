@@ -1,7 +1,9 @@
-angular.module('bahnhof.services')
+angular
+  .module('bahnhof')
+  .factory('Categories', Categories);
 
 
-.factory('Categories', ['$filter', '$http', '$q', 'ENV', function($filter, $http, $q, ENV) {
+function Categories ($filter, $http, $q, ENV) {
   var categories = [];
   var categories_endpoint = ENV.apiEndpoint + "categories"
 
@@ -21,7 +23,4 @@ angular.module('bahnhof.services')
       return $filter('filter')(categories, {slug: slug}, true)[0];
     }
   }
-}])
-
-
-;
+}

@@ -5,7 +5,7 @@ angular.module('bahnhof.config', [])
 //.constant('ENV', {name:'production',apiEndpoint:'http://infinite-inlet-6468.herokuapp.com/'})
 //.constant('ENV', {name:'production',apiEndpoint:'http://192.168.1.133:9292/'})
 
-.constant('ENV', {name:'development',apiEndpoint:'http://192.168.1.133:3000/api/'})
+.constant('ENV', {name:'development',apiEndpoint:'/api/'})
 
 
 ;

@@ -1,6 +1,8 @@
-angular.module('bahnhof.directives')
+angular
+  .module('bahnhof')
+  .directive('bhHomeCategory', bhHomeCategory);
 
-.directive("bhHomeCategory", ['$filter', function( $filter ) {
+function bhHomeCategory($filter) {
   return({
     link: link,
     restrict: "E",
@@ -44,5 +46,5 @@ angular.module('bahnhof.directives')
     });
     
   };
- }])
+ }
 
