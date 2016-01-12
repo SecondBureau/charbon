@@ -40,7 +40,6 @@ gem 'grape-jbuilder'
 
 gem "faker"
 gem 'slugify'
-gem 'ngannotate-rails'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
@@ -60,14 +59,13 @@ group :development, :test do
   gem 'sprig'
 end
 
-gem "rack-timeout"
-
 group :production do
   # Use postgresql as the database for Active Record
   gem 'pg'
   # Rack::Cache is suitable as a quick drop-in component to enable HTTP caching for Rack-based applications that produce freshness (Expires, Cache-Control) and/or validation (Last-Modified, ETag) information.
   gem 'rack-cache', :require => 'rack/cache'
-
+  
+  gem 'ngannotate-rails'
 end
 
 group :heroku do 
@@ -76,7 +74,7 @@ group :heroku do
   # Puma Webserver
   gem 'puma'
   # https://github.com/heroku/rack-timeout
-  #gem "rack-timeout"
+  gem "rack-timeout"
 end
 
 
