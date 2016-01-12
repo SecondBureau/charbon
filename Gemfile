@@ -60,6 +60,8 @@ group :development, :test do
   gem 'sprig'
 end
 
+gem "rack-timeout"
+
 group :production do
   # Use postgresql as the database for Active Record
   gem 'pg'
@@ -74,7 +76,7 @@ group :heroku do
   # Puma Webserver
   gem 'puma'
   # https://github.com/heroku/rack-timeout
-  gem "rack-timeout"
+  #gem "rack-timeout"
 end
 
 
