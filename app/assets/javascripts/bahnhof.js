@@ -1,3 +1,5 @@
+//= require templatePath
+
 //= require frontend/vendor/jquery-2.2.0
 //= require frontend/vendor/jquery.flexslider
     

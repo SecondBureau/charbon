@@ -1,11 +1,11 @@
   <body ng-app="bahnhof" ng-controller="BahnhofCtrl" bh-scroll-top="100" ng-class="{'navbar-minified':minifyNavbar}">
     
-    <div ng-include="'/templates/desktop/navbar.html'"></div>
+    <div ng-include="'<%= asset_path("desktop/navbar.html") %>'"></div>
     <div class="container main-container">
       <div ui-view></div>
     </div>
 
-    <div ng-include="'/templates/desktop/footer.html'"></div>
+    <div ng-include="'<%= asset_path("desktop/footer.html") %>'"></div>
     
     <div class="bh-app-loading">
       <style type="text/css">

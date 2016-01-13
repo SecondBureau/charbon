@@ -36,7 +36,7 @@ gem "camaleon_cms"
 gem 'grape'
 gem 'hashie-forbidden_attributes'
 gem 'grape-jbuilder'
-
+#gem 'js_assets'
 
 gem "faker"
 gem 'slugify'

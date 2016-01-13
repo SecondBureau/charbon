@@ -9,7 +9,7 @@ do ->
     #    };
 
     template = (element, attributes) ->
-      '/templates/directives/home-category-' + attributes.template + '.html'
+      template_path("directives/home-category-" + attributes.template + ".html")
 
     link = (scope, element, attributes, controllers) ->
       attributes.$observe 'bhCategory', (category) ->

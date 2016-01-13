@@ -24,7 +24,7 @@ do ->
       bindToController: true
       templateUrl: (elem, attr) ->
         tpl = attr.template or 'std'
-        'templates/directives/post-' + tpl + '.html'
+        template_path('directives/post-' + tpl + '.html')
 
     }
 

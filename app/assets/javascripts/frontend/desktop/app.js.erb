@@ -1,3 +1,4 @@
+
 // Ionic Starter App
 
 // angular.module is a global place for creating, registering and retrieving Angular modules
@@ -44,7 +45,7 @@ angular.module('bahnhof', ['ionic', 'bahnhof.config', 'angular-toArrayFilter', '
       url: '/home',
       views: {
         '': {
-          templateUrl: 'templates/desktop/home.html',
+          templateUrl: '<%= asset_path("desktop/home.html") %>',
           controller: 'HomeCtrl'
         }
       }
@@ -54,7 +55,7 @@ angular.module('bahnhof', ['ionic', 'bahnhof.config', 'angular-toArrayFilter', '
       url: '/posts/:categorySlug',
       views: {
         '': {
-          templateUrl: 'templates/desktop/posts.html',
+          templateUrl: '<%= asset_path("desktop/posts.html") %>',
           controller: 'PostsCtrl'
         }
       }
@@ -64,7 +65,7 @@ angular.module('bahnhof', ['ionic', 'bahnhof.config', 'angular-toArrayFilter', '
       url: '/post/:postSlug',
       views: {
         '': {
-          templateUrl: 'templates/desktop/post.html',
+          templateUrl: '<%= asset_path("desktop/post.html") %>',
         }
       }
     })
