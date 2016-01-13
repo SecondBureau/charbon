@@ -28,7 +28,7 @@ do ->
 
     }
 
-  
+  bhPost.$inject = ['$stateParams', 'Posts']
   angular.module('bahnhof').directive 'bhPost', bhPost
   
 

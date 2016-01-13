@@ -24,5 +24,5 @@ do ->
       restrict: 'A'
     }
 
-  
+  bhHolder.$inject = ['preLoader']
   angular.module('bahnhof').directive 'bhHolder', bhHolder
