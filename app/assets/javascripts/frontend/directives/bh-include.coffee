@@ -1,5 +1,7 @@
 do ->
 
+  'use strict'
+  
   bhInclude = ->
 
     template = (element, attributes) ->
@@ -35,6 +37,6 @@ do ->
       ]
     }
 
-  'use strict'
+  
   angular.module('bahnhof').directive 'bhInclude', bhInclude
-  return
+

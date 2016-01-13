@@ -1,5 +1,7 @@
 do ->
 
+  'use strict'
+  
   bhHolder = (preLoader) ->
 
     link = (scope, element, attrs) ->
@@ -22,6 +24,5 @@ do ->
       restrict: 'A'
     }
 
-  'use strict'
+  
   angular.module('bahnhof').directive 'bhHolder', bhHolder
-  return

@@ -1,5 +1,7 @@
 do ->
 
+  'use strict'
+  
   Posts = ($filter, $http, $q, ENV) ->
     posts = []
     postIds = []
@@ -56,6 +58,7 @@ do ->
 
     }
 
-  'use strict'
+  
+  Posts.$inject = ['$filter', '$http', '$q', 'ENV']
   angular.module('bahnhof').factory 'Posts', Posts
-  return
+  

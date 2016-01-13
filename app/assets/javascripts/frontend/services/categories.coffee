@@ -20,12 +20,7 @@ do ->
 
     }
 
-  Categories.$inject = [
-    '$filter'
-    '$http'
-    '$q'
-    'ENV'
-  ]
+  Categories.$inject = ['$filter', '$http', '$q', 'ENV']
   
   angular.module('bahnhof').factory 'Categories', Categories
 

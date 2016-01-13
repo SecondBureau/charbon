@@ -1,5 +1,7 @@
 do ->
 
+  'use strict'
+  
   bhPost = ($stateParams, Posts) ->
 
     controller = ->
@@ -26,7 +28,7 @@ do ->
 
     }
 
-  'use strict'
+  
   angular.module('bahnhof').directive 'bhPost', bhPost
-  return
+  
 

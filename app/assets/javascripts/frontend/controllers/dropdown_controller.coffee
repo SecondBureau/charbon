@@ -1,5 +1,7 @@
 do ->
 
+  'use strict'
+  
   DropdownCtrl = ($scope, $log) ->
     $scope.status = isopen: false
 
@@ -11,6 +13,6 @@ do ->
 
     return
 
-  'use strict'
+  DropdownCtrl.$inject = ['$scope', '$log']
+  
   angular.module('bahnhof').controller 'DropdownCtrl', DropdownCtrl
-  return

@@ -1,5 +1,7 @@
 do ->
 
+  'use strict'
+ 
   bhHomeCategory = ($filter) ->
     # function template( element, attributes) {
     #      var tpl = '<p>Inside <b>Template</b></p><ul><li>LABEL: {{category.label}}</li></ul>';
@@ -42,7 +44,6 @@ do ->
       scope: {}
     }
 
-  'use strict'
+  bhHomeCategory.$inject = ['$filter']
   angular.module('bahnhof').directive 'bhHomeCategory', bhHomeCategory
-  return
 

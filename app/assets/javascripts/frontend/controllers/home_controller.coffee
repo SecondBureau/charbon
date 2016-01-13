@@ -1,5 +1,7 @@
 do ->
   
+  'use strict'
+  
   HomeCtrl = ($scope, $filter, Categories, Posts) ->
     
     # jshint validthis: true
@@ -64,7 +66,8 @@ do ->
 
     return
 
-  'use strict'
+  HomeCtrl.$inject = ['$scope', '$filter', 'Categories', 'Posts']
+  
   angular.module('bahnhof').controller 'HomeCtrl', HomeCtrl
-  return
+
 

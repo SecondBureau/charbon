@@ -1,5 +1,7 @@
 do ->
 
+  'use strict'
+  
   bhAppLoading = ->
 
     link = (scope, element, attributes) ->
@@ -14,6 +16,5 @@ do ->
       restrict: 'C'
     }
 
-  'use strict'
+  
   angular.module('bahnhof').directive 'bhAppLoading', bhAppLoading
-  return

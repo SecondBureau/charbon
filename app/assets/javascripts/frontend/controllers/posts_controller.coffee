@@ -1,4 +1,6 @@
 do ->
+  'use strict'
+  
   PostsCtrl = ($scope, $stateParams, Categories, Posts) ->
 
     load = (page) ->
@@ -28,6 +30,6 @@ do ->
     load if $stateParams.page then parseInt($stateParams.page, 10) else 1
     return
 
-  'use strict'
+  
+  PostsCtrl.$inject = ['$scope', '$stateParams', 'Categories', 'Posts']
   angular.module('bahnhof').controller 'PostsCtrl', PostsCtrl
-  return
