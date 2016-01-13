@@ -1,14 +1,24 @@
-BahnhofCtrl = ($scope, $location, $stateParams, Categories) ->
-  $scope.categories = []
-  Categories.all().then (categories) ->
-    $scope.categories = categories
+do ->
+  
+  'use strict'
+
+  BahnhofCtrl = ($scope, $location, $stateParams, Categories) ->
+    $scope.categories = []
+    Categories.all().then (categories) ->
+      $scope.categories = categories
+      return
+
+    $scope.isActive = (route) ->
+      route == $location.path()
+
     return
 
-  $scope.isActive = (route) ->
-    route == $location.path()
+  BahnhofCtrl.$inject = [
+    '$scope'
+    '$location'
+    '$stateParams'
+    'Categories'
+  ]
 
-  return
-
-'use strict'
-angular.module('bahnhof').controller 'BahnhofCtrl', BahnhofCtrl
+  angular.module('bahnhof').controller 'BahnhofCtrl', BahnhofCtrl
 
