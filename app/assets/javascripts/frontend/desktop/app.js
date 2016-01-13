@@ -5,6 +5,15 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
+
+/*!
+ * Bahnhof Application for China India Dialogue
+ * http://secondbureau.com
+ * Copyright 2016 Second Bureau
+ * Main Module
+ * MIT License
+ */
+
 angular.module('bahnhof', ['ionic', 'bahnhof.config', 'angular-toArrayFilter', 'dc.endlessScroll', 'ui.bootstrap', 'angularSpinner', 'angular-flexslider'])
 
 .run(function($ionicPlatform) {
