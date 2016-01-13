@@ -1,3 +1,11 @@
+###!
+# Bahnhof Application for China India Dialogue
+# http://secondbureau.com
+# Copyright 2016 Second Bureau
+# bhScrollTop Directive
+# MIT License
+###
+
 do ->
 
   bhScrollTop = ($window) ->

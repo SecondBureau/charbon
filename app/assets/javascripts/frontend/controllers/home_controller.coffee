@@ -1,7 +1,9 @@
 do ->
   
   HomeCtrl = ($scope, $filter, Categories, Posts) ->
-    $scope.loading = true
+    
+    # jshint validthis: true
+    vm = this;
 
     searchString = (categories) ->
       c = 
