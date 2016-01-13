@@ -1,5 +1,7 @@
 do ->
 
+  'use strict'
+  
   Categories = ($filter, $http, $q, ENV) ->
     categories = []
     categories_endpoint = ENV.apiEndpoint + 'categories'
@@ -18,7 +20,12 @@ do ->
 
     }
 
-  'use strict'
+  Categories.$inject = [
+    '$filter'
+    '$http'
+    '$q'
+    'ENV'
+  ]
+  
   angular.module('bahnhof').factory 'Categories', Categories
-  return
 
