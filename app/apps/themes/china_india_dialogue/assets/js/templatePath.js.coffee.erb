@@ -1,0 +1,11 @@
+<%
+tpls = {}
+template_path = "themes/china_india_dialogue/assets/templates/"
+Dir.chdir("#{Rails.root}/app/apps/#{template_path}") do
+  tpls = Dir["**/*.html*"].inject({}) {|h,f| h.merge! File.join(File.dirname(f), File.basename(f, '.erb')) => asset_path("#{template_path}#{f}")}
+end
+%>
+
+
+window.template_path = (name) ->
+  <%= tpls.to_json %>[name]

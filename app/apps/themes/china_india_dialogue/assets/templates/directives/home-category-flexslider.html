@@ -1,0 +1,12 @@
+<flex-slider flex-slide="post in posts track by $index">
+    <li>
+        <img ng-src="{{post.featured_image_url}}">
+        <p class="flex-caption">
+          <span class="title"><a href="#/post/{{post.slug}}">{{post.title}}</a></span>
+          <br/>
+          <span class="category-color"><i>By</i></span> 
+          <span class="home-post-author">{{post.author}}</span>
+          <span class="home-post-published">{{post.published_at | date : format : timezone}}</span>
+        </p>
+    </li>
+</flex-slider>

@@ -1,0 +1,55 @@
+    <div class="bh-app-loading">
+      <style type="text/css">
+      div.bh-app-loading div.animated-container {
+        background-color: #FFF ;
+        bottom: 0px ;
+        left: 0px ;
+        opacity: 1 ;
+        position: fixed ;
+        right: 0px ;
+        top: 0px ;
+      z-index: 99999999999 ;
+      }
+      div.bh-app-loading div.animated-container.ng-leave {
+        opacity: 1.0 ;
+        transition: all linear 200ms ;
+        -webkit-transition: all linear 200ms ;
+      }
+      div.bh-app-loading div.animated-container.ng-leave-active {
+        opacity: 0 ;
+        transition: all linear 200ms ;
+        -webkit-transition: all linear 200ms ;
+      }
+      div.bh-app-loading div.messaging {
+        color: #000 ;
+        font-family: monospace ;
+        left: 0px ;
+        margin-top: -37px ;
+        position: absolute ;
+        right: 0px ;
+        text-align: center ;
+        top: 30% ;
+      }
+      div.bh-app-loading h1 {
+        font-size: 26px ;
+        line-height: 35px ;
+        margin: 0px 0px 20px 0px ;
+      }
+      div.bh-app-loading p {
+        font-size: 18px ;
+        line-height: 14px ;
+        margin: 0px 0px 0px 0px ;
+      }
+      div.bh-app-loading p.spinning {
+        margin: 20px 0px 0px 0px ;
+      }
+      </style>
+
+      <div class="animated-container">
+        <div class="messaging">
+          <h1>China India Dialogue is Loading</h1>
+          <p>Please stand by!</p>
+          <p class="spinning"><%= image_tag('loading.gif') %></p>
+        </div>
+      </div>
+    </div>

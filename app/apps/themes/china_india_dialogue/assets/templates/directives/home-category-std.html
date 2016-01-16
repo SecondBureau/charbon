@@ -1,0 +1,32 @@
+<!-- General template -->
+  <div class="home-block {{category.class}} home-block-{{category.slug}}" ng-class="{'home-block-loading': !(posts.length > 0)}">
+    <div class="home-block-header">
+      <img src="/assets/cid/category-decoration.png" class="pull-right">
+      <h2 class="category-color">{{category.label}}</h2>
+    </div>
+    
+    <div class="home-block-contents" >
+      <div ng-show="!(posts.length > 0)" us-spinner="{radius:10, width:3, length: 8}" style="position:relative;width:100%;margin:20px 0 80px 0"></div>
+      <ul class="home-post-group">
+        <li class="home-post-item" ng-repeat="post in posts">
+          <bh-post id="post.id" template="mini" slug="post.slug"></bh-post>
+          <img 
+            ng-if="category.show_featured_on_home == true" 
+            class="img-responsive" 
+            bh-holder="{{post.image_width}}x{{post.image_height}}" 
+            bh-src="{{post.featured_image_url}}" />
+        </li>
+      </ul>
+    </div>
+ </div>
+
+
+
+
+
+
+
+
+
+  
+   

@@ -1,0 +1,55 @@
+.flex-control-nav {
+  top: 20px;
+  z-index: 2;
+}
+
+.flex-control-nav li {}
+
+.flex-control-paging li a {
+  background: #e60012;
+  background: rgba(230, 0, 18, 1);
+}
+
+.flex-control-paging li a:hover {
+  background: #fff;
+  background: rgba(255, 255, 255, 1);
+}
+
+.flex-control-paging li a.flex-active {
+  background: #fff;
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.flex-slider .slides > .li {
+  position: relative;
+}
+
+/*.flex-caption {
+  padding: 2%;
+  left: 0;
+  bottom: -130px;
+  background: rgba(0,0,0,.1);
+  color: #fff;
+  text-shadow: 0 -1px 0 rgba(0,0,0,.3);
+  font-size: 14px;
+  line-height: 18px;
+}*/
+
+.flex-caption {
+  background: rgba(230,0,18,1);
+  padding: 5px 0 5px 2%;
+  color: #fff;
+}
+
+.flex-caption span.title {
+  font-size: 20px;
+  font-weight: bold;
+  line-height: 1.1;
+  font-family: dax, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+.flex-caption, .flex-caption a {
+  color: #fff;
+}
+
+

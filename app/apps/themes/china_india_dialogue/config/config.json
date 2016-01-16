@@ -1,0 +1,14 @@
+{
+  "name" : "China India Dialogue",
+  "description" : "",
+  "thumb" : "images/image.png",
+  "helpers": [
+    "Themes::ChinaIndiaDialogue::MainHelper"
+  ],
+  "hooks": {
+    "on_active": ["china_india_dialogue_on_install_theme"],
+    "on_inactive": ["china_india_dialogue_on_uninstall_theme"],
+    "on_theme_settings": ["china_india_dialogue_settings"]
+    //here all your hooks
+  }
+}

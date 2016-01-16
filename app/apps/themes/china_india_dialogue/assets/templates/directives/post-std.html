@@ -1,0 +1,31 @@
+
+<div class="row">
+  <div class="col-md-2 visible-md-inline-block visible-lg-inline-block">
+    <ul class="social">
+      <li class="social-facebook">Facebook</li>
+      <li class="social-twitter">Twitter</li>
+      <li class="social-email">Email</li>
+      <li class="social-print">Printing</li>
+      <li class="social-wechat">
+        <img class="qr-code" src="/assets/cid/qrcode-demo.png">
+        <br/>
+        <span>Scan QR Code</span>
+        <div>
+          <img src="/assets/cid/icon-wechat.png" class="pull-left">
+          <p>to share this article on <span>Wechat</span></p>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div class="col-md-10">
+      <h1 class="post-title">{{vm.post.title}}</h1>
+      <p>
+        <span class="category-color"><i>By</i></span>
+        <span class="post-author">{{vm.post.author}}</span>
+        <span class="post-published">{{vm.post.published_at | date : format : timezone}}</span>
+        <span class="visible-xs-inline-block" ng-repeat="s in ['facebook', 'twitter', 'email']"><img ng-src="/assets/cid/icon-{{s}}.png"></span>
+      </p>
+      <img class="img-responsive" ng-src="{{vm.post.featured_image_url}}" />
+      <div class="post-body" ng-bind-html="vm.post.body"></div>
+  </div>
+</div>

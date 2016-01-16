@@ -1,0 +1,78 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="row cid-md-header visible-md-inline-block visible-lg-inline-block">
+      <div class='col-md-4'>
+        <center>XXXXX</center>
+      </div>
+      <div class='col-md-4'>
+        <center><a ui-sref="home"><%= theme_image_tag 'logo.png', alt: current_site.the_title %></a></center>
+      </div>
+      <div class='col-md-4'>
+        <center>
+          <div class="search-form">
+            <div class="input-group">
+              <span class="input-group-addon" id="basic-addon1">@</span>
+              <input type="text" class="form-control" placeholder="Username" aria-describedby="basic-addon1">
+            </div>
+          </div>
+        </center>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="navbar-header cid-sm-header">
+      <a class="navbar-brand" ui-sref="home"><%= theme_image_tag 'logo-mini.png', alt: current_site.the_title %></a>
+      <div class="visible-sm-inline-block">
+        COMPLEMENT de MENU
+      </div>
+      <button type="button" class="navbar-toggle collapsed dropdown" uib-dropdown>
+        <a href uib-dropdown-toggle role="button">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+        </a> 
+        <ul class="uib-dropdown-menu">
+          <li><a href>This month features</a></li>
+          <li ng-repeat="category in categories  ">
+            <a href="#/posts/{{category.slug}}">{{category.label}}</a>
+          </li>
+          <li><a href>About Us</a></li>
+          <li><a href>Archives</a></li>
+          <li><a href="/index-mobile.html">VERSION MOBILE</a></li>
+        </ul>
+      </button>
+        
+    </div>
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li ng-class="{ active: isActive('/posts/{{category.slug}}')}" ng-repeat="category in categories |  toArray | filter:{navbar: true}:true  ">
+          <a href="#/posts/{{category.slug}}">{{category.label}}</a>
+        </li>
+        <li ng-controller="DropdownCtrl" class="dropdown" uib-dropdown>
+          <a href uib-dropdown-toggle role="button">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="caret"></span>
+          </a>
+          <ul class="uib-dropdown-menu">
+            <li><a href>This month features</a></li>
+            <li ng-repeat="category in categories |  toArray | filter:{additional_navbar: true}:false  ">
+              <a href="#/posts/{{category.slug}}">{{category.label}}</a>
+            </li>
+            <li><a href>About Us</a></li>
+            <li><a href>Archives</a></li>
+            <li><a href="/index-mobile.html">VERSION MOBILE</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+  
+</nav>
+
+        
+
+
+
+
