@@ -13,6 +13,9 @@ CamaleonCms::User.where('id > 1').destroy_all
 category_parent_id = CamaleonCms::PostType.find_by_slug('post').id
 post_term_taxonomy_id = CamaleonCms::TermTaxonomy.find_by_slug('post').id
 
+site = CamaleonCms::Site.first
+#site.categories.destroy_all
+
 themes = {
   '0' => 'business',
   '1' => 'people',
@@ -49,6 +52,16 @@ end
 
 userids = CamaleonCms::User.all.collect{|u| u.id}
 
+['Main Menu', "Footer 1", "Footer 2"].each do |item|
+  slug = item.slugify.underscore
+  instance_variable_set "@#{slug}", CamaleonCms::NavMenu.find_by_slug(slug)
+  if instance_variable_get("@#{slug}").nil?
+    site.nav_menus.create!({name: item, slug: slug})
+  end
+  instance_variable_get("@#{slug}").children.destroy_all
+end
+
+
 [
     { id: 0, order: 2, slug: 'business', label: 'Business', footer1: true, navbar: true, class: 'home-block-border', show_featured_on_home: false },
     { id: 1, order: 99, slug: 'people', label: 'People', show_featured_on_home: true },
@@ -70,7 +83,7 @@ userids = CamaleonCms::User.all.collect{|u| u.id}
     
     puts c.inspect
     if (category = CamaleonCms::Category.find_by_slug(c[:slug])).nil?
-      category = CamaleonCms::Category.create(name: c[:label], slug: c[:slug], parent_id: category_parent_id)
+      category = CamaleonCms::Category.create(name: c[:label], slug: c[:label].slugify, parent_id: category_parent_id)
     end
     # if (meta = CamaleonCms::Meta.find_by_key("_#{category.slug}")).nil?
  #      meta = CamaleonCms::Meta.new(key: "_#{category.slug}", objectid: category.id, object_class: "Category")
@@ -80,6 +93,18 @@ userids = CamaleonCms::User.all.collect{|u| u.id}
     category.set_option(:navbar, c[:navbar]) unless c[:navbar].blank?
     category.set_option(:class, c[:class]) unless c[:class].blank?
     category.set_option(:show_featured_on_home, c[:show_featured_on_home]) unless c[:show_featured_on_home].blank?
+    
+    unless c[:navbar].blank?
+      @main_menu.append_menu_item ({label: category.name, type: "category", link: category.id})
+    end
+    
+    unless c[:footer1].blank?
+      @footer_1.append_menu_item ({label: category.name, type: "category", link: category.id})
+    end
+    
+    unless c[:footer2].blank?
+      @footer_2.append_menu_item ({label: category.name, type: "category", link: category.id})
+    end
 
     (rand(15) + 5).times do
       

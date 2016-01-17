@@ -166,11 +166,11 @@ bh-home-category, .home-block {
   padding-right: 20px;
 }
 
-.home-block-oneroadonebelt .home-block-contents, .home-block-environment .home-block-contents {
+.home-block-one-road-one-belt .home-block-contents, .home-block-environment .home-block-contents {
   padding-bottom: 10px;
 }
 
-.home-block-oneroadonebelt .home-block-contents .img-featured, .home-block-environment .home-block-contents .img-featured {
+.home-block-one-road-one-belt .home-block-contents .img-featured, .home-block-environment .home-block-contents .img-featured {
   margin-top:20px;
 }
 
@@ -215,7 +215,7 @@ p.home-post-summary {
   color:#a9cf52;
 }
 
-.home-block-travel .category-color {
+.home-block-travel-image .category-color {
   color:#9c0183;
 }
 
@@ -261,7 +261,7 @@ p.home-post-summary {
 
 
 
-.home-block-oneroadonebelt {
+.home-block-one-road-one-belt {
   margin-top: 0;
   margin-bottom: 0;
   border: #5cc2cf solid 1px;

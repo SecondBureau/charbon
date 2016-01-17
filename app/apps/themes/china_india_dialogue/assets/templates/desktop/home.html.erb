@@ -7,15 +7,6 @@
     <center><%= image_tag 'cid/issue.png', class: "img-responsive" %></center>
   </div>
  </div>
- 
- 
- 
-<!-- <div class='row'>
-  <div class='col-md-8' ng-include="'/templates/desktop/home.slider.html'" data-onload="::getC('spotlight', 5)"></div>
-  <div class='col-md-4'>
-    <center><img src='/assets/cid/issue.png' class="img-responsive" /></center>
-  </div>
-</div> -->
 
 <div class='row row-eq-height'>
   <div class='col-md-8 row-eq-height'>
@@ -61,7 +52,7 @@
 </div>
 
 <div class='row row-eq-height'>
-  <div class='col-md-6 row-eq-height' ng-repeat="slug in ['oneroadonebelt', 'environment']">
+  <div class='col-md-6 row-eq-height' ng-repeat="slug in ['one-road-one-belt', 'environment']">
     <bh-home-category template="solo" bh-posts="{{::getP(slug)}}" bh-category="{{::getC(slug)}}"></bh-home-category>
   </div>
 </div>
@@ -75,9 +66,9 @@
     <bh-home-category template="std" bh-posts="{{::getP('culture')}}" bh-category="{{::getC('culture')}}"></bh-home-category>
   </div>
   <div class='col-md-8 row-eq-height'>
-    <bh-home-category template="carousel" bh-posts="{{::getP('travel')}}" bh-category="{{::getC('travel')}}"></bh-home-category>
+    <bh-home-category template="carousel" bh-posts="{{::getP('travel-image')}}" bh-category="{{::getC('travel-image')}}"></bh-home-category>
   </div>
-  
+
 </div>
 
 <hr>

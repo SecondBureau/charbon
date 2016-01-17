@@ -16,10 +16,10 @@ do ->
         internet: 3
         society: 3
         column: 4
-        oneroadonebelt: 1
+        'one-road-one-belt': 1
         environment: 1
         culture: 1
-        travel: 6
+        'travel-image': 6
       q = []
       #if (angular.isArray($scope.categories)) {
       angular.forEach c, (num, slug) ->
