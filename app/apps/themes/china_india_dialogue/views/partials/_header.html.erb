@@ -46,7 +46,7 @@
 
     </div>
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <%= raw draw_menu(menu_slug:'main_menu') %>
+      <%= raw draw_menu(menu_slug:'main_menu', callback_item: lambda{|args| args[:link_attrs] = "";}) %>
       
       <!-- <ul class="nav navbar-nav">
         <li ng-class="{ active: isActive('/posts/{{category.slug}}')}" ng-repeat="category in categories |  toArray | filter:{navbar: true}:true  ">

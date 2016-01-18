@@ -51,6 +51,16 @@ angular.module('bahnhof', ['ionic', 'bahnhof.config', 'angular-toArrayFilter', '
       }
     })
     
+    .state('category', {
+      url: '/category/:categoryId-:categorySlug',
+      views: {
+        '': {
+          templateUrl: template_path("desktop/posts.html"),
+          controller: 'PostsCtrl'
+        }
+      }
+    })
+    
     .state('posts', {
       url: '/posts/:categorySlug',
       views: {
