@@ -21,7 +21,7 @@
       <h1 class="post-title">{{vm.post.title}}</h1>
       <p>
         <span class="category-color"><i>By</i></span>
-        <span class="post-author">{{vm.post.author}}</span>
+        <span class="post-author">{{vm.author.fullname}}</span>
         <span class="post-published">{{vm.post.published_at | date : format : timezone}}</span>
         <span class="visible-xs-inline-block" ng-repeat="s in ['facebook', 'twitter', 'email']"><img cam-src="icons/{{s}}.png"></span>
       </p>

@@ -30,6 +30,17 @@ module Charbon
       end
     end
     
+    resource :users do
+      
+      desc 'return user'
+      route_param :user_id do 
+        get '/', jbuilder: 'user' do
+          @user = CamaleonCms::User.find_by_id(params[:user_id])
+          
+        end
+      end
+    end
+    
     resource :categories do
       
       desc 'Return list of categories.'

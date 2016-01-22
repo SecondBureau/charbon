@@ -2,7 +2,7 @@ do ->
 
   'use strict'
   
-  bhPost = ($stateParams, Posts) ->
+  bhPost = ($stateParams, Posts, Users) ->
 
     controller = ->
       vm = this
@@ -10,7 +10,9 @@ do ->
       # TODO: Use post.id if slug undefined
       Posts.getBySlug(slug).then (post) ->
         vm.post = post
-        vm.loaded = true
+        Users.getById(post.author_id).then (user) ->
+          vm.author = user
+          vm.loaded = true
         return
       return
 
@@ -28,7 +30,7 @@ do ->
 
     }
 
-  bhPost.$inject = ['$stateParams', 'Posts']
+  bhPost.$inject = ['$stateParams', 'Posts', 'Users']
   angular.module('bahnhof').directive 'bhPost', bhPost
   
 

@@ -1,0 +1,10 @@
+<div class="home-block-contents" >
+  <img ng-src="{{vm.author.avatar}}" class="pull-left">
+  <ul class="home-post-group">
+    <li class="home-post-item" >
+      <h3 class="home-post-title"><a ui-sref="post({postSlug: vm.post.slug})">{{vm.post.title}}</a></h3>
+      <p><span class="home-post-author">{{vm.author.fullname}}</span></p>
+      <p class="home-post-summary">{{vm.post.summary}}</p>
+    </li>
+  </ul>
+</div>
