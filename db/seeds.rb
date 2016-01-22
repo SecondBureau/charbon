@@ -162,3 +162,18 @@ end
     end
 
 end
+
+# Themes
+theme = CamaleonCms::Theme.find_by_slug('china_india_dialogue')
+unless theme.nil? 
+  theme.get_field_groups.destroy_all
+  group = theme.add_field_group({name: "Partners", slug: "partners"})
+  group.add_field({"name"=>"Partners", "slug"=>"partners"}, {field_key: "editor", translate: true, default_value: "<img class='logo-partner' src='assets/cid/partner-1.png />"})
+
+  group = theme.add_field_group({name: "Footer", slug: "footer"})
+  group.add_field({"name"=>"Address", "slug"=>"address"}, {field_key: "editor", translate: true, default_value: "<p><b>Address:</b><br/>33 Chegongzhuang Xilu,<br/>Beijing, 100048, P.R. China</p><p><b>Telephone:</b><br/>+8610 8841 7455</p><p><b>Email:</b> contact@chinapictorial.com.cn</p>"})
+    
+  group = theme.add_field_group({name: "Ads", slug: "ads"})
+  group.add_field({"name"=>"Left", "slug"=>"ad_left"}, {field_key: "editor", translate: true, default_value: ""})
+  group.add_field({"name"=>"Right", "slug"=>"ad_right"}, {field_key: "editor", translate: true, default_value: ""})
+end

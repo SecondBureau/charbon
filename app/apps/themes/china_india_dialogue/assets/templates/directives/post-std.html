@@ -23,7 +23,7 @@
         <span class="category-color"><i>By</i></span>
         <span class="post-author">{{vm.post.author}}</span>
         <span class="post-published">{{vm.post.published_at | date : format : timezone}}</span>
-        <span class="visible-xs-inline-block" ng-repeat="s in ['facebook', 'twitter', 'email']"><img ng-src="/assets/cid/icon-{{s}}.png"></span>
+        <span class="visible-xs-inline-block" ng-repeat="s in ['facebook', 'twitter', 'email']"><img cam-src="icons/{{s}}.png"></span>
       </p>
       <img class="img-responsive" ng-src="{{vm.post.featured_image_url}}" />
       <div class="post-body" ng-bind-html="vm.post.body"></div>

@@ -1,0 +1,24 @@
+<%
+tpls = {}
+template_path = "themes/china_india_dialogue/assets/templates/"
+Dir.chdir("#{Rails.root}/app/apps/#{template_path}") do
+  tpls = Dir["**/*.html*"].inject({}) {|h,f| h.merge! File.join(File.dirname(f), File.basename(f, '.erb')) => asset_path("#{template_path}#{f}")}
+end
+%>
+
+
+window.template_path = (name) ->
+  <%= tpls.to_json %>[name]
+  
+  
+<%
+images = {}
+image_path = "themes/china_india_dialogue/assets/images/"
+Dir.chdir("#{Rails.root}/app/apps/#{image_path}") do
+  images = Dir["**/*"].inject({}) {|h,f| h.merge! f => asset_path("#{image_path}#{f}")}
+end
+%>
+
+
+window.theme_image_path = (name) ->
+  <%= images.to_json %>[name]

@@ -3,14 +3,16 @@
     <div class="container">
         <div class="row">
           <div class="col-md-2">
-            <ul class="nav">
+            <%= raw draw_menu(menu_slug:'footer_1', container_class: 'nav') %>
+            <!-- <ul class="nav">
               <li ng-repeat="category in categories | toArray |  filter:{footer1: true}:true  ">
                 <a href="#/category/{{category.slug}}">{{category.label}}</a>
               </li>
-            </ul>
+            </ul> -->
           </div>
           <div class="col-md-2">
-            <ul class="nav">
+            <%= raw draw_menu(menu_slug:'footer_2', container_class: 'nav') %>
+            <!-- <ul class="nav">
               <li ng-repeat="category in categories | toArray |  filter:{footer2: true}:true  ">
                 <a href="#/category/{{category.slug}}">{{category.label}}</a>
               </li>
@@ -18,12 +20,12 @@
               <li><a href="#">About Us</a></li>
               <li><a href="#">Archives</a></li>
               <li><a href="#">Apps</a></li>
-            </ul>
+            </ul> -->
           </div>
           
           <div class="col-md-5">
             <div class="footer-block">
-              <img src="/assets/cid/footer-decoration.png">
+              <%= theme_image_tag 'decorations/footer.png', alt: "*" %>
               <p>Contact form:</p>
               <form>
                 <div class="form-group">
@@ -46,10 +48,8 @@
           
           <div class="col-md-3">
             <div class="footer-block">
-              <img src="/assets/cid/footer-decoration.png">
-              <p><b>Address:</b><br/>33 Chegongzhuang Xilu,<br/>Beijing, 100048, P.R. China</p>
-              <p><b>Telephone:</b><br/>+8610 8841 7455</p>
-              <p><b>Email:</b> contact@chinapictorial.com.cn</p>
+              <%= theme_image_tag 'decorations/footer.png', alt: "*" %>
+              <%= raw current_theme.the_field("address") %>
             </div>
           </div>
         </div>
@@ -60,7 +60,7 @@
     <div class="container">
         <div class="row">
           <div class="col-md-12">
-            <p>&copy;2015 China India Dialogue</p>
+            <p>&copy;<%= Time.now.strftime('%Y') %> China India Dialogue</p>
           </div>
         </div>
     </div>

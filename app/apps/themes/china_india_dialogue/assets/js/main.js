@@ -11,8 +11,9 @@
     
 //= require ./vendor/ui-bootstrap-tpls
 //= require ./vendor/holder
+
+//= require ./vendor/camaleon_cms
      
-//= require ./templatePath
 //= require ./app
 //= require ./config
 

@@ -1,4 +1,4 @@
-
+$images_root: 'themes/china_india_dialogue/assets/images/' ;
 
 .logo-partner {
   margin: 0 15px 0 15px;
@@ -14,11 +14,11 @@ body {
 .cid-md-header {
   height: 150px;
   overflow: hidden;
-  background: #000 url('/assets/cid/header-bg.png');
+  background: #000 image_url($images_root + 'backgrounds/header.png');
 }
 
 .cid-sm-header {
-  background: #000 url('/assets/cid/header-bg-mini.png');
+  background: #000 image_url($images_root + 'backgrounds/header-mini.png');
 }
 
 .navbar {
@@ -61,7 +61,7 @@ body.navbar-minified .navbar-default .navbar-nav>li.active>a,
 body.navbar-minified .navbar-default .navbar-nav>a:focus,
 body.navbar-minified .navbar-default .navbar-nav>a:hover {
   color: #e60012;
-  background: url('/assets/cid/menu-decoration.png') center bottom no-repeat;
+  background: image_url($images_root + 'decorations/menu_active.png') center bottom no-repeat;
 }
 
 .navbar-default .navbar-nav>.active {
@@ -179,7 +179,7 @@ bh-home-category, .home-block {
   display: inline-block;
   width: 29px;
   height: 16px;
-  background: url('/assets/cid/twitter-icon.png');
+  background: image_url($images_root + '/decorations/twitter.png');
 }
 
 .home-block-reverse .home-post-author, .home-block-reverse .home-post-published {
@@ -230,7 +230,7 @@ p.home-post-summary {
 
 .home-block-column {
   padding-right: 0px;
-  background-image: url('/assets/cid/column-bg.png');
+  background-image: image_url($images_root + 'backgrounds/column.png');
 }
 
 .home-block-reverse {
@@ -331,19 +331,19 @@ ul.social > li:before {
 }
 
 li.social-facebook:before {
-  background: url('/assets/cid/icon-facebook.png') no-repeat;
+  background: image-url($images_root + 'icons/facebook.png') no-repeat;
 }
 
 li.social-twitter:before {
-  background: url('/assets/cid/icon-twitter.png') no-repeat;
+  background: image-url($images_root + 'icons/twitter.png') no-repeat;
 }
 
 li.social-email:before {
-  background: url('/assets/cid/icon-email.png') no-repeat;
+  background: image-url($images_root + 'icons/email.png') no-repeat;
 }
 
 li.social-print:before {
-  background: url('/assets/cid/icon-print.png') no-repeat;
+  background: image-url($images_root + 'icons/print.png') no-repeat;
 }
 
 li.social-wechat > div > p {

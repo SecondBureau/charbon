@@ -4,7 +4,7 @@
     </bh-home-category>
   </div>
   <div class='col-md-4'>
-    <center><%= image_tag 'cid/issue.png', class: "img-responsive" %></center>
+    <center>ISSUE</center>
   </div>
  </div>
 
@@ -31,10 +31,10 @@
 
 <div class='row'>
   <div class='col-md-4'>
-    <center><img src='/assets/cid/ad2.png' class="img-responsive" /></center>
+    <center><cam-theme-field slug="ad_left" theme="china_india_dialogue" type="html"></cam-theme-field></center>
   </div>
   <div class='col-md-8'>
-    <center class='cid-ad-grey'><img src='/assets/cid/ad1.png' class="img-responsive" /></center>
+    <center class='cid-ad-grey'><cam-theme-field slug="ad_right" theme="china_india_dialogue" type="html"></cam-theme-field></center>
   </div>
 </div>
 
@@ -76,6 +76,6 @@
 <div class='row'>
   <div class="col-md-2"><h2>Partners:</h2></div>
   <div class="col-md-10">
-    <img ng-repeat="i in [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16]" ng-src="/assets/cid/partner-{{i}}.png" class="logo-partner" />
+   <cam-theme-field slug="partners" theme="china_india_dialogue" type="html"></cam-theme-field>
   </div>
 </div>
