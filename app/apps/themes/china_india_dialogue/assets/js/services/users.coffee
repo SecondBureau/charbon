@@ -24,6 +24,7 @@ do ->
         else
           $http(
             url: users_endpoint + '/' + userId
+            cache: true
             method: 'GET').then (response) ->
             addUser response.data.user
 
