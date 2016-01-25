@@ -32,6 +32,7 @@ do ->
         else
           $http(
             url: posts_endpoint + '/' + slug
+            cache: true
             method: 'GET').then (response) ->
             addPosts response.data.post[0]
       homePosts: (search) ->
@@ -41,6 +42,7 @@ do ->
           $http(
             url: posts_endpoint + '/home'
             method: 'GET'
+            cache: true
             params: q: search).then (response) ->
             posts = addPosts(response.data)
             homePosts = posts
@@ -49,6 +51,7 @@ do ->
         $http(
           url: posts_endpoint
           method: 'GET'
+          cache: true
           params:
             s: search
             offset: offset
