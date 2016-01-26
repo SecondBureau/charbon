@@ -1,7 +1,7 @@
 module Themes::ChinaIndiaDialogue::MainHelper
   def self.included(klass)
     # klass.helper_method [:my_helper_method] rescue "" # here your methods accessible from views
-    klass.helper_method [:theme_image_tag]
+    klass.helper_method [:theme_image_tag, :nav_menu]
   end
 
   def china_india_dialogue_settings(theme)
@@ -45,5 +45,10 @@ module Themes::ChinaIndiaDialogue::MainHelper
   
   def theme_image_tag(source, options={})
     ActionController::Base.helpers.image_tag(theme_asset_path("images/#{source}"), options)
+  end
+  
+  def nav_menu(options={})
+    options.merge!(callback_item: lambda{|args| args[:link_attrs] = "ui-sref=\"category({categoryId: #{args[:menu_item][:id]}, categorySlug: '#{args[:menu_item][:slug]}'})\" href"})
+    draw_menu(options).html_safe
   end
 end

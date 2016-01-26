@@ -3,7 +3,7 @@
     <div class="container">
         <div class="row">
           <div class="col-md-2">
-            <%= raw draw_menu(menu_slug:'footer_1', container_class: 'nav') %>
+            <%= nav_menu(menu_slug:'footer_1', container_class: 'nav') %>
             <!-- <ul class="nav">
               <li ng-repeat="category in categories | toArray |  filter:{footer1: true}:true  ">
                 <a href="#/category/{{category.slug}}">{{category.label}}</a>
@@ -11,7 +11,10 @@
             </ul> -->
           </div>
           <div class="col-md-2">
-            <%= raw draw_menu(menu_slug:'footer_2', container_class: 'nav') %>
+            <%= nav_menu(menu_slug:'footer_2', container_class: 'nav') %>
+            
+            
+            
             <!-- <ul class="nav">
               <li ng-repeat="category in categories | toArray |  filter:{footer2: true}:true  ">
                 <a href="#/category/{{category.slug}}">{{category.label}}</a>
