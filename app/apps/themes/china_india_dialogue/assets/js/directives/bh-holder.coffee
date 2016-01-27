@@ -13,7 +13,7 @@ do ->
             attrs.$set 'src', attrs.bhSrc
             return
           ), ->
-            console.log 'chargement foiré'
+            console.log 'Loading failed...'
             return
         return
       return
