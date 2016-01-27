@@ -48,7 +48,7 @@ module Themes::ChinaIndiaDialogue::MainHelper
   end
   
   def nav_menu(options={})
-    options.merge!(callback_item: lambda{|args| args[:link_attrs] = "ui-sref=\"category({categoryId: #{args[:menu_item][:id]}, categorySlug: '#{args[:menu_item][:slug]}'})\" href"})
+    options.merge!(callback_item: lambda{|args| args[:item_container_attrs] = "ui-sref-active='active'"; args[:link_attrs] = "ui-sref=\"category({categoryId: #{args[:menu_item][:id]}, categorySlug: '#{args[:menu_item][:slug]}'})\" href"})
     draw_menu(options).html_safe
   end
 end

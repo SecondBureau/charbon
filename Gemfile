@@ -29,8 +29,8 @@ gem "twitter-bootstrap-rails"
 gem 'haml'
 
 # Cameleon
-#gem "camaleon_cms", github: 'owen2345/camaleon-cms'
-gem "camaleon_cms"
+gem "camaleon_cms", github: 'SecondBureau/camaleon-cms'
+#gem "camaleon_cms"
 
 # An opinionated micro-framework for creating REST-like APIs in Ruby. http://www.ruby-grape.org
 gem 'grape'

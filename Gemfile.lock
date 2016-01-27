@@ -1,3 +1,22 @@
+GIT
+  remote: git://github.com/SecondBureau/camaleon-cms.git
+  revision: 7cc381363335e03bd3ce8820806cd27c651369ab
+  specs:
+    camaleon_cms (2.1.1)
+      aws-sdk (~> 2)
+      bcrypt
+      breadcrumbs_on_rails
+      cancancan (~> 1.10)
+      draper (~> 1.3)
+      fog (~> 1.34)
+      font-awesome-rails
+      meta-tags (~> 2.0)
+      mini_magick
+      mobu
+      protected_attributes
+      will_paginate
+      will_paginate-bootstrap
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -54,20 +73,6 @@ GEM
     breadcrumbs_on_rails (2.3.1)
     builder (3.2.2)
     byebug (8.2.1)
-    camaleon_cms (2.1.1)
-      aws-sdk (~> 2)
-      bcrypt
-      breadcrumbs_on_rails
-      cancancan (~> 1.10)
-      draper (~> 1.3)
-      fog (~> 1.34)
-      font-awesome-rails
-      meta-tags (~> 2.0)
-      mini_magick
-      mobu
-      protected_attributes
-      will_paginate
-      will_paginate-bootstrap
     cancancan (1.13.1)
     coercible (1.0.0)
       descendants_tracker (~> 0.0.1)
@@ -393,7 +398,7 @@ PLATFORMS
 
 DEPENDENCIES
   byebug
-  camaleon_cms
+  camaleon_cms!
   coffee-rails (~> 4.1.0)
   faker
   grape
