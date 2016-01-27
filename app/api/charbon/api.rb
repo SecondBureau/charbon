@@ -70,7 +70,7 @@ module Charbon
         optional :offset, type: Integer
         optional :s, type: String, default: ""
       end
-      get '', jbuilder: 'posts' do
+      get '/', jbuilder: 'posts' do
         @results = {}
         limit = params[:limit] || 10
         offset = params[:offset] || 0
@@ -96,8 +96,8 @@ module Charbon
         requires :slug, type: String, desc: 'Post Slug.'
       end
       route_param :slug do
-        get do
-          CamaleonCms::Post.find_by_slug(params[:slug])
+        get '/', jbuilder: 'posts' do
+          @posts = [CamaleonCms::Post.find_by_slug(params[:slug])]
         end
       end
       

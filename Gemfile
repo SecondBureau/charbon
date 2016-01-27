@@ -36,6 +36,7 @@ gem "camaleon_cms", github: 'SecondBureau/camaleon-cms'
 gem 'grape'
 gem 'hashie-forbidden_attributes'
 gem 'grape-jbuilder'
+gem 'rqrcode'
 #gem 'js_assets'
 
 gem "faker"

@@ -34,7 +34,8 @@ do ->
             url: posts_endpoint + '/' + slug
             cache: true
             method: 'GET').then (response) ->
-            addPosts response.data.post[0]
+            addPosts response.data
+            response.data[0]
       homePosts: (search) ->
         if homePosts.length > 0
           homePosts
@@ -46,7 +47,7 @@ do ->
             params: q: search).then (response) ->
             posts = addPosts(response.data)
             homePosts = posts
-            response
+            
       search: (search, offset, limit) ->
         $http(
           url: posts_endpoint

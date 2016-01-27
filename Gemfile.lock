@@ -74,6 +74,7 @@ GEM
     builder (3.2.2)
     byebug (8.2.1)
     cancancan (1.13.1)
+    chunky_png (1.3.5)
     coercible (1.0.0)
       descendants_tracker (~> 0.0.1)
     coffee-rails (4.1.1)
@@ -335,6 +336,8 @@ GEM
       json (~> 1.4)
     ref (2.0.0)
     request_store (1.3.0)
+    rqrcode (0.9.0)
+      chunky_png (~> 1.0)
     sass (3.4.21)
     sass-rails (5.0.4)
       railties (>= 4.0.0, < 5.0)
@@ -417,6 +420,7 @@ DEPENDENCIES
   rack-timeout
   rails (~> 4.2.4)
   rails_12factor
+  rqrcode
   sass-rails (~> 5.0)
   sdoc
   slugify
