@@ -7,6 +7,47 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 # require 'json'
 #
+
+class TmpUpload
+  include CamaleonCms::UploaderHelper
+  include CamaleonCms::HooksHelper
+  include Rails.application.routes.url_helpers
+  
+  def initialize(current_site, current_theme)
+    @current_site = current_site
+    @current_theme = current_theme
+  end
+  
+  def current_site
+    @current_site
+  end
+  
+  def current_theme
+    @current_theme
+  end
+  
+  def upload(filename, folder)
+    http_base = 'https://s3-ap-northeast-1.amazonaws.com/china-india-dialogue'
+    image_url = "#{http_base}/#{filename}"
+    #puts "uploading #{image_url}..." 
+    print ".."
+    uri = URI.parse(image_url)
+    io = uri.open
+    content_type = io.content_type
+    file = ActionDispatch::Http::UploadedFile.new(tempfile: io, filename: filename, content_type: content_type)
+    upload_file(file, {folder: "//#{folder}"})
+  end
+  
+  def url(filename, folder)
+    tree = cama_media_find_folder("/#{folder}")
+    tree[:files].each do |f|
+      return f['url'] if f['name'].eql?(filename)
+    end
+    return ''
+  end
+end
+
+
 CamaleonCms::Post.where('id > 2').destroy_all
 CamaleonCms::User.where('id > 1').destroy_all
 
@@ -15,6 +56,10 @@ post_term_taxonomy_id = CamaleonCms::TermTaxonomy.find_by_slug('post').id
 
 site = CamaleonCms::Site.first
 site.categories.destroy_all
+
+theme = CamaleonCms::Theme.find_by_slug('china_india_dialogue')
+
+media = TmpUpload.new(site, theme)
 
 themes = {
   '0' => 'business',
@@ -35,7 +80,22 @@ themes = {
   '20' => 'abstract'
 }
 
+print "Seed columnist avatars..."
+
+avatars_folder = "avatars"
+avatars = []
+(1..4).each do |i|
+  media.upload("columnist-#{i}.png", avatars_folder)
+  avatars << media.url("columnist-#{i}.png", avatars_folder)
+end
+
+puts "done !"
+
+print "Seed users..."
+
 10.times do
+  
+  print ".."
 
   firstname = Faker::Name.first_name
   lastname  = Faker::Name.last_name
@@ -48,9 +108,17 @@ themes = {
 
   u.set_meta_from_form({first_name: firstname, last_name: lastname, twitter: twitter})
 
+  avatar = avatars[rand(4)]
+  u.set_meta 'avatar', avatar
+
 end
 
+puts "done !"
+
 userids = CamaleonCms::User.all.collect{|u| u.id}
+
+## Menu
+print "Seed menu..."
 
 ['Main Menu', "Footer 1", "Footer 2"].each do |item|
   slug = item.slugify.underscore
@@ -62,7 +130,10 @@ userids = CamaleonCms::User.all.collect{|u| u.id}
   end
 end
 
+puts "done !"
 
+
+print "Seed posts..."
 [
     { id: 0, order: 2, slug: 'business', label: 'Business', footer1: true, navbar: true, class: 'home-block-border', show_featured_on_home: false },
     { id: 1, order: 99, slug: 'people', label: 'People', show_featured_on_home: true },
@@ -82,6 +153,7 @@ end
     { id: 20, order: 1, slug: 'spotlight', label: 'Spotlight', footer1: true, navbar: true, show_featured_on_home: true }
   ].each do |c|
 
+    print "*"
 
     if (category = CamaleonCms::Category.find_by_slug(c[:label].slugify)).nil?
       category = CamaleonCms::Category.create(name: c[:label], slug: c[:label].slugify, parent_id: category_parent_id)
@@ -111,7 +183,8 @@ end
 
       title = Faker::Hipster.sentence(1)
 
-      puts "create post #{title}"
+      #puts "create post #{title}"
+      print "."
 
       if category.slug.eql?('travel-image') || category.slug.eql?('spotlight')
         width=800
@@ -165,50 +238,13 @@ end
     end
 
 end
+
+puts "done !"
 #
 # # Themes
-theme = CamaleonCms::Theme.find_by_slug('china_india_dialogue')
 
-class TmpUpload
-  include CamaleonCms::UploaderHelper
-  include CamaleonCms::HooksHelper
-  include Rails.application.routes.url_helpers
-  
-  def initialize(current_site, current_theme)
-    @current_site = current_site
-    @current_theme = current_theme
-  end
-  
-  def current_site
-    @current_site
-  end
-  
-  def current_theme
-    @current_theme
-  end
-  
-  def upload(filename, folder)
-    # partners
-    http_base = 'https://s3-ap-northeast-1.amazonaws.com/china-india-dialogue'
-    image_url = "#{http_base}/#{filename}"
-    puts "uploading #{image_url}..." 
-    uri = URI.parse(image_url)
-    io = uri.open
-    content_type = io.content_type
-    file = ActionDispatch::Http::UploadedFile.new(tempfile: io, filename: filename, content_type: content_type)
-    upload_file(file, {folder: "//#{folder}"})
-  end
-  
-  def url(filename, folder)
-    tree = cama_media_find_folder("/#{folder}")
-    tree[:files].each do |f|
-      return f['url'] if f['name'].eql?(filename)
-    end
-    return ''
-  end
-end
 
-media = TmpUpload.new(site, theme)
+print "Seed partners..."
 
 partners_folder = "partners"
 
@@ -222,6 +258,12 @@ tree[:files].each do |p|
   partners_default_value += "<a href='#'><img class='logo-partner' alt='Partner' src='#{p['url']}' /></a>"
 end
 
+puts "done !"
+
+
+
+print "Seed ads..."
+
 ads_folder = "ads"
 
 (1..2).each do |i|
@@ -231,10 +273,20 @@ end
 ad_left_default_value = "<a href='#'><img class='' alt='Ad' src='#{media.url('ad2.png', ads_folder)}' /></a>"
 ad_right_default_value = "<a href='#'><img class='' alt='Ad' src='#{media.url('ad1.png', ads_folder)}' /></a>"
 
+puts "done !"
+
+
+
+print "Seed issues..."
+
 issues_folder = "issues"
 media.upload("issue.png", issues_folder)
-
 last_issue_default_value = "<a href='#'><img class='' alt='Latest Issue' src='#{media.url('issue.png', issues_folder)}' /></a>"
+
+puts "done!"
+
+
+print "Seed field_groups..."
 
 unless theme.nil?
   theme.get_field_groups.destroy_all
@@ -252,3 +304,5 @@ unless theme.nil?
   group = theme.add_field_group({name: "Footer", slug: "footer"})
   group.add_field({"name"=>"Address", "slug"=>"address"}, {field_key: "editor", translate: true, default_value: "<p><b>Address:</b><br/>33 Chegongzhuang Xilu,<br/>Beijing, 100048, P.R. China</p><p><b>Telephone:</b><br/>+8610 8841 7455</p><p><b>Email:</b> contact@chinapictorial.com.cn</p>"})
 end
+
+puts "done !"
