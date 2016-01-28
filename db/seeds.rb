@@ -115,7 +115,7 @@ end
 
 puts "done !"
 
-userids = CamaleonCms::User.all.collect{|u| u.id}
+userids = CamaleonCms::User.where('id > 1').collect{|u| u.id}
 
 ## Menu
 print "Seed menu..."
