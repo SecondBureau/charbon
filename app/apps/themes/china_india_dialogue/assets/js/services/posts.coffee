@@ -51,9 +51,9 @@ do ->
       search: (search, offset, limit) ->
         $http(
           url: posts_endpoint
-          method: 'GET'
+          method: 'POST'
           cache: true
-          params:
+          data:
             s: search
             offset: offset
             limit: limit).then (response) ->

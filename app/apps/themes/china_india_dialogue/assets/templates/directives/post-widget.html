@@ -1,0 +1,19 @@
+  <a ui-sref="post({postSlug: vm.post.slug})">
+    <img class="img-responsive img-thumbnail" bh-holder="{{vm.post.image_width}}x{{vm.post.image_height}}" bh-src="{{vm.post.featured_image_url}}"/>
+    <h3 class="post-title">{{vm.post.title}}</h3>
+  </a>
+  <div class="legend">
+    <img class="post-avatar img-circle pull-left" width="40px" ng-src="{{vm.author.avatar}}" />
+    <p class="post-source">
+      <span class="post-by category-color">By</span>
+      <span itemprop="author" itemscope="" itemtype="http://schema.org/Person" class="post-author">
+        <a itemprop="url" rel="author" href >
+          <span itemprop="name">{{vm.author.fullname}}</span>
+        </a>
+      </span>
+    </p>
+    <p class="post-published">
+      <time datetime="{{vm.post.published_at | date:'yyyy-MM-dd HH:mm:ssZ'}}" itemprop="datePublished">{{vm.post.published_at | date : format : timezone}}</time>
+    </p>
+  </div>
+  

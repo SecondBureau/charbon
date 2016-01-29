@@ -1,31 +1,74 @@
+<a id="top"></a>
+<article itemscope="" itemtype="http://schema.org/NewsArticle">
+  <header>
+    <h1 itemprop="headline" class="post-title">{{vm.post.title}}</h1>
+    <h2 class="post-summary" ng-bind-html="vm.post.summary"></h2>
+    <img class="post-avatar img-circle pull-left" width="50px" ng-src="{{vm.author.avatar}}" />
+    <p class="post-source">
+      <span class="post-by category-color">By</span>
+      <span itemprop="author" itemscope="" itemtype="http://schema.org/Person" class="post-author">
+        <a itemprop="url" rel="author" href >
+          <span itemprop="name">{{vm.author.fullname}}</span>
+        </a>
+      </span>
+    </p>
+    <p class="post-published">
+      <time datetime="{{vm.post.published_at | date:'yyyy-MM-dd HH:mm:ssZ'}}" itemprop="datePublished">{{vm.post.published_at | date : format : timezone}}</time>
+    </p>
+    <span class="visible-xs-inline-block" ng-repeat="s in ['facebook', 'twitter', 'email']"><img cam-src="icons/{{s}}.png"></span>
+    <figure itemprop="image" itemscope="" itemtype="http://schema.org/ImageObject">
+      <img class="img-responsive img-thumbnail" ng-src="{{vm.post.featured_image_url}}" />
+      <figcaption itemprop="description" class="post-caption">
+        <span itemprop="copyrightHolder"></span>
+      </figcaption>
+    </figure>
+  </header>
+  <div class="line" data-sticky-wrap style="position: relative;">
+    <aside id="aside-left" class="like-aside-left" bh-sticky="55" style="position:relative; top:0px">
+      <input type="hidden" id="url_share" value="{{vm.post.url}}">
+      <ul class="post-social">
+        <li class="social-li">
+          <a href><i class="fa fa-facebook social-facebook" data-social="facebook"></i></a>
+          <p class="legend-social" data-social="facebook">134 shares</p>
+        </li>
+        <li class="social-li">
+          <a href><i class="fa fa-twitter social-twitter" data-social="twitter"></i></a>
+          <p class="legend-social" data-social="twitter">28 shares</p>
+        </li>
+        <li class="social-li">
+          <a href><i class="fa fa-weixin social-weixin" data-social="weixin"></i></a>
+          <p class="legend-social" data-social="weixin">Scan with wechat<br/><qrcode data="{{vm.post.url}}"></qrcode></p>
+        </li>
+        <li class="social-li">
+          <a href><i class="fa fa-linkedin social-linkedin" data-social="linkedin"></i></a>
+          <p class="legend-social" data-social="linkedin">5 shares</p>
+        </li>
+        <li class="social-li">
+          <a href><i class="fa fa-plus" data-size="1"></i></a>
+          <p class="legend-social">Increase font size</p>
+        </li>
+        <li class="social-li">
+          <a href><i class="fa fa-minus" data-size="1"></i></a>
+          <p class="legend-social">decrease font size</p>
+        </li>
+        <li class="social-li">
+          <a href><i class="fa fa-print" data-size="1"></i></a>
+          <p class="legend-social">Print</p>
+        </li>
+        <li class="social-li">
+          <a href><i class="fa fa-envelope-o" data-size="1"></i></a>
+          <p class="legend-social">Send to a friend</p>
+        </li>
+        <li class="social-li" ng-controller="ScrollController">
+          <a ng-click="gotoTop()"><i class="fa fa-arrow-circle-up" data-size="1"></i></a>
+          <p class="legend-social">Scroll to top</p>
+        </li>
+        
+      </ul>
+    </aside>
+    <p itemprop="articleBody" class="post-body" ng-bind-html="vm.post.body"></p>
+  </div>
+</article>
 
-<div class="row">
-  <div class="col-md-2 visible-md-inline-block visible-lg-inline-block">
-    <ul class="social">
-      <li class="social-facebook">Facebook</li>
-      <li class="social-twitter">Twitter</li>
-      <li class="social-email">Email</li>
-      <li class="social-print">Printing</li>
-      <li class="social-wechat">
-        <qrcode data="{{vm.post.url}}"></qrcode>
-        <br/>
-        <span>Scan QR Code</span>
-        <div>
-          <!-- <img src="/assets/cid/icon-wechat.png" class="pull-left"> -->
-          <p>to share this article on <span>Wechat</span></p>
-        </div>
-      </li>
-    </ul>
-  </div>
-  <div class="col-md-10">
-      <h1 class="post-title">{{vm.post.title}}</h1>
-      <p>
-        <span class="category-color"><i>By</i></span>
-        <span class="post-author">{{vm.author.fullname}}</span>
-        <span class="post-published">{{vm.post.published_at | date : format : timezone}}</span>
-        <span class="visible-xs-inline-block" ng-repeat="s in ['facebook', 'twitter', 'email']"><img cam-src="icons/{{s}}.png"></span>
-      </p>
-      <img class="img-responsive" ng-src="{{vm.post.featured_image_url}}" />
-      <div class="post-body" ng-bind-html="vm.post.body"></div>
-  </div>
-</div>
+
+

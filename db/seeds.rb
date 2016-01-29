@@ -7,6 +7,8 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 # require 'json'
 #
+OpenURI::Buffer.send :remove_const, 'StringMax' if OpenURI::Buffer.const_defined?('StringMax')
+OpenURI::Buffer.const_set 'StringMax', 0
 
 class TmpUpload
   include CamaleonCms::UploaderHelper
@@ -26,16 +28,20 @@ class TmpUpload
     @current_theme
   end
   
+  def upload_image(url, folder)
+    print ".."
+    uri = URI.parse(url)
+    io = uri.open
+    content_type = io.content_type
+    file = ActionDispatch::Http::UploadedFile.new(tempfile: io, filename: File.basename(url), content_type: content_type)
+    upload_file(file, {folder: "//#{folder}"})
+  end
+  
   def upload(filename, folder)
     http_base = 'https://s3-ap-northeast-1.amazonaws.com/china-india-dialogue'
     image_url = "#{http_base}/#{filename}"
     #puts "uploading #{image_url}..." 
-    print ".."
-    uri = URI.parse(image_url)
-    io = uri.open
-    content_type = io.content_type
-    file = ActionDispatch::Http::UploadedFile.new(tempfile: io, filename: filename, content_type: content_type)
-    upload_file(file, {folder: "//#{folder}"})
+    upload_image(image_url, folder)
   end
   
   def url(filename, folder)
@@ -83,10 +89,22 @@ themes = {
 print "Seed columnist avatars..."
 
 avatars_folder = "avatars"
+uri = "http://uifaces.com/api/v1/random"
 avatars = []
+(1..5).each do |i|
+  media.upload_image(JSON.parse(Net::HTTP.get(URI(uri)))["image_urls"]["epic"], avatars_folder)
+  print ".."
+end
+
 (1..4).each do |i|
   media.upload("columnist-#{i}.png", avatars_folder)
-  avatars << media.url("columnist-#{i}.png", avatars_folder)
+  #avatars << media.url("columnist-#{i}.png", avatars_folder)
+  print ".."
+end
+
+tree = media.cama_media_find_folder("/#{avatars_folder}")
+tree[:files].each do |p|
+  avatars << p['url']
 end
 
 puts "done !"

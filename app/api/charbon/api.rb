@@ -70,7 +70,7 @@ module Charbon
         optional :offset, type: Integer
         optional :s, type: String, default: ""
       end
-      get '/', jbuilder: 'posts' do
+      post '/', jbuilder: 'posts' do
         @results = {}
         limit = params[:limit] || 10
         offset = params[:offset] || 0
@@ -79,7 +79,10 @@ module Charbon
           posts = CamaleonCms::Post.joins(:categories).where('cama_term_taxonomy.id=?', search['category'].to_i)
         else
           posts = CamaleonCms::Post.all
-        end  
+        end
+        if search['order']  
+          posts = posts.order(search['order'])
+        end
         @posts = posts[offset, limit]
         header "x-pagination", {
           total: posts.size,

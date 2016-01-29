@@ -4,5 +4,7 @@
 *= require ./style
 *= require ./flexslider-theme
 *= require ./fonts
+*= require ./font-awesome/font-awesome
 *= require ./cid
+*= require ./bh-post-std
 */
