@@ -76,6 +76,7 @@ group :heroku do
   gem 'puma'
   # https://github.com/heroku/rack-timeout
   gem "rack-timeout"
+  gem "newrelic_rpm"
 end
 
 
