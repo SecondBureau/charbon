@@ -91,7 +91,8 @@ print "Seed columnist avatars..."
 avatars_folder = "avatars"
 uri = "http://uifaces.com/api/v1/random"
 avatars = []
-(1..5).each do |i|
+columnists = []
+10.times do |i|
   media.upload_image(JSON.parse(Net::HTTP.get(URI(uri)))["image_urls"]["epic"], avatars_folder)
   print ".."
 end
@@ -104,14 +105,18 @@ end
 
 tree = media.cama_media_find_folder("/#{avatars_folder}")
 tree[:files].each do |p|
-  avatars << p['url']
+  if File.basename(p['url']) =~ /columnist/
+    columnists << p['url']
+  else
+    avatars << p['url']
+  end
 end
 
 puts "done !"
 
 print "Seed users..."
 
-10.times do
+10.times do |idx|
   
   print ".."
 
@@ -126,14 +131,40 @@ print "Seed users..."
 
   u.set_meta_from_form({first_name: firstname, last_name: lastname, twitter: twitter})
 
-  avatar = avatars[rand(4)]
+  avatar = avatars[idx]
+  u.set_meta 'avatar', avatar
+
+end
+
+userids = CamaleonCms::User.where('id > 1').collect{|u| u.id}
+
+columnistIds = []
+
+4.times do |idx|
+  
+  print ".."
+
+  firstname = Faker::Name.first_name
+  lastname  = Faker::Name.last_name
+  twitter = "#{firstname.downcase}_#{lastname.downcase}"
+  role = 'columnist'
+  email   = "#{firstname.downcase}.#{lastname.downcase}@local.net"
+  password = 'secret'
+
+  u = CamaleonCms::User.create(username: "#{firstname.downcase}#{lastname.downcase}", role: role, email: email, password: password, password_confirmation:password)
+
+  u.set_meta_from_form({first_name: firstname, last_name: lastname, twitter: twitter})
+  
+  columnistIds << u.id
+
+  avatar = columnists[idx]
   u.set_meta 'avatar', avatar
 
 end
 
 puts "done !"
 
-userids = CamaleonCms::User.where('id > 1').collect{|u| u.id}
+
 
 ## Menu
 print "Seed menu..."
@@ -209,7 +240,7 @@ print "Seed posts..."
         height=420
       else
         width = rand(300)+1000
-        height = rand(600)+300
+        height = rand(100)+600
       end
 
       #puts
@@ -231,7 +262,7 @@ print "Seed posts..."
         slug:title.slugify,
         content:content ,
         published_at:"#{Faker::Date.backward(30)}",
-        user_id: userids.shuffle.first,
+        user_id: category.slug.eql?('column') ? columnistIds.shuffle.first : userids.shuffle.first,
         data_categories: [category.id]
       }
 
