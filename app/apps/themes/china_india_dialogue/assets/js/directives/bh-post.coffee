@@ -32,15 +32,20 @@ do ->
           vm.post.summary = vm.post.summaries[0]
           vm.post.title   = vm.post.titles[0]
           vm.post.highlighted = false
-          
         
       slug = vm.slug or $stateParams.postSlug
+      
       # TODO: Use post.id if slug undefined
       Posts.getBySlug(slug).then (post) ->
-        post.url = $location.absUrl()
-        if !angular.isUndefined(vm.highlight) || !angular.isUndefined(vm.highlight) && !angular.isUndefined(vm.post.highlight) && vm.highlight != vm.post.highlight
+        post.url            = $location.absUrl()
+        if !angular.isUndefined(vm.highlight) || !angular.isUndefined(vm.highlight) && !angular.isUndefined(post.highlight) && vm.highlight != post.highlight
           init_highlight(post, vm.highlight)
           post.highlight = vm.highlight
+        
+        if angular.isUndefined(post.highlight) || post.highlight == null
+          console.log "post.highlight is undefined"
+          post.highlightable  = false
+        
         vm.post = post
         if post.highlight
           vm.toggleHighlight true 
