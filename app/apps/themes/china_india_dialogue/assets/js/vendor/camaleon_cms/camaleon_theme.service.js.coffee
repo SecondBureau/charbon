@@ -11,6 +11,7 @@ do ->
       getField: (ThemeSlug, FieldSlug) ->
         $http(
           url: themes_endpoint + '/' + ThemeSlug + '/fields/' + FieldSlug
+          cache: true
           method: 'GET').then (response) ->
           addField(response.data)
           response
