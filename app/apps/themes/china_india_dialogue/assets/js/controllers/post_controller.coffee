@@ -3,9 +3,6 @@ do ->
   
   PostCtrl = ($scope, $location, $anchorScroll) ->
     
-    console.log 'postCr'
-    console.log $location.hash()
-    
     anchor = 'top'
     
     $anchorScroll.yOffset = 201
