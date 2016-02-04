@@ -3,26 +3,36 @@ do ->
   'use strict'
   
   Posts = ($filter, $http, $q, ENV) ->
+    
     posts = []
-    postIds = []
     homePosts = []
     posts_endpoint = ENV.apiEndpoint + 'posts'
 
-    addPosts = (newPosts) ->
+    postIds = ->
+      postIds = []
+      for post in posts
+        postIds.push post.id
+      postIds
+
+    updatePosts = (newPosts) ->
+      
       if !angular.isArray(newPosts)
         newPosts = [ posts ]
-      angular.forEach newPosts, (post) ->
-        if postIds.indexOf(post.id) == -1
-          posts.push post
-          postIds.push post.id
-        return
+
+      for newPost in newPosts
+        found = false
+        for post in posts
+          if (post.id == newPost.id)
+            found = true
+            angular.extend(post, newPost)
+            break
+        if !found
+          posts.push newPost  
+      
       posts
 
     {
-      all: ->
-        $http.get(posts_endpoint).then (response) ->
-          posts = response.data
-          posts
+
       getBySlug: (slug) ->
         post = $filter('filter')(posts, { slug: slug }, true)
         if post.length > 0
@@ -34,7 +44,7 @@ do ->
             url: posts_endpoint + '/' + slug
             cache: true
             method: 'GET').then (response) ->
-            addPosts response.data
+            updatePosts response.data
             response.data[0]
       homePosts: (search) ->
         if homePosts.length > 0
@@ -44,20 +54,22 @@ do ->
             url: posts_endpoint + '/home'
             method: 'GET'
             cache: true
-            params: q: search).then (response) ->
-            posts = addPosts(response.data)
+            params: 
+              q: search).then (response) ->
+            posts = updatePosts(response.data)
             homePosts = posts
             
       search: (search, offset, limit) ->
         $http(
           url: posts_endpoint
-          method: 'POST'
+          method: 'GET'
           cache: true
-          data:
+          params:
+            #post_ids: postIds
             s: search
             offset: offset
             limit: limit).then (response) ->
-          addPosts response.data
+          updatePosts response.data
           response
 
     }

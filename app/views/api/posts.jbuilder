@@ -1,6 +1,6 @@
 json.array! @posts do |post|
   json.id post.id
-  json.category_id 0
+  json.category_id post.categories.first.try(:id) || 0
   json.slug post.slug
   json.title post.title
   json.featured_image_url post.get_meta("thumb")

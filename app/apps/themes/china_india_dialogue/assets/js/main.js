@@ -5,6 +5,8 @@
 //= require ./vendor/toArrayFilter
 //= require ./vendor/angular-endless-scroll.min
 //= require ./vendor/angular-flexslider
+//= require ./vendor/angular-checklist-model
+
     
 //= require ./vendor/spin
 //= require ./vendor/angular-spinner

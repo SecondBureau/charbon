@@ -17,6 +17,9 @@ do ->
             categories
       get: (slug) ->
         $filter('filter')(categories, { slug: slug }, true)[0]
+        
+      getById: (id) ->
+        $filter('filter')(categories, { id: id }, true)[0]
 
     }
 

@@ -46,6 +46,12 @@ p.loading {
   position: relative;
 }
 
+.form-control-inline {
+    min-width: 0;
+    width: auto;
+    display: inline;
+}
+
 @media (min-width: 992px) {
 .row-eq-height, bh-home-category {
   display: -webkit-box;

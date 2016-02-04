@@ -359,14 +359,13 @@ GEM
       actionpack (>= 3.0)
       activesupport (>= 3.0)
       sprockets (>= 2.8, < 4.0)
-    sqlite3 (1.3.11)
     therubyracer (0.12.2)
       libv8 (~> 3.16.14.0)
       ref
     thor (0.19.1)
     thread_safe (0.3.5)
     tilt (2.0.2)
-    tilt-jbuilder (0.7.0)
+    tilt-jbuilder (0.7.1)
       jbuilder
       tilt (>= 1.3.0, < 3)
     trollop (2.1.2)
@@ -429,7 +428,6 @@ DEPENDENCIES
   sprig
   spring
   sprockets-rails (~> 2.3)
-  sqlite3
   therubyracer
   turbolinks
   twitter-bootstrap-rails

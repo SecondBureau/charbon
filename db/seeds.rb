@@ -228,7 +228,7 @@ print "Seed posts..."
       @footer_2.append_menu_item ({label: category.name, type: "category", link: category.id})
     end
 
-    (rand(15) + 5).times do
+    (rand(15) + 50).times do
 
       title = Faker::Hipster.sentence(1)
 
@@ -258,7 +258,7 @@ print "Seed posts..."
       end
 
       post_data = {
-        title:title,
+        title:"#{category.slug} - #{title}",
         slug:title.slugify,
         content:content ,
         published_at:"#{Faker::Date.backward(30)}",

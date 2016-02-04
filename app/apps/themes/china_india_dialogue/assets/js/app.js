@@ -15,7 +15,7 @@
  * MIT License
  */
 
-angular.module('bahnhof', ['ionic', 'bahnhof.config', 'angular-toArrayFilter', 'dc.endlessScroll', 'ui.bootstrap', 'angularSpinner', 'angular-flexslider', 'camaleonCms', 'monospaced.qrcode'])
+angular.module('bahnhof', ['ionic', 'bahnhof.config', 'angular-toArrayFilter', 'dc.endlessScroll', 'ui.bootstrap', 'angularSpinner', 'angular-flexslider', 'camaleonCms', 'monospaced.qrcode', 'checklist-model'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -60,6 +60,17 @@ angular.module('bahnhof', ['ionic', 'bahnhof.config', 'angular-toArrayFilter', '
         }
       }
     })
+    
+    .state('search', {
+      url: '/search',
+      views: {
+        '': {
+          templateUrl: template_path("desktop/posts.html"),
+          controller: 'PostsCtrl'
+        }
+      }
+    })
+    
     
     .state('posts', {
       url: '/posts/:categorySlug',
