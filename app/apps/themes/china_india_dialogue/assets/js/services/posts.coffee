@@ -57,7 +57,7 @@ do ->
             params: 
               q: search).then (response) ->
             posts = updatePosts(response.data)
-            homePosts = posts
+            homePosts = response.data
             
       search: (search, offset, limit) ->
         $http(
