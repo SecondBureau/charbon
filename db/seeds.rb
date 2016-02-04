@@ -319,8 +319,8 @@ ads_folder = "ads"
   media.upload("ad#{i}.png", ads_folder)
 end
 
-ad_left_default_value = "<a href='#'><img class='' alt='Ad' src='#{media.url('ad2.png', ads_folder)}' /></a>"
-ad_right_default_value = "<a href='#'><img class='' alt='Ad' src='#{media.url('ad1.png', ads_folder)}' /></a>"
+ad_left_default_value = "<a href='#'><img class='img-responsive' alt='Ad' src='#{media.url('ad2.png', ads_folder)}' /></a>"
+ad_right_default_value = "<a href='#'><img class='img-responsive' alt='Ad' src='#{media.url('ad1.png', ads_folder)}' /></a>"
 
 puts "done !"
 
