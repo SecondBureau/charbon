@@ -87,6 +87,7 @@ angular.module('bahnhof', ['ionic', 'bahnhof.config', 'angular-toArrayFilter', '
       views: {
         '': {
           templateUrl: template_path("desktop/post.html"),
+          controller: 'PostCtrl'
         }
       }
     })
