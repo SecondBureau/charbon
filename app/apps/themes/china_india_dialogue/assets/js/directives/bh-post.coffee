@@ -20,6 +20,12 @@ do ->
     controller = ->
       vm = this
       
+      vm.getPostUrl = () ->
+        if vm.post
+          vm.post.url
+        else
+          "undefined"
+      
       vm.toggleHighlight = (turn_on) ->
 
         if angular.isUndefined(turn_on) && !vm.post.highlighted || !angular.isUndefined(turn_on) && turn_on

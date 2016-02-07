@@ -14,8 +14,8 @@
 //= require ./vendor/ui-bootstrap-tpls
 //= require ./vendor/holder
 
-//= require ./vendor/qrcode-generator
-//= require ./vendor/angular-qrcode-6.1.3
+//= require ./vendor/qrcode
+//= require ./vendor/angular-qr.js
 
 //= require ./vendor/camaleon_cms
      
