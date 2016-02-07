@@ -3,8 +3,11 @@ source 'https://rubygems.org'
 ruby '2.1.2'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 4.2.4'
+gem 'rails', '~> 4.2'
 gem 'sprockets-rails', '~> 2.3'
+
+# Use postgresql as the database for Active Record
+gem 'pg'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
@@ -48,9 +51,7 @@ group :doc do
 end
 
 group :development, :test do
-  # Use sqlite3 as the database for Active Record
-  #gem 'sqlite3'
-  gem 'pg'
+
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
   # Access an IRB console on exception pages or by using <%= console %> in views
@@ -62,8 +63,6 @@ group :development, :test do
 end
 
 group :production do
-  # Use postgresql as the database for Active Record
-  gem 'pg'
   # Rack::Cache is suitable as a quick drop-in component to enable HTTP caching for Rack-based applications that produce freshness (Expires, Cache-Control) and/or validation (Last-Modified, ETag) information.
   gem 'rack-cache', :require => 'rack/cache'
   

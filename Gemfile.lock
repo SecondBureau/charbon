@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/SecondBureau/camaleon-cms.git
-  revision: 300bb01a692dadfb66c9ea1443a6b9292e391fe4
+  revision: 88525829472a9bdce2deb04eede89ceb95ed0e2b
   specs:
     camaleon_cms (2.1.1)
       aws-sdk (~> 2)
@@ -72,7 +72,7 @@ GEM
       debug_inspector (>= 0.0.1)
     breadcrumbs_on_rails (2.3.1)
     builder (3.2.2)
-    byebug (8.2.1)
+    byebug (8.2.2)
     cancancan (1.13.1)
     chunky_png (1.3.5)
     coercible (1.0.0)
@@ -321,7 +321,7 @@ GEM
     rails_12factor (0.0.3)
       rails_serve_static_assets
       rails_stdout_logging
-    rails_serve_static_assets (0.0.4)
+    rails_serve_static_assets (0.0.5)
     rails_stdout_logging (0.0.4)
     railties (4.2.5.1)
       actionpack (= 4.2.5.1)
@@ -351,7 +351,7 @@ GEM
       rdoc (~> 4.0)
     slugify (1.0.6)
     sprig (0.2.0)
-    spring (1.6.2)
+    spring (1.6.3)
     sprockets (3.5.2)
       concurrent-ruby (~> 1.0)
       rack (> 1, < 3)
@@ -419,7 +419,7 @@ DEPENDENCIES
   puma
   rack-cache
   rack-timeout
-  rails (~> 4.2.4)
+  rails (~> 4.2)
   rails_12factor
   rqrcode
   sass-rails (~> 5.0)
