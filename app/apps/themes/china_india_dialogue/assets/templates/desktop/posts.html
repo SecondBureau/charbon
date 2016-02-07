@@ -3,17 +3,16 @@
     <div class="posts-container">
       <form id="search_form">
         <div class="form-group">
-          <!-- <label for="keywords">Recherche</label> -->
           <input class="form-control" ng-change="search()" ng-model-options='{ debounce: 500 }' ng-model="keywords" name="anim" class="my-input" aria-describedby="Enter Keywords" placeholder="Enter your search keywords" />
         </div>
-        sort by: 
-        <input style="display:none" type="radio" id="sort_asc" ng-change="search()" ng-model="sort_order" value="asc" /><label class="sort" ng-class="{active: sort_order=='asc'}" for="sort_asc">Oldest</label> | 
+        sort by:
+        <input style="display:none" type="radio" id="sort_asc" ng-change="search()" ng-model="sort_order" value="asc" /><label class="sort" ng-class="{active: sort_order=='asc'}" for="sort_asc">Oldest</label> |
         <input style="display:none" type="radio" id="sort_desc" ng-change="search()" ng-model="sort_order" value="desc" /><label class="sort" ng-class="{active: sort_order=='desc'}" for="sort_desc">Newest</label>
       </form>
       </p>
       <h3 class="results">{{pagination.total}} results, between {{pagination.min_date | date : format : timezone}} and {{pagination.max_date | date : format : timezone}}</h3>
-      <ul class="posts-group">
-        <li class="posts-item" endless-scroll="post in posts">
+      <ul class="posts-group" infinite-scroll="scrollToNextPage()" infinite-scroll-disabled="scrollIsDisabled()">
+        <li class="posts-item" ng-repeat="post in posts">
           <bh-post template="img" slug="post.slug" highlight="keywords"></bh-post>
         </li>
       </ul>
@@ -32,9 +31,7 @@
         <label for="max_date">Posts published before:</label>
         <input type="date" ng-min="minDate" ng-max="maxDate" class="form-control" id="max_date" ng-model="max_date" name="anim" class="my-input" aria-describedby="Enter max date" placeholder="Enter max date" />
       </div>
-      <!-- <input ng-model="val" ng-pattern="/^\d+$/" name="anim" class="my-input" aria-describedby="inputDescription" /> -->
-     
-      <!-- <select ng-options="category as category.label for category in categories track by category.id" ng-model="selectedCategories" /> -->
+
       <label ng-repeat="category in categories | orderBy:'label'" " class="categories">
         <input type="checkbox" checklist-model="checkedcategories" checklist-value="category"> {{category.label}}</input>
       </label>

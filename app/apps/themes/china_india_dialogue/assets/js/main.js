@@ -3,7 +3,7 @@
     
 //= require ./vendor/ionic.bundle.min
 //= require ./vendor/toArrayFilter
-//= require ./vendor/angular-endless-scroll.min
+//= require ./vendor/ng-infinite-scroll
 //= require ./vendor/angular-flexslider
 //= require ./vendor/angular-checklist-model
 

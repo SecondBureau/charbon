@@ -5,7 +5,7 @@ do ->
   bhPost = ($stateParams, $location, Posts, Users) ->
 
     highlight = (content, words) ->
-      if words
+      if words && content
         words = words.split(',')
         for word in words
           content = content.replace(new RegExp('('+word.trim()+')', 'gi'),'<span class="highlighted">$1</span>')

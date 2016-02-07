@@ -103,12 +103,15 @@ do ->
 
     $scope.isNotSearchPage = () ->
       search_path != $location.path()
-    
-    $scope.$on 'endlessScroll:next', ->
+      
+    $scope.scrollToNextPage = () ->
       page = if $scope.pagination then $scope.pagination.current_page + 1 else 1
       if !endless_disabled
         load page
       return
+      
+    $scope.scrollIsDisabled = () ->
+      $scope.loading || $scope.isComplete
     
     load if $stateParams.page then parseInt($stateParams.page, 10) else 1
     return
