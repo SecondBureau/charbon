@@ -43,7 +43,6 @@ do ->
           post.highlight = vm.highlight
         
         if angular.isUndefined(post.highlight) || post.highlight == null
-          console.log "post.highlight is undefined"
           post.highlightable  = false
         
         vm.post = post
