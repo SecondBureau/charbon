@@ -3,6 +3,8 @@ do ->
   'use strict'
   
   bhPost = ($stateParams, $location, Posts, Users) ->
+    
+    
 
     highlight = (content, words) ->
       if words && content
@@ -20,11 +22,7 @@ do ->
     controller = ->
       vm = this
       
-      vm.getPostUrl = () ->
-        if vm.post
-          vm.post.url
-        else
-          "undefined"
+      vm.absUrl = $location.absUrl()
       
       vm.toggleHighlight = (turn_on) ->
 
@@ -43,7 +41,6 @@ do ->
       
       # TODO: Use post.id if slug undefined
       Posts.getBySlug(slug).then (post) ->
-        post.url            = $location.absUrl()
         if !angular.isUndefined(vm.highlight) || !angular.isUndefined(vm.highlight) && !angular.isUndefined(post.highlight) && vm.highlight != post.highlight
           init_highlight(post, vm.highlight)
           post.highlight = vm.highlight

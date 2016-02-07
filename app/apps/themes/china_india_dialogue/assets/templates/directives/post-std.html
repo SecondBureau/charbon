@@ -15,7 +15,6 @@
     <p class="post-published">
       <time datetime="{{vm.post.published_at | date:'yyyy-MM-dd HH:mm:ssZ'}}" itemprop="datePublished">{{vm.post.published_at | date : format : timezone}}</time>
     </p>
-    <span class="visible-xs-inline-block" ng-repeat="s in ['facebook', 'twitter', 'email']"><img cam-src="icons/{{s}}.png"></span>
     <figure itemprop="image" itemscope="" itemtype="http://schema.org/ImageObject">
       <img class="img-responsive img-thumbnail" ng-src="{{vm.post.featured_image_url}}" />
       <figcaption itemprop="description" class="post-caption">
@@ -35,9 +34,9 @@
           <a href><i class="fa fa-twitter social-twitter" data-social="twitter"></i></a>
           <p class="legend-social" data-social="twitter">28 shares</p>
         </li>
-        <li class="social-li">
+        <li class="social-li hidden-xs">
           <a href><i class="fa fa-weixin social-weixin" data-social="weixin"></i></a>
-          <p class="legend-social" data-social="weixin">Scan with wechat<br/><qr text="vm.getPostUrl()" size="115"></qr></p>
+          <p class="legend-social" data-social="weixin">Scan with wechat<br/><qr text="vm.absUrl" size="115"></qr></p>
         </li>
         <li class="social-li">
           <a href><i class="fa fa-linkedin social-linkedin" data-social="linkedin"></i></a>
