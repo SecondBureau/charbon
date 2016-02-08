@@ -43,12 +43,12 @@
           <p class="legend-social" data-social="linkedin">5 shares</p>
         </li>
         <li class="social-li">
-          <a href><i class="fa fa-plus" data-size="1"></i></a>
+          <a href bh-change-font-size="p.post-body" increment="0.5" ><i class="fa fa-plus" data-size="1"></i></a>
           <p class="legend-social">Increase font size</p>
         </li>
         <li class="social-li">
-          <a href><i class="fa fa-minus" data-size="1"></i></a>
-          <p class="legend-social">decrease font size</p>
+          <a href bh-change-font-size="p.post-body" increment="-0.5"><i class="fa fa-minus" data-size="1"></i></a>
+          <p class="legend-social">Decrease font size</p>
         </li>
         <li class="social-li">
           <a href><i class="fa fa-print" data-size="1"></i></a>
@@ -68,7 +68,7 @@
         </li>
       </ul>
     </aside>
-    <p itemprop="articleBody" class="post-body" ng-bind-html="vm.post.body"></p>
+    <p itemprop="articleBody" class="post-body" ng-bind-html="vm.post.body" ></p>
   </div>
 </article>
 
