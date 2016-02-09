@@ -1,3 +1,4 @@
 Rails.application.routes.draw do
-  mount Charbon::API => '/'
+  mount Lizard::Base => '/'
+  mount GrapeSwaggerRails::Engine, at: "/documentation"
 end

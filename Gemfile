@@ -37,6 +37,8 @@ gem "camaleon_cms", github: 'SecondBureau/camaleon-cms'
 
 # An opinionated micro-framework for creating REST-like APIs in Ruby. http://www.ruby-grape.org
 gem 'grape'
+gem 'grape-swagger'
+gem 'grape-swagger-rails'
 gem 'hashie-forbidden_attributes'
 gem 'grape-jbuilder'
 gem 'rqrcode'
