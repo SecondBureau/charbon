@@ -1,1 +1,1 @@
-angular.module('camaleonCms', [])
+angular.module('camaleonCms', ['cam.contactForm'])

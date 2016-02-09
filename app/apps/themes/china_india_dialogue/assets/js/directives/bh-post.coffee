@@ -21,8 +21,14 @@ do ->
     
     controller = ->
       vm = this
-      
+      vm.showSendEmailForm = false
       vm.absUrl = $location.absUrl()
+      
+      vm.showSendEmail = ->
+        vm.showSendEmailForm = true
+        
+      vm.hideSendEmail = ->
+        vm.showSendEmailForm = false
       
       vm.toggleHighlight = (turn_on) ->
 
