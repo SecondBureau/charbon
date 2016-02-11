@@ -1,4 +1,5 @@
 $images_root: 'themes/china_india_dialogue/assets/images/' ;
+$red: #e60012;
 
 .logo-partner {
   margin: 0 15px 0 15px;
@@ -11,6 +12,8 @@ body {
 .main-container {
 }
 
+
+
 .cid-md-header {
   height: 150px;
   overflow: hidden;
@@ -21,14 +24,111 @@ body {
   background: #000 image_url($images_root + 'backgrounds/header-mini.png');
 }
 
+body.navbar-minified {
+  .cid-md-header{
+    display:none !important;
+  }
+
+  .navbar-brand {
+    display:block;
+  }
+  
+  .navbar-default {
+    background-color: #000;
+    
+    button.toggle {
+      
+      .icon-bar {
+        background-color: #fff;
+      }
+    }
+
+    
+    & > li {
+      
+      &.active > a {
+      }
+    
+      & > a {
+        height: 50px;
+        padding-top: 15px;
+        color: #fff;
+      }
+      
+    }
+  }
+}
+
+
+
 .navbar {
+  
   font-family: dax, 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-size: 16px;
   font-weight: bold;
-}
+  
+  .nav-justified {
+    
+    button.toggle {
+      
+      padding: 9px 10px;
+      background-color: transparent;
+      background-image: none;
+      border: 1px solid transparent;
+      
+      .icon-bar {
+        display: block;
+        width: 22px;
+        height: 2px;
+        border-radius: 1px;
+        background-color: $red;
+        
+        & + .icon-bar {
+          margin-top: 4px;
+        }
+      }
+      
+      .dropdown-menu {
+        left: -60%;
+      
+        & > .active > a {
+          &, &:hover, &:focus {
+            background-color: $red;
+          }
+        } 
+      }
+    }
+    
+    & > li {
+      
+      white-space: nowrap;
+      
+      & > a {
+      padding-left: 0px;
+      padding-right: 0px;
+      
+        &:hover {
+          color: $red;
+          background: inherit;
+        }
+      }
+      
+      &.active a {
+        background: image_url($images_root + 'decorations/menu_active.png') center bottom no-repeat;
+        color: $red;
+        cursor: default;
+      }
+      
+      
+      
+    }
+  }
 
-.navbar-default {
-  background: #fff;
+  .navbar-default {
+    
+    
+    
+  }
 }
 
 .navbar-brand {
@@ -36,46 +136,6 @@ body {
   display:none;
 }
 
-.navbar-default .navbar-nav>li>a {
-  color: #000;
-}
-
-.navbar-default .navbar-nav>li>a:hover,
-body.navbar-minified .navbar-default .navbar-nav>li>a:hover {
-  color: #e60012;
-}
-
-body.navbar-minified .navbar-default .navbar-nav>li>a {
-  color: #fff;
-}
-
-body.navbar-minified .navbar-default {
-  background: #231916;
-  color: #fff;
-}
-
-.navbar-default .navbar-nav>.active>a, 
-.navbar-default .navbar-nav>.active>a:focus, 
-.navbar-default .navbar-nav>.active>a:hover, 
-body.navbar-minified .navbar-default .navbar-nav>li.active>a,
-body.navbar-minified .navbar-default .navbar-nav>a:focus,
-body.navbar-minified .navbar-default .navbar-nav>a:hover {
-  color: #e60012;
-  background: image_url($images_root + 'decorations/menu_active.png') center bottom no-repeat;
-}
-
-.navbar-default .navbar-nav>.active {
-  background-color: #fff;
-}
-  
-
-body.navbar-minified .cid-md-header{
-  display:none !important;
-}
-
-body.navbar-minified .navbar-brand {
-  display:block;
-}
 
 
 
@@ -453,7 +513,33 @@ form.aside-form {
   }
 }
 
+@media (max-width: 768px) {
   
+  .navbar-default {
+    background-color: #000;
+    
+    button.toggle {
+      
+      .icon-bar {
+        background-color: #fff !important;
+      }
+    }
+  }
+  
+  
+  .navbar .nav-justified button.toggle {
+    position: fixed;
+    right: 30px;
+    top: 10px;
+    
+    border: solid 1px #fff;
+    border-radius: 2px;
+    
+    .dropdown-menu{
+      left: -300%;
+    }
+  }
+}
 
 
 
@@ -509,24 +595,45 @@ body {
 }
 
 @media (min-width: 768px) and (max-width: 991px) {
-.section-separator {
-  height: 50px;
-}
-body {
-  padding: 60px 0 0 0;
-}
-.navbar-default .navbar-nav>li>a {
-  color: #fff;
+  .section-separator {
+    height: 50px;
+  }
+  body {
+    padding: 60px 0 0 0;
+  }
+
+  .cid-sm-header {
+    background-image: none;
+  }
+
+  .navbar-default {
+    background-color: #000;
+    
+    button.toggle {
+      
+      .icon-bar {
+        background-color: #fff !important;
+      }
+    }
+
+    
+    & > li {
+      
+      &.active > a {
+      }
+    
+      & > a {
+        height: 50px;
+        padding-top: 15px;
+        color: #fff;
+      }
+      
+    }
+  }
+
 }
 
-.cid-sm-header {
-  background-image: none;
-}
 
-.navbar-default {
-  background: #231916;
-  color: #fff;
-}
-}
+
 
 
