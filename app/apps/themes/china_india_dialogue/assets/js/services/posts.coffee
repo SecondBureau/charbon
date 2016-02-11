@@ -46,6 +46,8 @@ do ->
             method: 'GET').then (response) ->
             updatePosts response.data
             response.data[0]
+          , (response) ->
+              '404'
       homePosts: (search) ->
         if homePosts.length > 0
           homePosts

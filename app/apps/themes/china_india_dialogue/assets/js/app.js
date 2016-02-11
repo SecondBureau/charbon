@@ -51,8 +51,10 @@ angular.module('bahnhof', ['ionic', 'bahnhof.config', 'angular-toArrayFilter', '
       }
     })
     
+    
     .state('category', {
-      url: '/category/{categoryId:[0-9]{1,5}}-:categorySlug',
+      //url: '/category/{categoryId:[0-9]{1,5}}-:categorySlug',
+      url: '/category/:slug',
       views: {
         '': {
           templateUrl: template_path("desktop/posts.html"),
@@ -83,11 +85,21 @@ angular.module('bahnhof', ['ionic', 'bahnhof.config', 'angular-toArrayFilter', '
     })
     
     .state('post', {
-      url: '/post/:postSlug',
+      url: '/post/:slug',
       views: {
         '': {
           templateUrl: template_path("desktop/post.html"),
           controller: 'PostCtrl'
+        }
+      }
+    })
+    
+    .state('error', {
+      url: '/error/:code',
+      views: {
+        '': {
+          templateUrl: template_path("desktop/error.html"),
+          controller: 'ErrorCtrl'
         }
       }
     })

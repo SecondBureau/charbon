@@ -7,6 +7,7 @@
     json.featured_image_url post.get_meta("thumb")
     json.author_id post.user_id
     json.published_at post.published_at
+    json.post_type 'post'
     unless (dimensions = post.get_meta("thumb_dimensions")).nil?
       width, height = dimensions.split("x")
       json.image_width width.to_i

@@ -3,8 +3,6 @@ do ->
   'use strict'
   
   bhPost = ($stateParams, $location, Posts, Users) ->
-    
-    
 
     highlight = (content, words) ->
       if words && content
@@ -23,6 +21,13 @@ do ->
       vm = this
       vm.showSendEmailForm = false
       vm.absUrl = $location.absUrl()
+      vm.loading = true
+      
+      vm.getTemplateUrl = ->
+        tpl = vm.template or 'std'
+        if vm.usePostType && vm.post
+          tpl = tpl + '-' + vm.post.post_type
+        template_path('directives/post-' + tpl + '.html')
       
       vm.showSendEmail = ->
         vm.showSendEmailForm = true
@@ -43,10 +48,14 @@ do ->
           vm.post.title   = vm.post.titles[0]
           vm.post.highlighted = false
         
-      slug = vm.slug or $stateParams.postSlug
+      slug = vm.slug or $stateParams.slug
       
       # TODO: Use post.id if slug undefined
       Posts.getBySlug(slug).then (post) ->
+        vm.loading = false
+        if post == '404'
+          $location.hash('/error/404')
+          return
         if !angular.isUndefined(vm.highlight) || !angular.isUndefined(vm.highlight) && !angular.isUndefined(post.highlight) && vm.highlight != post.highlight
           init_highlight(post, vm.highlight)
           post.highlight = vm.highlight
@@ -71,10 +80,13 @@ do ->
         id: '='
         social: '='
         highlight: "="
+        template: "="
+        usePostType: "="
       bindToController: true
-      templateUrl: (elem, attr) ->
-        tpl = attr.template or 'std'
-        template_path('directives/post-' + tpl + '.html')
+      template : '<p ng-show="vm.loading" spinner-on="vm.loading" us-spinner="{radius:20, width:8, length: 16}" style="position:relative;width:100%;min-height:150px;"></p><div ng-include="vm.getTemplateUrl()"></div>'
+      # templateUrl: (elem, attr) ->
+      #   tpl = attr.template or 'std'
+      #   template_path('directives/post-' + tpl + '.html')
 
     }
 

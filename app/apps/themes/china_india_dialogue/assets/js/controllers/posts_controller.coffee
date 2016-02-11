@@ -57,8 +57,8 @@ do ->
           if $rootScope.max_date
             $scope.max_date = $rootScope.max_date
             
-          if $stateParams.categorySlug
-            init_scope_form({checkedcategories: [Categories.get($stateParams.categorySlug)]})
+          if $stateParams.slug
+            init_scope_form({checkedcategories: [Categories.get($stateParams.slug)]})
           
           search = {}
           if angular.isArray($scope.checkedcategories)
@@ -101,8 +101,7 @@ do ->
         load 1
       $location.path search_path
 
-    $scope.isNotSearchPage = () ->
-      search_path != $location.path()
+   
       
     $scope.scrollToNextPage = () ->
       page = if $scope.pagination then $scope.pagination.current_page + 1 else 1

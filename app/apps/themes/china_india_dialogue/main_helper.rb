@@ -48,7 +48,17 @@ module Themes::ChinaIndiaDialogue::MainHelper
   end
   
   def nav_menu(options={})
-    options.merge!(callback_item: lambda{|args| args[:item_container_attrs] = "ui-sref-active='active'"; args[:link_attrs] = "ui-sref=\"category({categoryId: #{args[:menu_item][:id]}, categorySlug: '#{args[:menu_item][:slug]}'})\" href"})
+    #options.merge!(callback_item: lambda{|args| args[:item_container_attrs] = "ui-sref-active='active'"; metas=args[:menu_item].get_meta('_default'); args[:link_attrs] = "ui-sref=\"#{metas[:type]}({slug: '\"CamaleonCms::#{metas[:type].capitalize}\".constantize.send(:find, metas[:object_id]).slug'})\" href"})
+    
+    l = lambda do |args|
+      args[:item_container_attrs] = "ui-sref-active='active'"
+      metas = args[:menu_item].get_meta('_default')
+      slug = "CamaleonCms::#{metas[:type].capitalize}".constantize.send(:find, metas[:object_id]).slug
+      args[:link_attrs] = "ui-sref=\"#{metas[:type]}({slug: '#{slug}'})\" href"
+    end
+    
+    options.merge!(callback_item: l)
+    
     draw_menu(options).html_safe
   end
 end

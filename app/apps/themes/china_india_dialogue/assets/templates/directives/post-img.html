@@ -2,7 +2,7 @@
   <div class="col-md-3"><img class="img-responsive" bh-holder="{{vm.post.image_width}}x{{vm.post.image_height}}" bh-src="{{vm.post.featured_image_url}}"/>
   </div>
   <div class="col-md-9">
-    <a ui-sref="post({postSlug: vm.post.slug})"><h3 class="post-title" ng-bind-html=vm.post.title></h3></a>
+    <a ui-sref="post({slug: vm.post.slug})"><h3 class="post-title" ng-bind-html=vm.post.title></h3></a>
     <p>
       <span class="category-color"><i>By</i></span>
       <span class="post_author">{{vm.author.fullname}}</span>

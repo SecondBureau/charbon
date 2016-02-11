@@ -63,7 +63,6 @@ module Lizard
             min_date = p.published_at if min_date.nil? || p.published_at && p.published_at < min_date
             max_date = p.published_at if max_date.nil? || p.published_at && p.published_at > max_date
           end
-        
           @posts = posts[offset, limit]
           header "x-pagination", {
             total: posts.size,
@@ -81,7 +80,7 @@ module Lizard
         end
         route_param :slug do
           get '/', jbuilder: 'posts' do
-            @posts = [CamaleonCms::Post.find_by_slug(params[:slug])]
+            @posts = [CamaleonCms::Post.find_by_slug!(params[:slug])]
           end
         end
     

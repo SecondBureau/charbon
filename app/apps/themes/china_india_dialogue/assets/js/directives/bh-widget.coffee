@@ -5,17 +5,20 @@ do ->
   bhWidget = ($stateParams, $location, Posts, Categories) ->
 
     controller = ->
-      slug = $stateParams.postSlug
+      slug = $stateParams.slug
       vm = this
       Posts.getBySlug(slug).then (post) ->
         search = {
           e: [post.id]
-          categories: [post.category_id]
+          categories: if parseInt(post.category_id) > 0 then [post.category_id] else []
           order: 'published_at desc'
         }
         
         category = Categories.getById(post.category_id)
-        vm.widget_title = category.label
+        if category
+          vm.widget_title = category.label
+        else
+          vm.widget_title = 'Recent posts'
               
         Posts.search(angular.toJson(search), 0, 6).then (posts) ->
           vm.posts = posts.data
