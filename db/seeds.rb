@@ -89,13 +89,17 @@ themes = {
 print "Seed columnist avatars..."
 
 avatars_folder = "avatars"
-uri = "http://uifaces.com/api/v1/random"
 avatars = []
 columnists = []
+
+#uri = "http://uifaces.com/api/v1/random"
+uri = 'https://randomuser.me/api/'
 10.times do |i|
-  media.upload_image(JSON.parse(Net::HTTP.get(URI(uri)))["image_urls"]["epic"], avatars_folder)
+  #media.upload_image(JSON.parse(Net::HTTP.get(URI(uri)))["image_urls"]["epic"], avatars_folder)
+  media.upload_image(JSON.parse(Net::HTTP.get(URI(uri)))["results"][0]["user"]['picture']['large'], avatars_folder)
   print ".."
 end
+
 
 (1..4).each do |i|
   media.upload("columnist-#{i}.png", avatars_folder)
@@ -228,9 +232,9 @@ print "Seed posts..."
       @footer_2.append_menu_item ({label: category.name, type: "category", link: category.id})
     end
 
-    (rand(15) + 50).times do
+    (rand(15) + 30).times do
 
-      title = Faker::Hipster.sentence(1)
+      title = Faker::Hipster.sentence(1).chomp('.')
 
       #puts "create post #{title}"
       print "."
@@ -253,12 +257,12 @@ print "Seed posts..."
         level = rand(3)+1
         content += "<h#{level}>#{Faker::Lorem.sentence(3)}</h#{level}>"
         (1..rand(5)+1).each do |j|
-          content += "<p>#{Faker::Hipster.paragraph(rand(4) + 5)}</p>"
+          content += "<p>#{Faker::Lorem.paragraph(rand(4) + 5)}</p>"
         end
       end
 
       post_data = {
-        title:"#{category.slug} - #{title}",
+        title:"#{category.slug} #{title}".humanize,
         slug:title.slugify,
         content:content ,
         published_at:"#{Faker::Date.backward(30)}",
@@ -278,7 +282,7 @@ print "Seed posts..."
 
       p.set_thumb url
       p.set_meta 'thumb_dimensions', "#{width}x#{height}"
-      p.set_summary Faker::Hipster.paragraph(4)
+      p.set_summary Faker::Hipster.paragraph(2)
 
       # if (meta = CamaleonCms::Meta.find_by_key("_#{p.slug}")).nil?
       #   meta = CamaleonCms::Meta.new(key: "_#{p.slug}", objectid: p.id, object_class: "Post")
