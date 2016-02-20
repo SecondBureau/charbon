@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-ruby '2.1.2'
+ruby '2.3.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 4.2'
@@ -32,7 +32,8 @@ gem "twitter-bootstrap-rails"
 gem 'haml'
 
 # Cameleon
-gem "camaleon_cms", github: 'SecondBureau/camaleon-cms'
+#gem "camaleon_cms", github: 'SecondBureau'
+gem "camaleon_cms", :git => 'https://github.com/SecondBureau/camaleon-cms.git'
 #gem "camaleon_cms"
 
 # An opinionated micro-framework for creating REST-like APIs in Ruby. http://www.ruby-grape.org
@@ -65,17 +66,19 @@ group :development, :test do
 end
 
 group :production do
-  # Rack::Cache is suitable as a quick drop-in component to enable HTTP caching for Rack-based applications that produce freshness (Expires, Cache-Control) and/or validation (Last-Modified, ETag) information.
-  gem 'rack-cache', :require => 'rack/cache'
+  # Puma Webserver
+  gem 'puma'
   
   gem 'ngannotate-rails'
 end
 
 group :heroku do 
+  # Rack::Cache is suitable as a quick drop-in component to enable HTTP caching for Rack-based applications that produce freshness (Expires, Cache-Control) and/or validation (Last-Modified, ETag) information.
+  gem 'rack-cache', :require => 'rack/cache'
+  
   # This gem replaces the need for the plugins, and ensures that Rails 4 is optimally configured for executing on Heroku.
   gem 'rails_12factor'
-  # Puma Webserver
-  gem 'puma'
+  
   # https://github.com/heroku/rack-timeout
   gem "rack-timeout"
   gem "newrelic_rpm"
