@@ -66,10 +66,14 @@ do ->
         vm.post = post
         if post.highlight
           vm.toggleHighlight true 
-        Users.getById(post.author_id).then (user) ->
-          vm.author = user
+        
+        if post.author_id
+          Users.getById(post.author_id).then (user) ->
+            vm.author = user
+            vm.loaded = true
+          return
+        else
           vm.loaded = true
-        return
       return
 
     {

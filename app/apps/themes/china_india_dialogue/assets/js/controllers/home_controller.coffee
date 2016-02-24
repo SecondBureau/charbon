@@ -12,9 +12,9 @@ do ->
         spotlight: 5
         business: 2
         policy: 1
-        industry: 3
-        internet: 3
-        society: 3
+        industry: 2
+        internet: 2
+        society: 2
         column: 4
         'one-road-one-belt': 1
         environment: 1

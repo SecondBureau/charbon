@@ -26,7 +26,10 @@ do ->
             url: users_endpoint + '/' + userId
             cache: true
             method: 'GET').then (response) ->
-            addUser response.data.user
+              addUser response.data.user
+          , (response) ->
+              console.log (userId + ' not found')
+              '404'
 
     }
 
