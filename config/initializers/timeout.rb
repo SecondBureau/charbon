@@ -7,4 +7,3 @@
 #end
 #rescue
 #end
-#commit
