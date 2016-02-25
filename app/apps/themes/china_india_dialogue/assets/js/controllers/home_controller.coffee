@@ -18,7 +18,7 @@ do ->
         column: 4
         'one-road-one-belt': 1
         environment: 1
-        culture: 1
+        culture: 2
         'travel-image': 6
       q = []
       #if (angular.isArray($scope.categories)) {
