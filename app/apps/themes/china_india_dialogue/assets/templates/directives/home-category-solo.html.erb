@@ -6,7 +6,7 @@
         <img class="img-featured img-responsive" bh-holder="{{post.image_width}}x{{vm.post.image_height}}" bh-src="{{post.featured_image_url}}"/>
       </div>
     </div>
-    <div ng-class="{'col-md-9': category.slug == 'environment', 'col-md-12': category.slug <> 'environment'}" >
+    <div ng-class="{'col-md-9': category.slug == 'environment', 'col-md-12': category.slug != 'environment'}" >
       <div class="home-block-header">
         <img cam-src='decorations/category.png' class="pull-right" alt="*" />
         <h2 class="category-color">{{category.label}}</h2>
