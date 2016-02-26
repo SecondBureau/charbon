@@ -3,7 +3,13 @@
   <div class="container-fluid">
     <div class="row cid-md-header visible-md-block visible-lg-block">
       <div class='col-md-4'>
-        <center></center>
+        <center>
+          <div class="header-social">
+          <a href="#"><%= theme_image_tag 'icons/flat/facebook.png', width: "35", height: "35", alt: "Check out our facebook page" %></a>
+          <a href="#"><%= theme_image_tag 'icons/flat/twitter.png', width: "35", height: "35", alt: "Follow us on twitter" %></a>
+          <a href="#"><%= theme_image_tag 'icons/flat/linkedin.png', width: "35", height: "35", alt: "Follow us on LinkedIn" %></a>
+        </div>
+        </center>
       </div>
       <div class='col-md-4'>
         <center><a ui-sref="home"><%= theme_image_tag 'logo.png', width: "275", height: "150", alt: current_site.the_title %></a></center>
