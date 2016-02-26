@@ -68,8 +68,8 @@ end
 group :production do
   # Puma Webserver
   gem 'puma'
-  
   gem 'ngannotate-rails'
+  gem "newrelic_rpm"
 end
 
 group :heroku do 
@@ -81,7 +81,7 @@ group :heroku do
   
   # https://github.com/heroku/rack-timeout
   gem "rack-timeout"
-  gem "newrelic_rpm"
+  
 end
 
 
