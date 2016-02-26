@@ -6,7 +6,7 @@
         <center></center>
       </div>
       <div class='col-md-4'>
-        <center><a ui-sref="home"><%= theme_image_tag 'logo.png', alt: current_site.the_title %></a></center>
+        <center><a ui-sref="home"><%= theme_image_tag 'logo.png', width: "275", height: "150", alt: current_site.the_title %></a></center>
       </div>
       
       <div class='col-md-4'>
@@ -23,7 +23,7 @@
 
   <div class="container">
     <div class="cid-sm-header">
-      <a class="navbar-brand" ui-sref="home"><%= theme_image_tag 'logo-mini.png', alt: current_site.the_title %></a>
+      <a class="navbar-brand" ui-sref="home"><%= theme_image_tag 'logo-mini.png', width: "136", height: "50", alt: current_site.the_title %></a>
     </div>
     <div>
       <%= nav_menu(menu_slug:'main_menu', container_class: 'nav navbar-default nav-justified bh-main-menu') %>
