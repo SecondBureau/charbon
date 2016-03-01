@@ -18,6 +18,8 @@
 //= require ./vendor/angular-qr.js
 
 //= require ./vendor/camaleon_cms
+
+//= require ./vendor/slick
      
 //= require ./app
 //= require ./config

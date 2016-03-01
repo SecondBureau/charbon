@@ -87,10 +87,7 @@ do ->
         template: "="
         usePostType: "="
       bindToController: true
-      template : '<p ng-show="vm.loading" spinner-on="vm.loading" us-spinner="{radius:20, width:8, length: 16}" style="position:relative;width:100%;min-height:150px;"></p><div ng-include="vm.getTemplateUrl()"></div>'
-      # templateUrl: (elem, attr) ->
-      #   tpl = attr.template or 'std'
-      #   template_path('directives/post-' + tpl + '.html')
+      template : '<div ng-include="vm.getTemplateUrl()"></div>'
 
     }
 

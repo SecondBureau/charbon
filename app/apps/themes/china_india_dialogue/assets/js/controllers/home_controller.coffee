@@ -19,7 +19,7 @@ do ->
         'one-road-one-belt': 1
         environment: 1
         culture: 2
-        'travel-image': 6
+        'travel-image': 10
       q = []
       #if (angular.isArray($scope.categories)) {
       angular.forEach c, (num, slug) ->

@@ -1,6 +1,7 @@
 .flex-control-nav {
   top: 20px;
   z-index: 2;
+  height: 30px;
 }
 
 .flex-control-nav li {}
