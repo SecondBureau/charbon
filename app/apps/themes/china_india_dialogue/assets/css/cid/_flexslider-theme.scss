@@ -53,4 +53,10 @@
   color: #fff;
 }
 
+.flex-caption  {
+  .home-post-author, 
+  .home-post-published {
+    @extend .author-grey;
+  } 
+}
 

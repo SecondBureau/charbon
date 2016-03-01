@@ -44,13 +44,6 @@ bh-home-category, .home-block {
   } 
 }
 
-.flex-caption  {
-  .home-post-author, 
-  .home-post-published {
-    @extend .author-grey;
-  } 
-}
-
 .home-block-column {
   
   padding-right: 0px;
@@ -65,7 +58,7 @@ bh-home-category, .home-block {
       display: inline-block;
       width: 29px;
       height: 16px;
-      background: cid-image_url('/decorations/twitter.png');
+      background: cid-image_url('decorations/twitter.png');
     }
   }
 

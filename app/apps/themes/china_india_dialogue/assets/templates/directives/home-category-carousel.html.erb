@@ -3,19 +3,24 @@
   <div class="home-block {{category.class}} home-block-{{category.slug}}" ng-class="{'home-block-loading': !(posts.length > 0)}">
     <div class="home-block-header">
       <img cam-src='decorations/category.png' width="15" height="30" class="pull-right" alt="*" />
-      <h2 onClick="$('#slick').slick({dots: true,speed: 500});" class="category-color">{{category.label}}</h2>
+      <h2 onClick="$('#bh-slick').slick()" class="category-color">{{category.label}}</h2>
     </div>
     
     <div>
       <div class="home-block-contents" >
         <div ng-show="!(posts.length > 0)" us-spinner="{radius:10, width:3, length: 8}" style="position:relative;width:100%;margin:20px 0 80px 0"></div>
         
-        <div id="slick" data-slick='{"slidesToShow": 4, "slidesToScroll": 2}'>
-  <div ng-repeat="post in posts track by $index" style="padding:0 5px 0 5px">
-    <bh-post id="post.id" template="'slide-slick'" slug="post.slug"></bh-post>
-  </div>
-</div>
-        
+        <!-- <div id="slick" data-slick='{"slidesToShow": 4, "slidesToScroll": 2}'>
+          <div ng-repeat="post in posts track by $index" style="padding:0 5px 0 5px">
+            <bh-post id="post.id" template="'slide-slick'" slug="post.slug"></bh-post>
+          </div>
+        </div> -->
+          
+          <div bh-slick data-slick='{"slidesToShow": 4, "slidesToScroll": 2, "dots": true, "speed": 500}' id="bh-slick">
+            <div ng-repeat="post in posts" style="padding:0 5px 0 5px">
+              <bh-post id="post.id" template="'slide-slick'" slug="post.slug"></bh-post>
+            </div>
+          </div>
         
       </div>
     </div>
