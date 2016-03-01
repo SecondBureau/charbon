@@ -1,6 +1,6 @@
   <a ui-sref="post({slug: vm.post.slug})">
     <img class="img-responsive img-thumbnail" bh-holder="{{vm.post.image_width}}x{{vm.post.image_height}}" bh-src="{{vm.post.featured_image_url}}"/>
-    <h3 class="post-title">{{vm.post.title}}</h3>
+    <h3 class="post-title" ng-bind-html="vm.post.titles[0] || vm.post.title"></h3>
   </a>
   <div class="legend">
     <img class="post-avatar img-circle pull-left" width="40px" ng-src="{{vm.author.avatar}}" />

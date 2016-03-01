@@ -2,7 +2,7 @@ do ->
 
   'use strict'
   
-  bhPost = ($stateParams, $location, Posts, Users) ->
+  bhPost = ($sce, $stateParams, $location, Posts, Users) ->
 
     highlight = (content, words) ->
       if words && content
@@ -91,7 +91,7 @@ do ->
 
     }
 
-  bhPost.$inject = ['$stateParams', '$location', 'Posts', 'Users']
+  bhPost.$inject = ['$sce', '$stateParams', '$location', 'Posts', 'Users']
   angular.module('bahnhof').directive 'bhPost', bhPost
   
 
