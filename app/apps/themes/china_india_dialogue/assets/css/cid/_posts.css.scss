@@ -1,4 +1,83 @@
 
+
+.highlighted { background: $highlight }
+
+.posts-container {
+  
+  width: 100%;
+  
+  .results 
+  {
+    background: $red;
+    padding: 5px 0 5px 10px;
+    color: white;
+    font-size: 1em;
+  }
+  
+  label { 
+    
+        &.sort {
+    
+        cursor: pointer;
+        font-weight: normal;
+    
+        &.active {
+          cursor: default;
+          font-weight: bold;
+        }
+      }
+    }
+}
+
+.widget-posts {
+
+  bh-post {
+    
+    h3 {
+      margin: 0.9em 0 1.8em 0;
+      font-size: 1.1em;
+    }
+  }
+  
+  bh-post:hover {
+    
+    .legend {
+      display: block;
+      z-index: 99999
+    }
+  }
+  
+  .legend {
+    width: 220px;
+    position: absolute;
+    top: 15px;
+    left: -185px;
+    padding: 5px 10px 5px 0px;
+    background-color: $light-grey;
+    border-right: solid 1px #e60012;
+    border-bottom: solid 1px #e60012;
+    display: none;
+    
+    &:after {
+      content: '';
+      border-width: 7px;
+      border-style: solid;
+      border-color: transparent transparent transparent $red;
+      position: absolute;
+      right: -14px;
+      top: 10px;
+      z-index: 10
+    }
+    
+    p, p a, p a:hover{
+      color: #000;
+      font-size: 0.9em;
+    }
+
+  }
+}
+
+
 bh-post[template="'std'"], bh-post[template="'widget'"] {
   
   width:100%;

@@ -1,0 +1,33 @@
+$images_root: 'themes/china_india_dialogue/assets/images/' ;
+$fonts_root: 'themes/china_india_dialogue/assets/fonts/' ;
+
+
+@function cid-image-url($url) {
+    @if function-exists(image-url) {
+        @return image-url($images_root + $url);
+    }
+    @else {
+        @return url($slick-loader-path + $url);
+    }
+}
+
+@function cid-font-url($url) {
+    @if function-exists(font-url) {
+        @return font-url($fonts_root + $url);
+    }
+    @else {
+        @return url($slick-font-path + $url);
+    }
+}
+
+@mixin font-size($sizeValue: 1.6) {
+  font-size: ($sizeValue * 10) + px;
+  font-size: $sizeValue + rem;
+}
+
+@mixin border-background($border, $background) {
+  margin-top: 0;
+  margin-bottom: 0;
+  border: $border solid 1px;
+  background: $background;
+}

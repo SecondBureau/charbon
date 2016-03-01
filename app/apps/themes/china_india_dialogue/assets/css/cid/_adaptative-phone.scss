@@ -1,0 +1,40 @@
+
+
+@media (min-width: 768px) and (max-width: 991px) {
+  .section-separator {
+    height: 50px;
+  }
+  body {
+    padding: 60px 0 0 0;
+  }
+
+  .cid-sm-header {
+    background-image: none;
+  }
+
+  .navbar-default {
+    background-color: #000;
+    
+    button.toggle {
+      
+      .icon-bar {
+        background-color: #fff !important;
+      }
+    }
+
+    
+    & > li {
+      
+      &.active > a {
+      }
+    
+      & > a {
+        height: 50px;
+        padding-top: 15px;
+        color: #fff;
+      }
+      
+    }
+  }
+
+}

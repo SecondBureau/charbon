@@ -2,11 +2,7 @@
 *= require ./bootstrap
 *= require ./flexslider
 *= require ./slick
-*= require ./style
-*= require ./flexslider-theme
-*= require ./fonts
-*= require ./slick-theme
 *= require ./font-awesome/font-awesome
-*= require ./cid
-*= require ./bh-post-std
+*= require ./style
+*= require ./cid/cid
 */
