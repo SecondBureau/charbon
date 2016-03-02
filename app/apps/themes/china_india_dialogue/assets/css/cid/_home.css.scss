@@ -39,7 +39,8 @@ bh-home-category, .home-block {
   }
 
   .home-post-author, 
-  .home-post-published {
+  .home-post-published,
+  .home-post-slogan {
     @extend .author-grey;
   } 
 }
@@ -49,17 +50,22 @@ bh-home-category, .home-block {
   padding-right: 0px;
   background-image: cid-image_url('backgrounds/column.png');
   
+  .home-post-slogan
+  
   .home-post-author {
     font-style: normal;
     font-size: 15px;
     
-    &:before {
-      content: " ";
-      display: inline-block;
-      width: 29px;
-      height: 16px;
-      background: cid-image_url('decorations/twitter.png');
-    }
+  
+    
+//CIT 3386
+//    &:before {
+//      content: " ";
+//      display: inline-block;
+//      width: 29px;
+//      height: 16px;
+//      background: cid-image_url('decorations/twitter.png');
+//    }
   }
 
   .home-post-group {
