@@ -156,6 +156,41 @@ bh-post[template="'std'"] {
       font-size: 140%;
       margin: 1em 0 0.5em 0;
     }
+    
+    .inline-image {
+      text-align: center; 
+      margin: 10px;
+      position:relative;
+      
+      .image {
+      }
+      
+      &:hover {
+      }
+      
+      img:hover + .caption {
+        visibility: visible;
+        opacity: 1;
+        -webkit-transition: visibility 1s, opacity 1s;
+        -moz-transition: visibility 1s, opacity 1s;
+        -ms-transition: visibility 1s, opacity 1s;
+        -o-transition: visibility 1s, opacity 1s;
+        transition: visibility 1s, opacity 1s;
+      }
+      
+      .caption {
+        position: absolute;
+        bottom: 0px;
+        background: $red;
+        width:100%;
+        line-height: 100%;
+        visibility: hidden;
+        opacity: 0;
+        padding: 10px;
+        display: block;
+        
+      }
+    }
   }
   
   #aside-left {
