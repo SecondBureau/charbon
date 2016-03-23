@@ -19,7 +19,7 @@ module Lizard
                 @theme = theme
                 @field_slug = params[:field_slug]
                 @field_contents = ""
-                @field_contents = theme.get_fields(@field_slug).try(:first) unless theme.nil?
+                @field_contents = (theme.get_fields(@field_slug).try(:first) || '') unless theme.nil?
               end
             end
           end

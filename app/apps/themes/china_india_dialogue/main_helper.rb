@@ -19,21 +19,76 @@ module Themes::ChinaIndiaDialogue::MainHelper
       # group.add_field({"name"=>"Links color", "slug"=>"links_color"},{field_key: "colorpicker"})
       # group.add_field({"name"=>"Background image", "slug"=>"bg"},{field_key: "image"})
     #end
-   
-   unless theme.get_field_groups.where(slug: "footer").any?   
-      group = theme.add_field_group({name: "Footer", slug: "footer"})
-      group.add_field({"name"=>"Address", "slug"=>"address"}, {field_key: "editor", translate: true, default_value: "<p><b>Address:</b><br/>33 Chegongzhuang Xilu,<br/>Beijing, 100048, P.R. China</p><p><b>Telephone:</b><br/>+8610 8888 8888</p><p><b>Email:</b> contact@mycompany.cn</p>"})
-    end
     
-    unless theme.get_field_groups.where(slug: "partners").any? 
-      group = theme.add_field_group({name: "Partners", slug: "partners"})
-      group.add_field({"name"=>"Partners", "slug"=>"partners"}, {field_key: "editor", translate: true, default_value: ""})
+    unless theme.get_field_groups.where(slug: "issues").any? 
+      last_issue_default_value = ''
+      group = theme.add_field_group({name: "Issues", slug: "issues"})
+      group.add_field({"name"=>"Last Issue", "slug"=>"last_issue"}, {field_key: "editor", translate: true, default_value: last_issue_default_value})
     end
-    
+  
     unless theme.get_field_groups.where(slug: "ads").any? 
+      ad_left_default_value = ''
+      ad_right_default_value = ''
       group = theme.add_field_group({name: "Ads", slug: "ads"})
-      group.add_field({"name"=>"Left", "slug"=>"ad_left"}, {field_key: "editor", translate: true, default_value: ""})
-      group.add_field({"name"=>"Right", "slug"=>"ad_right"}, {field_key: "editor", translate: true, default_value: ""})
+      group.add_field({"name"=>"Left", "slug"=>"ad_left"}, {field_key: "editor", translate: true, default_value: ad_left_default_value})
+      group.add_field({"name"=>"Right", "slug"=>"ad_right"}, {field_key: "editor", translate: true, default_value: ad_right_default_value})
+    end
+
+    unless theme.get_field_groups.where(slug: "partners").any? 
+      partners_default_value = ''
+      group = theme.add_field_group({name: "Partners", slug: "partners"})
+      group.add_field({"name"=>"Partners", "slug"=>"partners"}, {field_key: "editor", translate: true, default_value: partners_default_value})
+    end
+
+    unless theme.get_field_groups.where(slug: "footer").any? 
+      footer_default_value = ''
+      group = theme.add_field_group({name: "Footer", slug: "footer"})
+      group.add_field({"name"=>"Address", "slug"=>"address"}, {field_key: "editor", translate: true, default_value: footer_default_value})
+    end
+    
+    ['Main Menu', "Footer 1", "Footer 2"].each do |item|
+      slug = item.slugify.underscore
+      instance_variable_set "@#{slug}", CamaleonCms::NavMenu.find_by_slug(slug)
+      if instance_variable_get("@#{slug}").nil?
+        instance_variable_set "@#{slug}", current_site.nav_menus.create!({name: item, slug: slug})
+      end
+    end
+    
+    category_parent = CamaleonCms::PostType.find_by_slug('post')
+    unless category_parent.categories.count > 1 
+      [{ slug: 'business',           label: 'Business',    footer1: true, navbar: true, class: 'home-block-border', show_featured_on_home: false },
+       { slug: 'people',             label: 'People',      show_featured_on_home: true },
+       { slug: 'culture',            label: 'Culture',     footer2: true, show_featured_on_home: false },
+       { slug: 'society',            label: 'Society',     footer1: true, navbar: true, show_featured_on_home: true },
+       { slug: 'ecology',            label: 'Ecology',     show_featured_on_home: true },
+       { slug: 'exhibitions',        label: 'Exhibitions', show_featured_on_home: true },
+       { slug: 'books',              label: 'Books',       navbar: true, show_featured_on_home: true },
+       { slug: 'snapshots',          label: 'Snapshots',   show_featured_on_home: true },
+       { slug: 'policy',             label: 'Policy',      footer1: true, class: 'home-block-reverse', show_featured_on_home: false },
+       { slug: 'industry',           label: 'Industry',    footer1: true, navbar: true, show_featured_on_home: true },
+       { slug: 'internet',           label: 'Internet',    footer1: true, navbar: true, show_featured_on_home: true },
+       { slug: 'column',             label: 'Column',      show_featured_on_home: true },
+       { slug: 'one-road-one-belt',  label: 'One Road One Belt', footer1: true, class: 'home-block-reverse', navbar: true, show_featured_on_home: false },
+       { slug: 'environment',        label: 'Environment', additional_navbar:true, footer2: true, class: 'home-block-reverse', show_featured_on_home: true },
+       { slug: 'travel-image',       label: 'Travel / Image', additional_navbar: true, footer2: true, show_featured_on_home: true },
+       { slug: 'spotlight',          label: 'Spotlight',   footer1: true, navbar: true, show_featured_on_home: true }
+      ].each do |c|
+        category = CamaleonCms::Category.create(name: c[:label], slug: c[:label].slugify, parent_id: category_parent.id)
+        category.set_option(:footer1, c[:footer1]) unless c[:footer1].blank?
+        category.set_option(:footer2, c[:footer2]) unless c[:footer2].blank?
+        category.set_option(:navbar, c[:navbar]) unless c[:navbar].blank?
+        category.set_option(:class, c[:class]) unless c[:class].blank?
+        category.set_option(:show_featured_on_home, c[:show_featured_on_home]) unless c[:show_featured_on_home].blank?
+        unless c[:navbar].blank?
+          @main_menu.append_menu_item ({label: category.name, type: "category", link: category.id})
+        end
+        unless c[:footer1].blank?
+          @footer_1.append_menu_item ({label: category.name, type: "category", link: category.id})
+        end
+        unless c[:footer2].blank?
+          @footer_2.append_menu_item ({label: category.name, type: "category", link: category.id})
+        end
+      end
     end
     
     theme.set_meta("installed_at", Time.current.to_s) # save a custom value
