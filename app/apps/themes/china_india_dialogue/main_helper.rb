@@ -46,6 +46,14 @@ module Themes::ChinaIndiaDialogue::MainHelper
       group.add_field({"name"=>"Address", "slug"=>"address"}, {field_key: "editor", translate: true, default_value: footer_default_value})
     end
     
+    unless theme.get_field_groups.where(slug: "social").any? 
+      group = theme.add_field_group({name: "Social", slug: "social"})
+      group.add_field({"name"=>"Facebook", "slug"=>"social_facebook"}, {field_key: "text_box", translate: true, default_value: ''})
+      group.add_field({"name"=>"Twitter", "slug"=>"social_twitter"}, {field_key: "text_box", translate: true, default_value: ''})
+      group.add_field({"name"=>"LinkedIn", "slug"=>"social_linkedin"}, {field_key: "text_box", translate: true, default_value: ''})
+    end
+  
+    
     ['Main Menu', "Footer 1", "Footer 2"].each do |item|
       slug = item.slugify.underscore
       instance_variable_set "@#{slug}", CamaleonCms::NavMenu.find_by_slug(slug)

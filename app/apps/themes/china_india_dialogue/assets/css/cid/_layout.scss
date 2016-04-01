@@ -11,6 +11,10 @@ body {
 
 .header-social {
   margin: 60px 0;
+  
+  & > cam-theme-field > div {
+    display: inline-block;
+  }
 }
 
 
