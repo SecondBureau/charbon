@@ -56,6 +56,11 @@ do ->
         if post == '404'
           $location.hash('/error/404')
           return
+          
+        body = $(post.body)
+        body.find('img').addClass('img-responsive')
+        post.body = $('<div>').append(body.clone()).html()
+        
         if !angular.isUndefined(vm.highlight) || !angular.isUndefined(vm.highlight) && !angular.isUndefined(post.highlight) && vm.highlight != post.highlight
           init_highlight(post, vm.highlight)
           post.highlight = vm.highlight
