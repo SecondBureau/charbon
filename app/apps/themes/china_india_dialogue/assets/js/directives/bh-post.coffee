@@ -36,7 +36,6 @@ do ->
         vm.showSendEmailForm = false
       
       vm.toggleHighlight = (turn_on) ->
-
         if angular.isUndefined(turn_on) && !vm.post.highlighted || !angular.isUndefined(turn_on) && turn_on
           vm.post.body    = vm.post.bodies[1]
           vm.post.summary = vm.post.summaries[1]
@@ -47,18 +46,23 @@ do ->
           vm.post.summary = vm.post.summaries[0]
           vm.post.title   = vm.post.titles[0]
           vm.post.highlighted = false
+        console.log vm.post.body
         
       slug = vm.slug or $stateParams.slug
       
       # TODO: Use post.id if slug undefined
       Posts.getBySlug(slug).then (post) ->
+
         vm.loading = false
         if post == '404'
           $location.hash('/error/404')
           return
-          
+        
+        img_class = post.images_class
+        if angular.isUndefined(img_class) || !img_class
+          img_class = 'img-responsive inline-image'
         body = $(post.body)
-        body.find('img').addClass('img-responsive')
+        body.find('img').addClass(img_class)
         post.body = $('<div>').append(body.clone()).html()
         
         if !angular.isUndefined(vm.highlight) || !angular.isUndefined(vm.highlight) && !angular.isUndefined(post.highlight) && vm.highlight != post.highlight
@@ -69,6 +73,7 @@ do ->
           post.highlightable  = false
         
         vm.post = post
+        
         if post.highlight
           vm.toggleHighlight true 
         
@@ -79,6 +84,7 @@ do ->
           return
         else
           vm.loaded = true
+        
       return
 
     {

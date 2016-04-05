@@ -33,7 +33,7 @@ do ->
 
     {
 
-      getBySlug: (slug) ->
+      getBySlug: (slug, cache=true) ->
         post = $filter('filter')(posts, { slug: slug }, true)
         if post.length > 0
           $q (resolve, reject) ->
@@ -44,7 +44,8 @@ do ->
             url: posts_endpoint + '/' + slug
             cache: true
             method: 'GET').then (response) ->
-            updatePosts response.data
+            if cache
+              updatePosts response.data
             response.data[0]
           , (response) ->
               '404'
