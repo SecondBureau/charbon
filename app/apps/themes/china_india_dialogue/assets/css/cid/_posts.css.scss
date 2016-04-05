@@ -120,7 +120,6 @@ bh-post[template="'std'"], bh-post[template="'widget'"] {
 
 figure.image {
   text-align: center; 
-  margin: 10px;
   position:relative;
   
   img:hover + figcaption {
@@ -190,7 +189,8 @@ bh-post[template="'std'"] {
     }
     
     h1, h2 {
-      font-variant: small-caps;
+      //font-variant: small-caps;
+      text-transform: uppercase;
     }
     
     
