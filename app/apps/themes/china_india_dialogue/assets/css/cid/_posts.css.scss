@@ -139,12 +139,13 @@ figure.image {
     bottom: 0px;
     background: $red;
     width:100%;
-    line-height: 100%;
+    line-height: 120%;
     visibility: hidden;
     opacity: 0;
     padding: 10px;
     display: block;
     font-size: 100%;
+    text-align: left;
     
   }
 }
