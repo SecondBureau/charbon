@@ -103,30 +103,72 @@ p.home-post-summary {
 
 .home-block-business .category-color {
   color: $red;
+  a {
+    color: $red;
+    &:hover {
+      text-decoration: underline $red;
+    }
+  }
 }
 
 .home-block-industry .category-color {
   color: $blue;
+  a {
+    color: $blue;
+    &:hover {
+      text-decoration: underline $blue;
+    }
+  }
 }
 
 .home-block-internet .category-color {
   color: $green;
+  a {
+    color: $green;
+    &:hover {
+      text-decoration: underline $green;
+    }
+  }
 }
 
 .home-block-society .category-color {
   color: $violet;
+  a {
+    color: $violet;
+    &:hover {
+      text-decoration: underline $violet;
+    }
+  }
 }
 
 .home-block-column .category-color {
   color: $light-blue;
+  a {
+    color: $light-blue;
+    &:hover {
+      text-decoration: underline $light-blue;
+    }
+  }
 }
 
 .home-block-culture .category-color {
   color: $light-green;
+  a {
+    color: $light-green;
+    &:hover {
+      text-decoration: underline $light-green;
+    }
+  }
 }
 
 .home-block-travel-image .category-color {
   color:$violet;
+  a {
+    color: $violet;
+    &:hover {
+      text-decoration: underline $violet;
+    }
+  }
 }
 
 .home-block-reverse .category-color {
@@ -145,6 +187,12 @@ p.home-post-summary {
 
 .home-block-reverse {
   color: #fff;
+  a {
+    color: #fff;
+    &:hover {
+      text-decoration: underline #fff;
+    }
+  }
 }
 
 
