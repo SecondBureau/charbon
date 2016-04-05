@@ -132,7 +132,7 @@ figure.image {
     transition: visibility 1s, opacity 1s;
   }
   
-  figcaption {
+  figcaption, figcaption p {
     font-family: dax, 'Helvetica Neue', Helvetica, Arial, sans-serif;
     color: #fff;
     position: absolute;
