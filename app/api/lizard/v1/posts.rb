@@ -11,6 +11,8 @@ module Lizard
           requires :q, type: String, desc: 'Query string'
         end
         get :home, jbuilder: 'homeposts' do
+          @default_width = 800
+          @default_height = 600
           @results = {}
           params[:q].split('|').each do |item|
             categoryId, lim = item.split(',')
@@ -63,7 +65,11 @@ module Lizard
             min_date = p.published_at if min_date.nil? || p.published_at && p.published_at < min_date
             max_date = p.published_at if max_date.nil? || p.published_at && p.published_at > max_date
           end
+          @default_width = 800
+          @default_height = 600
           @posts = posts[offset, limit]
+          
+          
           header "x-pagination", {
             total: posts.size,
             total_pages: (posts.size / limit.to_f).ceil.to_i,

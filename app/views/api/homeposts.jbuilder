@@ -12,6 +12,9 @@
       width, height = dimensions.split("x")
       json.image_width width.to_i
       json.image_height height.to_i
+    else
+      json.image_width @default_width
+      json.image_height @default_height
     end
     json.summary post.get_meta("summary")
     json.body post.content
