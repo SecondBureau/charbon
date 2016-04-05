@@ -132,7 +132,7 @@ figure.image {
     transition: visibility 1s, opacity 1s;
   }
   
-  figcaption, figcaption p {
+  figcaption {
     font-family: dax, 'Helvetica Neue', Helvetica, Arial, sans-serif;
     color: #fff;
     position: absolute;
@@ -147,6 +147,12 @@ figure.image {
     font-size: 100%;
     text-align: left;
     
+    p {
+      font-size: 100%;
+      padding: 0px;
+      line-height: 120%;
+      margin: 0px;
+    }
   }
 }
 
