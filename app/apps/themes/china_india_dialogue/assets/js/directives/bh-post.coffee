@@ -46,7 +46,6 @@ do ->
           vm.post.summary = vm.post.summaries[0]
           vm.post.title   = vm.post.titles[0]
           vm.post.highlighted = false
-        console.log vm.post.body
         
       slug = vm.slug or $stateParams.slug
       
