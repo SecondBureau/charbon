@@ -157,7 +157,6 @@ bh-post[template="'std'"] {
     font-size: 2.5em;
     line-height: 110%;
     letter-spacing: -0.02em;
-    font-variant: small-caps;
   }
   
   h2 {
@@ -165,7 +164,6 @@ bh-post[template="'std'"] {
     line-height: 110%;
     font-weight: normal;
     margin: 0 0 1em 0;
-    font-variant: small-caps;
   }  
   
   p.post-source {
@@ -189,6 +187,10 @@ bh-post[template="'std'"] {
     h1, h2, h3 {
       font-size: 140%;
       margin: 1em 0 0.5em 0;
+    }
+    
+    h1, h2 {
+      font-variant: small-caps;
     }
     
     
