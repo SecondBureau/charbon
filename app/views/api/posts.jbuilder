@@ -14,4 +14,7 @@ json.array! @posts do |post|
   end
   json.summary post.get_meta("summary")
   json.body post.content
+  post.field_values.each do |fv|
+    json.set! fv.custom_field_slug, fv.value
+  end
 end
