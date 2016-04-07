@@ -57,12 +57,21 @@ do ->
           $location.hash('/error/404')
           return
         
+        body = $(post.body)
+        
         img_class = post.images_class
         if angular.isUndefined(img_class) || !img_class
-          img_class = 'img-responsive inline-image'
-        body = $(post.body)
-        body.find('img').addClass(img_class)
-        post.body = $('<div>').append(body.clone()).html()
+          img_class = 'img-responsive img-thumbnail'
+        body.find('img:not([width])').addClass(img_class)
+        
+        img_class = post.fixed_width_images_class
+        if angular.isUndefined(img_class) || !img_class
+          img_class = 'pull-left inline-image img-thumbnail'
+        body.find('img[width]').addClass(img_class)
+        body.find('img[width].pull-left').parent('figure').addClass('pull-left')
+
+        post.body = $('<div>').append(body.clone()).html().replace(/<!-- pagebreak -->/g, '<div class="clearfix"></div>')
+        
         
         if !angular.isUndefined(vm.highlight) || !angular.isUndefined(vm.highlight) && !angular.isUndefined(post.highlight) && vm.highlight != post.highlight
           init_highlight(post, vm.highlight)
@@ -76,12 +85,14 @@ do ->
         if post.highlight
           vm.toggleHighlight true 
         
-        if post.author_id
+        if !post.author && post.author_id
           Users.getById(post.author_id).then (user) ->
             vm.author = user
             vm.loaded = true
           return
         else
+          vm.author = {}
+          vm.author.fullname = post.author
           vm.loaded = true
         
       return

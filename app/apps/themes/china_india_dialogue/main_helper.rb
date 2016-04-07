@@ -56,8 +56,10 @@ module Themes::ChinaIndiaDialogue::MainHelper
     postType = CamaleonCms::PostType.find_by_slug('post')
     unless postType.get_field_groups.where(slug: 'customizations').any?
       group = postType.add_field_group({name: "Customizations", slug: "customizations"})
+      group.add_field({"name"=>"Author", "slug"=>"author"}, {field_key: "text_box", translate: true, default_value: ''})
       group.add_field({"name"=>"Featured Image Caption", "slug"=>"fimage_caption"}, {field_key: "text_box", translate: true, default_value: ''})
-      group.add_field({"name"=>"Inline images class", "slug"=>"images_class"}, {field_key: "text_box", translate: true, default_value: 'img-responsive'})
+      group.add_field({"name"=>"Responsive images class", "slug"=>"images_class"}, {field_key: "text_box", translate: true, default_value: 'img-responsive img-thumbnail'})
+      group.add_field({"name"=>"Fixed width images class", "slug"=>"fixed_width_images_class"}, {field_key: "text_box", translate: true, default_value: 'pull-left inline-image img-thumbnail'})
     end
     
     ['Main Menu', "Footer 1", "Footer 2"].each do |item|
