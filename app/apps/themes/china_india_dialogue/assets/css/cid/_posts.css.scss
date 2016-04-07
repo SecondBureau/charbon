@@ -148,6 +148,10 @@ bh-post[template="'std'"] {
     line-height: 180%;
     margin: 0;
     
+    p:first-child {
+      margin-top: 1em;
+    }
+    
     p {
       font-size: 130%;
       margin: 0 0 0.5em 0;
@@ -163,6 +167,9 @@ bh-post[template="'std'"] {
       text-transform: uppercase;
     }
     
+    img.pull-left:only-child {
+      margin-right: 10px;
+    }
     
   }
   
@@ -303,6 +310,10 @@ bh-post[template="'std'"] {
 figure.image {
   text-align: center; 
   position:relative;
+  
+  &.pull-left {
+    margin-right: 10px;
+  }
   
   img:hover + figcaption {
     visibility: visible;
