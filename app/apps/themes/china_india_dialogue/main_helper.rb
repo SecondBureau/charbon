@@ -1,3 +1,6 @@
+# theme = CamaleonCms::Theme.find_by_slug('china_india_dialogue')
+
+
 module Themes::ChinaIndiaDialogue::MainHelper
   def self.included(klass)
     # klass.helper_method [:my_helper_method] rescue "" # here your methods accessible from views
@@ -51,6 +54,7 @@ module Themes::ChinaIndiaDialogue::MainHelper
       group.add_field({"name"=>"Facebook", "slug"=>"social_facebook"}, {field_key: "text_box", translate: true, default_value: ''})
       group.add_field({"name"=>"Twitter", "slug"=>"social_twitter"}, {field_key: "text_box", translate: true, default_value: ''})
       group.add_field({"name"=>"LinkedIn", "slug"=>"social_linkedin"}, {field_key: "text_box", translate: true, default_value: ''})
+      group.add_field({"name"=>"WeChat", "slug"=>"social_wechat"}, {field_key: "file", translate: true, default_value: ''})
     end
     
     postType = CamaleonCms::PostType.find_by_slug('post')

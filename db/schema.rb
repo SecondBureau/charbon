@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151212095328) do
+ActiveRecord::Schema.define(version: 20160319112345) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -168,5 +168,105 @@ ActiveRecord::Schema.define(version: 20151212095328) do
   add_index "cama_users", ["role"], name: "index_cama_users_on_role", using: :btree
   add_index "cama_users", ["site_id"], name: "index_cama_users_on_site_id", using: :btree
   add_index "cama_users", ["username"], name: "index_cama_users_on_username", using: :btree
+
+  create_table "plugins_attacks", force: :cascade do |t|
+    t.string   "path"
+    t.string   "browser_key"
+    t.integer  "site_id"
+    t.datetime "created_at"
+  end
+
+  add_index "plugins_attacks", ["browser_key"], name: "index_plugins_attacks_on_browser_key", using: :btree
+  add_index "plugins_attacks", ["path"], name: "index_plugins_attacks_on_path", using: :btree
+  add_index "plugins_attacks", ["site_id"], name: "index_plugins_attacks_on_site_id", using: :btree
+
+  create_table "plugins_contact_forms", force: :cascade do |t|
+    t.integer  "site_id"
+    t.integer  "count"
+    t.integer  "parent_id"
+    t.string   "name"
+    t.string   "slug"
+    t.text     "description"
+    t.text     "value"
+    t.text     "settings"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "plugins_subscriber_group_items", force: :cascade do |t|
+    t.integer  "group_id"
+    t.integer  "item_id"
+    t.string   "status",     default: "active"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "plugins_subscriber_group_items", ["group_id"], name: "index_plugins_subscriber_group_items_on_group_id", using: :btree
+  add_index "plugins_subscriber_group_items", ["item_id"], name: "index_plugins_subscriber_group_items_on_item_id", using: :btree
+
+  create_table "plugins_subscriber_groups", force: :cascade do |t|
+    t.string   "name"
+    t.string   "key"
+    t.boolean  "send_welcome"
+    t.string   "welcome_subject"
+    t.text     "welcome_msg"
+    t.boolean  "send_left_group"
+    t.string   "left_subject"
+    t.text     "left_msg"
+    t.integer  "site_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "plugins_subscriber_groups", ["site_id"], name: "index_plugins_subscriber_groups_on_site_id", using: :btree
+
+  create_table "plugins_subscriber_items", force: :cascade do |t|
+    t.string   "name"
+    t.string   "email"
+    t.string   "status",          default: "approved"
+    t.datetime "unsubscribed_at"
+    t.integer  "site_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "plugins_subscriber_items", ["site_id"], name: "index_plugins_subscriber_items_on_site_id", using: :btree
+
+  create_table "plugins_subscriber_promotion_groups", force: :cascade do |t|
+    t.integer "promotion_id"
+    t.integer "group_id"
+  end
+
+  add_index "plugins_subscriber_promotion_groups", ["group_id"], name: "index_plugins_subscriber_promotion_groups_on_group_id", using: :btree
+  add_index "plugins_subscriber_promotion_groups", ["promotion_id"], name: "index_plugins_subscriber_promotion_groups_on_promotion_id", using: :btree
+
+  create_table "plugins_subscriber_promotion_items", force: :cascade do |t|
+    t.integer  "promotion_id"
+    t.integer  "item_id"
+    t.integer  "qty_opened",   default: 0
+    t.string   "status",       default: "pending"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "plugins_subscriber_promotion_items", ["item_id"], name: "index_plugins_subscriber_promotion_items_on_item_id", using: :btree
+  add_index "plugins_subscriber_promotion_items", ["promotion_id"], name: "index_plugins_subscriber_promotion_items_on_promotion_id", using: :btree
+
+  create_table "plugins_subscriber_promotions", force: :cascade do |t|
+    t.string   "name"
+    t.string   "key"
+    t.string   "layout"
+    t.string   "template"
+    t.string   "email_from"
+    t.string   "email_cc"
+    t.string   "subject"
+    t.text     "content"
+    t.text     "status",     default: "pending"
+    t.integer  "site_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "plugins_subscriber_promotions", ["site_id"], name: "index_plugins_subscriber_promotions_on_site_id", using: :btree
 
 end

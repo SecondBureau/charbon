@@ -2,14 +2,17 @@ do ->
 
   'use strict'
  
-  camThemeField = (Theme) ->
+  camThemeField = (Theme, $sce, $compile) ->
     
     controller = ->
+
       vm = this
       
       vm.html = (vm.type == 'html')
       vm.image = (vm.type == 'image')
       vm.link = (vm.type == 'link')
+      vm.popup = (vm.type == 'popup')
+      vm.show = false
       fieldSlug = vm.slug
       themeSlug = vm.theme
       Theme.getField(themeSlug, fieldSlug).then (response) ->
@@ -18,6 +21,10 @@ do ->
           contents = "<img src='" + contents + "' class='img-responsive' />"
         if vm.link
           contents = "<a href='" + contents + "'>" + vm.linkContents + "</a>"
+        if vm.popup
+          contents = "<div id='' class='popup hidden' ng-class='{hidden: true}'><img src='" + contents + "'></div><a href class='show' ng-click=\"count = count + 1\" ng-init=\"count=0\">count: {{count}}</a>"
+          contents = $compile(contents)(vm)
+          debugger
         vm.contents = contents
         return
       return
@@ -32,9 +39,10 @@ do ->
         theme: '@'
         type: "@"
         linkContents: "@"
+        popupButton: "@"
       template: '<div ng-bind-html="vm.contents"></div>'
     }
 
-  camThemeField.$inject = ['Theme']
+  camThemeField.$inject = ['Theme', '$sce', '$compile']
   angular.module('camaleonCms').directive 'camThemeField', camThemeField
 

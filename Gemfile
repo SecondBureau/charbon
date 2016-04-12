@@ -35,6 +35,9 @@ gem 'haml'
 #gem "camaleon_cms", github: 'SecondBureau'
 gem "camaleon_cms", :git => 'https://github.com/SecondBureau/camaleon-cms.git'
 #gem "camaleon_cms"
+gem 'camaleon_ecommerce', github:  'owen2345/camaleon-ecommerce'
+gem 'cama_subscriber', github:  'owen2345/cama_subscriber'
+gem 'camaleon_post_order', github:  'owen2345/camaleon-post-order-plugin'
 
 # An opinionated micro-framework for creating REST-like APIs in Ruby. http://www.ruby-grape.org
 gem 'grape'
