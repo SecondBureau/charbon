@@ -28,7 +28,7 @@
           
           <div class="col-md-5">
             <div class="footer-block">
-              <%= theme_image_tag 'decorations/footer.png', alt: "*" %>
+              <%= theme_image_tag 'decorations/footer.png', width: "72", height: "4", alt: "----" %>
               <p>Contact form:</p>
               <form>
                 <div class="form-group">
@@ -51,7 +51,7 @@
           
           <div class="col-md-3">
             <div class="footer-block">
-              <%= theme_image_tag 'decorations/footer.png', alt: "*" %>
+              <%= theme_image_tag 'decorations/footer.png', width: "72", height: "4", alt: "----" %>
               <%= raw current_theme.the_field("address") %>
             </div>
           </div>
@@ -63,7 +63,7 @@
     <div class="container">
         <div class="row">
           <div class="col-md-12">
-            <p>&copy;<%= Time.now.strftime('%Y') %> China India Dialogue</p>
+            <p>&copy;<%= Time.now.strftime('%Y') %> <%= current_site.name %></p>
           </div>
         </div>
     </div>

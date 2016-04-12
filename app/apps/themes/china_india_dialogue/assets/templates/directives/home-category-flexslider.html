@@ -1,12 +1,5 @@
+<div ng-show="!(posts.length > 0)" us-spinner="{radius:10, width:3, length: 8}" style="position:relative;width:100%;margin:20px 0 80px 0"></div>
+
 <flex-slider flex-slide="post in posts track by $index">
-    <li>
-        <img ng-src="{{post.featured_image_url}}">
-        <p class="flex-caption">
-          <span class="title"><a href="#/post/{{post.slug}}">{{post.title}}</a></span>
-          <br/>
-          <span class="category-color"><i>By</i></span> 
-          <span class="home-post-author">{{post.author}}</span>
-          <span class="home-post-published">{{post.published_at | date : format : timezone}}</span>
-        </p>
-    </li>
+  <li><bh-post id="post.id" template="'slide'" slug="post.slug"></bh-post></li>
 </flex-slider>

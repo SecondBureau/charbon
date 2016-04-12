@@ -7,7 +7,7 @@ do ->
     controller = ->
       slug = $stateParams.slug
       vm = this
-      Posts.getBySlug(slug).then (post) ->
+      Posts.getBySlug(slug, false).then (post) ->
         search = {
           e: [post.id]
           categories: if parseInt(post.category_id) > 0 then [post.category_id] else []

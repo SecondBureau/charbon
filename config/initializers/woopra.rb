@@ -1,0 +1,1 @@
+$woopra_domain_name = ENV['WOOPRA_DOMAIN_NAME']

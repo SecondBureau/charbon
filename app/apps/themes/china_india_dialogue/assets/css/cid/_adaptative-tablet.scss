@@ -1,0 +1,27 @@
+@media (max-width: 767px) {
+  
+  .navbar-default {
+    background-color: #000;
+    
+    button.toggle {
+      
+      .icon-bar {
+        background-color: #fff !important;
+      }
+    }
+  }
+  
+  
+  .navbar .nav-justified button.toggle {
+    position: fixed;
+    right: 30px;
+    top: 10px;
+    
+    border: solid 1px #fff;
+    border-radius: 2px;
+    
+    .dropdown-menu{
+      left: -300%;
+    }
+  }
+}

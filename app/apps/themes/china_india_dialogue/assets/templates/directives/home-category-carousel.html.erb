@@ -1,28 +1,28 @@
 
-
-<!-- General template -->
+<!-- Carousel template -->
   <div class="home-block {{category.class}} home-block-{{category.slug}}" ng-class="{'home-block-loading': !(posts.length > 0)}">
     <div class="home-block-header">
-      <img cam-src='decorations/category.png' class="pull-right" alt="*" />
-      <h2 class="category-color">{{category.label}}</h2>
+      <img cam-src='decorations/category.png' width="15" height="30" class="pull-right" alt="*" />
+      <h2 class="category-color"><a ui-sref="category({slug: category.slug})">{{category.label}}</a></h2>
     </div>
     
     <div>
       <div class="home-block-contents" >
         <div ng-show="!(posts.length > 0)" us-spinner="{radius:10, width:3, length: 8}" style="position:relative;width:100%;margin:20px 0 80px 0"></div>
-        <flex-slider flex-slide="post in posts track by $index" animation="slide" itemWidth="210" itemMargin="5">
-            <li>
-                <img ng-src="{{post.featured_image_url}}">
-                <p class="flex-caption">
-                  <span class="title"><a href="#/post/{{post.slug}}">{{post.title}}</a></span>
-                  <br/>
-                  <span class="category-color"><i>By</i></span> 
-                  <span class="home-post-author">{{post.author}}</span>
-                  <span class="home-post-published">{{post.published_at | date : format : timezone}}</span>
-                </p>
-            </li>
-        </flex-slider>
+        
+        <!-- <div id="slick" data-slick='{"slidesToShow": 4, "slidesToScroll": 2}'>
+          <div ng-repeat="post in posts track by $index" style="padding:0 5px 0 5px">
+            <bh-post id="post.id" template="'slide-slick'" slug="post.slug"></bh-post>
+          </div>
+        </div> -->
+          
+          <div bh-slick data-slick='{"slidesToShow": 3, "slidesToScroll": 1, "dots": true, "speed": 500}' id="bh-slick">
+            <div ng-repeat="post in posts" style="padding:0 5px 0 5px">
+              <bh-post id="post.id" template="'slide-slick'" slug="post.slug"></bh-post>
+            </div>
+          </div>
         
       </div>
     </div>
  </div>
+ 

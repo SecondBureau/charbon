@@ -1,6 +1,6 @@
 <div class='row row-eq-height'>
   <div class='col-md-8 row-eq-height'>
-    <bh-home-category template="flexslider" slug="spotlight" bh-posts="{{::getP('spotlight')}}"bh-category="{{::getC('spotlight')}}">
+    <bh-home-category template="flexslider" slug="spotlight" bh-posts="{{::getP('spotlight')}}" bh-category="{{::getC('spotlight')}}">
     </bh-home-category>
   </div>
   <div class='col-md-4'>
@@ -8,6 +8,8 @@
   </div>
  </div>
 
+
+ 
 <div class='row row-eq-height'>
   <div class='col-md-8 row-eq-height'>
     <bh-home-category template="business" slug="business" bh-posts="{{::getP('business')}}"bh-category="{{::getC('business')}}">
@@ -18,6 +20,7 @@
     </bh-home-category>
   </div>
 </div>
+
 
 <div class='row'><div class='col-md-12 section-separator'></div></div>
 
@@ -52,8 +55,11 @@
 </div>
 
 <div class='row row-eq-height'>
-  <div class='col-md-6 row-eq-height' ng-repeat="slug in ['one-road-one-belt', 'environment']">
-    <bh-home-category template="solo" bh-posts="{{::getP(slug)}}" bh-category="{{::getC(slug)}}"></bh-home-category>
+  <div class='col-md-4 row-eq-height'>
+    <bh-home-category template="solo" bh-posts="{{::getP('one-road-one-belt')}}" bh-category="{{::getC('one-road-one-belt')}}"></bh-home-category>
+  </div>
+  <div class='col-md-8 row-eq-height'>
+    <bh-home-category template="solo" bh-posts="{{::getP('environment')}}" bh-category="{{::getC('environment')}}"></bh-home-category>
   </div>
 </div>
 
@@ -62,10 +68,10 @@
 </div>
 
 <div class='row row-eq-height'>
-  <div class='col-md-4 row-eq-height'>
+  <div class='col-md-3 row-eq-height'>
     <bh-home-category template="std" bh-posts="{{::getP('culture')}}" bh-category="{{::getC('culture')}}"></bh-home-category>
   </div>
-  <div class='col-md-8 row-eq-height'>
+  <div class='col-md-9 row-eq-height'>
     <bh-home-category template="carousel" bh-posts="{{::getP('travel-image')}}" bh-category="{{::getC('travel-image')}}"></bh-home-category>
   </div>
 
@@ -78,4 +84,4 @@
   <div class="col-md-10">
    <cam-theme-field slug="partners" theme="china_india_dialogue" type="html"></cam-theme-field>
   </div>
-</div>
+</div> 

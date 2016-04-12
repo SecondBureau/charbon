@@ -1,8 +1,8 @@
 <!-- Column Category Template -->    
   <div class="home-block {{category.class}} home-block-{{category.slug}}" ng-class="{'home-block-loading': !(posts.length > 0)}">
     <div class="home-block-header">
-      <img cam-src='decorations/category.png' class="pull-right" alt="*" />
-      <h2 class="category-color">{{category.label}}</h2>
+      <img cam-src='decorations/category.png' width="15" height="30" class="pull-right" alt="*" />
+      <h2 class="category-color"><a ui-sref="category({slug: category.slug})">{{category.label}}</a></h2>
     </div>
     <div class="row">
       <div class='col-md-12' ng-show="!(posts.length > 0)" us-spinner="{radius:10, width:3, length: 8}" style="position:relative;width:100%;margin:80px 0 20px 0"></div>

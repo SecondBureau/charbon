@@ -3,20 +3,20 @@
 # .NET, PHP, Python and Node applications with deep visibility and low
 # overhead.  For more information, visit www.newrelic.com.
 #
-# Generated January 30, 2016
-# 
-# This configuration file is custom generated for app46754342@heroku.com
+# Generated February 26, 2016
+#
+# This configuration file is custom generated for China Pictorial
 #
 # For full documentation of agent configuration options, please refer to
 # https://docs.newrelic.com/docs/agents/ruby-agent/installation-configuration/ruby-agent-configuration
 
 common: &default_settings
   # Required license key associated with your New Relic account.
-  license_key: ef2d670db2f4a7caadae0912f8b47d0caa32047e
+  license_key: <%= ENV['NEW_RELIC_KEY'] %>
 
   # Your application name. Renaming here affects where data displays in New
   # Relic.  For more details, see https://docs.newrelic.com/docs/apm/new-relic-apm/maintenance/renaming-applications
-  app_name: My Application
+  app_name: <%= ENV['NEW_RELIC_APP_NAME'] || 'My Application' %>
 
   # To disable the agent regardless of other settings, uncomment the following:
   # agent_enabled: false

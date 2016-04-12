@@ -15,10 +15,11 @@
     <p class="post-published">
       <time datetime="{{vm.post.published_at | date:'yyyy-MM-dd HH:mm:ssZ'}}" itemprop="datePublished">{{vm.post.published_at | date : format : timezone}}</time>
     </p>
-    <figure itemprop="image" itemscope="" itemtype="http://schema.org/ImageObject">
+    <figure class="image" itemprop="image" itemscope="" itemtype="http://schema.org/ImageObject">
       <img class="img-responsive img-thumbnail" ng-src="{{vm.post.featured_image_url}}" />
       <figcaption itemprop="description" class="post-caption">
-        <span itemprop="copyrightHolder"></span>
+        {{vm.post.fimage_caption}}
+        <span itemprop="copyrightHolder">{{vm.post.copyright_holder}}</span>
       </figcaption>
     </figure>
   </header>

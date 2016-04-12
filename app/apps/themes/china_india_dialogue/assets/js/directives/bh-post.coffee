@@ -2,7 +2,7 @@ do ->
 
   'use strict'
   
-  bhPost = ($stateParams, $location, Posts, Users) ->
+  bhPost = ($sce, $stateParams, $location, Posts, Users) ->
 
     highlight = (content, words) ->
       if words && content
@@ -36,7 +36,6 @@ do ->
         vm.showSendEmailForm = false
       
       vm.toggleHighlight = (turn_on) ->
-
         if angular.isUndefined(turn_on) && !vm.post.highlighted || !angular.isUndefined(turn_on) && turn_on
           vm.post.body    = vm.post.bodies[1]
           vm.post.summary = vm.post.summaries[1]
@@ -52,10 +51,28 @@ do ->
       
       # TODO: Use post.id if slug undefined
       Posts.getBySlug(slug).then (post) ->
+
         vm.loading = false
         if post == '404'
           $location.hash('/error/404')
           return
+        
+        body = $(post.body)
+        
+        img_class = post.images_class
+        if angular.isUndefined(img_class) || !img_class
+          img_class = 'img-responsive img-thumbnail'
+        body.find('img:not([width])').addClass(img_class)
+        
+        img_class = post.fixed_width_images_class
+        if angular.isUndefined(img_class) || !img_class
+          img_class = 'pull-left inline-image img-thumbnail'
+        body.find('img[width]').addClass(img_class)
+        body.find('img[width].pull-left').parent('figure').addClass('pull-left')
+
+        post.body = $('<div>').append(body.clone()).html().replace(/<!-- pagebreak -->/g, '<div class="clearfix"></div>')
+        
+        
         if !angular.isUndefined(vm.highlight) || !angular.isUndefined(vm.highlight) && !angular.isUndefined(post.highlight) && vm.highlight != post.highlight
           init_highlight(post, vm.highlight)
           post.highlight = vm.highlight
@@ -64,16 +81,20 @@ do ->
           post.highlightable  = false
         
         vm.post = post
+        
         if post.highlight
           vm.toggleHighlight true 
         
-        if post.author_id
+        if !post.author && post.author_id
           Users.getById(post.author_id).then (user) ->
             vm.author = user
             vm.loaded = true
           return
         else
+          vm.author = {}
+          vm.author.fullname = post.author
           vm.loaded = true
+        
       return
 
     {
@@ -87,14 +108,11 @@ do ->
         template: "="
         usePostType: "="
       bindToController: true
-      template : '<p ng-show="vm.loading" spinner-on="vm.loading" us-spinner="{radius:20, width:8, length: 16}" style="position:relative;width:100%;min-height:150px;"></p><div ng-include="vm.getTemplateUrl()"></div>'
-      # templateUrl: (elem, attr) ->
-      #   tpl = attr.template or 'std'
-      #   template_path('directives/post-' + tpl + '.html')
+      template : '<div ng-include="vm.getTemplateUrl()"></div>'
 
     }
 
-  bhPost.$inject = ['$stateParams', '$location', 'Posts', 'Users']
+  bhPost.$inject = ['$sce', '$stateParams', '$location', 'Posts', 'Users']
   angular.module('bahnhof').directive 'bhPost', bhPost
   
 

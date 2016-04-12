@@ -1,0 +1,255 @@
+a {
+  color: #000;
+}
+
+.cid-ad-grey {
+  background: #dadbdb;
+}
+
+bh-home-category {
+  min-height: 250px;
+  
+}
+
+.home-block-loading {
+  background: #efeded;
+}
+
+bh-home-category, .home-block {
+  width:100%;
+}
+
+.author-grey {
+  font-style: italic;
+  color: $dark-grey;
+}
+
+.home-block {
+  
+   p {
+     margin-bottom:2px;
+  }
+
+  h2 {
+    line-height: 30px;
+  }
+
+  h3 {
+    font-weight: bold;
+  }
+
+  .home-post-author, 
+  .home-post-published,
+  .home-post-slogan {
+    @extend .author-grey;
+  } 
+}
+
+.home-block-column {
+  
+  padding-right: 0px;
+  background-image: cid-image_url('backgrounds/column.png');
+  
+  .home-post-slogan
+  
+  .home-post-author {
+    font-style: normal;
+    font-size: 15px;
+    
+  
+    
+//CIT 3386
+//    &:before {
+//      content: " ";
+//      display: inline-block;
+//      width: 29px;
+//      height: 16px;
+//      background: cid-image_url('decorations/twitter.png');
+//    }
+  }
+
+  .home-post-group {
+    margin-left: 95px;
+  }
+
+  .home-block-contents {
+    padding-right: 20px;
+  }
+
+}
+
+.home-block-one-road-one-belt .home-block-contents, 
+.home-block-environment .home-block-contents {
+  padding-bottom: 10px;
+  
+  .img-featured {
+    margin-top:20px;
+  }
+}
+
+.home-block-reverse {
+  .home-post-author, 
+  .home-post-published {
+    color: #fff;
+  }
+}
+
+.flex-caption {
+  .home-post-author, 
+  .home-post-published {
+    color: #fff;
+  }
+}
+  
+
+p.home-post-summary {
+  margin-bottom: 10px;
+}
+
+
+
+.home-block-business .category-color {
+  color: $red;
+  a {
+    color: $red;
+    &:hover {
+      text-decoration: underline $red;
+    }
+  }
+}
+
+.home-block-industry .category-color {
+  color: $blue;
+  a {
+    color: $blue;
+    &:hover {
+      text-decoration: underline $blue;
+    }
+  }
+}
+
+.home-block-internet .category-color {
+  color: $green;
+  a {
+    color: $green;
+    &:hover {
+      text-decoration: underline $green;
+    }
+  }
+}
+
+.home-block-society .category-color {
+  color: $violet;
+  a {
+    color: $violet;
+    &:hover {
+      text-decoration: underline $violet;
+    }
+  }
+}
+
+.home-block-column .category-color {
+  color: $light-blue;
+  a {
+    color: $light-blue;
+    &:hover {
+      text-decoration: underline $light-blue;
+    }
+  }
+}
+
+.home-block-culture .category-color {
+  color: $light-green;
+  a {
+    color: $light-green;
+    &:hover {
+      text-decoration: underline $light-green;
+    }
+  }
+}
+
+.home-block-travel-image .category-color {
+  color:$violet;
+  a {
+    color: $violet;
+    &:hover {
+      text-decoration: underline $violet;
+    }
+  }
+}
+
+.home-block-reverse .category-color {
+  color: #000;
+}
+
+
+.home-block-border, .home-block-reverse, .home-block-column {
+  padding: 10px 20px 20px 20px;
+}
+
+.home-block-border {
+  border: #fff solid 1px;
+}
+
+
+.home-block-reverse {
+  color: #fff;
+  a {
+    color: #fff;
+    &:hover {
+      text-decoration: underline #fff;
+    }
+  }
+}
+
+
+.home-block-reverse h2.category-color, .home-block-reverse h3 a {
+  color: #fff;
+}
+
+.home-block-business {
+  @include border-background($orange, '#fff');
+}
+
+.home-block-policy {
+  @include border-background($orange, $orange);
+}
+
+.home-block-one-road-one-belt {
+  @include border-background($light-blue, $light-blue);
+}
+
+.home-block-environment {
+  @include border-background($green, $green);
+}
+
+.home-post-group, .posts-group {
+  padding-left: 0;
+  margin-bottom: 20px;
+}
+.home-post-item, .posts-item {
+  position: relative;
+  display: block;
+  padding: 10px 0px;
+  margin-bottom: -1px;
+}
+
+li.posts-item {
+  border-bottom: solid 1px #9fa0a0;
+  margin-top: 10px;
+}
+
+.home-post-item:first-child, .posts-item:first-child {
+  padding: 0px;
+}
+.home-post-item:last-child, .posts-item:last-child {
+  margin-bottom: 0;
+}
+
+.posts-item h3 {
+  margin:0px;
+}
+
+.columnist {
+  max-width:100px;
+}
