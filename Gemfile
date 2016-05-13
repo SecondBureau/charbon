@@ -92,5 +92,3 @@ end
 require './lib/plugin_routes' 
 instance_eval(PluginRoutes.draw_gems)
 
-
-gem 'woopra', path:  '/Users/gilles/Workspaces/charbon/app/apps/plugins/woopra/'
