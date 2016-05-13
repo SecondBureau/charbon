@@ -7,6 +7,9 @@
 //= require ./vendor/angular-flexslider
 //= require ./vendor/angular-checklist-model
 
+//= require ./vendor/angulartics.min
+//= require ./vendor/angulartics-woopra.min
+
     
 //= require ./vendor/spin
 //= require ./vendor/angular-spinner

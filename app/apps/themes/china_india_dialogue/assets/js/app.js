@@ -15,7 +15,7 @@
  * MIT License
  */
 
-angular.module('bahnhof', ['ionic', 'bahnhof.config', 'angular-toArrayFilter', 'infinite-scroll', 'ui.bootstrap', 'angularSpinner', 'angular-flexslider', 'camaleonCms', 'ja.qr', 'checklist-model'])
+angular.module('bahnhof', ['ionic', 'bahnhof.config', 'angular-toArrayFilter', 'infinite-scroll', 'ui.bootstrap', 'angularSpinner', 'angular-flexslider', 'camaleonCms', 'ja.qr', 'checklist-model', 'angulartics', 'angulartics.woopra'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
