@@ -1,4 +1,6 @@
-<img bh-holder="{{vm.post.image_width}}x{{vm.post.image_height}}" bh-src="{{vm.post.featured_image_url}}">
+<a ui-sref="post({slug: vm.post.slug})">
+  <img bh-holder="{{vm.post.image_width}}x{{vm.post.image_height}}" bh-src="{{vm.post.featured_image_url}}">
+</a>
 <p class="flex-caption">
   <span class="title"><a ui-sref="post({slug: vm.post.slug})">{{vm.post.title}}</a></span>
   <br/>

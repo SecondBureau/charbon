@@ -22,9 +22,10 @@ do ->
         if vm.link
           contents = "<a href='" + contents + "'>" + vm.linkContents + "</a>"
         if vm.popup
-          contents = "<div id='' class='popup hidden' ng-class='{hidden: true}'><img src='" + contents + "'></div><a href class='show' ng-click=\"count = count + 1\" ng-init=\"count=0\">count: {{count}}</a>"
-          contents = $compile(contents)(vm)
-          debugger
+          contents = "<a href='#' class='popup' data-popup-content='"+ contents + "'>" + vm.popupButton + "</a>"
+          #contents = '<button type="button" class="popup btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">Launch demo modal</button>'
+          contents = $sce.trustAsHtml(contents)
+          
         vm.contents = contents
         return
       return

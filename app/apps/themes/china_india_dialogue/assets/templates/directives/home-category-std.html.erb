@@ -10,11 +10,13 @@
       <ul class="home-post-group">
         <li class="home-post-item" ng-repeat="post in posts">
           <bh-post id="post.id" template="'mini'" slug="post.slug"></bh-post>
+          <a ui-sref="category({slug: category.slug})">
           <img 
             ng-if="category.show_featured_on_home == true" 
             class="img-responsive" 
             bh-holder="{{post.image_width}}x{{post.image_height}}" 
             bh-src="{{post.featured_image_url}}" />
+          </a>
         </li>
       </ul>
     </div>

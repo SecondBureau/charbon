@@ -15,20 +15,17 @@ do ->
       postIds
 
     updatePosts = (newPosts) ->
-      
       if !angular.isArray(newPosts)
-        newPosts = [ posts ]
-
+        newPosts = [ newPosts ]
       for newPost in newPosts
         found = false
         for post in posts
           if (post.id == newPost.id)
             found = true
-            angular.extend(post, newPost)
+            angular.merge(post, newPost)
             break
         if !found
           posts.push newPost  
-      
       posts
 
     {
@@ -50,6 +47,7 @@ do ->
           , (response) ->
               '404'
       homePosts: (search) ->
+        console.log 'homePosts >' + homePosts.length
         if homePosts.length > 0
           homePosts
         else
@@ -59,10 +57,13 @@ do ->
             cache: true
             params: 
               q: search).then (response) ->
-            posts = updatePosts(response.data)
             homePosts = response.data
+            updatePosts(angular.copy(response.data))
+            homePosts
+            
             
       search: (search, offset, limit) ->
+        console.log 'search'
         $http(
           url: posts_endpoint
           method: 'GET'
