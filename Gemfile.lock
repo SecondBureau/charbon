@@ -1,4 +1,11 @@
 GIT
+  remote: git://github.com/owen2345/cama_contact_form.git
+  revision: aac618963dd959df9c67032c8df0c07d745dcff3
+  specs:
+    cama_contact_form (0.0.11)
+      rails
+
+GIT
   remote: git://github.com/owen2345/cama_subscriber.git
   revision: 83e477ebd16a42c860043bc9cbe52c20ca593a22
   specs:
@@ -102,8 +109,6 @@ GEM
     breadcrumbs_on_rails (2.3.1)
     builder (3.2.2)
     byebug (9.0.5)
-    cama_contact_form (0.0.11)
-      rails
     cancancan (1.15.0)
     chunky_png (1.3.6)
     coercible (1.0.0)
@@ -347,6 +352,7 @@ PLATFORMS
 
 DEPENDENCIES
   byebug
+  cama_contact_form!
   cama_subscriber!
   camaleon_cms!
   camaleon_ecommerce!

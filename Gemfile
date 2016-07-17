@@ -38,6 +38,7 @@ gem "camaleon_cms", :git => 'https://github.com/SecondBureau/camaleon-cms.git'
 gem 'camaleon_ecommerce', github:  'owen2345/camaleon-ecommerce'
 gem 'cama_subscriber', github:  'owen2345/cama_subscriber'
 gem 'camaleon_post_order', github:  'owen2345/camaleon-post-order-plugin'
+gem 'cama_contact_form', github:  'owen2345/cama_contact_form'
 
 # An opinionated micro-framework for creating REST-like APIs in Ruby. http://www.ruby-grape.org
 gem 'grape'
