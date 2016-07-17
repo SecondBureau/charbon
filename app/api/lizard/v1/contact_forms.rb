@@ -1,5 +1,5 @@
 class MyKlass
-  include Plugins::ContactForm::ContactFormHtmlHelper
+  #include Plugins::ContactForm::ContactFormHtmlHelper
   include CamaleonCms::HooksHelper
   include CamaleonCms::CaptchaHelper
   include Rails.application.routes.url_helpers
