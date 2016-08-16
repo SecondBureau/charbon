@@ -1,3 +1,5 @@
+//= require ./camThemeFieldCallback
+
 //= require ./vendor/jquery-2.2.0
 //= require ./vendor/jquery.flexslider
 //= require ./vendor/bootstrap.min
@@ -31,6 +33,8 @@
 //= require ./controllers
 //= require ./services
 //= require ./directives
+
+
 
 $(document).on("click", '.popup', function( event ) {
   event.preventDefault();

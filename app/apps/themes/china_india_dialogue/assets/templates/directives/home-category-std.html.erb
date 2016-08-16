@@ -10,7 +10,7 @@
       <ul class="home-post-group">
         <li class="home-post-item" ng-repeat="post in posts">
           <bh-post id="post.id" template="'mini'" slug="post.slug"></bh-post>
-          <a ui-sref="category({slug: category.slug})">
+          <a ui-sref="post({slug: vm.post.slug})">
           <img 
             ng-if="category.show_featured_on_home == true" 
             class="img-responsive" 

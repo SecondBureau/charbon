@@ -47,7 +47,7 @@ do ->
           , (response) ->
               '404'
       homePosts: (search) ->
-        console.log 'homePosts >' + homePosts.length
+        #console.log 'homePosts >' + homePosts.length
         if homePosts.length > 0
           homePosts
         else
@@ -63,7 +63,7 @@ do ->
             
             
       search: (search, offset, limit) ->
-        console.log 'search'
+        #console.log 'search'
         $http(
           url: posts_endpoint
           method: 'GET'

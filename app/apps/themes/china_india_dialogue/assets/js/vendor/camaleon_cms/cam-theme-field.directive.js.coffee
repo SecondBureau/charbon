@@ -2,7 +2,7 @@ do ->
 
   'use strict'
  
-  camThemeField = (Theme, $sce, $compile) ->
+  camThemeField = (Theme, $sce, $compile, $timeout) ->
     
     controller = ->
 
@@ -27,6 +27,10 @@ do ->
           contents = $sce.trustAsHtml(contents)
           
         vm.contents = contents
+        
+        $timeout ->
+          camThemeFieldCallback(themeSlug, fieldSlug)
+        
         return
       return
 
@@ -44,6 +48,6 @@ do ->
       template: '<div ng-bind-html="vm.contents"></div>'
     }
 
-  camThemeField.$inject = ['Theme', '$sce', '$compile']
+  camThemeField.$inject = ['Theme', '$sce', '$compile', '$timeout']
   angular.module('camaleonCms').directive 'camThemeField', camThemeField
 

@@ -1,4 +1,22 @@
 GIT
+  remote: git://github.com/SecondBureau/camaleon-cms.git
+  revision: d846b8a61012a64c97372e44c2e2b541b4ee18e1
+  specs:
+    camaleon_cms (2.3.1)
+      aws-sdk (~> 2)
+      bcrypt
+      breadcrumbs_on_rails
+      cama_contact_form (~> 0.0.11)
+      cancancan (~> 1.10)
+      draper (>= 1.3)
+      font-awesome-rails
+      meta-tags (~> 2.0)
+      mini_magick
+      tinymce-rails (~> 4.3)
+      will_paginate
+      will_paginate-bootstrap
+
+GIT
   remote: git://github.com/owen2345/cama_contact_form.git
   revision: aac618963dd959df9c67032c8df0c07d745dcff3
   specs:
@@ -14,7 +32,7 @@ GIT
 
 GIT
   remote: git://github.com/owen2345/camaleon-ecommerce.git
-  revision: 3a7f1b85fe57708ad9f92cde43ebd582897b7c96
+  revision: 46999dc13b496c231c313e4f328b697605ef4295
   specs:
     camaleon_ecommerce (1.1)
       activemerchant (~> 1.54)
@@ -28,26 +46,6 @@ GIT
   specs:
     camaleon_post_order (0.0.2)
       rails
-
-GIT
-  remote: https://github.com/SecondBureau/camaleon-cms.git
-  revision: 9f91de97a28a4ec7cef836eb490282c7195aa929
-  specs:
-    camaleon_cms (2.2.1)
-      aws-sdk (~> 2)
-      bcrypt
-      breadcrumbs_on_rails
-      cama_contact_form (~> 0.0.11)
-      cancancan (~> 1.10)
-      draper (~> 1.3)
-      font-awesome-rails
-      meta-tags (~> 2.0)
-      mini_magick
-      mobu
-      protected_attributes
-      tinymce-rails (~> 4.3)
-      will_paginate
-      will_paginate-bootstrap
 
 GEM
   remote: https://rubygems.org/
@@ -93,12 +91,12 @@ GEM
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
     arel (6.0.3)
-    aws-sdk (2.3.22)
-      aws-sdk-resources (= 2.3.22)
-    aws-sdk-core (2.3.22)
+    aws-sdk (2.5.3)
+      aws-sdk-resources (= 2.5.3)
+    aws-sdk-core (2.5.3)
       jmespath (~> 1.0)
-    aws-sdk-resources (2.3.22)
-      aws-sdk-core (= 2.3.22)
+    aws-sdk-resources (2.5.3)
+      aws-sdk-core (= 2.5.3)
     axiom-types (0.1.1)
       descendants_tracker (~> 0.0.4)
       ice_nine (~> 0.11.0)
@@ -106,7 +104,7 @@ GEM
     bcrypt (3.1.11)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
-    breadcrumbs_on_rails (2.3.1)
+    breadcrumbs_on_rails (3.0.0)
     builder (3.2.2)
     byebug (9.0.5)
     cancancan (1.15.0)
@@ -134,7 +132,7 @@ GEM
       thread_safe (~> 0.3, >= 0.3.1)
     domain_name (0.5.20160615)
       unf (>= 0.0.5, < 1.0.0)
-    draper (1.4.0)
+    draper (2.1.0)
       actionpack (>= 3.0)
       activemodel (>= 3.0)
       activesupport (>= 3.0)
@@ -143,13 +141,13 @@ GEM
     equalizer (0.0.11)
     erubis (2.7.0)
     execjs (2.7.0)
-    faker (1.6.5)
+    faker (1.6.6)
       i18n (~> 0.5)
     font-awesome-rails (4.6.3.1)
       railties (>= 3.2, < 5.1)
-    globalid (0.3.6)
+    globalid (0.3.7)
       activesupport (>= 4.1.0)
-    grape (0.16.2)
+    grape (0.17.0)
       activesupport
       builder
       hashie (>= 2.1.0)
@@ -179,10 +177,10 @@ GEM
     i18n (0.7.0)
     i18n_data (0.7.0)
     ice_nine (0.11.2)
-    jbuilder (2.5.0)
+    jbuilder (2.6.0)
       activesupport (>= 3.0.0, < 5.1)
       multi_json (~> 1.2)
-    jmespath (1.3.0)
+    jmespath (1.3.1)
     jquery-rails (4.1.1)
       rails-dom-testing (>= 1, < 3)
       railties (>= 4.2.0)
@@ -213,10 +211,6 @@ GEM
     mini_magick (4.5.1)
     mini_portile2 (2.1.0)
     minitest (5.9.0)
-    mobu (0.0.3)
-      actionpack (>= 3.2)
-      activesupport (>= 3.2)
-      rack (~> 1.4)
     multi_json (1.12.1)
     multi_xml (0.5.5)
     mustermann19 (0.4.4)
@@ -231,9 +225,7 @@ GEM
       pkg-config (~> 1.1.7)
     pg (0.18.4)
     pkg-config (1.1.7)
-    protected_attributes (1.1.3)
-      activemodel (>= 4.0.1, < 5.0)
-    puma (3.4.0)
+    puma (3.6.0)
     rack (1.6.4)
     rack-accept (0.4.5)
       rack (>= 0.4)
@@ -283,7 +275,7 @@ GEM
     rqrcode (0.10.1)
       chunky_png (~> 1.0)
     sass (3.4.22)
-    sass-rails (5.0.5)
+    sass-rails (5.0.6)
       railties (>= 4.0.0, < 6)
       sass (~> 3.1)
       sprockets (>= 2.8, < 4.0)
@@ -297,14 +289,14 @@ GEM
       unicode_utils (>= 1.2.2)
     sprig (0.2.0)
     spring (1.7.2)
-    sprockets (3.6.3)
+    sprockets (3.7.0)
       concurrent-ruby (~> 1.0)
       rack (> 1, < 3)
     sprockets-rails (2.3.3)
       actionpack (>= 3.0)
       activesupport (>= 3.0)
       sprockets (>= 2.8, < 4.0)
-    stripe (1.48.0)
+    stripe (1.49.0)
       rest-client (>= 1.4, < 3.0)
     therubyracer (0.12.2)
       libv8 (~> 3.16.14.0)
@@ -315,9 +307,9 @@ GEM
     tilt-jbuilder (0.7.1)
       jbuilder
       tilt (>= 1.3.0, < 3)
-    tinymce-rails (4.4.0)
+    tinymce-rails (4.4.1)
       railties (>= 3.1.1)
-    turbolinks (5.0.0)
+    turbolinks (5.0.1)
       turbolinks-source (~> 5)
     turbolinks-source (5.0.0)
     twitter-bootstrap-rails (3.2.2)
@@ -327,7 +319,7 @@ GEM
       railties (>= 3.1)
     tzinfo (1.2.2)
       thread_safe (~> 0.1)
-    uglifier (3.0.0)
+    uglifier (3.0.1)
       execjs (>= 0.3.0, < 3)
     unf (0.1.4)
       unf_ext
@@ -391,5 +383,8 @@ DEPENDENCIES
   uglifier (>= 1.3.0)
   web-console (~> 2.0)
 
+RUBY VERSION
+   ruby 2.3.0p0
+
 BUNDLED WITH
-   1.11.2
+   1.12.5
