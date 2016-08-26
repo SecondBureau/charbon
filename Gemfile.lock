@@ -14,7 +14,7 @@ GIT
 
 GIT
   remote: git://github.com/owen2345/camaleon-ecommerce.git
-  revision: 50d16579275e9299949f367625853e8fe4c9b33f
+  revision: 3d7057c4418a559f90bbe2143cd41193bccf1269
   specs:
     camaleon_ecommerce (1.1)
       activemerchant (~> 1.54)
@@ -31,7 +31,7 @@ GIT
 
 GIT
   remote: https://github.com/SecondBureau/camaleon-cms.git
-  revision: 168c0d0fae003c6f6925c179f1be6e142c61ca6e
+  revision: 48a8831383e7c3c66cf4149b44ff781edcddecdd
   specs:
     camaleon_cms (2.3.3)
       aws-sdk (~> 2)
