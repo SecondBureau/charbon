@@ -2,7 +2,7 @@ module Lizard
   module V1
     class Posts < Grape::API
       include Lizard::V1::Defaults
-
+      
       resource :posts do
         
         

@@ -18,6 +18,7 @@ do ->
         to : vm.to,
         from: vm.from,
         message: vm.message
+        postId: vm.postId
       
        $http(
          url: sharing_endpoint

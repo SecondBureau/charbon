@@ -26,6 +26,8 @@
 //= require ./vendor/camaleon_cms
 
 //= require ./vendor/slick
+
+//= require ./vendor/angular-socialshare
      
 //= require ./app
 //= require ./config

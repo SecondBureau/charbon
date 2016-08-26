@@ -1,0 +1,14 @@
+<div class='row'>
+  <div class='col-xs-12'>
+    <div class="posts-container">
+      <ul class="posts-group" infinite-scroll="scrollToNextPage()" infinite-scroll-disabled="scrollIsDisabled()">
+        <li class="posts-item" ng-repeat="post in posts">
+          <bh-post template="'img'" slug="post.slug" highlight="keywords"></bh-post>
+        </li>
+      </ul>
+      <p ng-show="loading" spinner-on="loading" us-spinner="{radius:20, width:8, length: 16}" style="position:relative;height:200px;"></p>
+      <p ng-show="isComplete">No more results</p>
+    </div>
+  </div>
+</div>
+  

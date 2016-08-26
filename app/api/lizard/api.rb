@@ -48,13 +48,6 @@ module Charbon
     formatter :json, Grape::Formatter::Jbuilder
     prefix :api
     
-    resource :sharing do
-      
-      post '/' do
-        "ok"
-      end
-    end
-    
     resource :themes do
       
       route_param :theme_slug do
