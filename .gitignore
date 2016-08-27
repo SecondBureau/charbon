@@ -20,3 +20,4 @@
 /public/media
 
 .irb*
+.env

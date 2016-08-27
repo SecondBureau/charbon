@@ -14,7 +14,7 @@ GIT
 
 GIT
   remote: git://github.com/owen2345/camaleon-ecommerce.git
-  revision: 3d7057c4418a559f90bbe2143cd41193bccf1269
+  revision: 9078f600ed2cc2e93adfaeb80986a8c085030ed9
   specs:
     camaleon_ecommerce (1.1)
       activemerchant (~> 1.54)
@@ -31,7 +31,7 @@ GIT
 
 GIT
   remote: https://github.com/SecondBureau/camaleon-cms.git
-  revision: 6f07a332e8e813fb29b579affd53ff72e3aebcb4
+  revision: e6a2be0e444e93c09e4eb1a5bc57e7061d0b743c
   specs:
     camaleon_cms (2.3.3)
       aws-sdk (~> 2)
@@ -132,6 +132,10 @@ GEM
       thread_safe (~> 0.3, >= 0.3.1)
     domain_name (0.5.20160615)
       unf (>= 0.0.5, < 1.0.0)
+    dotenv (2.1.1)
+    dotenv-rails (2.1.1)
+      dotenv (= 2.1.1)
+      railties (>= 4.0, < 5.1)
     draper (2.1.0)
       actionpack (>= 3.0)
       activemodel (>= 3.0)
@@ -350,6 +354,7 @@ DEPENDENCIES
   camaleon_ecommerce!
   camaleon_post_order!
   coffee-rails (~> 4.1.0)
+  dotenv-rails
   faker
   grape
   grape-jbuilder

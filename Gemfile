@@ -68,6 +68,9 @@ group :development, :test do
   gem 'spring'
   # Seed Rails application by convention, not configuration.
   gem 'sprig'
+  
+  gem 'dotenv-rails'
+  
 end
 
 group :production do
