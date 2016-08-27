@@ -31,7 +31,7 @@ GIT
 
 GIT
   remote: https://github.com/SecondBureau/camaleon-cms.git
-  revision: 48a8831383e7c3c66cf4149b44ff781edcddecdd
+  revision: 0f7d2bf7c2a66557967057baf9281f1bc0267919
   specs:
     camaleon_cms (2.3.3)
       aws-sdk (~> 2)
@@ -296,7 +296,7 @@ GEM
       actionpack (>= 3.0)
       activesupport (>= 3.0)
       sprockets (>= 2.8, < 4.0)
-    stripe (1.50.1)
+    stripe (1.51.0)
       rest-client (>= 1.4, < 3.0)
     therubyracer (0.12.2)
       libv8 (~> 3.16.14.0)
