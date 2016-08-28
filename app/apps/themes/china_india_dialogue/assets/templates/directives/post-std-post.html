@@ -91,23 +91,43 @@
 <div ng-show="vm.showSendEmailForm" class="send-email-background" ng-click="vm.hideSendEmail()"></div>
 <div ng-show="vm.showSendEmailForm" class="send-email-container">
   <div ng-controller="SharePostFormCtrl as f">
-    <form ng-show="!f.submitted" ng-submit="f.submit()">
-      <input id="postId" type="hidden" ng-model="f.postId" value="{{vm.post.id}}">
-      <div class="form-group">
-        <label ng-click="f.submit()">To:</label>
-        <input id="to" type="text" ng-model="f.to" class="form-control default" placeholder= "Your friend's email">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close"  ng-click="vm.hideSendEmail()">&times;</button>
+          <h4 class="modal-title">Share with your friends</h4>
+        </div>
+        <div class="modal-body">
+          <form name="sharingForm" ng-show="!f.submitted" ng-submit="f.submit()">
+            
+            <div class="form-group " ng-class="{'has-error': sharingForm.to.$error.required}">
+              <label class="required">To:</label>
+              <input id="to" name="to" type="text" ng-model="f.to" class="form-control default" placeholder= "Separate multiple addresses with commas" required>
+              <span class="help-block error" ng-show="sharingForm.to.$error.required">Required!</span>
+            </div>
+            
+            <div class="form-group" ng-class="{'has-error': sharingForm.from.$error.email}">
+              <label class="required">From:</label>
+              <input id="from" name="from" type="email" ng-model="f.from" class="form-control default" placeholder= "Your email address">
+              <span class="help-block error" ng-show="sharingForm.from.$error.email">Not valid email!</span>
+            </div>
+            
+            <div class="form-group">
+              <label>Message:</label>
+              <textarea id="message" type="text" ng-model="f.message" max-length="500" class="form-control default"></textarea>
+              <br/>
+              <img class="pull-left" ng-src="{{vm.post.featured_image_url}}" width="75px" height="75px" style="margin:0 10px 10px 0"/>
+              <p style="min-height:100px"><b>{{vm.post.title}}</b><br/>{{vm.post.summary}}</p>
+              
+            </div>
+            <div class="modal-footer">
+              <button class="submit_btn btn btn-default pull-right" type="submit">Send</button>
+             </div>
+          </form >
+          <p><div ng-show="f.submitted" ng-bind-html="f.message_submitted"></div></p>
+        </div>
       </div>
-      <div class="form-group">
-        <label>From:</label>
-        <input id="from" type="text" ng-model="f.from" class="form-control default" placeholder= "Your email">
-      </div>
-      <div class="form-group">
-        <label>Message:</label>
-        <textarea id="message" type="text" ng-model="f.message" max-length="500" class="form-control default"></textarea>
-      </div>
-      <button class="submit_btn btn btn-default pull-right" type="submit">Send</button>
-    </form >
-    <div ng-show="f.submitted" ng-bind-html="f.message_submitted"></div>
+  </div>
   </div>
 </div>
 

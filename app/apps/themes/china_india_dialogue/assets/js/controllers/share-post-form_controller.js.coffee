@@ -3,23 +3,27 @@
 do ->
   'use strict'
   
-  SharePostFormCtrl = ($http, ENV) ->
+  SharePostFormCtrl = ($scope, $http, ENV, $location) ->
     sharing_endpoint = ENV.apiEndpoint + 'sharing'
     
     vm = this
     vm.submitted = false
-    
-    
+    vm.postId = $scope.$parent.$parent.vm.post.id
+    vm.postPath = $location.absUrl()
+    vm.featuredImagePath = $scope.$parent.$parent.vm.post.featured_image_url
     
     
     vm.submit = -> 
       vm.submitted = true
       data = 
-        to : vm.to,
-        from: vm.from,
+        to : vm.to
+        from: vm.from
         message: vm.message
         postId: vm.postId
-      
+        postPath: vm.postPath
+        featuredImagePath: vm.featuredImagePath
+
+       
        $http(
          url: sharing_endpoint
          method: 'POST'
@@ -34,5 +38,5 @@ do ->
       
     return
     
-  SharePostFormCtrl.$inject = ['$http', 'ENV']
+  SharePostFormCtrl.$inject = ['$scope', '$http', 'ENV', '$location']
   angular.module('bahnhof').controller 'SharePostFormCtrl', SharePostFormCtrl
