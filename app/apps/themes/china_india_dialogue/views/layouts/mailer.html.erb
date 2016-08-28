@@ -7,7 +7,7 @@
 <body>
 <table style="width: 100%">
     <tr>
-        <td style="text-align: center; background-color: #000; padding: 10px;"><a class="navbar-brand" href='<%= @url_base %>'><%= image_tag @current_site.try(:the_logo) %></a></td>
+        <td style="text-align: center; background-color: #000; padding: 10px;"><a class="navbar-brand" href='<%= @url_base %>'><%= image_tag @current_site.decorate.try(:the_logo) %></a></td>
     </tr>
     <tr>
         <td>

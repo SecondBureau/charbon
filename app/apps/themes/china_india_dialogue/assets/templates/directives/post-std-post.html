@@ -124,6 +124,7 @@
               <button class="submit_btn btn btn-default pull-right" type="submit">Send</button>
              </div>
           </form >
+          <div ng-show="f.sending" us-spinner="{radius:10, width:3, length: 8}" style="position:relative;width:100%;margin:40px 0 80px 0"></div>
           <p><div ng-show="f.submitted" ng-bind-html="f.message_submitted"></div></p>
         </div>
       </div>

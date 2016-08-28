@@ -1,6 +1,13 @@
 module Lizard  
   module Charbon
     
+    
+    class ContactFormMessage
+      attr_accessor :from, :title, :message
+    end
+    
+    
+    
     class SharingMessage
       attr_accessor :to, :from, :postId, :message, :postPath, :featuredImagePath
       
@@ -47,17 +54,47 @@ module Lizard
                       url_base: request.host_with_port, 
                       current_site: CamaleonCms::Site.first }
             
-           puts data.inspect
-           puts args.inspect
-            
             message.to.split(',').each  do |email_to|
               CamaleonCms::HtmlMailer.sender(email_to.strip, subject, args).deliver_now
             end
             
           rescue Exception => e
-            debugger
             error!
           end
+        end
+      end
+      
+      
+      resource :contactform do
+      
+        post '/' do
+          
+          message = ContactFormMessage.new
+          %w( from title message).each do |a|
+            message.send("#{a}=", params[:data][a.to_sym])
+          end
+          
+          begin
+            
+            email_to = ENV['CONTACT_FORM_TO']
+
+            subject = "#{message.title} @ China India Dialogue"
+            
+            data = {  message: message.message } 
+            
+            args = {  extra_data: data, 
+                      template_name: 'html_mailer/contact_form', 
+                      layout_name: 'mailer', 
+                      from: message.from, 
+                      url_base: request.host_with_port, 
+                      current_site: CamaleonCms::Site.first }
+                      
+            CamaleonCms::HtmlMailer.sender(email_to, subject, args).deliver_now
+            
+          rescue Exception => e
+            error!
+          end
+          
         end
       end
 
