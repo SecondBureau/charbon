@@ -6,6 +6,9 @@ module Lizard
       attr_accessor :from, :title, :message
     end
     
+    class SubcriptionMessage
+      attr_accessor :subscriberEmail, :subscriberName
+    end
     
     
     class SharingMessage
@@ -86,6 +89,41 @@ module Lizard
                       template_name: 'html_mailer/contact_form', 
                       layout_name: 'mailer', 
                       from: message.from, 
+                      url_base: request.host_with_port, 
+                      current_site: CamaleonCms::Site.first }
+                      
+            CamaleonCms::HtmlMailer.sender(email_to, subject, args).deliver_now
+            
+          rescue Exception => e
+            error!
+          end
+          
+        end
+      end
+      
+      
+      resource :subscriptionform do
+      
+        post '/' do
+          
+          message = SubcriptionMessage.new
+          %w( subscriberEmail subscriberName).each do |a|
+            message.send("#{a}=", params[:data][a.to_sym])
+          end
+          
+          begin
+            
+            email_to = ENV['CONTACT_FORM_TO']
+            from_email  = ENV['GENERIC_FROM_EMAIL']
+
+            subject = "New Subscription Request @ China India Dialogue"
+            
+            data = {  subscriberName: message.subscriberName,  subscriberEmail: message.subscriberEmail } 
+            
+            args = {  extra_data: data, 
+                      template_name: 'html_mailer/subcription_notification', 
+                      layout_name: 'mailer', 
+                      from: from_email, 
                       url_base: request.host_with_port, 
                       current_site: CamaleonCms::Site.first }
                       

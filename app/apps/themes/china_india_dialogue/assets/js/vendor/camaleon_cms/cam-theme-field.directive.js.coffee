@@ -24,7 +24,8 @@ do ->
         if vm.popup
           contents = "<a href='#' class='popup' data-popup-content='"+ contents + "'>" + vm.popupButton + "</a>"
           #contents = '<button type="button" class="popup btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">Launch demo modal</button>'
-          contents = $sce.trustAsHtml(contents)
+          
+        contents = $sce.trustAsHtml(contents)
           
         vm.contents = contents
         
