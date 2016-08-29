@@ -58,7 +58,7 @@
                 </div>
             
                 <div class="form-group" ng-class="{'has-error': f.filling && contactForm.message.$error.required}">
-                  <textarea ng-focus='f.gotFocus()' ng-model="f.message" name="message" id="message" max-length="500" class="form-control default input-sm" required></textarea>
+                  <textarea ng-focus='f.gotFocus()' ng-model="f.message" name="message" id="message" max-length="500" class="form-control default input-sm" required placeholder= "Your message"></textarea>
                   <span class="help-block error" ng-show="f.filling && contactForm.message.$error.required">Required!</span>
                 </div>
             
