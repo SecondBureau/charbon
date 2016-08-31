@@ -1,93 +1,75 @@
-<div class="container-fluid">
-  <div class="row cid-footer cid-footer1">
-    <div class="container">
-        <div class="row">
-          <div class="col-md-2">
-            <%= nav_menu(menu_slug:'footer_1', container_class: 'nav') %>
-            <!-- <ul class="nav">
-              <li ng-repeat="category in categories | toArray |  filter:{footer1: true}:true  ">
-                <a href="#/category/{{category.slug}}">{{category.label}}</a>
-              </li>
-            </ul> -->
-          </div>
-          <div class="col-md-2">
-            <%= nav_menu(menu_slug:'footer_2', container_class: 'nav') %>
-            
-            
-            
-            <!-- <ul class="nav">
-              <li ng-repeat="category in categories | toArray |  filter:{footer2: true}:true  ">
-                <a href="#/category/{{category.slug}}">{{category.label}}</a>
-              </li>
-              <li><a href="#">This month features</a></li>
-              <li><a href="#">About Us</a></li>
-              <li><a href="#">Archives</a></li>
-              <li><a href="#">Apps</a></li>
-            </ul> -->
-          </div>
-          
-          <div class="col-md-5">
-            <div class="footer-block" ng-controller="ContactFormCtrl as f">
-              <div ng-show="f.sending" us-spinner="{radius:10, width:3, length: 8}" style="position:relative;width:100%;margin:40px 0 80px 0"></div>
-              <p><div ng-show="f.submitted" ng-bind-html="f.message_submitted"></div></p>
-              
-              <form name="contactForm" ng-submit="f.submit()" ng-show="!f.submitted">
-                
-              <%= theme_image_tag 'decorations/footer.png', width: "72", height: "4", alt: "----" %>
-              
-              <button ng-show='f.filling && !contactForm.from.$error.required && !contactForm.from.$error.email && !contactForm.from.$error.required && !contactForm.message.$error.required' class="submit_btn btn btn-default btm-sm pull-right">Send</button>
-              <p>Contact form:</p>
-            
-              
-              
-                <div class="form-group" ng-class="{'has-error': f.filling && (contactForm.from.$error.required  || contactForm.from.$error.email)}">
-                  <div class="input-group">
-                    <div class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span></div>
-                    <input ng-focus='f.gotFocus()' ng-model="f.from" name="from" type="email" class="form-control input-sm" id="from" placeholder="Your email address" required>
-                  </div>
-                  <span class="help-block error" ng-show="f.filling && contactForm.from.$error.required">Required!</span>
-                  <span class="help-block error" ng-show="contactForm.from.$error.email">Not valid email!</span>
-                </div>
-              
-                <div class="form-group" ng-class="{'has-error': f.filling && contactForm.title.$error.required}">
-                  <div class="input-group">
-                    <div class="input-group-addon"><span class="glyphicon glyphicon-pushpin"></span></div>
-                    <input ng-focus='f.gotFocus()' ng-model="f.title" name="title" type="text" class="form-control input-sm" id="title" placeholder="Object" required>
-                  </div>
-                  <span class="help-block error" ng-show="f.filling && contactForm.title.$error.required">Required!</span>
-                </div>
-            
-                <div class="form-group" ng-class="{'has-error': f.filling && contactForm.message.$error.required}">
-                  <textarea ng-focus='f.gotFocus()' ng-model="f.message" name="message" id="message" max-length="500" class="form-control default input-sm" required placeholder= "Your message"></textarea>
-                  <span class="help-block error" ng-show="f.filling && contactForm.message.$error.required">Required!</span>
-                </div>
-            
-              </form>
+
+  
+<div class="cid-footer cid-footer1">
+
+  <div class="container">
+
+    <div class="row"> 
+
+      <div class="col-md-2">
+        <%= nav_menu(menu_slug:'footer_1', container_class: 'nav') %>
+      </div>
+        
+      <div class="col-md-2">
+        <%= nav_menu(menu_slug:'footer_2', container_class: 'nav') %>
+      </div>
+        
+      <div class="col-md-5">
+        <div class="footer-block" ng-controller="ContactFormCtrl as f">
+          <%= theme_image_tag 'decorations/footer.png', width: "72", height: "4", alt: "----" %>
+          <p><b>Contact form:</b></p>
+          <div ng-show="f.sending" us-spinner="{radius:10, width:3, length: 8}" style="position:relative;width:100%;margin:40px 0 80px 0"></div>
+          <div ng-show="f.submitted" ng-bind-html="f.message_submitted"></div>
+          <form name="contactForm" ng-submit="f.submit()" ng-show="!f.submitted">
+            <div class="form-group" ng-class="{'has-error': f.filling && (contactForm.from.$error.required  || contactForm.from.$error.email)}">
+              <div class="input-group">
+                <div class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span></div>
+                <input ng-focus='f.gotFocus()' ng-model="f.from" name="from" type="email" class="form-control input-sm" id="from" placeholder="Your email address" required>
+              </div>
+              <span class="help-block error" ng-show="f.filling && contactForm.from.$error.required">Required!</span>
+              <span class="help-block error" ng-show="contactForm.from.$error.email">Not valid email!</span>
             </div>
-          </div>
-            
-          
-          <div class="col-md-3">
-            <div class="footer-block">
-              <%= theme_image_tag 'decorations/footer.png', width: "72", height: "4", alt: "----" %>
-              <%= raw current_theme.the_field("address") %>
+            <div class="form-group" ng-class="{'has-error': f.filling && contactForm.title.$error.required}">
+              <div class="input-group">
+                <div class="input-group-addon"><span class="glyphicon glyphicon-pushpin"></span></div>
+                <input ng-focus='f.gotFocus()' ng-model="f.title" name="title" type="text" class="form-control input-sm" id="title" placeholder="Object" required>
+              </div>
+              <span class="help-block error" ng-show="f.filling && contactForm.title.$error.required">Required!</span>
             </div>
-          </div>
+            <div class="form-group" ng-class="{'has-error': f.filling && contactForm.message.$error.required}">
+              <textarea ng-focus='f.gotFocus()' ng-model="f.message" name="message" id="message" max-length="500" class="form-control default input-sm" required placeholder= "Your message"></textarea>
+              <span class="help-block error" ng-show="f.filling && contactForm.message.$error.required">Required!</span>
+            </div>
+            <button ng-show='f.filling && !contactForm.from.$error.required && !contactForm.from.$error.email && !contactForm.from.$error.required && !contactForm.message.$error.required' class="submit_btn btn btn-default btm-sm pull-right">Send</button>
+          </form>
+        </div>
+      </div>
+        
+      <div class="col-md-3">
+        <div class="footer-block">
+          <%= theme_image_tag 'decorations/footer.png', width: "72", height: "4", alt: "----" %>
+          <%= raw current_theme.the_field("address") %>
         </div>
       </div>
     </div>
+
   </div>
-  <div class="row cid-footer cid-footer2">
-    <div class="container">
-        <div class="row">
-          <div class="col-md-12">
-            <p>&copy;<%= Time.now.strftime('%Y') %> <%= current_site.name %></p>
-          </div>
-        </div>
-    </div>
-  </div>
+  
 </div>
 
 
+<div class="cid-footer cid-footer2">
 
+  <div class="container">
 
+    <div class="row">
+
+      <div class="col-md-12">
+        <p>&copy;<%= Time.now.strftime('%Y') %> <%= current_site.name %></p>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
