@@ -31,7 +31,7 @@ GIT
 
 GIT
   remote: https://github.com/SecondBureau/camaleon-cms.git
-  revision: e6a2be0e444e93c09e4eb1a5bc57e7061d0b743c
+  revision: 37efc678cb6b5e846fa07b457c02e16a592caddb
   specs:
     camaleon_cms (2.3.3)
       aws-sdk (~> 2)
