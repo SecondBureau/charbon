@@ -33,23 +33,28 @@ class TmpUpload
     uri = URI.parse(url)
     io = uri.open
     content_type = io.content_type
-    file = ActionDispatch::Http::UploadedFile.new(tempfile: io, filename: File.basename(url), content_type: content_type)
+    #file = ActionDispatch::Http::UploadedFile.new(tempfile: io, filename: File.basename(url), content_type: content_type)
+    file = ActionDispatch::Http::UploadedFile.new(tempfile: io, content_type: content_type)
+    
     upload_file(file, {folder: "//#{folder}"})
   end
   
   def upload(filename, folder)
-    http_base = 'https://s3-ap-northeast-1.amazonaws.com/china-india-dialogue'
-    image_url = "#{http_base}/#{filename}"
+    #http_base = 'https://s3-ap-northeast-1.amazonaws.com/china-india-dialogue'
+    #image_url = "#{http_base}/#{filename}"
+    
     #puts "uploading #{image_url}..." 
-    upload_image(image_url, folder)
+    #upload_image(image_url, folder)
   end
   
-  def url(filename, folder)
-    tree = cama_media_find_folder("/#{folder}")
-    tree[:files].each do |f|
-      return f['url'] if f['name'].eql?(filename)
+  def url(filename)
+    o = CamaleonCmsLocalUploader.new(current_site: current_site).objects
+    f= o[:files][filename]
+    if f
+      return f['url']
+    else
+      return ''
     end
-    return ''
   end
 end
 
@@ -96,7 +101,8 @@ columnists = []
 uri = 'https://randomuser.me/api/'
 10.times do |i|
   #media.upload_image(JSON.parse(Net::HTTP.get(URI(uri)))["image_urls"]["epic"], avatars_folder)
-  media.upload_image(JSON.parse(Net::HTTP.get(URI(uri)))["results"][0]["user"]['picture']['large'], avatars_folder)
+  
+  media.upload_image(JSON.parse(Net::HTTP.get(URI(uri)))["results"][0]['picture']['large'], avatars_folder)
   print ".."
 end
 
@@ -107,14 +113,15 @@ end
   print ".."
 end
 
-tree = media.cama_media_find_folder("/#{avatars_folder}")
-tree[:files].each do |p|
-  if File.basename(p['url']) =~ /columnist/
-    columnists << p['url']
-  else
-    avatars << p['url']
-  end
-end
+
+# tree = media.cama_admin_media_url("/#{avatars_folder}")
+# tree[:files].each do |p|
+#   if File.basename(p['url']) =~ /columnist/
+#     columnists << p['url']
+#   else
+#     avatars << p['url']
+#   end
+# end
 
 puts "done !"
 
@@ -133,10 +140,12 @@ print "Seed users..."
 
   u = CamaleonCms::User.create(username: "#{firstname.downcase}#{lastname.downcase}", role: role, email: email, password: password, password_confirmation:password)
 
-  u.set_meta_from_form({first_name: firstname, last_name: lastname, twitter: twitter})
+  u.set_meta 'first_name', firstname
+  u.set_meta 'last_name', lastname 
+  u.set_meta 'twitter', twitter
 
-  avatar = avatars[idx]
-  u.set_meta 'avatar', avatar
+  #avatar = avatars[idx]
+  #u.set_meta 'avatar', avatar
 
 end
 
@@ -157,12 +166,14 @@ columnistIds = []
 
   u = CamaleonCms::User.create(username: "#{firstname.downcase}#{lastname.downcase}", role: role, email: email, password: password, password_confirmation:password)
 
-  u.set_meta_from_form({first_name: firstname, last_name: lastname, twitter: twitter})
+  {first_name: firstname, last_name: lastname, twitter: twitter}.each do |k,v|
+    u.set_meta k, v
+  end
   
   columnistIds << u.id
 
-  avatar = columnists[idx]
-  u.set_meta 'avatar', avatar
+  #avatar = columnists[idx]
+  #u.set_meta 'avatar', avatar
 
 end
 
@@ -232,7 +243,7 @@ print "Seed posts..."
       @footer_2.append_menu_item ({label: category.name, type: "category", link: category.id})
     end
 
-    (rand(15) + 30).times do
+    (rand(5) + 3).times do
 
       title = Faker::Hipster.sentence(1).chomp('.')
 
@@ -305,11 +316,11 @@ partners_folder = "partners"
   media.upload("partner-#{i}.png", partners_folder)
 end
 
-tree = media.cama_media_find_folder("/#{partners_folder}")
+#tree = media.cama_media_find_folder("/#{partners_folder}")
 partners_default_value = ""
-tree[:files].each do |p|
-  partners_default_value += "<a href='#'><img class='logo-partner' alt='Partner' src='#{p['url']}' /></a>"
-end
+#tree[:files].each do |p|
+  #partners_default_value += "<a href='#'><img class='logo-partner' alt='Partner' src='#{p['url']}' /></a>"
+#end
 
 puts "done !"
 
@@ -323,8 +334,8 @@ ads_folder = "ads"
   media.upload("ad#{i}.png", ads_folder)
 end
 
-ad_left_default_value = "<a href='#'><img class='img-responsive' alt='Ad' src='#{media.url('ad2.png', ads_folder)}' /></a>"
-ad_right_default_value = "<a href='#'><img class='img-responsive' alt='Ad' src='#{media.url('ad1.png', ads_folder)}' /></a>"
+ad_left_default_value = "<a href='#'><img class='img-responsive' alt='Ad' src='#{media.url('ad2.png')}' /></a>"
+ad_right_default_value = "<a href='#'><img class='img-responsive' alt='Ad' src='#{media.url('ad1.png')}' /></a>"
 
 puts "done !"
 
@@ -334,7 +345,7 @@ print "Seed issues..."
 
 issues_folder = "issues"
 media.upload("issue.png", issues_folder)
-last_issue_default_value = "<a href='#'><img class='' alt='Latest Issue' src='#{media.url('issue.png', issues_folder)}' /></a>"
+last_issue_default_value = "<a href='#'><img class='' alt='Latest Issue' src='#{media.url('issue.png')}' /></a>"
 
 puts "done!"
 

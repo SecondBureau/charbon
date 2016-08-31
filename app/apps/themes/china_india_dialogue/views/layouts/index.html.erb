@@ -6,6 +6,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <meta name="format-detection" content="telephone=no">
     <title><%= current_site.the_title %></title>
     <%= stylesheet_link_tag theme_asset_path("css/main") %>
     <%= javascript_include_tag theme_asset_path("js/main") %>
@@ -19,6 +20,7 @@
     <%= render partial: 'partials/header.html' %>
     <%= yield %>
     <%= render partial: 'partials/footer.html' %>
+    <%= render partial: 'partials/popup.html' %>
   </body>
   
 </html>

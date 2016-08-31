@@ -31,3 +31,8 @@ $fonts_root: 'themes/china_india_dialogue/assets/fonts/' ;
   border: $border solid 1px;
   background: $background;
 }
+
+.author-grey {
+  font-style: italic;
+  color: $dark-grey;
+}

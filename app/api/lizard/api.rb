@@ -1,6 +1,7 @@
 
 class MyKlass
-  include Plugins::ContactForm::ContactFormHtmlHelper
+  #include Plugins::ContactForm::ContactFormHtmlHelper
+  include Plugins::CamaContactForm::MainHelper
   include CamaleonCms::HooksHelper
   include CamaleonCms::CaptchaHelper
   include Rails.application.routes.url_helpers
@@ -46,13 +47,6 @@ module Charbon
     format :json
     formatter :json, Grape::Formatter::Jbuilder
     prefix :api
-    
-    resource :sharing do
-      
-      post '/' do
-        "ok"
-      end
-    end
     
     resource :themes do
       

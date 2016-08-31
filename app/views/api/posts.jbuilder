@@ -2,7 +2,7 @@ json.array! @posts do |post|
   json.id post.id
   json.category_id post.categories.first.try(:id) || 0
   json.slug post.slug
-  json.title post.title
+  json.title post.decorate.the_title
   json.featured_image_url post.get_meta("thumb")
   json.author_id post.user_id
   json.published_at post.published_at

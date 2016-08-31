@@ -25,23 +25,38 @@
   </header>
   <div class="line" data-sticky-wrap style="position: relative;">
     <aside id="aside-left" class="like-aside-left" bh-sticky="55" width="40px" style="position:relative; top:0px">
-      <input type="hidden" id="url_share" value="{{vm.post.url}}">
       <ul class="post-social">
         <li class="social-li">
-          <a href><i class="fa fa-facebook social-facebook" data-social="facebook"></i></a>
-          <p class="legend-social" data-social="facebook">134 shares</p>
+          <a href socialshare
+    socialshare-provider="facebook"
+    socialshare-text="{{vm.post.title}}"
+    socialshare-type="feed"
+    socialshare-via="1846572092245852"
+    socialshare-description="{{vm.post.summary}}"
+    socialshare-media="{{vm.post.featured_image_url}}"
+    socialshare-url="{{vm.post.url}}"><i class="fa fa-facebook social-facebook" data-social="facebook"></i></a>
+          <!-- <p class="legend-social" data-social="facebook">134 shares</p> -->
         </li>
         <li class="social-li">
-          <a href><i class="fa fa-twitter social-twitter" data-social="twitter"></i></a>
-          <p class="legend-social" data-social="twitter">28 shares</p>
+          <a href socialshare
+    socialshare-provider="twitter"
+    socialshare-text="{{vm.post.title}}"
+    socialshare-hashtags="chinaindiadialogue"
+    socialshare-url="http://chinaindiadialogue.com"><i class="fa fa-twitter social-twitter" data-social="twitter"></i></a>
+          <!-- <p class="legend-social" data-social="twitter">28 shares</p> -->
         </li>
         <li class="social-li hidden-xs">
           <a href><i class="fa fa-weixin social-weixin" data-social="weixin"></i></a>
           <p class="legend-social" data-social="weixin">Scan with wechat<br/><qr text="vm.absUrl" size="115"></qr></p>
         </li>
         <li class="social-li">
-          <a href><i class="fa fa-linkedin social-linkedin" data-social="linkedin"></i></a>
-          <p class="legend-social" data-social="linkedin">5 shares</p>
+                <a href socialshare
+          socialshare-provider="linkedin"
+          socialshare-text="{{vm.post.title}}"
+          socialshare-description="{{vm.post.summary}}"
+          socialshare-source="China India Dialogue"
+          socialshare-url="{{vm.post.url}}"><i class="fa fa-linkedin social-linkedin" data-social="linkedin"></i></a>
+          <!-- <p class="legend-social" data-social="linkedin">5 shares</p> -->
         </li>
         <li class="social-li">
           <a href bh-change-font-size="p.post-body" increment="0.5" ><i class="fa fa-plus" data-size="1"></i></a>
@@ -51,8 +66,8 @@
           <a href bh-change-font-size="p.post-body" increment="-0.5"><i class="fa fa-minus" data-size="1"></i></a>
           <p class="legend-social">Decrease font size</p>
         </li>
-        <li class="social-li">
-          <a href><i class="fa fa-print" data-size="1"></i></a>
+        <li class="social-li hidden-xs">
+          <a href="javascript:window.print();"><i class="fa fa-print" data-size="1"></i></a>
           <p class="legend-social">Print</p>
         </li>
         <li class="social-li">
@@ -76,22 +91,44 @@
 <div ng-show="vm.showSendEmailForm" class="send-email-background" ng-click="vm.hideSendEmail()"></div>
 <div ng-show="vm.showSendEmailForm" class="send-email-container">
   <div ng-controller="SharePostFormCtrl as f">
-    <form ng-show="!f.submitted" ng-submit="f.submit()">
-      <div class="form-group">
-        <label ng-click="f.submit()">To:</label>
-        <input id="to" type="text" ng-model="f.to" class="form-control default">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close"  ng-click="vm.hideSendEmail()">&times;</button>
+          <h4 class="modal-title">Share with your friends</h4>
+        </div>
+        <div class="modal-body">
+          <form name="sharingForm" ng-show="!f.submitted" ng-submit="f.submit()">
+            
+            <div class="form-group " ng-class="{'has-error': sharingForm.to.$error.required}">
+              <label class="required">To:</label>
+              <input id="to" name="to" type="text" ng-model="f.to" class="form-control default" placeholder= "Separate multiple addresses with commas" required>
+              <span class="help-block error" ng-show="sharingForm.to.$error.required">Required!</span>
+            </div>
+            
+            <div class="form-group" ng-class="{'has-error': sharingForm.from.$error.email}">
+              <label class="required">From:</label>
+              <input id="from" name="from" type="email" ng-model="f.from" class="form-control default" placeholder= "Your email address">
+              <span class="help-block error" ng-show="sharingForm.from.$error.email">Not valid email!</span>
+            </div>
+            
+            <div class="form-group">
+              <label>Message:</label>
+              <textarea id="message" type="text" ng-model="f.message" max-length="500" class="form-control default"></textarea>
+              <br/>
+              <img class="pull-left" ng-src="{{vm.post.featured_image_url}}" width="75px" height="75px" style="margin:0 10px 10px 0"/>
+              <p style="min-height:100px"><b>{{vm.post.title}}</b><br/>{{vm.post.summary}}</p>
+              
+            </div>
+            <div class="modal-footer">
+              <button class="submit_btn btn btn-default pull-right" type="submit">Send</button>
+             </div>
+          </form >
+          <div ng-show="f.sending" us-spinner="{radius:10, width:3, length: 8}" style="position:relative;width:100%;margin:40px 0 80px 0"></div>
+          <p><div ng-show="f.submitted" ng-bind-html="f.message_submitted"></div></p>
+        </div>
       </div>
-      <div class="form-group">
-        <label>From:</label>
-        <input id="from" type="text" ng-model="f.from" class="form-control default">
-      </div>
-      <div class="form-group">
-        <label>Message:</label>
-        <textarea id="message" type="text" ng-model="f.message" max-length="500" class="form-control default"></textarea>
-      </div>
-      <button class="submit_btn btn btn-default pull-right" type="submit">Send</button>
-    </form >
-    <div ng-show="f.submitted" ng-bind-html="f.message_submitted"></div>
+  </div>
   </div>
 </div>
 

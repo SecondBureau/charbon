@@ -15,7 +15,7 @@
  * MIT License
  */
 
-angular.module('bahnhof', ['ionic', 'bahnhof.config', 'angular-toArrayFilter', 'infinite-scroll', 'ui.bootstrap', 'angularSpinner', 'angular-flexslider', 'camaleonCms', 'ja.qr', 'checklist-model', 'angulartics', 'angulartics.woopra'])
+angular.module('bahnhof', ['ionic', 'bahnhof.config', 'angular-toArrayFilter', 'infinite-scroll', 'ui.bootstrap', 'angularSpinner', 'angular-flexslider', 'camaleonCms', 'ja.qr', 'checklist-model', 'angulartics', 'angulartics.woopra', '720kb.socialshare'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -32,6 +32,13 @@ angular.module('bahnhof', ['ionic', 'bahnhof.config', 'angular-toArrayFilter', '
 })
 
 .config(function($stateProvider, $urlRouterProvider) {
+  
+  
+  var _isNotMobile = (function() {
+    var check = true;
+    check = ($(window).width() < 768)
+    return !check;
+  })();
 
   // Ionic uses AngularUI Router which uses the concept of states
   // Learn more here: https://github.com/angular-ui/ui-router
@@ -45,12 +52,21 @@ angular.module('bahnhof', ['ionic', 'bahnhof.config', 'angular-toArrayFilter', '
       url: '/home',
       views: {
         '': {
-          templateUrl: template_path('desktop/home.html'),
-          controller: 'HomeCtrl'
+          templateUrl: template_path( ((_isNotMobile) ? 'desktop' : 'mobile') + '/home.html'),
+          controller: (_isNotMobile) ? 'HomeCtrl' : 'MobileHomeCtrl'
         }
       }
     })
     
+    // .state('mobile', {
+    //   url: '/m',
+    //   views: {
+    //     '': {
+    //       templateUrl: template_path('mobile/home.html'),
+    //       controller: 'MobileHomeCtrl'
+    //     }
+    //   }
+    // })
     
     .state('category', {
       //url: '/category/{categoryId:[0-9]{1,5}}-:categorySlug',

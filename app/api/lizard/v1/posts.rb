@@ -2,7 +2,7 @@ module Lizard
   module V1
     class Posts < Grape::API
       include Lizard::V1::Defaults
-
+      
       resource :posts do
         
         
@@ -16,8 +16,9 @@ module Lizard
           @results = {}
           params[:q].split('|').each do |item|
             categoryId, lim = item.split(',')
-            @results[categoryId.to_i] = (CamaleonCms::Category.find(categoryId).posts.eager_load(:metas)[0, lim.to_i])
+            @results[categoryId.to_i] = (CamaleonCms::Category.find(categoryId).posts.published.eager_load(:metas).reorder('published_at desc')[0, lim.to_i])
           end
+          
         end
 
         desc 'Return posts.'
@@ -56,8 +57,10 @@ module Lizard
             end
           end
           if search['order']  
-            posts = posts.order(search['order'])
+            posts = posts.reorder(search['order'])
           end
+          
+          posts = posts.published
         
           min_date = Time.now
           max_date = 100.years.ago

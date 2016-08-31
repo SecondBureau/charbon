@@ -19,11 +19,6 @@ bh-home-category, .home-block {
   width:100%;
 }
 
-.author-grey {
-  font-style: italic;
-  color: $dark-grey;
-}
-
 .home-block {
   
    p {
@@ -252,4 +247,9 @@ li.posts-item {
 
 .columnist {
   max-width:100px;
+}
+
+.popuptest {
+  position: absolute;
+  z-index: 1100;
 }

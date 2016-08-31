@@ -47,9 +47,14 @@ do ->
         category = $filter('filter')($scope.categories, { slug: categorySlug }, true)[0]
         if $scope.homePosts and angular.isFunction($scope.homePosts.then)
           $scope.homePosts.then (response) ->
+            #console.log categorySlug + '>' + response.data
             $filter('filter') response.data, { category_id: category.id }, true
         else
-          if angular.isArray(posts)
+          #if angular.isArray(posts)
+            #console.log 'posts' + ' >  ' + posts.length
+            
+            r = $filter('filter')(posts, { category_id: category.id }, true)
+            #console.log categorySlug + ' > > ' + r.length
             return $filter('filter')(posts, { category_id: category.id }, true)
       return
 

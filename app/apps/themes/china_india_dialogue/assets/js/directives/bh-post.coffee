@@ -72,6 +72,7 @@ do ->
 
         post.body = $('<div>').append(body.clone()).html().replace(/<!-- pagebreak -->/g, '<div class="clearfix"></div>')
         
+        post.url = $location.absUrl()
         
         if !angular.isUndefined(vm.highlight) || !angular.isUndefined(vm.highlight) && !angular.isUndefined(post.highlight) && vm.highlight != post.highlight
           init_highlight(post, vm.highlight)

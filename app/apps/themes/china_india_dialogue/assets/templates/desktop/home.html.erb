@@ -3,12 +3,12 @@
     <bh-home-category template="flexslider" slug="spotlight" bh-posts="{{::getP('spotlight')}}" bh-category="{{::getC('spotlight')}}">
     </bh-home-category>
   </div>
-  <div class='col-md-4'>
+  <div class='col-md-4' style="padding-top:4px">
     <center><cam-theme-field slug="last_issue" theme="china_india_dialogue" type="html"></cam-theme-field></center>
   </div>
  </div>
 
-
+<div class='row'><div class='col-md-12 section-separator'></div></div>
  
 <div class='row row-eq-height'>
   <div class='col-md-8 row-eq-height'>
@@ -30,9 +30,9 @@
   </div>
 </div>
 
-<div class='row'><div class='col-md-12 section-separator'></div></div>
+<div class='row hidden-sm'><div class='col-md-12 section-separator hidden-sm'></div></div>
 
-<div class='row'>
+<div class='row hidden-sm' style="overflow: hidden">
   <div class='col-md-4'>
     <center><cam-theme-field slug="ad_left" theme="china_india_dialogue" type="html"></cam-theme-field></center>
   </div>
@@ -85,3 +85,45 @@
    <cam-theme-field slug="partners" theme="china_india_dialogue" type="html"></cam-theme-field>
   </div>
 </div> 
+
+
+
+<div class="modal fade" id="subscriptionModal" tabindex="-1" role="dialog" aria-labelledby="Subscription Form"  ng-controller="SubscriptionFormCtrl as f">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="subscriptionFrom">Subscribe to China-India Dialogue!</h4>
+      </div>
+      
+      <div class="modal-body" ng-show="f.submitted">
+        <div ng-show="f.sending" us-spinner="{radius:10, width:3, length: 8}" style="position:relative;width:100%;margin:40px 0 80px 0"></div>
+        <p><div ng-show="f.submitted" ng-bind-html="f.message_submitted"></div></p>
+      </div>
+      
+      <form  name="subscriptionForm" ng-submit="f.submit()" ng-show="!f.submitted">
+        
+        <div class="modal-body">
+    
+          <div class="form-group" ng-class="{'has-error': subscriptionForm.subscriberName.$error.required}">
+            <label for="subscriberName" class="control-label">Name:</label>
+            <input ng-model="f.subscriberName" name="subscriberName" type="text" class="form-control" id="subscriberName" required>
+            <span class="help-block error" ng-show="subscriptionForm.subscriberName.$error.required">Required!</span>
+          </div>
+          
+          <div class="form-group" ng-class="{'has-error': subscriptionForm.subscriberEmail.$error.required || subscriptionForm.subscriberEmail.$error.email }">
+            <label for="subscriberEmail" class="control-label">Email:</label>
+            <input ng-model="f.subscriberEmail" name="subscriberEmail" type="email" class="form-control" id="subscriberEmail" required>
+            <span class="help-block error" ng-show="subscriptionForm.subscriberEmail.$error.required">Required!</span>
+            <span class="help-block error" ng-show="subscriptionForm.subscriberEmail.$error.email">Not valid email!</span>
+          </div>
+        
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary" >Subscribe</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

@@ -127,9 +127,12 @@ module Themes::ChinaIndiaDialogue::MainHelper
     
     l = lambda do |args|
       args[:item_container_attrs] = "ui-sref-active='active'"
-      metas = args[:menu_item].get_meta('_default')
-      slug = "CamaleonCms::#{metas[:type].capitalize}".constantize.send(:find, metas[:object_id]).slug
-      args[:link_attrs] = "ui-sref=\"#{metas[:type]}({slug: '#{slug}'})\" href"
+      item = args[:menu_item]
+      #metas = args[:menu_item].get_meta('_default')
+      #slug = "CamaleonCms::#{metas[:type].capitalize}".constantize.send(:find, metas[:object_id]).slug
+      #args[:link_attrs] = "ui-sref=\"#{metas[:type]}({slug: '#{slug}'})\" href"
+      slug = "CamaleonCms::#{item.slug.capitalize}".constantize.send(:find, item.description.to_i).slug
+      args[:link_attrs] = "ui-sref=\"#{item.slug}({slug: '#{slug}'})\" href"
     end
     
     options.merge!(callback_item: l)
