@@ -1,43 +1,47 @@
 GIT
   remote: git://github.com/owen2345/cama_contact_form.git
-  revision: de304551f07dd0e21ef562cfff262bf3b2d245b0
+  revision: 4faa3d40f203b4828a32e20727024bf8ebe82677
   specs:
-    cama_contact_form (0.0.12)
+    cama_contact_form (0.0.18)
       rails
 
 GIT
   remote: git://github.com/owen2345/cama_subscriber.git
-  revision: 83e477ebd16a42c860043bc9cbe52c20ca593a22
+  revision: 0fb7b2872d9180a2ae580d9f90a7fc4ac1b97bd2
   specs:
-    cama_subscriber (0.0.1)
+    cama_subscriber (0.0.3)
       rails
 
 GIT
   remote: git://github.com/owen2345/camaleon-ecommerce.git
-  revision: 7806e66bc5cf65e09f184e6897c6bf0990a31038
+  revision: 87eb3f56e36fbec2d872ff2a9f649f80b07c1f4a
   specs:
-    camaleon_ecommerce (1.1)
+    camaleon_ecommerce (2.0.0)
       activemerchant (~> 1.54)
+      camaleon_cms (>= 2.4)
       country_select (~> 2.4)
-      rails
+      ransack (>= 1.7.0)
       stripe
+      wicked_pdf
+      wkhtmltopdf-binary
 
 GIT
   remote: git://github.com/owen2345/camaleon-post-order-plugin.git
-  revision: 9b0f0e12fb4efb65d58a4089594c5fd092d5ce43
+  revision: 3c665b27166084be6b99142cde837d0195080e60
   specs:
     camaleon_post_order (0.0.2)
       rails
 
 GIT
   remote: https://github.com/SecondBureau/camaleon-cms.git
-  revision: 7fecabadb19ad96fa3ab676a659052a3b44e4936
+  revision: f3325757443e8f39de11ec550e6b738b3e594226
   specs:
-    camaleon_cms (2.3.6)
+    camaleon_cms (2.4.1)
       aws-sdk (~> 2)
       bcrypt
       breadcrumbs_on_rails
-      cama_contact_form (~> 0.0.11)
+      cama_contact_form (~> 0.0.16)
+      cama_meta_tag
       cancancan (~> 1.10)
       coffee-rails
       draper (>= 1.3)
@@ -75,7 +79,7 @@ GEM
     activejob (4.2.7.1)
       activesupport (= 4.2.7.1)
       globalid (>= 0.3.0)
-    activemerchant (1.60.0)
+    activemerchant (1.62.0)
       activesupport (>= 3.2.14, < 5.1)
       builder (>= 2.1.2, < 4.0.0)
       i18n (>= 0.6.9)
@@ -94,12 +98,14 @@ GEM
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
     arel (6.0.3)
-    aws-sdk (2.6.4)
-      aws-sdk-resources (= 2.6.4)
-    aws-sdk-core (2.6.4)
+    aws-sdk (2.6.40)
+      aws-sdk-resources (= 2.6.40)
+    aws-sdk-core (2.6.40)
+      aws-sigv4 (~> 1.0)
       jmespath (~> 1.0)
-    aws-sdk-resources (2.6.4)
-      aws-sdk-core (= 2.6.4)
+    aws-sdk-resources (2.6.40)
+      aws-sdk-core (= 2.6.40)
+    aws-sigv4 (1.0.0)
     axiom-types (0.1.1)
       descendants_tracker (~> 0.0.4)
       ice_nine (~> 0.11.0)
@@ -109,9 +115,11 @@ GEM
       debug_inspector (>= 0.0.1)
     breadcrumbs_on_rails (3.0.1)
     builder (3.2.2)
-    byebug (9.0.5)
+    byebug (9.0.6)
+    cama_meta_tag (1.3)
+      rails (>= 4.1.0)
     cancancan (1.15.0)
-    chunky_png (1.3.7)
+    chunky_png (1.3.8)
     coercible (1.0.0)
       descendants_tracker (~> 0.0.1)
     coffee-rails (4.1.1)
@@ -120,9 +128,9 @@ GEM
     coffee-script (2.4.1)
       coffee-script-source
       execjs
-    coffee-script-source (1.10.0)
+    coffee-script-source (1.12.2)
     commonjs (0.2.7)
-    concurrent-ruby (1.0.2)
+    concurrent-ruby (1.0.3)
     countries (1.2.5)
       currencies (~> 0.4.2)
       i18n_data (~> 0.7.0)
@@ -133,7 +141,7 @@ GEM
     debug_inspector (0.0.2)
     descendants_tracker (0.0.4)
       thread_safe (~> 0.3, >= 0.3.1)
-    domain_name (0.5.20160826)
+    domain_name (0.5.20161129)
       unf (>= 0.0.5, < 1.0.0)
     dotenv (2.1.1)
     dotenv-rails (2.1.1)
@@ -144,23 +152,22 @@ GEM
       activemodel (>= 3.0)
       activesupport (>= 3.0)
       request_store (~> 1.0)
-    enumerable-lazy (0.0.1)
     equalizer (0.0.11)
     erubis (2.7.0)
     execjs (2.7.0)
     faker (1.6.6)
       i18n (~> 0.5)
-    font-awesome-rails (4.6.3.1)
+    font-awesome-rails (4.7.0.1)
       railties (>= 3.2, < 5.1)
     globalid (0.3.7)
       activesupport (>= 4.1.0)
-    grape (0.17.0)
+    grape (0.19.0)
       activesupport
       builder
       hashie (>= 2.1.0)
       multi_json (>= 1.3.2)
       multi_xml (>= 0.5.2)
-      mustermann19 (~> 0.4.3)
+      mustermann-grape (~> 0.4.0)
       rack (>= 1.3.0)
       rack-accept
       virtus (>= 1.0.0)
@@ -170,7 +177,7 @@ GEM
       jbuilder
       tilt
       tilt-jbuilder (>= 0.4.0)
-    grape-swagger (0.24.0)
+    grape-swagger (0.25.3)
       grape (>= 0.12.0)
     grape-swagger-rails (0.3.0)
       railties (>= 3.2.12)
@@ -179,12 +186,12 @@ GEM
     hashie (3.4.6)
     hashie-forbidden_attributes (0.1.1)
       hashie (>= 3.0)
-    http-cookie (1.0.2)
+    http-cookie (1.0.3)
       domain_name (~> 0.5)
     i18n (0.7.0)
     i18n_data (0.7.0)
     ice_nine (0.11.2)
-    jbuilder (2.6.0)
+    jbuilder (2.6.1)
       activesupport (>= 3.0.0, < 5.1)
       multi_json (~> 1.2)
     jmespath (1.3.1)
@@ -195,45 +202,47 @@ GEM
     jquery-turbolinks (2.1.0)
       railties (>= 3.1.0)
       turbolinks
-    jquery-ui-rails (5.0.5)
+    jquery-ui-rails (6.0.1)
       railties (>= 3.2.16)
     json (1.8.3)
     less (2.6.0)
       commonjs (~> 0.2.7)
-    less-rails (2.7.1)
+    less-rails (2.8.0)
       actionpack (>= 4.0)
       less (~> 2.6.0)
       sprockets (> 2, < 4)
       tilt
-    libv8 (3.16.14.15)
+    libv8 (3.16.14.17)
     loofah (2.0.3)
       nokogiri (>= 1.5.9)
     mail (2.6.4)
       mime-types (>= 1.16, < 4)
-    meta-tags (2.3.1)
+    meta-tags (2.4.0)
       actionpack (>= 3.2.0, <= 5.1.0)
     mime-types (3.1)
       mime-types-data (~> 3.2015)
     mime-types-data (3.2016.0521)
-    mini_magick (4.5.1)
+    mini_magick (4.6.0)
     mini_portile2 (2.1.0)
-    minitest (5.9.1)
+    minitest (5.10.1)
     multi_json (1.12.1)
-    multi_xml (0.5.5)
-    mustermann19 (0.4.4)
-      enumerable-lazy
+    multi_xml (0.6.0)
+    mustermann (0.4.0)
+      tool (~> 0.2)
+    mustermann-grape (0.4.0)
+      mustermann (= 0.4.0)
     netrc (0.11.0)
-    newrelic_rpm (3.16.3.323)
+    newrelic_rpm (3.17.2.327)
     ngannotate-rails (1.2.2)
       execjs
       rails (>= 3.1)
-    nokogiri (1.6.8)
+    nokogiri (1.6.8.1)
       mini_portile2 (~> 2.1.0)
-      pkg-config (~> 1.1.7)
     pg (0.19.0)
-    pkg-config (1.1.7)
-    puma (3.6.0)
-    rack (1.6.4)
+    polyamorous (1.3.1)
+      activerecord (>= 3.0)
+    puma (3.6.2)
+    rack (1.6.5)
     rack-accept (0.4.5)
       rack (>= 0.4)
     rack-cache (1.6.1)
@@ -270,9 +279,14 @@ GEM
       activesupport (= 4.2.7.1)
       rake (>= 0.8.7)
       thor (>= 0.18.1, < 2.0)
-    rake (11.3.0)
-    rdoc (4.2.2)
-      json (~> 1.4)
+    rake (12.0.0)
+    ransack (1.8.2)
+      actionpack (>= 3.0)
+      activerecord (>= 3.0)
+      activesupport (>= 3.0)
+      i18n
+      polyamorous (~> 1.3)
+    rdoc (4.3.0)
     ref (2.0.0)
     request_store (1.3.1)
     rest-client (2.0.0)
@@ -281,41 +295,43 @@ GEM
       netrc (~> 0.8)
     rqrcode (0.10.1)
       chunky_png (~> 1.0)
-    sass (3.4.22)
+    sass (3.4.23)
     sass-rails (5.0.6)
       railties (>= 4.0.0, < 6)
       sass (~> 3.1)
       sprockets (>= 2.8, < 4.0)
       sprockets-rails (>= 2.0, < 4.0)
       tilt (>= 1.1, < 3)
-    sdoc (0.4.1)
+    sdoc (0.4.2)
       json (~> 1.7, >= 1.7.7)
       rdoc (~> 4.0)
     slugify (1.0.7)
-    sort_alphabetical (1.0.2)
+    sort_alphabetical (1.1.0)
       unicode_utils (>= 1.2.2)
     sprig (0.2.0)
-    spring (1.7.2)
-    sprockets (3.7.0)
+    spring (2.0.0)
+      activesupport (>= 4.2)
+    sprockets (3.7.1)
       concurrent-ruby (~> 1.0)
       rack (> 1, < 3)
     sprockets-rails (2.3.3)
       actionpack (>= 3.0)
       activesupport (>= 3.0)
       sprockets (>= 2.8, < 4.0)
-    stripe (1.55.0)
+    stripe (1.57.1)
       rest-client (>= 1.4, < 4.0)
     therubyracer (0.12.2)
       libv8 (~> 3.16.14.0)
       ref
-    thor (0.19.1)
+    thor (0.19.4)
     thread_safe (0.3.5)
     tilt (2.0.5)
     tilt-jbuilder (0.7.1)
       jbuilder
       tilt (>= 1.3.0, < 3)
-    tinymce-rails (4.4.3)
+    tinymce-rails (4.5.1)
       railties (>= 3.1.1)
+    tool (0.2.3)
     turbolinks (5.0.1)
       turbolinks-source (~> 5)
     turbolinks-source (5.0.0)
@@ -326,7 +342,7 @@ GEM
       railties (>= 3.1)
     tzinfo (1.2.2)
       thread_safe (~> 0.1)
-    uglifier (3.0.2)
+    uglifier (3.0.4)
       execjs (>= 0.3.0, < 3)
     unf (0.1.4)
       unf_ext
@@ -342,9 +358,11 @@ GEM
       binding_of_caller (>= 0.7.2)
       railties (>= 4.0)
       sprockets-rails (>= 2.0, < 4.0)
-    will_paginate (3.1.3)
+    wicked_pdf (1.1.0)
+    will_paginate (3.1.5)
     will_paginate-bootstrap (1.0.1)
       will_paginate (>= 3.0.3)
+    wkhtmltopdf-binary (0.12.3.1)
 
 PLATFORMS
   ruby
@@ -390,9 +408,6 @@ DEPENDENCIES
   twitter-bootstrap-rails
   uglifier (>= 1.3.0)
   web-console (~> 2.0)
-
-RUBY VERSION
-   ruby 2.3.0p0
 
 BUNDLED WITH
    1.12.5
