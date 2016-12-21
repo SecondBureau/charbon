@@ -80,18 +80,6 @@ group :production do
   gem "newrelic_rpm"
 end
 
-group :heroku do 
-  # Rack::Cache is suitable as a quick drop-in component to enable HTTP caching for Rack-based applications that produce freshness (Expires, Cache-Control) and/or validation (Last-Modified, ETag) information.
-  gem 'rack-cache', :require => 'rack/cache'
-  
-  # This gem replaces the need for the plugins, and ensures that Rails 4 is optimally configured for executing on Heroku.
-  gem 'rails_12factor'
-  
-  # https://github.com/heroku/rack-timeout
-  gem "rack-timeout"
-  
-end
-
 
 #################### Camaleon CMS include all gems for plugins and themes #################### 
 require './lib/plugin_routes' 
