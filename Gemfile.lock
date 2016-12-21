@@ -379,7 +379,6 @@ DEPENDENCIES
   jquery-rails
   jquery-turbolinks
   jquery-ui-rails
-  less-rails
   newrelic_rpm
   ngannotate-rails
   pg
