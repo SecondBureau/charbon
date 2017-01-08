@@ -1,19 +1,19 @@
 .row.mt-3
   .col-lg-8.col-md-12
-    = render partial: theme_view('blocks/posts'), locals: {template: 'portrait', count: 3, slug: 'spotlight'}
+    = render partial: theme_view('blocks/posts'), locals: {template: 'portrait', count: current_theme.get_option('cat1_count').to_i, slug: current_theme.get_option('cat1_slug')}
   .col-lg-4.col-md-12
-    = render partial: theme_view('blocks/posts'), locals: {template: 'list', count: 10, slug: 'business'}
+    = render partial: theme_view('blocks/posts'), locals: {template: 'list', count: current_theme.get_option('cat2_count').to_i, slug: current_theme.get_option('cat2_slug')}
 
 .row
   .col-lg-8.col-md-12
-    = render partial: theme_view('blocks/posts'), locals: {template: 'portrait', count: 3, slug: 'policy'}
-    = render partial: theme_view('blocks/posts'), locals: {template: 'portrait', count: 3, slug: 'industry'}
+    = render partial: theme_view('blocks/posts'), locals: {template: 'portrait', count: current_theme.get_option('cat3_count').to_i, slug: current_theme.get_option('cat3_slug')}
+    = render partial: theme_view('blocks/posts'), locals: {template: 'portrait', count: current_theme.get_option('cat5_count').to_i, slug: current_theme.get_option('cat5_slug')}
   .col-lg-4.col-md-12
-    = render partial: theme_view('blocks/posts'), locals: {template: 'thumbnails', count: 5, slug: 'internet'}
+    = render partial: theme_view('blocks/posts'), locals: {template: 'thumbnails', count: current_theme.get_option('cat4_count').to_i, slug: current_theme.get_option('cat4_slug')}
 
 .row
   .col-12
-    = render partial: theme_view('blocks/posts'), locals: {template: 'landscape', count: 3, slug: 'society'}
+    = render partial: theme_view('blocks/posts'), locals: {template: 'landscape', count: current_theme.get_option('cat6_count').to_i, slug: current_theme.get_option('cat6_slug')}
 
 .row.mt-3.mb-0
   .col-12
@@ -21,11 +21,11 @@
 
 .row
   .col-12
-    = render partial: theme_view('blocks/posts'), locals: {template: 'landscape', count: 3, slug: 'culture'}
+    = render partial: theme_view('blocks/posts'), locals: {template: 'landscape', count: current_theme.get_option('cat7_count').to_i, slug: current_theme.get_option('cat7_slug')}
 
 .row
   .col-lg-8.col-md-12
-    = render partial: theme_view('blocks/posts'), locals: {template: 'portrait', count: 3, slug: 'environment'}
+    = render partial: theme_view('blocks/posts'), locals: {template: 'portrait', count: current_theme.get_option('cat8_count').to_i, slug: current_theme.get_option('cat8_slug')}
   .col-lg-4.mt-4.hidden-md-down
     %h1.mb-3.text-white Ad
     = image_tag current_theme.the_field('ad2-img'), class: 'img-fluid w-100'

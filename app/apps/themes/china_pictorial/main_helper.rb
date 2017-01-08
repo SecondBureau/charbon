@@ -21,7 +21,7 @@ module Themes::ChinaPictorial::MainHelper
       group = theme.add_field_group({name: "Ads", slug: "ads", description: "Advertissements on Home Page"})
       group.add_field({"name"=>"ad horizontal image", "slug"=>"ad1-img"}, {required: true, field_key: "file", formats: 'image', translate: false, default_value: nil})
       group.add_field({"name"=>"ad horizontal link", "slug"=>"ad1-link_to"}, {required: false, field_key: "url", translate: false, default_value: nil})
-      group.add_field({"name"=>"ad vertical image", "slug"=>"ad2-img-url"}, {required: true, field_key: "file", formats: 'image', translate: false, default_value: nil})
+      group.add_field({"name"=>"ad vertical image", "slug"=>"ad2-img"}, {required: true, field_key: "file", formats: 'image', translate: false, default_value: nil})
       group.add_field({"name"=>"ad vertical link", "slug"=>"ad2-link_to"}, {required: false, field_key: "url", translate: false, default_value: nil})
     end
     

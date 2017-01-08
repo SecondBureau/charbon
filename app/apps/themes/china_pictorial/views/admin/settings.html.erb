@@ -1,3 +1,133 @@
+<!-- <div class="form-group">
+    <%= label_tag 'Email info' %>
+    <%= text_field_tag 'theme_option[email_info]', current_theme.get_option('email_info'), class: 'form-control' %>
+</div>
 
 <div class="form-group">
+    <%= label_tag 'Phone' %>
+    <%= text_field_tag 'theme_option[phone_info]', current_theme.get_option('phone_info'), class: 'form-control' %>
 </div>
+
+<div class="form-group">
+    <%= label_tag 'Address' %>
+    <%= text_field_tag 'theme_option[address_info]', current_theme.get_option('address_info'), class: 'form-control' %>
+</div>
+
+<div class="form-group">
+    <%= label_tag nil, 'Map Location (Iframe)' %> <br><small>Sample: <code>&lt;iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2564.958900464012!2..." frameborder="0" style="border:0" allowfullscreen="">&lt;/iframe&gt;</code></small>
+    <%= text_field_tag 'theme_option[map_url]', current_theme.get_option('map_url'), class: 'form-control' %>
+</div> -->
+
+
+<% categories = CamaleonCms::PostType.find_by_slug('post').categories.order(:name) %>
+
+<div class='row'>
+  <div class='col-xs-6'>
+
+<table width="100%" style="border: solid 1px #dddddd">
+  <tr>
+    <td colspan="2" width="66%" style="border: solid 1px #dddddd; padding: 10px; background: #F5F5F5">
+      <div class="form-group">
+        <%= label_tag 'Category' %>
+        <%= select_tag 'theme_option[cat1_slug]', options_from_collection_for_select(categories, "slug", "name", current_theme.get_option('cat1_slug')), class: 'form-control' %>
+      </div>
+      <div class="form-group">
+        <%= label_tag 'Posts Count' %>
+        <%= text_field_tag 'theme_option[cat1_count]', current_theme.get_option('cat1_count', 3), class: 'form-control' %>
+      </div>
+    </td>
+    <td width="33%" style="border: solid 1px #dddddd; padding: 10px; color: #fcfcfc; background: #55595c">
+      <div class="form-group">
+        <%= label_tag 'Category' %>
+        <%= select_tag 'theme_option[cat2_slug]', options_from_collection_for_select(categories, "slug", "name", current_theme.get_option('cat2_slug')), class: 'form-control' %>
+      </div>
+      <div class="form-group">
+        <%= label_tag 'Posts Count' %>
+        <%= text_field_tag 'theme_option[cat2_count]', current_theme.get_option('cat2_count', 10), class: 'form-control' %>
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <td colspan=2 style="border: solid 1px #dddddd; padding: 10px; color: #fcfcfc; background: #55595c">
+      <div class="form-group">
+        <%= label_tag 'Category' %>
+        <%= select_tag 'theme_option[cat3_slug]', options_from_collection_for_select(categories, "slug", "name", current_theme.get_option('cat3_slug')), class: 'form-control' %>
+      </div>
+      <div class="form-group">
+        <%= label_tag 'Posts Count' %>
+        <%= text_field_tag 'theme_option[cat3_count]', current_theme.get_option('cat3_count', 3), class: 'form-control' %>
+      </div>
+    </td>
+    <td rowspan=2 style="border: solid 1px #dddddd; padding: 10px; background: #ECF0F5">
+      <div class="form-group">
+        <%= label_tag 'Category' %>
+        <%= select_tag 'theme_option[cat4_slug]', options_from_collection_for_select(categories, "slug", "name", current_theme.get_option('cat4_slug')), class: 'form-control' %>
+      </div>
+      <div class="form-group">
+        <%= label_tag 'Posts Count' %>
+        <%= text_field_tag 'theme_option[cat4_count]', current_theme.get_option('cat4_count', 5), class: 'form-control' %>
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <td colspan=2  style="border: solid 1px #dddddd; padding: 10px; background: #F5F5F5">
+      <div class="form-group">
+        <%= label_tag 'Category' %>
+        <%= select_tag 'theme_option[cat5_slug]', options_from_collection_for_select(categories, "slug", "name", current_theme.get_option('cat5_slug')), class: 'form-control' %>
+      </div>
+      <div class="form-group">
+        <%= label_tag 'Posts Count' %>
+        <%= text_field_tag 'theme_option[cat5_count]', current_theme.get_option('cat5_count', 3), class: 'form-control' %>
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <td colspan=3 style="border: solid 1px #dddddd; padding: 10px; color: #fcfcfc; background: #55595c">
+      <div class="form-group">
+        <%= label_tag 'Category' %>
+        <%= select_tag 'theme_option[cat6_slug]', options_from_collection_for_select(categories, "slug", "name", current_theme.get_option('cat6_slug')), class: 'form-control' %>
+      </div>
+      <div class="form-group">
+        <%= label_tag 'Posts Count' %>
+        <%= text_field_tag 'theme_option[cat6_count]', current_theme.get_option('cat6_count', 3), class: 'form-control' %>
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <td colspan=3>
+      <%= image_tag current_theme.the_field('ad1-img'), class: 'img-responsive' %>
+    </td>
+  </tr>
+  <tr>
+    <td colspan=3  style="border: solid 1px #dddddd; padding: 10px; color: #fcfcfc; background: #55595c">
+      <div class="form-group">
+        <%= label_tag 'Category' %>
+        <%= select_tag 'theme_option[cat7_slug]', options_from_collection_for_select(categories, "slug", "name", current_theme.get_option('cat7_slug')), class: 'form-control' %>
+      </div>
+      <div class="form-group">
+        <%= label_tag 'Posts Count' %>
+        <%= text_field_tag 'theme_option[cat7_count]', current_theme.get_option('cat7_count', 3), class: 'form-control' %>
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <td colspan=2 style="border: solid 1px #dddddd; padding: 10px; background: #ECF0F5">
+      <div class="form-group">
+        <%= label_tag 'Category' %>
+        <%= select_tag 'theme_option[cat8_slug]', options_from_collection_for_select(categories, "slug", "name", current_theme.get_option('cat8_slug')), class: 'form-control' %>
+      </div>
+      <div class="form-group">
+        <%= label_tag 'Posts Count' %>
+        <%= text_field_tag 'theme_option[cat8_count]', current_theme.get_option('cat8_count', 3), class: 'form-control' %>
+      </div>
+    </td>
+    <td>
+      <%= image_tag current_theme.the_field('ad2-img'), class: 'img-responsive' %>
+    </td>
+  </tr>
+  
+</table>
+
+</div></div>
+
+<hr>
