@@ -1,0 +1,21 @@
+- post = posts.shift
+.row
+  .col-12
+    .pos-a-b.ml-3.mb-3
+      %h5.text-danger.text-uppercase Lorem Ipsum
+      %h2= link_to post.decorate.the_title, post.decorate.the_path, class: 'text-white'
+    = post.decorate.the_thumb(class: 'img-fluid')
+    
+
+- posts.each do |post|
+  .row.mt-3
+    .col-4
+      = post.decorate.the_thumb(class: 'img-fluid')
+    .col-8
+      %h5= link_to post.decorate.the_title, post.decorate.the_path
+      %strong.excerpt= post.decorate.the_excerpt.truncate(260)
+      .text-muted.mt-0.mb-0.text-uppercase.small
+        = l(post.decorate.published_at, format: "%d.%m.%Y")
+        &mdash;
+        = rand(100)
+        views

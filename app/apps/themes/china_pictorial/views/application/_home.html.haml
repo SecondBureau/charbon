@@ -1,0 +1,31 @@
+.row.mt-3
+  .col-lg-8.col-md-12
+    = render partial: theme_view('blocks/posts'), locals: {template: 'portrait', count: 3, slug: 'spotlight'}
+  .col-lg-4.col-md-12
+    = render partial: theme_view('blocks/posts'), locals: {template: 'list', count: 10, slug: 'business'}
+
+.row
+  .col-lg-8.col-md-12
+    = render partial: theme_view('blocks/posts'), locals: {template: 'portrait', count: 3, slug: 'policy'}
+    = render partial: theme_view('blocks/posts'), locals: {template: 'portrait', count: 3, slug: 'industry'}
+  .col-lg-4.col-md-12
+    = render partial: theme_view('blocks/posts'), locals: {template: 'thumbnails', count: 5, slug: 'internet'}
+
+.row
+  .col-12
+    = render partial: theme_view('blocks/posts'), locals: {template: 'landscape', count: 3, slug: 'society'}
+
+.row.mt-3.mb-0
+  .col-12
+    = image_tag current_theme.the_field('ad1-img'), class: 'img-fluid w-100'
+
+.row
+  .col-12
+    = render partial: theme_view('blocks/posts'), locals: {template: 'landscape', count: 3, slug: 'culture'}
+
+.row
+  .col-lg-8.col-md-12
+    = render partial: theme_view('blocks/posts'), locals: {template: 'portrait', count: 3, slug: 'environment'}
+  .col-lg-4.mt-4.hidden-md-down
+    %h1.mb-3.text-white Ad
+    = image_tag current_theme.the_field('ad2-img'), class: 'img-fluid w-100'

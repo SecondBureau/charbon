@@ -1,0 +1,85 @@
+//@font-face {
+//    font-family: 'Roboto';
+//    src: font-url('Roboto-Light-webfont.eot');
+//    src: font-url('Roboto-Light-webfont.eot?#iefix') format('embedded-opentype'),
+//         font-url('Roboto-Light-webfont.woff') format('woff'),
+//         font-url('Roboto-Light-webfont.ttf') format('truetype'),
+//         font-url('Roboto-Light-webfont.svg#robotolight') format('svg');
+//    font-weight: normal;
+//    font-style: normal;
+//}
+
+
+@font-face {
+    font-family: 'dax';
+    src: asset-theme-url('fonts/dax-webfont.eot');
+    src: asset-theme-url('fonts/dax-webfont.eot?#iefix') format('embedded-opentype'),
+      asset-theme-url('fonts/dax-webfont.woff2') format('woff2'),
+      asset-theme-url('fonts/dax-webfont.woff') format('woff'),
+      asset-theme-url('fonts/dax-webfont.ttf') format('truetype'),
+      asset-theme-url('fonts/dax-webfont.svg#daxregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'dax';
+    src: asset-theme-url('fonts/dax-bold-webfont.eot');
+    src: asset-theme-url('fonts/dax-bold-webfont.eot?#iefix') format('embedded-opentype'),
+      asset-theme-url('fonts/dax-bold-webfont.woff2') format('woff2'),
+      asset-theme-url('fonts/dax-bold-webfont.woff') format('woff'),
+      asset-theme-url('fonts/dax-bold-webfont.ttf') format('truetype'),
+      asset-theme-url('fonts/dax-bold-webfont.svg#daxbold') format('svg');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'dax';
+    src: asset-theme-url('fonts/dax-italic-webfont.eot');
+    src: asset-theme-url('fonts/dax-italic-webfont.eot?#iefix') format('embedded-opentype'),
+      asset-theme-url('fonts/dax-italic-webfont.woff2') format('woff2'),
+      asset-theme-url('fonts/dax-italic-webfont.woff') format('woff'),
+      asset-theme-url('fonts/dax-italic-webfont.ttf') format('truetype'),
+      asset-theme-url('fonts/dax-italic-webfont.svg#dax-italicregular') format('svg');
+    font-weight: normal;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'crimson';
+    src: asset-theme-url('fonts/crimson-roman-webfont.eot');
+    src: asset-theme-url('fonts/crimson-roman-webfont.eot?#iefix') format('embedded-opentype'),
+      asset-theme-url('fonts/crimson-roman-webfont.woff2') format('woff2'),
+      asset-theme-url('fonts/crimson-roman-webfont.woff') format('woff'),
+      asset-theme-url('fonts/crimson-roman-webfont.ttf') format('truetype'),
+      asset-theme-url('fonts/crimson-roman-webfont.svg#crimsonroman') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'crimson';
+    src: asset-theme-url('fonts/crimson-bold-webfont.eot');
+    src: asset-theme-url('fonts/crimson-bold-webfont.eot?#iefix') format('embedded-opentype'),
+      asset-theme-url('fonts/crimson-bold-webfont.woff2') format('woff2'),
+      asset-theme-url('fonts/crimson-bold-webfont.woff') format('woff'),
+      asset-theme-url('fonts/crimson-bold-webfont.ttf') format('truetype'),
+      asset-theme-url('fonts/crimson-bold-webfont.svg#crimsonbold') format('svg');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'crimson';
+    src: asset-theme-url('fonts/crimson-italic-webfont.eot');
+    src: asset-theme-url('fonts/crimson-italic-webfont.eot?#iefix') format('embedded-opentype'),
+      asset-theme-url('fonts/crimson-italic-webfont.woff2') format('woff2'),
+      asset-theme-url('fonts/crimson-italic-webfont.woff') format('woff'),
+      asset-theme-url('fonts/crimson-italic-webfont.ttf') format('truetype'),
+      asset-theme-url('fonts/crimson-italic-webfont.svg#crimsonitalic') format('svg');
+    font-weight: normal;
+    font-style: italic;
+
+}
