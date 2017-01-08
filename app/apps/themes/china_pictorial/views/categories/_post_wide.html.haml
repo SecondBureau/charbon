@@ -4,7 +4,7 @@
   .text-muted.pt-3.text-uppercase.small.float-right
     = l(post.decorate.published_at, format: "%d.%m.%Y")
     &mdash;
-    = rand(100)
+    = post.get_meta('visits', 0)
     views
   %h4.pt-1
     = link_to  post.decorate.the_title, post.decorate.the_path

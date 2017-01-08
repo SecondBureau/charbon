@@ -26,3 +26,5 @@
     .row
       .col-12
         %hr.my-0
+        
+        = render partial: "/camaleon_cms/flash_messages.html.erb", locals:{ flash: (flash[:cama_subscriber] || {}).with_indifferent_access }
