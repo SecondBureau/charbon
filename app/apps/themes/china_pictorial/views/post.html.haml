@@ -1,0 +1,47 @@
+%article.post{itemscope: true, itemtype: 'https://schema.org/Article'}
+
+  %meta{itemprop: :url, content: @post.the_url}
+  %meta{itemprop: :mainEntityOfPage, itemscope: true, itemtype: 'https://schema.org/WebPage', itemid: @post.the_url}
+  %meta{itemprop: :headline, content: @post.the_title}
+  %meta{itemprop: :dateModified, content: @post.object.updated_at}
+  
+  %div{itemprop: :publisher, itemscope: true, itemtype: 'https://schema.org/Organization'}
+    %div{itemprop: :logo, itemscope: true, itemtype: 'https://schema.org/ImageObject'}
+      %meta{itemprop: :url, content: current_site.the_logo}
+      %meta{itemprop: :width, content: 100}
+      %meta{itemprop: :height, content: 100}
+    %meta{itemprop: :name, content: 'China Pictorial'}
+
+  .row.mt-2
+    .col-12.text-center
+      
+      %h1.mt-2.text-danger= @post.the_title
+      
+      .text-muted.text-uppercase.mb-3{itemscope:true, itemprop: :author, itemtype:'https://schema.org/Person'}
+        text by
+        %strong{itemprop: :name}= @post.the_field(:author)
+        %meta{itemprop: :homeLocation, content: 'Beijing'}
+        
+      .float-md-right.small.pb-1
+        %span.published_by
+          Publish by
+          = @post.the_author.the_name
+        %span.published_at
+          %time{datetime:  @post.object.published_at.try(:iso8601), itemprop: :datePublished}= I18n.l @post.object.published_at.to_date, format: :long
+  .row
+    .col-12{itemprop: :image, itemscope: true, itemtype:'https://schema.org/ImageObject'}
+      = @post.the_thumb(class: 'img-fluid w-100')
+      %meta{itemprop: :url, content: @post.the_thumb(class: 'img-fluid w-100')}
+      %meta{itemprop: :width, content: 100}
+      %meta{itemprop: :height, content: 100}
+
+  .row.mt-2
+    .col-12.col-lg-8.article-body{itemprop: :articleBody}
+      = raw @post.the_content
+    
+    .col-12.col-lg-4
+      %h2.text-danger.mb-1.mt-3
+        %strong Related articles
+      = render partial: theme_view("blocks/thumbnails"), locals: {posts: @post.the_related_posts.where('cama_posts.id != ?', @post.id).to_a.sample(10)} 
+
+

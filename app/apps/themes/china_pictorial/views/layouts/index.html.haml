@@ -1,0 +1,23 @@
+!!!
+%html{:lang => "en"}
+  %head
+    %title= current_site.the_title
+    %meta{:content => "text/html; charset=utf-8", "http-equiv" => "Content-Type"}/
+    %meta{:content => "IE=edge", "http-equiv" => "X-UA-Compatible"}/
+    %meta{:content => "width=device-width, initial-scale=1", :name => "viewport"}/
+    = stylesheet_link_tag theme_asset_path("css/main")
+    = javascript_include_tag theme_asset_path("js/main")
+    = raw the_head
+  %body
+    = render theme_view('application/header')
+    - if action_name.eql?('index')
+      .container-fluid.mt-1.pt-1
+        = render theme_view('application/carousel')
+    .container
+      .content
+        = yield
+      %footer
+        = render theme_view('application/footer')
+        = render theme_view('application/adaptative')
+
+    

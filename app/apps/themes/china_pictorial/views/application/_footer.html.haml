@@ -1,0 +1,42 @@
+%hr.my-2
+
+.row.hidden-sm-down
+  .col-12.text-center.text-md-left
+    = link_to current_site.the_url, class: 'img-fluid logo-footer' do
+      = image_tag current_site.the_logo
+
+.row
+  .col-md-12.col-lg-3
+    %p= current_theme.the_field('footer_seo')
+  
+  .col-md-12.col-lg-3
+    %strong Any suggestion ? 
+    %p= current_theme.the_field('footer_address')
+    
+  .col-md-12.col-lg-3
+    %strong Folllow us
+    %p.mt-2.mb-2
+      - %w(facebook twitter linkedin).each do |social|
+        = link_to current_theme.the_field("social-#{social}") do
+          %i.fa.fa-2x{class: "fa-#{social}"}
+  
+  .col-md-12.col-lg-3
+    %strong Newsletter
+    .text-muted News every week in your mailbox.
+    = form_tag(plugins_cama_subscriber_subscribe_url) do
+      = render partial: "/camaleon_cms/flash_messages.html.erb", locals:{ flash: (flash[:cama_subscriber] || {}).with_indifferent_access }
+      = hidden_field_tag :group_id, 1
+      .form-group
+        %label Email:
+        = text_field_tag :email, nil, class: 'form-control'
+      
+      .text-right
+        %button.btn.btn-primary{type: :submit} Subscribe
+
+    
+%center
+  %strong 
+    = Time.now.strftime("%Y")
+    &copy;
+    China Pictorial. All rights reserved
+  %p Reproduction in whole or in part without permission is prohibited. 

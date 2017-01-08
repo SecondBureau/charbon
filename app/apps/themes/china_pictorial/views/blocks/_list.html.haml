@@ -1,0 +1,10 @@
+.gradient-vertical-primary.pl-2.scroll-vertical-lg-up.block-h-100-lg-up.hidden-md-down
+  %ul.list-group.block-h-100px-lg-up
+    - posts.each do |post|
+      %li.list-group-item
+        %h5.text-uppercase.title= link_to post.decorate.the_title, post.decorate.the_path
+        .summary.excerpt.font-italic= post.decorate.the_excerpt
+
+.hidden-lg-up
+  = render partial: theme_view("blocks/post"), collection: posts
+  
