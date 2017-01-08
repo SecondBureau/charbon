@@ -6,5 +6,5 @@
   .text-muted.mb-3.text-uppercase.text-right.small
     = l(post.decorate.published_at, format: "%d.%m.%Y")
     &mdash;
-    = rand(100)
+    = post.get_meta('visits', 0)
     views
