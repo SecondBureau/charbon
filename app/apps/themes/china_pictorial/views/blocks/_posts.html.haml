@@ -1,5 +1,10 @@
 - if category  = current_site.categories.where(slug: slug).first
   - posts     = category.posts.published.where("(#{CamaleonCms::Post.table_name}.published_at is null or #{CamaleonCms::Post.table_name}.published_at <= ?)", Time.now).where("visibility != 'private'").reorder(published_at: :desc).limit(count)
   .block.mt-4{class: template.eql?('list') ? 'h-100' : ''}
-    %h1.mb-3.pl-3{class: template.eql?('list') ? 'text-primary' : 'text-danger'}= category.decorate.the_title
-    = render partial: theme_view("blocks/#{template}"), locals: {posts: posts.to_a}
+    %h1.mb-3.pl-0.pl-sm-3{class: template.eql?('list') ? 'text-primary' : 'text-danger'}= category.decorate.the_title
+    - if posts.count > 0
+      = render partial: theme_view("blocks/#{template}"), locals: {posts: posts.to_a}
+    - else
+      .row
+        .col-12
+          No post yet

@@ -1,22 +1,25 @@
 .row
   - post = posts.shift
   .col-12.col-md-8.col-lg-6
-    .pos-a-b.ml-3.mb-3
+    .pos-a-b.ml-3.mb-3.hidden-xs-down
       %h5.text-danger.text-uppercase Lorem Ipsum
-      %h2.text-white= link_to post.decorate.the_title, post.decorate.the_path
+      %h2= link_to post.decorate.the_title, post.decorate.the_path, class: 'text-white'
     = post.decorate.the_thumb(class: 'img-fluid')
+  
+  .col-12.mt-3.hidden-sm-up
+    = render partial: 'partials/excerpt', locals: {post: post}
 
   .col-12.col-md-4.col-lg-6{style: "display: flex;flex-direction: column; justify-content: space-between;"}
     
     - posts.each do |post|
     
-      .row
-        .col-6.col-md-12.col-lg-6
-          .pos-a-b.pl-3.mb-3.hidden-sm-down.hidden-lg-up
+      .row.mt-3.mt-md-0
+        .col-12.col-sm-6.col-md-12.col-lg-6
+          .pos-a-b.pl-1.pr-3.mb-1.hidden-sm-down.hidden-lg-up
             .text-danger.text-uppercase Lorem Ipsum
-            %strong.text-white= link_to post.decorate.the_title.truncate(30), post.decorate.the_path
+            %strong= link_to post.decorate.the_title.truncate(30), post.decorate.the_path, class: 'text-white'
           = post.decorate.the_thumb(class: 'img-fluid')
-        .col-6.hidden-md
+        .col-12.col-sm-6.hidden-md.mt-3.mt-sm-0
           %h5= link_to post.decorate.the_title.truncate(40), post.decorate.the_path
           %strong.excerpt.hidden-xs-down{style: 'line-height: 0.8'}= post.decorate.the_excerpt.truncate(150) # extra truncation
           %span.excerpt.hidden-sm-up= post.decorate.the_excerpt.truncate(120)

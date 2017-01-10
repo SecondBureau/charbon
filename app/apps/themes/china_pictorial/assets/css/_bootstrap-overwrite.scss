@@ -72,6 +72,7 @@ h1, .h1 {
 
 .carousel-item, .container-carousel {
   height: 500px;
+  min-width: 300px;
   
   @include media-breakpoint-down(xs) {
     height: 300px;
