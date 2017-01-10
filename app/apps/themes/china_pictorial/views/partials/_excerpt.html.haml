@@ -1,0 +1,11 @@
+%h5= link_to post.decorate.the_title, post.decorate.the_path
+%strong.excerpt.hidden-sm-up= post.decorate.the_excerpt.truncate(250)
+%strong.excerpt.hidden-md-up.hidden-xs-down= post.decorate.the_excerpt.truncate(250)
+%strong.excerpt.hidden-lg-up.hidden-sm-down= post.decorate.the_excerpt.truncate(250)
+%strong.excerpt.hidden-xl-up.hidden-md-down= post.decorate.the_excerpt.truncate(250)
+%strong.excerpt.hidden-lg-down= post.decorate.the_excerpt.truncate(250)
+.text-muted.mt-0.mb-3.text-uppercase.small
+  = l(post.decorate.published_at, format: "%d.%m.%Y")
+  &mdash;
+  = post.get_meta('visits', 0)
+  views

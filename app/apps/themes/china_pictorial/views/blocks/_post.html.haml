@@ -1,13 +1,6 @@
 
 .row.mt-3
-  .col-4
+  .col-12.col-sm-6.col-md-4
     = post.decorate.the_thumb(class: 'img-fluid')
-  .col-8
-    %h5= link_to post.decorate.the_title, post.decorate.the_path
-    %strong.excerpt.hidden-xs-down.hidden-md-up= post.decorate.the_excerpt.truncate(100)
-    %strong.excerpt.hidden-sm-down= post.decorate.the_excerpt.truncate(250)
-    .text-muted.mt-0.mb-3.text-uppercase.small
-      = l(post.decorate.published_at, format: "%d.%m.%Y")
-      &mdash;
-      = post.get_meta('visits', 0)
-      views
+  .col-12.col-sm-6.col-md-8.mt-3.mt-sm-0
+    = render partial: 'partials/excerpt', locals: {post: post}

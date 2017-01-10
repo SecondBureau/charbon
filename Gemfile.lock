@@ -1,42 +1,8 @@
 GIT
-  remote: git://github.com/owen2345/cama_contact_form.git
-  revision: 4faa3d40f203b4828a32e20727024bf8ebe82677
-  specs:
-    cama_contact_form (0.0.18)
-      rails
-
-GIT
-  remote: git://github.com/owen2345/cama_subscriber.git
-  revision: 0fb7b2872d9180a2ae580d9f90a7fc4ac1b97bd2
-  specs:
-    cama_subscriber (0.0.3)
-      rails
-
-GIT
-  remote: git://github.com/owen2345/camaleon-ecommerce.git
-  revision: 87eb3f56e36fbec2d872ff2a9f649f80b07c1f4a
-  specs:
-    camaleon_ecommerce (2.0.0)
-      activemerchant (~> 1.54)
-      camaleon_cms (>= 2.4)
-      country_select (~> 2.4)
-      ransack (>= 1.7.0)
-      stripe
-      wicked_pdf
-      wkhtmltopdf-binary
-
-GIT
-  remote: git://github.com/owen2345/camaleon-post-order-plugin.git
-  revision: 3c665b27166084be6b99142cde837d0195080e60
-  specs:
-    camaleon_post_order (0.0.2)
-      rails
-
-GIT
   remote: https://github.com/SecondBureau/camaleon-cms.git
-  revision: 9e03ee2364b8b29809f41f315b60aace88a5363d
+  revision: 37b9761e9cb6e1e58e5e447d23fa7fad46af9e4e
   specs:
-    camaleon_cms (2.4.2)
+    camaleon_cms (2.4.3)
       aws-sdk (~> 2)
       bcrypt
       breadcrumbs_on_rails
@@ -53,6 +19,40 @@ GIT
       tinymce-rails (~> 4.3)
       will_paginate
       will_paginate-bootstrap
+
+GIT
+  remote: https://github.com/owen2345/cama_contact_form
+  revision: 4faa3d40f203b4828a32e20727024bf8ebe82677
+  specs:
+    cama_contact_form (0.0.18)
+      rails
+
+GIT
+  remote: https://github.com/owen2345/cama_subscriber
+  revision: 0fb7b2872d9180a2ae580d9f90a7fc4ac1b97bd2
+  specs:
+    cama_subscriber (0.0.3)
+      rails
+
+GIT
+  remote: https://github.com/owen2345/camaleon-ecommerce
+  revision: 87eb3f56e36fbec2d872ff2a9f649f80b07c1f4a
+  specs:
+    camaleon_ecommerce (2.0.0)
+      activemerchant (~> 1.54)
+      camaleon_cms (>= 2.4)
+      country_select (~> 2.4)
+      ransack (>= 1.7.0)
+      stripe
+      wicked_pdf
+      wkhtmltopdf-binary
+
+GIT
+  remote: https://github.com/owen2345/camaleon-post-order-plugin
+  revision: 3c665b27166084be6b99142cde837d0195080e60
+  specs:
+    camaleon_post_order (0.0.2)
+      rails
 
 GIT
   remote: https://github.com/tunecore/will_paginate-bootstrap
@@ -174,7 +174,7 @@ GEM
       railties (>= 3.2, < 5.1)
     globalid (0.3.7)
       activesupport (>= 4.1.0)
-    grape (0.19.0)
+    grape (0.19.1)
       activesupport
       builder
       hashie (>= 2.1.0)
@@ -190,8 +190,8 @@ GEM
       jbuilder
       tilt
       tilt-jbuilder (>= 0.4.0)
-    grape-swagger (0.25.3)
-      grape (>= 0.12.0)
+    grape-swagger (0.26.0)
+      grape (>= 0.16.2)
     grape-swagger-rails (0.3.0)
       railties (>= 3.2.12)
     haml (4.0.7)
@@ -413,5 +413,8 @@ DEPENDENCIES
   web-console (~> 2.0)
   will_paginate-bootstrap!
 
+RUBY VERSION
+   ruby 2.3.0p0
+
 BUNDLED WITH
-   1.12.5
+   1.13.7

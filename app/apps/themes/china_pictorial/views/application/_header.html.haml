@@ -12,14 +12,14 @@
               = link_to current_theme.the_field("social-#{social}"), class: 'pr-1' do
                 %i.fa.fa-2x{class: "fa-#{social}"}
         - { xs: 'hidden-sm-up' }.each do |size, css|
-          = raw draw_menu({menu_slug: "menu_#{size.to_s}", container_id: "navbar-#{size.to_s}", container_class: "nav navbar-nav flex-space-between #{css}", item_current: 'nav-item active', item_class: 'nav-item h5', link_class: 'nav-link'})
+          = raw draw_menu({menu_slug: "menu_#{size.to_s}", container_id: "navbar-#{size.to_s}", container_class: "nav navbar-nav flex-space-between #{css}", item_current: 'nav-item active', item_class: 'nav-item', link_class: 'nav-link'})
             
         
         
     .row
       .col-12
         - { sm: 'hidden-md-up hidden-xs-down', md: 'hidden-lg-up hidden-sm-down', lg: 'hidden-xl-up hidden-md-down', xl: 'hidden-lg-down' }.each do |size, css|
-          = raw draw_menu({menu_slug: "menu_#{size.to_s}", container_id: "navbar-#{size.to_s}", container_class: "nav navbar-nav flex-space-between #{css}", item_current: 'nav-item active', item_class: 'nav-item h5', link_class: 'nav-link'})
+          = raw draw_menu({menu_slug: "menu_#{size.to_s}", container_id: "navbar-#{size.to_s}", container_class: "nav navbar-nav flex-space-between #{css}", item_current: 'nav-item active', item_class: 'nav-item', link_class: 'nav-link'})
   
         = raw current_site.draw_languages("language list-inline pull-right", true)
 
