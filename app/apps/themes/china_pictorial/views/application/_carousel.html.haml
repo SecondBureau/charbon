@@ -7,7 +7,7 @@
     .carousel-inner{:role => "listbox"}
       - carousel.children.each_with_index do |slide, index|
         - post = CamaleonCms::Post.find(slide.url).decorate
-        .carousel-item{class: index.eql?(0) ? 'active' : '', style: "background-image: url('#{post.the_thumb_url}'); background-size:cover"}
+        .carousel-item{class: index.eql?(0) ? 'active' : '', style: "background-image: url('#{post.the_thumb_url}');"}
           .container.container-carousel
             .carousel-item-caption
               .h2= link_to post.categories.first.decorate.the_title, post.categories.first.decorate.the_url, class:'text-danger'

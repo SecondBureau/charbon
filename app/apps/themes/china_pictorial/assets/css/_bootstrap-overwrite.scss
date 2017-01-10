@@ -79,6 +79,16 @@ h1, .h1 {
   }
 }
 
+.carousel-item {
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
 .carousel-item-caption {
   position: absolute;
   bottom: 50px;
