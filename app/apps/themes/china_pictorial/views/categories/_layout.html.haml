@@ -1,7 +1,12 @@
 .row.mt-3
   .col-lg-8.col-md-12
     %h1.text-danger.pl-1= title
-    = render partial: theme_view('categories/category'), locals: {posts: posts}
+    - unless posts.blank?
+      = render partial: theme_view('categories/category'), locals: {posts: posts}
+    - else
+      .row
+        .col-12
+          .alert.alert-warning= raw ct('no_contents_found', default: 'No contents found')
     .text-center
       = will_paginate posts, renderer: BootstrapPagination::Rails
   .col-lg-4.col-md-12
