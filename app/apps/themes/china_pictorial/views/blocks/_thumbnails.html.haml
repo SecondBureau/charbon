@@ -2,9 +2,9 @@
 .hidden-md-down      
   %ul.list-group
     - posts.each do |post|
-      %li.list-group-item.pt-0.pl-0.pr-0.border-0
+      %li.list-group-item.pt-0.pl-0.pr-0.border-0.flex-column
         = post.decorate.the_thumb(class: 'img-fluid mb-1')
-        .text-muted.mt-0.text-uppercase.small
+        %small.text-muted.mt-0.text-uppercase
           = l(post.decorate.published_at, format: "%d.%m.%Y")
           &mdash;
           = post.get_meta('visits', 0)
