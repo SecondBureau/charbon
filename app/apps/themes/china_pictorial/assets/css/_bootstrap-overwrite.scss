@@ -116,4 +116,9 @@ ul.pagination {
   font-weight: bolder;
 }
 
+.list-group-item.flex-column {
+  flex-direction: column;
+  align-items: flex-start;
+}
+
     
