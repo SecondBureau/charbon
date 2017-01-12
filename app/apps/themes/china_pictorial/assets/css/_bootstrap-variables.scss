@@ -15,8 +15,8 @@ $font-family-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto"
 $font-family-serif:      Georgia, "Times New Roman", Times, serif !default;
 $font-family-monospace:  Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !default;
 
-$font-family-base:       $font-family-sans-serif !default;
-$headings-font-family:   $font-family-sans-serif !default;
+$font-family-base:       dax, $font-family-sans-serif !default;
+$headings-font-family:   dax, $font-family-sans-serif !default;
 $excerpt-font-family:   crimson, $font-family-serif !default;
 
 $navbar-light-color: $gray-dark;
@@ -24,6 +24,7 @@ $navbar-light-active-color: $brand-danger;
 
 $line-height-lg:         (4 / 3) !default;
 $line-height-sm:         1.5 !default;
+$line-height-base: $line-height-lg;
 
 $font-size-base: 1rem !default; // Assumes the browser default, typically `16px`
 $font-size-lg:   1.25rem !default;
@@ -39,3 +40,5 @@ $font-size-h6: 1rem !default;
 
 $carousel-indicator-width: 20px;
 $carousel-indicator-height: $carousel-indicator-width;
+
+$link-color: $base-color;

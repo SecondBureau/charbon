@@ -19,7 +19,7 @@
     .row
       .col-12.mt-0.mt-sm-3
         - { sm: 'hidden-md-up hidden-xs-down', md: 'hidden-lg-up hidden-sm-down', lg: 'hidden-xl-up hidden-md-down', xl: 'hidden-lg-down' }.each do |size, css|
-          = raw draw_menu({menu_slug: "menu_#{size.to_s}", container_id: "navbar-#{size.to_s}", container_class: "nav navbar-nav flex-space-between #{css}", item_current: 'nav-item active h6', item_class: 'nav-item h6', link_class: 'nav-link'})
+          = raw draw_menu({menu_slug: "menu_#{size.to_s}", container_id: "navbar-#{size.to_s}", container_class: "nav navbar-nav flex-space-between #{css}", item_current: 'nav-item active h6 strong', item_class: 'nav-item h6 strong', link_class: 'nav-link'})
   
         = raw current_site.draw_languages("language list-inline pull-right", true)
 
