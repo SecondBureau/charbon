@@ -10,8 +10,8 @@
         .carousel-item{class: index.eql?(0) ? 'active' : '', style: "background-image: url('#{post.the_thumb_url}');"}
           .container.container-carousel
             .carousel-item-caption
-              .h2= link_to post.categories.first.decorate.the_title, post.categories.first.decorate.the_url, class:'text-danger text-shadow'
-              .h4= link_to post.the_title, post.the_path, class: 'text-white text-shadow'
+              .h2= link_to post.categories.first.decorate.the_title, post.categories.first.decorate.the_url, class:'text-danger text-shadow strong'
+              .h2= link_to post.the_title, post.the_path, class: 'text-white text-shadow strong'
       
     %a.carousel-control-prev{"data-slide" => "prev", :href => "#carousel-home", :role => "button"}
       %span.carousel-control-prev-icon{"aria-hidden" => "true"}
