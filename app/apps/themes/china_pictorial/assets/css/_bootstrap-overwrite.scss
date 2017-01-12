@@ -89,6 +89,10 @@ h1, .h1 {
   background-size: cover;
 }
 
+.carousel-indicators li {
+  border-radius: $carousel-indicator-width;
+}
+
 .carousel-item-caption {
   position: absolute;
   bottom: 50px;
