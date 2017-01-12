@@ -2,8 +2,8 @@
   - post = posts.shift
   .col-12.col-md-8.col-lg-6
     .pos-a-b.ml-3.mb-3.hidden-xs-down
-      %h5.text-danger.text-uppercase Lorem Ipsum
-      %h2= link_to post.decorate.the_title, post.decorate.the_path, class: 'text-white'
+      %h5.text-danger.text-uppercase 
+      %h2= link_to post.decorate.the_title, post.decorate.the_path, class: 'text-white text-shadow'
     = post.decorate.the_thumb(class: 'img-fluid')
   
   .col-12.mt-3.hidden-sm-up
@@ -16,7 +16,7 @@
       .row.mt-3.mt-md-0
         .col-12.col-sm-6.col-md-12.col-lg-6
           .pos-a-b.pl-1.pr-3.mb-1.hidden-sm-down.hidden-lg-up
-            .text-danger.text-uppercase Lorem Ipsum
+            .text-danger.text-uppercase 
             %strong= link_to post.decorate.the_title.truncate(30), post.decorate.the_path, class: 'text-white'
           = post.decorate.the_thumb(class: 'img-fluid')
         .col-12.col-sm-6.hidden-md.mt-3.mt-sm-0
