@@ -29,3 +29,8 @@
   .col-lg-4.mt-4.hidden-md-down
     %h1.mb-3.text-white Ad
     = image_tag current_theme.the_field('ad2-img'), class: 'img-fluid w-100'
+
+.row
+  .col-12
+    %a{name: 'issues'}
+    = render partial: theme_view('blocks/issues'), locals: {count: 15}

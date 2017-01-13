@@ -1,0 +1,24 @@
+.issues-carousel-item {
+  background-repeat: no-repeat;
+  //background-attachment: fixed;
+  background-position: center ;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  width: 140px;
+  height: 180px;
+  cursor: pointer;
+}
+
+.cover .link_to_pdf {
+  background:rgba(0,0,0,0.3);
+  height: 20px;
+  margin-top: -20px;
+  padding-top: 2px;
+}
+
+.cover:not(.current) > .issues-carousel-item {
+  -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
+  filter: grayscale(100%);
+}
