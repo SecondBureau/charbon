@@ -12,4 +12,5 @@
         %h5.mb-1.text-uppercase.title= link_to post.decorate.the_title, post.decorate.the_path
 
 .hidden-lg-up
-  = render partial: theme_view("blocks/post"), collection: posts
+  -#= render partial: theme_view("blocks/post"), collection: posts
+  = render partial: theme_view("blocks/portrait"), locals:{posts: posts.slice(0,current_theme.get_option('cat4_count_md_down'))}

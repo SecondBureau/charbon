@@ -62,6 +62,44 @@ module Themes::ChinaPictorial::MainHelper
         menu.append_menu_item ({label: post.title, type: "post", link: post.id})
       end
     end
+    
+    
+    slug = 'issue'
+    postType = current_site.post_types.find_by_slug(slug)
+    params = {
+      name: "Issue",
+      slug: slug, 
+      description: 'Paper Issue',
+      data_options: {icon: "book", 
+                    has_layout: false,
+                    default_layout: "",
+                    has_template: true,
+                    default_template: "",
+                    has_category: false,
+                    has_tags: false,
+                    has_content: false,
+                    has_summary: false,
+                    has_comments: false,
+                    has_featured: false,
+                    has_seo: false,
+                    has_parent_structure: false, 
+                    has_picture: true, 
+                    posts_image_dimension: "", 
+                    posts_thumb_versions: "",
+                    posts_thumb_size: "140x180", 
+                    is_required_picture: true, 
+                    contents_route_format: "post",
+                    default_thumb: ""}}
+    if postType.nil?
+      postType = current_site.post_types.create(params)
+    end
+    
+    slug = 'Document'
+    unless postType.get_field_groups.where(slug: slug).any?
+      group = postType.add_field_group({name: "Document", slug: slug})
+      group.add_field({"name"=>"PDF", "slug"=>"pdf_file"}, {field_key: "file", translate: false, default_value: ''})
+    end
+    
 
     # # Sample Meta Value
     # theme.set_meta("installed_at", Time.current.to_s) # save a custom value

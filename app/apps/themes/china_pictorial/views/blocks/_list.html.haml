@@ -6,5 +6,5 @@
         .summary.excerpt.font-italic= post.decorate.the_excerpt
 
 .hidden-lg-up
-  = render partial: theme_view("blocks/post"), collection: posts
-  
+  -#= render partial: theme_view("blocks/post"), collection: posts
+  = render partial: theme_view("blocks/portrait"), locals:{posts: posts.slice(0,current_theme.get_option('cat2_count_md_down'))}
