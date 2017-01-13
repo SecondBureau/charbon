@@ -42,8 +42,12 @@
         <%= select_tag 'theme_option[cat2_slug]', options_from_collection_for_select(categories, "slug", "name", current_theme.get_option('cat2_slug')), class: 'form-control' %>
       </div>
       <div class="form-group">
-        <%= label_tag 'Posts Count' %>
+        <%= label_tag 'Posts Count (default)' %>
         <%= text_field_tag 'theme_option[cat2_count]', current_theme.get_option('cat2_count', 10), class: 'form-control' %>
+      </div>
+      <div class="form-group">
+        <%= label_tag 'Posts Count (MD and below)' %>
+        <%= text_field_tag 'theme_option[cat2_count_md_down]', current_theme.get_option('cat2_count_md_down', 3), class: 'form-control' %>
       </div>
     </td>
   </tr>
@@ -64,8 +68,12 @@
         <%= select_tag 'theme_option[cat4_slug]', options_from_collection_for_select(categories, "slug", "name", current_theme.get_option('cat4_slug')), class: 'form-control' %>
       </div>
       <div class="form-group">
-        <%= label_tag 'Posts Count' %>
+        <%= label_tag 'Posts Count (default)' %>
         <%= text_field_tag 'theme_option[cat4_count]', current_theme.get_option('cat4_count', 5), class: 'form-control' %>
+      </div>
+      <div class="form-group">
+        <%= label_tag 'Posts Count (MD and below)' %>
+        <%= text_field_tag 'theme_option[cat4_count_md_down]', current_theme.get_option('cat4_count_md_down', 3), class: 'form-control' %>
       </div>
     </td>
   </tr>
