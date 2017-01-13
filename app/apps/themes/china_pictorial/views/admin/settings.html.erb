@@ -133,6 +133,15 @@
       <%= image_tag current_theme.the_field('ad2-img'), class: 'img-responsive' %>
     </td>
   </tr>
+  <tr>
+    <td colspan=3 style="border: solid 1px #dddddd; padding: 10px; color: #fcfcfc; background: #55595c">
+      Issues
+      <div class="form-group">
+        <%= label_tag 'Issues Count' %>
+        <%= text_field_tag 'theme_option[issues_count]', current_theme.get_option('issues_count', 36), class: 'form-control' %>
+      </div>
+    </td>
+  </tr>
   
 </table>
 
