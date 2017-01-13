@@ -2,11 +2,11 @@
 
 .row
   
-  .col-12.col-lg-6
+  .col-12.col-md-6
     %strong Any suggestion ? 
     %p= raw current_theme.the_field('footer_address')
   
-  .col-12.col-lg-6
+  .col-12.col-md-6
     %strong Newsletter
     %p.text-muted News every week in your mailbox.
     = form_tag(plugins_cama_subscriber_subscribe_url, class: 'form-inline') do
