@@ -2,8 +2,8 @@
   .container
     .row
       .col-12.flex-space-between.flex-items-xs-bottom.mb-1
-        = link_to current_site.the_url, class: 'img-fluid logo-header' do
-          = image_tag current_site.the_logo
+        = link_to current_site.the_url, class: 'logo-header' do
+          = image_tag current_site.the_logo, class: 'img-fluid'
         .social-search-bar.hidden-xs-down.navbar-toggler-right
           .float-right
             = render partial: 'application/search_form'
