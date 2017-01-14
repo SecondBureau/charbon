@@ -14,7 +14,7 @@
   bottom: 0;
 }
 
-#search {
+#search, #filters {
   position: relative;
   
   label {
@@ -39,6 +39,17 @@
 
 .excerpt {
   font-family: $excerpt-font-family;
+}
+
+// http://www.patternify.com/
+.background-line-danger {
+  background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAIUlEQVQoU2NkIBIwEqmOYSAV/peW/k+MOwfSjcS4D6QGAMiaAj/OUQ+9AAAAAElFTkSuQmCC);
+  background-repeat: repeat-x;
+  background-position: center;
+}
+
+.background-white {
+  background: #fff;
 }
 
 .block-h-100-lg-up {

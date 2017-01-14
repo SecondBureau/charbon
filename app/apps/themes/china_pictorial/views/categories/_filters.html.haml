@@ -1,32 +1,44 @@
 %h1.text-white FILTERS
-.h3.text-center Refine your search
+.h4.text-center.background-line-danger
+  %span.background-white.px-2 Refine your search
 
-= form_tag(cpsearch_path, method: :post, class: "form-search form-horizontal search-form") do
 
-  %label{for: 'search-input'}
-    %i.fa.fa-search{aria: {hidden: true}}
-    %span.sr-only= t("camaleon_cms.common.search")
+
+= form_tag(cpsearch_path, method: :get, class: "form-search form-horizontal search-form") do
+
+  %section{id: :filters}
   
-  = text_field_tag :q, params[:q], id: 'search-input', class: 'form-control input-lg', placeholder:"#{t("camaleon_cms.common.search")}...", autocomplete: "off", spellcheck: "false", autocorrect: "off", tabindex:"1"
+    %label{for: 'search-input'}
+      %i.fa.fa-search{aria: {hidden: true}}
+      %span.sr-only= t("camaleon_cms.common.search")
 
-  = link_to '/', class: "fa fa-times-circle #{params[:q].nil? ? 'invisible' : ''}", aria: {hidden: true}, id: 'search-clear' do
-    %span.sr-only Clear search
-    
-  %h2 Post published since
+    = text_field_tag :q, params[:q], id: 'search-input', class: 'form-control form-control-sm', placeholder:"#{t("camaleon_cms.common.search")}...", autocomplete: "off", spellcheck: "false", autocorrect: "off", tabindex:"1"
+
+    = link_to '/', class: "fa fa-times-circle #{params[:q].nil? ? 'invisible' : ''}", aria: {hidden: true}, id: 'search-clear' do
+      %span.sr-only Clear search
   
-  - { "one day" => 1, "one week" => 7, "one month" => 30}.each do |label, days|
-    .form-check.form-check-inline
-      %label.form-check-label{for: "published_#{days.to_s}"}
-        = radio_button_tag :published_after, days.to_s, value: days, class: 'form-check-input'
-        = label.capitalize
-        
-  %h2 Categories
+  %h5.mt-4
+    %i.text-danger.fa.fa-clock-o
+    Published since
   
-  - CamaleonCms::PostType.find_by_slug('post').categories.each do |category|
-    .form-check.form-check-inline
-      %label.form-check-label{for: "category_#{category.slug}"}
-        = check_box_tag 'categories[]', category.id, params[:categories] && params[:categories].include?(category.id.to_s), class: 'form-check-input', id: "category_#{category.slug}"
-        = category.decorate.name
+  .row
+    - { "one day" => 1, "one week" => 7, "one month" => 30, "one year" => 365}.each do |label, days|
+      .col-6
+        %label.form-check-label{for: "published_#{days.to_s}"}
+          = radio_button_tag :p, days.to_s, params[:p] && params[:p].eql?(days.to_s), class: 'form-check-input'
+          = label.capitalize
+      
+  %h5.mt-3.border-bottom-1
+    %i.text-danger.fa.fa-list-ul
+    Categories
+
+  .row
+    - CamaleonCms::PostType.find_by_slug('post').categories.each do |category|
+      - unless category.slug.eql?('uncategorized')
+        .col-4
+          %label.form-check-label.text-nowrap{for: "category_#{category.slug}"}
+            = check_box_tag 'c[]', category.id, params[:c] && params[:c].include?(category.id.to_s) || @category && @category.id.eql?(category.id), class: 'form-check-input', id: "category_#{category.slug}"
+            = category.decorate.name
 
 
-  %button.btn.btn-primary
+  %button.btn.btn-secondary.w-100.mt-4 Search
