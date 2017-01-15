@@ -1,0 +1,36 @@
+%ul.list-unstyled.offcanvas.mt-2
+  - %w(facebook twitter linkedin).each do |social|
+    %li
+      %button.btn.socialshare.share{type: :button, class: "s_#{social}"}
+        %i.fa{class: "fa-#{social}"}
+  
+  %li.hidden-xs-down
+    %button.btn.share.s_weixin{type: :button}
+      %i.fa.fa-weixin
+      
+  %li
+    %button.btn.btn-secondary.share{type: :button}
+      %i.fa.fa-plus
+      
+  %li
+    %button.btn.btn-secondary.share{type: :button}
+      %i.fa.fa-minus
+      
+  %li
+    %button.btn.btn-secondary.share{type: :button}
+      %i.fa.fa-print
+      
+  %li
+    %button.btn.btn-secondary.share{type: :button}
+      %i.fa.fa-envelope-o
+  
+
+          
+:javascript
+  $(function() {
+    $('.socialshare').ShareLink({
+      title: "#{j post.title}",
+      text: "#{j post.the_excerpt}",
+      image: "#{post.the_thumb_url}",
+      url: "#{post.the_url}"
+    })});

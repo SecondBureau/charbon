@@ -31,12 +31,13 @@
   .row
     .col-12{itemprop: :image, itemscope: true, itemtype:'https://schema.org/ImageObject'}
       = @post.the_thumb(class: 'img-fluid w-100')
-      %meta{itemprop: :url, content: @post.the_thumb(class: 'img-fluid w-100')}
+      %meta{itemprop: :url, content: @post.the_thumb_url}
       %meta{itemprop: :width, content: 100}
       %meta{itemprop: :height, content: 100}
 
   .row.mt-4
     .col-12.col-lg-8.mt-0.mt-lg-4.article-body{itemprop: :articleBody}
+      = render partial: 'partials/social', locals: {post: @post}
       = raw @post.the_content
     
     .col-12.col-lg-4

@@ -6,3 +6,4 @@
 //= require ./jquery.interpolate.min
 //= require ./jquery.touchSwipe.min
 //= require ./reflection.js
+//= require ./jquery.socialshare.js
