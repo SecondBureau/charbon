@@ -33,4 +33,4 @@
 .row
   .col-12
     %a{name: 'issues'}
-    = render partial: theme_view('blocks/issues'), locals: {count: 15}
+    = render partial: theme_view('blocks/issues'), locals: {count: current_theme.get_option('issues_count')}

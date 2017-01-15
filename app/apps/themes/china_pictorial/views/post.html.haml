@@ -18,25 +18,26 @@
       %h1.mt-2.text-danger= @post.the_title
       
       .text-muted.text-uppercase.mb-3{itemscope:true, itemprop: :author, itemtype:'https://schema.org/Person'}
-        text by
-        %strong{itemprop: :name}= @post.the_field(:author)
-        %meta{itemprop: :homeLocation, content: 'Beijing'}
+        - unless (author = @post.the_field(:author)).blank?
+          - author_by_value = @post.the_field(:author_by).to_i
+          = @post.post_type.get_field_groups.where(slug: 'options').first.get_field(:author_by).options[:multiple_options].select{|o| o[:value].eql?(author_by_value)}.first[:title]
+          %strong{itemprop: :name}= author
+          %meta{itemprop: :homeLocation, content: 'Beijing'}
         
-      .float-md-right.small.pb-1
-        %span.published_by
-          Publish by
-          = @post.the_author.the_name
-        %span.published_at
+        .published_at
           %time{datetime:  @post.object.published_at.try(:iso8601), itemprop: :datePublished}= I18n.l @post.object.published_at.to_date, format: :long
+
+        
   .row
     .col-12{itemprop: :image, itemscope: true, itemtype:'https://schema.org/ImageObject'}
       = @post.the_thumb(class: 'img-fluid w-100')
-      %meta{itemprop: :url, content: @post.the_thumb(class: 'img-fluid w-100')}
+      %meta{itemprop: :url, content: @post.the_thumb_url}
       %meta{itemprop: :width, content: 100}
       %meta{itemprop: :height, content: 100}
 
-  .row.mt-2
-    .col-12.col-lg-8.article-body{itemprop: :articleBody}
+  .row.mt-4
+    .col-12.col-lg-8.mt-0.mt-lg-4.article-body{itemprop: :articleBody}
+      = render partial: 'partials/social', locals: {post: @post}
       = raw @post.the_content
     
     .col-12.col-lg-4

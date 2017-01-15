@@ -54,6 +54,25 @@ module Themes::ChinaPictorial::MainHelper
       end
     end
     
+    postType = CamaleonCms::PostType.find_by_slug('post')
+    unless postType.get_field_groups.where(slug: 'options').any?
+      group = postType.add_field_group({name: "Options", slug: "options", is_repeat: 0})
+      group.add_field({"name"=>"By", "slug"=>"author_by"}, {
+          field_key: "select", 
+          translate: false, 
+          multiple_options: [
+            {title: "Text by", value: 1, default: 1}, 
+            {title: "Edited by", value: 2},
+            {title: "Published by", value: 3},
+            {title: "Text and Photographs by", value: 4}]})
+      
+      group.add_field({"name"=>"Author/Editor/Photograph", "slug"=>"author"}, {field_key: "text_box", translate: true, default_value: ''})
+      
+      #group.add_field({"name"=>"Featured Image Caption", "slug"=>"fimage_caption"}, {field_key: "text_box", translate: true, default_value: ''})
+      #group.add_field({"name"=>"Responsive images class", "slug"=>"images_class"}, {field_key: "text_box", translate: true, default_value: 'img-responsive img-thumbnail'})
+      #group.add_field({"name"=>"Fixed width images class", "slug"=>"fixed_width_images_class"}, {field_key: "text_box", translate: true, default_value: 'pull-left inline-image img-thumbnail'})
+    end
+    
     slug = "carousel_posts"
     menu = CamaleonCms::NavMenu.find_by_slug(slug)
     if menu.nil?

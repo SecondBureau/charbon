@@ -1,14 +1,25 @@
 %hr.my-5
 
 .row
+
+  .col-12.hidden-md-down.col-lg-3
+    .logo-footer
+      = link_to current_site.the_url, class: 'logo-header' do
+        = image_tag current_site.the_logo, class: 'img-fluid'
   
-  .col-12.col-md-6
-    %strong Any suggestion ? 
-    %p= raw current_theme.the_field('footer_address')
+  .col-12.col-md-4.col-lg-3.pt-0.pt-md-3
+    .h6 Contact Us 
+    = raw current_theme.the_field('footer_address')
+    
+  .col-12.col-md-4.col-lg-3.pt-0.pt-md-3.mt-3.mt-md-0
+    .h6 Follow Us 
+    - %w(facebook twitter linkedin).each do |social|
+      = link_to current_theme.the_field("social-#{social}"), class: 'pr-3' do
+        %i.fa.fa-2x{class: "fa-#{social}"}
   
-  .col-12.col-md-6
-    %strong Newsletter
-    %p.text-muted News every week in your mailbox.
+  .col-12.col-md-4.col-lg-3.pt-0.pt-md-3.mt-4.mt-md-0
+    .h6 Newsletter
+    %p.text-muted Subscribe to our newsletter.
     = form_tag(plugins_cama_subscriber_subscribe_url, class: 'form-inline') do
       = hidden_field_tag :group_id, 1
       .form-group.pr-1

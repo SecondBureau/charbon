@@ -1,6 +1,6 @@
 CamaleonCms::FrontendController.class_eval do 
+  
   def search_cp
-    
     breadcrumb_add(ct("search"))
     #items = params[:post_type_slugs].present? ? current_site.the_posts(params[:post_type_slugs].split(',')) : current_site.the_posts
     @cama_visited_search = true
@@ -13,15 +13,19 @@ CamaleonCms::FrontendController.class_eval do
       .where("visibility != 'private'")
       .reorder(published_at: :desc)
     unless (keyword = params[:q]).blank?
+      @title = "#{ct('search_msg', default: 'Text searched: ')} #{params[:q]}"
       @posts = @posts.where("LOWER(title) LIKE ? OR LOWER(content_filtered) LIKE ?", "%#{keyword.downcase}%", "%#{keyword.downcase}%")
     end
-    if d = params[:published_after]
+    if d = params[:p]
       @posts = @posts.where("#{CamaleonCms::Post.table_name}.published_at > ? ", d.to_i.days.ago.beginning_of_day)
     end
-    if categories = params[:categories]
+    if categories = params[:c]
+      @category = current_site.the_full_categories.find(params[:c].first).decorate
+      if @title.blank? && categories.size.eql?(1)
+        @title = @category.name
+      end
       @posts = @posts.joins(:categories).where('categories_cama_posts.id': categories.map{|c| c.to_i})
     end
-    debugger
     @posts_size = @posts.size
     @posts = @posts.paginate(:page => params[:page], :per_page => current_site.front_per_page)
     render r[:render], (!r[:layout].nil? ? {layout: r[:layout]} : {})

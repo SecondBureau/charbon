@@ -14,7 +14,7 @@
   bottom: 0;
 }
 
-#search {
+#search, #filters {
   position: relative;
   
   label {
@@ -39,6 +39,17 @@
 
 .excerpt {
   font-family: $excerpt-font-family;
+}
+
+// http://www.patternify.com/
+.background-line-danger {
+  background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAIUlEQVQoU2NkIBIwEqmOYSAV/peW/k+MOwfSjcS4D6QGAMiaAj/OUQ+9AAAAAElFTkSuQmCC);
+  background-repeat: repeat-x;
+  background-position: center;
+}
+
+.background-white {
+  background: #fff;
 }
 
 .block-h-100-lg-up {
@@ -66,7 +77,7 @@
 }
 
 .logo-footer > img {
-  max-height: 100px;
+  max-height: 80px;
 }
 
 .logo-header > img {
@@ -89,65 +100,4 @@
 
 .fa-2x {
   font-size: 1.5em;
-}
-
-article.post {
-  
-  .published_by, .published_at {
-    font-weight: 100;
-  }
-  
-  .published_by:after {
-    content: "|";
-    color: $brand-danger;
-  };
-  
-  figure.image > img {
-    max-width: 100%;
-    height: auto;
-  }
-  
-  figure figcaption {
-    font-size: 1.2rem;
-    font-weight: 100;
-    line-height: 1.2;
-    padding-top: 0.5rem;
-    text-align: justify;
-  }
-  
-  .article-body {
-    line-height: 1.5;
-    h1, h2, h3, h4, h5, h6 {
-      margin-bottom: 1.2rem;
-    }
-    h1 {
-      font-size: 2.3rem;
-      font-weight: 800;
-    }
-    h2 {
-      font-size: 2.0rem;
-      font-weight: 800;
-    }
-    h3 {
-      font-size: 1.8rem;
-      font-weight: 500;
-    }
-    h4 {
-      font-size: 1.6rem;
-      font-weight: 500;
-    }
-    h5 {
-      font-size: 1.4rem;
-      font-weight: 400;
-    }
-    h6 {
-      font-size: 1.1rem;
-      font-weight: 400;
-      text-transform: uppercase;
-    }
-    p {
-      font-size: 1.2rem;
-      font-weight: 300;
-    }
-  }
 }
