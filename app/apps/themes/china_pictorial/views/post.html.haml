@@ -36,9 +36,10 @@
       %meta{itemprop: :height, content: 100}
 
   .row.mt-4
-    .col-12.col-lg-8.mt-0.mt-lg-4.article-body{itemprop: :articleBody}
+    .col-12.col-lg-8.mt-0.mt-lg-4
       = render partial: 'partials/social', locals: {post: @post}
-      = raw @post.the_content
+      .post-body{itemprop: :articleBody}
+        = raw @post.the_content
     
     .col-12.col-lg-4
       %h2.text-danger.mb-1.mt-3
