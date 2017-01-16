@@ -3,16 +3,16 @@
   .row
     .col-12.mb-3.mt-5
       .issues-carousel
-        - current_site.the_posts('issue').each do |issue|
+        - current_site.the_posts('issue').reorder(published_at: :asc).limit(count).each do |issue|
           .cover
             .issues-carousel-item{style: "background-image: url('#{issue.decorate.the_thumb_url}');"}
-            .link_to_pdf.text-center.small
+            .link_to_pdf.text-center
               - if issue.decorate.the_field(:pdf_file).blank?
                 .text-white= issue.decorate.the_title
               - else
                 = link_to issue.decorate.the_field(:pdf_file), class: 'text-white' do 
-                  %i.fa.fa-download
-                  = issue.decorate.the_title
+                  %i.fa.fa-download.fa-2x
+                  %h6= issue.decorate.the_title
             
 
 :javascript
