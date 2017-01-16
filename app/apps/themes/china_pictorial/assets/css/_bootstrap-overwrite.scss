@@ -43,6 +43,16 @@ h1, .h1 {
   background: #fff;
 }
 
+.flex-space-between-column {
+  display: flex;
+  flex-direction: column; 
+  justify-content: space-between;
+   @include media-breakpoint-down(xs) {
+     display: block;
+   }
+}
+
+
 .flex-space-between {
   display: flex;
   justify-content: space-between; 
@@ -127,4 +137,11 @@ ul.pagination {
   align-items: flex-start;
 }
 
+@include media-breakpoint-down(xs) {
+
+h1, .h1 { 
+  font-size: $font-size-xs-h1;
+ }
+ 
+}
     
