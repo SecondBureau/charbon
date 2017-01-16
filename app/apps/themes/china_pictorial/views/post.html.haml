@@ -45,6 +45,6 @@
     .col-12.col-lg-4
       %h2.text-danger.mb-1.mt-3
         %strong Related articles
-      = render partial: theme_view("blocks/thumbnails"), locals: {posts: @post.the_related_posts.where('cama_posts.id != ?', @post.id).to_a.sample(10)} 
+      = render partial: theme_view("blocks/thumbnails"), locals: {posts: @post.the_related_posts.where('cama_posts.id != ?', @post.id).to_a.sample(3)} 
 
 
