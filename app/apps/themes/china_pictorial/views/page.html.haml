@@ -1,3 +1,9 @@
 .row.mt-4
   .col-12.col-lg-8.mt-0.mt-lg-4
-    = raw @post.the_content
+    %article.post
+      = raw @post.the_content
+  
+  .col-12.col-lg-4
+    %h2.text-danger.mb-1.mt-3
+      %strong Recent Articles
+    = render partial: theme_view("blocks/thumbnails"), locals: {posts: current_site.the_posts.limit(10).to_a}
