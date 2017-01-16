@@ -5,9 +5,9 @@
         %i.fa{class: "fa-#{social}"}
   
   %li.hidden-xs-down
-    %button.btn.share.s_weixin{type: :button}
+    %button.btn.share.s_weixin{type: :button, data: {toggle: :modal, target: '#qrcode'}}
       %i.fa.fa-weixin
-      
+  
   %li
     %button.btn.btn-secondary.share.change-size-plus{type: :button}
       %i.fa.fa-plus
@@ -19,12 +19,23 @@
   %li
     %button.btn.btn-secondary.share.print{type: :button}
       %i.fa.fa-print
+    
+.modal.fade{id: 'qrcode', tabindex: '-1', role: 'dialog', aria: {labelledby: 'qrCodeModal', hidden: true}} 
+  .modal-dialog{role: :document}
+    .modal-content
+      .modal-header
+        %h5.modal-title Scan me with WeChat
+        %button.close{type: :button, data: {dismiss: :modal}, aria: {label: :close}}
+          %span{aria: {hidden: true}} &times;
+      .modal-body.text-center
+        .qrcode
+          - qrcode = RQRCode::QRCode.new(post.the_url, :size => 6, :level => :h)
+          = raw qrcode.as_html
+    
       
   / %li
   /   %button.btn.btn-secondary.share{type: :button}
   /     %i.fa.fa-envelope-o
-  
-
           
 :javascript
   $(function() {
