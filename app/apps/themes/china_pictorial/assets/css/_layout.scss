@@ -82,7 +82,7 @@
 
 .logo-header > img {
   @include media-breakpoint-only(xs) {
-    max-height: 45px;
+    max-height: 55px;
   }
   
   @include media-breakpoint-up(sm) {

@@ -53,6 +53,12 @@ h1, .h1 {
   }
 }
 
+li.nav-item.dropdown {
+  @include media-breakpoint-down(xs) {
+    font-size: 150%;
+  }
+}
+
 .dropdown-toggle {
   &::after {
     content: none;
