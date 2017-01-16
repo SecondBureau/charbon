@@ -11,7 +11,7 @@
   %body
     = render theme_view('application/header')
     - if action_name.eql?('index')
-      .container-fluid.mt-1.pt-1
+      .container-fluid.mt-1.pt-1.hidden-xs-down
         = render theme_view('application/carousel')
     .container
       .content
