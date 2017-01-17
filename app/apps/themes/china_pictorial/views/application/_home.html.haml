@@ -1,34 +1,38 @@
-.row.mt-3
+.row.mt-3.hidden-xs-down
   .col-lg-8.col-md-12
     = render partial: theme_view('blocks/posts'), locals: {template: 'portrait', count: current_theme.get_option('cat1_count').to_i, slug: current_theme.get_option('cat1_slug')}
   .col-lg-4.col-md-12
     = render partial: theme_view('blocks/posts'), locals: {template: 'list', count: current_theme.get_option('cat2_count').to_i, slug: current_theme.get_option('cat2_slug')}
 
-.row
+.row.hidden-xs-down
   .col-lg-8.col-md-12
     = render partial: theme_view('blocks/posts'), locals: {template: 'portrait', count: current_theme.get_option('cat3_count').to_i, slug: current_theme.get_option('cat3_slug')}
     = render partial: theme_view('blocks/posts'), locals: {template: 'portrait', count: current_theme.get_option('cat5_count').to_i, slug: current_theme.get_option('cat5_slug')}
   .col-lg-4.col-md-12
     = render partial: theme_view('blocks/posts'), locals: {template: 'thumbnails', count: current_theme.get_option('cat4_count').to_i, slug: current_theme.get_option('cat4_slug')}
 
-.row
+.row.hidden-xs-down
   .col-12
     = render partial: theme_view('blocks/posts'), locals: {template: 'landscape', count: current_theme.get_option('cat6_count').to_i, slug: current_theme.get_option('cat6_slug')}
 
-.row.mt-3.mb-0
+.row.mt-3.mb-0.hidden-xs-down
   .col-12
     = image_tag current_theme.the_field('ad1-img'), class: 'img-fluid w-100'
 
-.row
+.row.hidden-xs-down
   .col-12
     = render partial: theme_view('blocks/posts'), locals: {template: 'landscape', count: current_theme.get_option('cat7_count').to_i, slug: current_theme.get_option('cat7_slug')}
 
-.row
+.row.hidden-xs-down
   .col-lg-8.col-md-12
     = render partial: theme_view('blocks/posts'), locals: {template: 'portrait', count: current_theme.get_option('cat8_count').to_i, slug: current_theme.get_option('cat8_slug')}
   .col-lg-4.mt-4.hidden-md-down
     %h1.mb-3.text-white Ad
     = image_tag current_theme.the_field('ad2-img'), class: 'img-fluid w-100'
+    
+.row.hidden-sm-up
+  .col-12
+    = render partial: theme_view('blocks/post'), collection: current_site.posts.published.where("(#{CamaleonCms::Post.table_name}.published_at is not null and #{CamaleonCms::Post.table_name}.published_at <= ?)", Time.now).where("visibility != 'private'").reorder(published_at: :desc).limit(20), as: :post
 
 .row
   .col-12

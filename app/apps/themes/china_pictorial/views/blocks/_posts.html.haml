@@ -1,5 +1,5 @@
 - if category  = current_site.categories.where(slug: slug).first
-  - posts     = category.posts.published.where("(#{CamaleonCms::Post.table_name}.published_at is null or #{CamaleonCms::Post.table_name}.published_at <= ?)", Time.now).where("visibility != 'private'").reorder(published_at: :desc).limit(count)
+  - posts     = category.posts.published.where("(#{CamaleonCms::Post.table_name}.published_at is not null and #{CamaleonCms::Post.table_name}.published_at <= ?)", Time.now).where("visibility != 'private'").reorder(published_at: :desc).limit(count)
   .block.mt-4{class: template.eql?('list') ? 'h-100' : ''}
     %a{name: category.slug}
     %h1.mb-3.pl-0.pl-sm-3= link_to category.decorate.the_title, category.decorate.the_url, class: template.eql?('list') ? 'text-primary' : 'text-danger'
