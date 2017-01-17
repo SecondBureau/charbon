@@ -32,7 +32,7 @@
     
 .row.hidden-sm-up
   .col-12
-    = render partial: theme_view('blocks/post'), collection: current_site.posts.published.where("(#{CamaleonCms::Post.table_name}.published_at is not null and #{CamaleonCms::Post.table_name}.published_at <= ?)", Time.now).where("visibility != 'private'").reorder(published_at: :desc).limit(20), as: :post
+    = render partial: theme_view('blocks/post'), collection: current_site.the_posts('post').reorder(published_at: :desc).limit(20), as: :post
 
 .row
   .col-12
