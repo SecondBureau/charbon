@@ -4,12 +4,13 @@
     - posts.each do |post|
       %li.list-group-item.pt-0.pl-0.pr-0.border-0.flex-column
         = post.decorate.the_thumb(class: 'img-fluid mb-1')
+        %h5.mb-1.title= link_to post.decorate.the_title, post.decorate.the_path
         %small.text-muted.mt-0.text-uppercase
           = l(post.decorate.published_at, format: "%d.%m.%Y")
           &mdash;
           = post.get_meta('visits', 0)
           views
-        %h5.mb-1.text-uppercase.title= link_to post.decorate.the_title, post.decorate.the_path
+        
 
 .hidden-lg-up
   -#= render partial: theme_view("blocks/post"), collection: posts
