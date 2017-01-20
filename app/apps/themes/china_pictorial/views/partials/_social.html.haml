@@ -1,7 +1,7 @@
-%ul.list-unstyled.offcanvas.mt-2
-  - %w(facebook twitter linkedin).each do |social|
+%ul.list-unstyled.offcanvas.mt-2.hidden-print
+  - {facebook: :std, twitter: :short, linkedin: :std}.each do |social, template|
     %li
-      %button.btn.socialshare.share{type: :button, class: "s_#{social}"}
+      %button.btn.socialshare.share{type: :button, class: "#{template}_#{social} #{template}"}
         %i.fa{class: "fa-#{social}"}
   
   %li.hidden-sm-down
@@ -58,9 +58,16 @@
     });
      
     
-    $('.socialshare').ShareLink({
+    $('.socialshare.std').ShareLink({
       title: "#{j post.title}",
       text: "#{j post.the_excerpt}",
       image: "#{post.the_thumb_url}",
-      url: "#{post.the_url}"
+      url: "#{post.the_url}",
+      class_prefix: 'std_'
+    });
+    
+    $('.socialshare.short').ShareLink({
+      text: "#{j post.title}",
+      url: "#{post.the_url}",
+      class_prefix: 'short_'
     })});

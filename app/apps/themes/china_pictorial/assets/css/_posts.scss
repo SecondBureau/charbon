@@ -119,11 +119,11 @@ button.share {
   margin-top: -1px;
 }
 
-button.s_facebook {
+button.std_facebook {
   @include button-variant(#fff, #3f6fa7, #3f6fa7);
 }
 
-button.s_twitter {
+button.short_twitter {
   @include button-variant(#fff, #00d7fb, #00d7fb);
 }
 
@@ -131,6 +131,6 @@ button.s_weixin {
   @include button-variant(#fff, #00CF0D, #00CF0D);
 }
 
-button.s_linkedin {
+button.std_linkedin {
   @include button-variant(#fff, #008CC9, #008CC9);
 }
