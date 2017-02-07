@@ -1,3 +1,4 @@
+
 .row.mt-3.hidden-xs-down
   .col-lg-8.col-md-12
     = render partial: theme_view('blocks/posts'), locals: {template: 'portrait', count: current_theme.get_option('cat1_count').to_i, slug: current_theme.get_option('cat1_slug')}
@@ -29,7 +30,7 @@
   .col-lg-4.mt-4.hidden-md-down
     %h1.mb-3.text-white Ad
     = image_tag current_theme.the_field('ad2-img'), class: 'img-fluid w-100'
-    
+
 .row.hidden-sm-up
   .col-12
     = render partial: theme_view('blocks/post'), collection: current_site.the_posts('post').reorder(published_at: :desc).limit(20), as: :post

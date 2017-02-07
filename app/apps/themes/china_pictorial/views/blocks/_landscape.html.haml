@@ -9,11 +9,11 @@
   .col-12.mt-3.hidden-sm-up
     = render partial: 'partials/excerpt', locals: {post: post}
 
-  .col-12.col-md-4.col-lg-6.mt-2.mt-sm-0.flex-space-between-column
+  .col-12.col-md-4.col-lg-6.mt-2.mt-sm-0.flex-space-between-column-ie-fix
     
     - posts.each do |post|
     
-      .row.mb-3.mb-md-0
+      .row.mb-3.mb-md-0.mb-3-ie-fix
         .col-12.col-sm-6.col-md-12.col-lg-6
           .pos-a-b.pl-1.pr-3.mb-1.hidden-sm-down.hidden-lg-up
             .text-danger.text-uppercase 
