@@ -82,7 +82,7 @@
 
 .logo-header > img {
   @include media-breakpoint-only(xs) {
-    max-height: 75px;
+    max-height: 90px;
   }
   
   @include media-breakpoint-up(sm) {
@@ -100,4 +100,10 @@
 
 .fa-2x {
   font-size: 1.5em;
+}
+
+.dropdown-toggle {
+  @include media-breakpoint-only(xs) {
+    font-size: 40px;
+  }
 }
