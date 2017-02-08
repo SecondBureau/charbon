@@ -1,5 +1,5 @@
 .col-6
-  = post.decorate.the_thumb(class: 'img-fluid')
+  = link_to post.decorate.the_thumb(class: 'img-fluid'), post.decorate.the_path
   %h5.mt-3= link_to post.decorate.the_title, post.decorate.the_path
   %hr
   .excerpt= post.decorate.the_excerpt.truncate(180)
