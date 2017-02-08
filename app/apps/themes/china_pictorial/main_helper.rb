@@ -68,7 +68,8 @@ module Themes::ChinaPictorial::MainHelper
       
       group.add_field({"name"=>"Author/Editor/Photograph", "slug"=>"author"}, {field_key: "text_box", translate: true, default_value: ''})
       
-      #group.add_field({"name"=>"Featured Image Caption", "slug"=>"fimage_caption"}, {field_key: "text_box", translate: true, default_value: ''})
+      group.add_field({"name"=>"Featured Image Caption", "slug"=>"fimage_caption"}, {field_key: "text_box", translate: true, default_value: ''})
+      
       #group.add_field({"name"=>"Responsive images class", "slug"=>"images_class"}, {field_key: "text_box", translate: true, default_value: 'img-responsive img-thumbnail'})
       #group.add_field({"name"=>"Fixed width images class", "slug"=>"fixed_width_images_class"}, {field_key: "text_box", translate: true, default_value: 'pull-left inline-image img-thumbnail'})
     end
