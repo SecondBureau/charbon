@@ -9,7 +9,7 @@
             = render partial: 'application/search_form'
           .float-right.hidden-sm-down.mr-2
             - %w(facebook twitter linkedin).each do |social|
-              = link_to current_theme.the_field("social-#{social}"), class: 'pr-3' do
+              = link_to current_theme.the_field("social_#{social}"), class: 'pr-3 no-decoration' do
                 %i.fa.fa-2x{class: "fa-#{social}"}
         - { xs: 'hidden-sm-up' }.each do |size, css|
           = raw draw_menu({menu_slug: "menu_#{size.to_s}", container_id: "navbar-#{size.to_s}", container_class: "nav navbar-nav flex-space-between #{css} hidden-print", item_current: 'nav-item active', item_class: 'nav-item', link_class: 'nav-link'})
