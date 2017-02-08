@@ -24,7 +24,10 @@
   .modal-dialog{role: :document}
     .modal-content
       .modal-header
-        %h5.modal-title Scan me with WeChat
+        %h2.modal-title
+          Scan with wechat to share 
+          .small
+            %i= post.the_title
         %button.close{type: :button, data: {dismiss: :modal}, aria: {label: :close}}
           %span{aria: {hidden: true}} &times;
       .modal-body.text-center
