@@ -21,13 +21,16 @@
       %i.fa.fa-print
     
 .modal.fade{id: 'qrcode', tabindex: '-1', role: 'dialog', aria: {labelledby: 'qrCodeModal', hidden: true}} 
-  .modal-dialog{role: :document}
+  .modal-dialog.modal-sm{role: :document}
     .modal-content
       .modal-header
-        %h2.modal-title
-          Scan with wechat to share 
+        %h6.modal-title
+          = post.the_title
           .small
-            %i= post.the_title
+            %i 
+              Scan with 
+              %i.fa.fa-wechat.text-wechat
+              wechat to share
         %button.close{type: :button, data: {dismiss: :modal}, aria: {label: :close}}
           %span{aria: {hidden: true}} &times;
       .modal-body.text-center
