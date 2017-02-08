@@ -143,7 +143,7 @@ module Themes::ChinaPictorial::MainHelper
     #barcode = Barby::QrCode.new(text, level: :q, size: 5)
     begin
       barcode = Barby::QrCode.new(text, level: :q, size: 12)
-      base64_output = Base64.encode64(barcode.to_png({ xdim: 5 }))
+      base64_output = Base64.encode64(barcode.to_png({ xdim: 3 }))
       "data:image/png;base64,#{base64_output}"
     rescue
       ''
