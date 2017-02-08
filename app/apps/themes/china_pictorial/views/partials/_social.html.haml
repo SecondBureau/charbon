@@ -29,8 +29,9 @@
           %span{aria: {hidden: true}} &times;
       .modal-body.text-center
         .qrcode
-          - qrcode = begin RQRCode::QRCode.new(post.the_url, :size => 12, :level => :h) rescue nil end
-          = raw qrcode.as_html if qrcode
+          %img{src: generate_qr(post.the_url), class: "qr-code"}
+          / - qrcode = begin RQRCode::QRCode.new(post.the_url, :size => 12, :level => :h) rescue nil end
+          / = raw qrcode.as_html if qrcode
     
       
   / %li
