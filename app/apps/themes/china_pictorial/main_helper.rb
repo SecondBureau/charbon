@@ -1,6 +1,7 @@
 module Themes::ChinaPictorial::MainHelper
   def self.included(klass)
     # klass.helper_method [:my_helper_method] rescue "" # here your methods accessible from views
+    klass.helper_method [:generate_qr]
   end
 
   def china_pictorial_settings(theme)
@@ -132,4 +133,21 @@ module Themes::ChinaPictorial::MainHelper
   def theme_image_tag(source, options={})
     ActionController::Base.helpers.image_tag(theme_asset_path("images/#{source}"), options)
   end
+  
+  def generate_qr(text)
+    require 'barby'
+    require 'barby/barcode'
+    require 'barby/barcode/qr_code'
+    require 'barby/outputter/png_outputter'
+
+    #barcode = Barby::QrCode.new(text, level: :q, size: 5)
+    begin
+      barcode = Barby::QrCode.new(text, level: :q, size: 12)
+      base64_output = Base64.encode64(barcode.to_png({ xdim: 3 }))
+      "data:image/png;base64,#{base64_output}"
+    rescue
+      ''
+    end
+  end
+  
 end

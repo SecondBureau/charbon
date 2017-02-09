@@ -140,6 +140,10 @@ button.s_weixin {
   @include button-variant(#fff, #00CF0D, #00CF0D);
 }
 
+.text-wechat {
+  color: #00CF0D;
+}
+
 button.std_linkedin {
   @include button-variant(#fff, #008CC9, #008CC9);
 }
