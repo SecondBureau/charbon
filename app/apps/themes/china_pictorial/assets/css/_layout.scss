@@ -111,3 +111,7 @@
 a.no-decoration {
   text-decoration: none;
 }
+
+div [data-href] {
+  cursor: pointer;
+}
