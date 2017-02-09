@@ -100,11 +100,11 @@ article.post {
     figure.image {
       float: left;
       margin-right: 1rem !important;
-    }
     
-    & > img {
-      max-width: 100%;
-      height: auto;
+      & > img {
+        max-width: 100%;
+        height: auto;
+      }
     }
     
     @include media-breakpoint-down(sm) {
