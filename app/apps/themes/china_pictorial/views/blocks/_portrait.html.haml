@@ -1,12 +1,13 @@
 - post = posts.shift
-.row
-  .col-12
-    .pos-a-b.ml-3.mb-3.pr-3.hidden-xs-down
-      %h5.text-danger.text-uppercase 
-      %h2= link_to post.decorate.the_title, post.decorate.the_path, class: 'text-white text-shadow strong'
-    = link_to post.decorate.the_thumb(class: 'img-fluid'), post.decorate.the_path
-  .col-12.mt-3.hidden-sm-up
-    = render partial: 'partials/excerpt', locals: {post: post}
+- if post.present?
+  .row
+    .col-12
+      .pos-a-b.ml-3.mb-3.pr-3.hidden-xs-down
+        %h5.text-danger.text-uppercase 
+        %h2= link_to post.decorate.the_title, post.decorate.the_path, class: 'text-white text-shadow strong'
+      = link_to post.decorate.the_thumb(class: 'img-fluid'), post.decorate.the_path
+    .col-12.mt-3.hidden-sm-up
+      = render partial: 'partials/excerpt', locals: {post: post}
     
 
 - posts.each do |post|
