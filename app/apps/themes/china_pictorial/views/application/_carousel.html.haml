@@ -7,7 +7,7 @@
     .carousel-inner{:role => "listbox"}
       - carousel.children.each_with_index do |slide, index|
         - post = CamaleonCms::Post.find(slide.url).decorate
-        .carousel-item{class: index.eql?(0) ? 'active' : '', style: "background-image: url('#{post.the_thumb_url}');"}
+        .carousel-item{data: {hrefDisabled: post.the_path}, class: index.eql?(0) ? 'active' : '', style: "background-image: url('#{post.the_thumb_url}');"}
           .container.container-carousel
             .carousel-item-caption
               .h2.hidden-lg-up= link_to post.categories.first.decorate.the_title, post.categories.first.decorate.the_url, class:'text-danger text-shadow strong'
@@ -21,3 +21,13 @@
     %a.carousel-control-next{"data-slide" => "next", :href => "#carousel-home", :role => "button"}
       %span.carousel-control-next-icon{"aria-hidden" => "true"}
       %span.sr-only Next
+
+-# remove Disabled (line 10) to activate
+
+:javascript
+  $(function() {
+    $("div [data-href]").on('click', function() {
+      window.location.href = $(this).data('href');
+    });
+  });
+  

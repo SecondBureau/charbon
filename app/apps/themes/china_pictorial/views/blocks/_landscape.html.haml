@@ -1,13 +1,14 @@
 .row
   - post = posts.shift
-  .col-12.col-md-8.col-lg-6
-    .pos-a-b.ml-3.mb-3.hidden-xs-down
-      %h5.text-danger.text-uppercase 
-      %h2= link_to post.decorate.the_title, post.decorate.the_path, class: 'text-white text-shadow strong'
-    = link_to post.decorate.the_thumb(class: 'img-fluid'), post.decorate.the_path
+  - if post.present?
+    .col-12.col-md-8.col-lg-6
+      .pos-a-b.ml-3.mb-3.hidden-xs-down
+        %h5.text-danger.text-uppercase 
+        %h2= link_to post.decorate.the_title, post.decorate.the_path, class: 'text-white text-shadow strong'
+      = link_to post.decorate.the_thumb(class: 'img-fluid'), post.decorate.the_path
   
-  .col-12.mt-3.hidden-sm-up
-    = render partial: 'partials/excerpt', locals: {post: post}
+    .col-12.mt-3.hidden-sm-up
+      = render partial: 'partials/excerpt', locals: {post: post}
 
   .col-12.col-md-4.col-lg-6.mt-2.mt-sm-0.flex-space-between-column-ie-fix
     

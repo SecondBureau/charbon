@@ -97,9 +97,21 @@ article.post {
       font-family: $excerpt-font-family;
     }
     
-    figure.image > img {
+    figure.image {
+      float: left;
+      margin-right: 1rem !important;
+    }
+    
+    & > img {
       max-width: 100%;
       height: auto;
+    }
+    
+    @include media-breakpoint-down(sm) {
+      figure.image {
+        float: none;
+        margin-right: 0;
+      }
     }
   
     figure figcaption {
@@ -117,6 +129,9 @@ article.post {
     }
   }
 }
+
+
+  
 
 
 button.share {
