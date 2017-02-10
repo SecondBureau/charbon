@@ -121,6 +121,9 @@ article.post {
       padding-top: 0.3rem;
       text-align: justify;
       font-style: italic;
+      p {
+        margin-bottom: 0.25rem !important;
+      }
     }
     
     b,
