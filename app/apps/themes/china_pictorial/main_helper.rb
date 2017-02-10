@@ -68,7 +68,18 @@ module Themes::ChinaPictorial::MainHelper
             {title: "Text and Photographs by", value: 4}]})
       
       group.add_field({"name"=>"Author/Editor/Photograph", "slug"=>"author"}, {field_key: "text_box", translate: true, default_value: ''})
+    
+      group.add_field({"name"=>"By", "slug"=>"author_by_2"}, {
+          field_key: "select", 
+          translate: false, 
+          multiple_options: [
+            {title: "Text by", value: 1, default: 1}, 
+            {title: "Edited by", value: 2},
+            {title: "Published by", value: 3},
+            {title: "Text and Photographs by", value: 4}]})
       
+      group.add_field({"name"=>"Author/Editor/Photograph", "slug"=>"author_2"}, {field_key: "text_box", translate: true, default_value: ''})
+    
       group.add_field({"name"=>"Featured Image Caption", "slug"=>"fimage_caption"}, {field_key: "text_box", translate: true, default_value: ''})
       
       #group.add_field({"name"=>"Responsive images class", "slug"=>"images_class"}, {field_key: "text_box", translate: true, default_value: 'img-responsive img-thumbnail'})
