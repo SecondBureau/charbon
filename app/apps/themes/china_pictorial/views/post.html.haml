@@ -56,3 +56,10 @@
       = render partial: theme_view("blocks/thumbnails"), locals: {posts: @post.the_related_posts.where('cama_posts.id != ?', @post.id).to_a.sample(3)} 
 
 
+:javascript
+  $(function() {
+    $("figure.image > img[width]").parent().find('figcaption').each(function(){
+      var width = $(this).parent().find('img[width]').attr('width');
+      $(this).attr('style', 'width:' + width + 'px');
+    });
+    });
