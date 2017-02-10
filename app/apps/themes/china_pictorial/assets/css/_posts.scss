@@ -123,7 +123,9 @@ article.post {
       font-style: italic;
       p {
         margin-bottom: 0.25rem !important;
-        font-family: $font-family-base;
+        font-family: inherit;
+        font-size: inherit;
+        font-weight: inherit;
       }
     }
     
