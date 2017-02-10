@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/SecondBureau/camaleon-cms.git
-  revision: 74f0399325ef14ae4647c375a59b616cc326a9f3
+  revision: 1f8a66ae53a26d42da78acabdd804cb8989c68a6
   specs:
     camaleon_cms (2.4.3)
       aws-sdk (~> 2)
@@ -108,13 +108,13 @@ GEM
     arel (6.0.4)
     autoprefixer-rails (6.7.2)
       execjs
-    aws-sdk (2.7.4)
-      aws-sdk-resources (= 2.7.4)
-    aws-sdk-core (2.7.4)
+    aws-sdk (2.7.5)
+      aws-sdk-resources (= 2.7.5)
+    aws-sdk-core (2.7.5)
       aws-sigv4 (~> 1.0)
       jmespath (~> 1.0)
-    aws-sdk-resources (2.7.4)
-      aws-sdk-core (= 2.7.4)
+    aws-sdk-resources (2.7.5)
+      aws-sdk-core (= 2.7.5)
     aws-sigv4 (1.0.0)
     axiom-types (0.1.1)
       descendants_tracker (~> 0.0.4)
@@ -246,7 +246,7 @@ GEM
     mustermann-grape (0.4.0)
       mustermann (= 0.4.0)
     netrc (0.11.0)
-    newrelic_rpm (3.18.0.329)
+    newrelic_rpm (3.18.1.330)
     ngannotate-rails (1.2.2)
       execjs
       rails (>= 3.1)
