@@ -17,19 +17,18 @@
       
       %h1.mt-2.text-danger= @post.the_title
       
-      .text-muted.text-uppercase.mb-1{itemscope:true, itemprop: :author, itemtype:'https://schema.org/Person'}
+      .text-muted.text-uppercase.mb-3{itemscope:true, itemprop: :author, itemtype:'https://schema.org/Person'}
         - unless (author = @post.the_field(:author)).blank?
           - author_by_value = @post.the_field(:author_by).to_i
-          - author_by = @post.post_type.get_field_groups.where(slug: 'options').first.get_field(:author_by).options[:multiple_options].select{|o| o[:value].eql?(author_by_value)}.first
+          - author_by = @post.post_type.get_field_groups.where(slug: 'options').first.get_field(:author_by).options[:multiple_options].select{|o| o[:value].to_i.eql?(author_by_value)}.first
           = author_by.nil? ? 'Text by' : author_by[:title]
           %strong{itemprop: :name}= author
           %meta{itemprop: :homeLocation, content: 'Beijing'}
       
-      .text-muted.text-uppercase.mb-3
         - unless (author = @post.the_field(:author_2)).blank?
           - author_by_value = @post.the_field(:author_by_2).to_i
-          - author_by = @post.post_type.get_field_groups.where(slug: 'options').first.get_field(:author_by_2).options[:multiple_options].select{|o| o[:value].eql?(author_by_value)}.first
-          = author_by.nil? ? 'Text by' : author_by[:title]
+          - author_by = @post.post_type.get_field_groups.where(slug: 'options').first.get_field(:author_by_2).options[:multiple_options].select{|o| o[:value].to_i.eql?(author_by_value)}.first
+          %span.pl-2= author_by.nil? ? 'Text by' : author_by[:title]
           %strong= author
         
         .published_at
