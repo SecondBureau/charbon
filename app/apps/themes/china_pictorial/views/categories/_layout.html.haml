@@ -7,7 +7,7 @@
       .row
         .col-12
           .alert.alert-warning= raw ct('no_contents_found', default: 'No contents found')
-    .text-center
+    .text-center.mt-3
       = will_paginate posts, renderer: BootstrapPagination::Rails
   .col-lg-4.col-md-12
     = render partial: theme_view('categories/filters')

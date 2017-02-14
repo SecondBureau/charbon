@@ -8,7 +8,8 @@ CamaleonCms::FrontendController.class_eval do
     layout_ = lookup_context.template_exists?("layouts/search") ? "search" : nil
     r = {layout: layout_, render: "search", posts: nil}; hooks_run("on_render_search", r)
     #params[:q] = (params[:q] || '').downcase
-    @posts = current_site.posts.published
+    #@posts = current_site.posts.published
+    @posts = current_site.the_posts('post').published
       .where("#{CamaleonCms::Post.table_name}.published_at <= ?", Time.now)
       .where("visibility != 'private'")
       .reorder(published_at: :desc)
