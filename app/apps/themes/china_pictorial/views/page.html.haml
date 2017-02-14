@@ -7,4 +7,4 @@
   .col-12.col-lg-4.hidden-print
     %h2.text-danger.mb-1.mt-3
       %strong Recent Articles
-    = render partial: theme_view("blocks/thumbnails"), locals: {posts: current_site.the_posts.limit(3).to_a}
+    = render partial: theme_view("blocks/thumbnails"), locals: {posts: @post.the_related_posts.where('cama_posts.id != ?', @post.id).to_a.sample(3)}
