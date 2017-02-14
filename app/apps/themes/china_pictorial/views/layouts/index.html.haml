@@ -8,6 +8,8 @@
     = stylesheet_link_tag theme_asset_path("css/application"), media: 'screen, print'
     = javascript_include_tag theme_asset_path("js/application")
     = raw the_head
+    = render(partial: 'partials/woopra.html') if $woopra_domain_name.present?
+    
   %body
     = render theme_view('application/header')
     - if action_name.eql?('index')
