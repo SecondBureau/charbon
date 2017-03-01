@@ -7,7 +7,15 @@ html {
 
 body {
   font-family: crimson, "Times New Roman", Times, serif;
+  
+  -webkit-user-select: initial !important;
+  -moz-user-select: initial !important;
+  -ms-user-select: text !important;
+  -o-user-select: initial !important;
+  user-select: initial !important;
+  
 }
+
 
 h1, h2, h3 {
   font-family: dax, 'Helvetica Neue', Helvetica, Arial, sans-serif;
