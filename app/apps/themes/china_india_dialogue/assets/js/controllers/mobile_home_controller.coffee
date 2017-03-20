@@ -16,6 +16,7 @@ do ->
       if !$scope.isComplete
         $scope.loading = true
         search = {}
+        search.order = 'published_at desc' 
         Posts.search(angular.toJson(search), offset, limit).then (response) ->
           $scope.pagination = angular.fromJson(response.headers('x-pagination'))
           $scope.posts = $scope.posts or []
