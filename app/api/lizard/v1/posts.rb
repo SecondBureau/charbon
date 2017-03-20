@@ -33,9 +33,9 @@ module Lizard
           offset = params[:offset] || 0
           search = JSON.parse("#{params[:s]}")
           if search['categories'].is_a?(Array) && !search['categories'].blank?
-            posts = CamaleonCms::Post.visible_frontend.eager_load(:metas).eager_load(:categories).joins(:categories).where('cama_term_taxonomy.id = any (array[?])', search['categories'])
+            posts = CamaleonCms::Post.visible_frontend.joins(:post_type).where('cama_term_taxonomy.slug = ?', 'post').eager_load(:metas).eager_load(:categories).joins(:categories).where('cama_term_taxonomy.id = any (array[?])', search['categories'])
           else
-            posts = CamaleonCms::Post.visible_frontend.eager_load(:metas).eager_load(:categories).all
+            posts = CamaleonCms::Post.visible_frontend.joins(:post_type).where('cama_term_taxonomy.slug = ?', 'post').eager_load(:metas).eager_load(:categories).all
           end
           if search['k']
             keywords = search['k'].split(',').map{|k| "%#{k}%"}
