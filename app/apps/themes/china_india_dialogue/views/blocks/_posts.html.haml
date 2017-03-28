@@ -1,0 +1,17 @@
+// China India Dialogue
+
+- if category  = current_site.categories.where(slug: slug).first
+  
+  - posts     = category.posts.published.where("(#{CamaleonCms::Post.table_name}.published_at is not null and #{CamaleonCms::Post.table_name}.published_at <= ?)", Time.now).where("visibility != 'private'").reorder(published_at: :desc).limit(count)
+  
+  .home-block
+  
+    - if posts.count > 0
+      - template = 'std' unless local_assigns.has_key?(:template)
+      - thumbnail = false unless local_assigns.has_key?(:thumbnail)
+      - color = '' unless local_assigns.has_key?(:color)
+      - css = '' unless local_assigns.has_key?(:css)
+      - rows = 1 unless local_assigns.has_key?(:rows)
+      = render partial: theme_view("blocks/#{template}"), locals: {posts: posts.to_a, thumbnail: thumbnail, color: color, category: category.decorate, css: css, rows: rows}
+    - else
+      No post yet

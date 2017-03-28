@@ -1,0 +1,14 @@
+/ China India Dialogue
+/ contributors
+
+.h-100{class: "home-block-#{color} home-block-#{category.slug} home-block-#{css}"}
+
+  .mb-5
+    = theme_image_tag 'decorations/category.png', width: 15, height: 30, class: 'pull-right', alt: '*'
+    %h2= link_to category.the_title, category.the_url, class: "text-#{color}"
+    
+  .row
+    - posts.each do |post|
+      .col-md-6
+        .mb-5= render partial: theme_view('posts/post_contributor'), locals: {post: post.decorate, color: color, thumbnail: thumbnail}
+

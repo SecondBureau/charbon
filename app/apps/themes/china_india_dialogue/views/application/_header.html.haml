@@ -1,0 +1,48 @@
+%nav.navbar.navbar-light.bg-faded.fixed-top.mb-5.hidden-print
+  
+  .row.cid-md-header
+  
+    
+    
+    .col-md-4
+      %center
+        .header-social
+          
+          = link_to current_theme.the_field('social_facebook') do
+            = theme_image_tag 'icons/weweka/facebook.png', width: '35', height: '35', alt: 'Check out our facebook page'
+            
+          = link_to current_theme.the_field('social_twitter') do
+            = theme_image_tag 'icons/weweka/twitter.png', width: '35', height: '35', alt: 'Follow us on twitter'
+            
+          = link_to current_theme.the_field('social_linkedin') do
+            = theme_image_tag 'icons/weweka/linkedin.png', width: '35', height: '35', alt: 'Follow us on LinkedIn'
+            
+          = link_to current_theme.the_field('social_wechat') do
+            = theme_image_tag 'icons/weweka/wechat.png', width: '35', height: '35', alt: 'Follow us on Wechat'
+            
+    .col-md-4
+      %center
+        = link_to current_site.the_url do
+          = theme_image_tag 'logo.png', width: "275", height: "150", alt: current_site.the_title
+    .col-md-4
+    
+      = raw current_site.draw_languages("language list-inline d-flex mt-5", true)
+      
+  .container
+  
+    .row.hidden-print
+      .col-12
+        - { sm: 'hidden-md-up hidden-xs-down', md: 'hidden-lg-up hidden-sm-down', lg: 'hidden-xl-up hidden-md-down', xl: 'hidden-lg-down' }.each do |size, css|
+          = raw draw_menu({menu_slug: "menu_#{size.to_s}", container_id: "navbar-#{size.to_s}", container_class: "nav navbar-nav flex-space-between #{css}", item_current: 'nav-item active h6 strong', item_class: 'nav-item h6 strong', link_class: 'nav-link'})
+  
+        
+
+    .row
+      .col-12
+        
+        
+        = render partial: "/camaleon_cms/flash_messages.html.erb", locals:{ flash: (flash[:cama_subscriber] || {}).with_indifferent_access }
+
+
+
+

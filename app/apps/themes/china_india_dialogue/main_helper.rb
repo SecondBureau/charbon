@@ -111,6 +111,21 @@ module Themes::ChinaIndiaDialogue::MainHelper
       end
     end
     
+    {xs: 'Extra small devices', sm: 'Small devices', md: 'Medium devices', lg: 'Large devices', xl: 'Extra large devices'}.each do |size, name|
+      slug = "menu_#{size.to_s}"
+      menu = CamaleonCms::NavMenu.find_by_slug(slug)
+      if menu.nil?
+        menu = current_site.nav_menus.create!({name: "Main Menu (#{name})", slug: slug})
+        categories = CamaleonCms::PostType.find_by_slug('post').categories.to_a
+        category = categories.shift
+        menu.append_menu_item ({label: category.name, type: "category", link: category.id})
+        dropdown = menu.append_menu_item ({label: '☰', type: "external", link: 'root_url'})
+        categories.each do |category|
+          dropdown.append_menu_item ({label: category.name, type: "category", link: category.id})
+        end
+      end
+    end
+    
     theme.set_meta("installed_at", Time.current.to_s) # save a custom value
   end
 

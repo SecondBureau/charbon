@@ -1,0 +1,44 @@
+en:
+  cid:
+    by: by
+    category: category
+    categories: categories
+    refine_your_search: refine your search
+    published_since: published since
+    one_day: One day
+    one_week: One week
+    one_month: One month
+    one_year: One year
+    search: Search
+    clear_search: Clear search
+    results:
+      one: "One result, on %{min_date}"
+      other: "%{count} results, between %{min_date} and %{max_date}"
+    contact_form: Contact form
+    address: Address
+    partners: Partners
+    related_articles: Related articles
+    load_more: Load More
+  
+zh-CN:
+  cid:
+    by: ""
+    category: 分类
+    categories: 分类
+    refine_your_search: 优化您的搜索
+    published_since: 自发布以来
+    one_day: 一天
+    one_week: 一周
+    one_month: 一个月
+    one_year: 一年
+    search: 搜索
+    clear_search: 搜索
+    results:
+      one: "一个结果, %{min_date}"
+      other: "%{count} 结果, 在%{min_date}和%{max_date}之间"
+    contact_form: 联系表
+    address: 地址
+    partners: 伙伴
+    related_articles: 相关文章
+    load_more: Load More
+  
