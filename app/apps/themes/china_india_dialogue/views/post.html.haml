@@ -29,7 +29,7 @@
           %span.text-danger
             = t :by, scope: :cid
           %span
-            = @post.get_field(:author) || @post.the_author.fullname
+            = @post.get_field(:author).try(:translate) || @post.the_author.fullname
 
         .published_at.mb-3
           %i.fa.fa-clock-o

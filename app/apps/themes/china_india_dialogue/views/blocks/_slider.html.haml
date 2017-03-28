@@ -14,7 +14,7 @@
               %br
               %span.font-italic 
                 By
-                = post.get_field(:author) || post.decorate.the_author.fullname
+                = post.get_field(:author).try(:translate) || post.decorate.the_author.fullname
                 = l post.decorate.published_at.to_date, format: :long
 
 

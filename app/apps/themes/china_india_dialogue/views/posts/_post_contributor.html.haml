@@ -3,7 +3,7 @@
   
   .pl-105
     %h3.mb-2= link_to post.the_title, post.the_path
-    %p.font-italic.text-dark-grey= post.get_field(:author) || post.the_author.fullname
+    %p.font-italic.text-dark-grey= post.get_field(:author).try(:translate) || post.the_author.fullname
   
     %p= post.the_excerpt
 
