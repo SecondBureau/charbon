@@ -4,7 +4,7 @@
   %span{class: "text-#{color}"}
     = t :by, scope: :cid
   %span.text-dark-grey
-    = post.get_field(:author) || post.the_author.fullname
+    = post.get_field(:author).try(:translate) || post.the_author.fullname
     = l post.published_at.to_date, format: :long
 
 %p= post.the_excerpt
