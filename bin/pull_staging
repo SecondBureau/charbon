@@ -2,10 +2,10 @@
 
 source .env
 
-APP=cp
-DB_NAME=$PROD_CP_DB_NAME
+APP=staging
+DB_NAME=$STAGING_DB_NAME
 
-FILENAME=/tmp/${APP}_production_`date +"%Y%m%d%H%M%S"`.dump
+FILENAME=/tmp/${APP}_`date +"%Y%m%d%H%M%S"`.dump
 
 echo "dumping production database from $APP"
 echo "Filename $FILENAME"
