@@ -1,8 +1,8 @@
 GIT
   remote: https://github.com/SecondBureau/camaleon-cms.git
-  revision: 65c47fce37e4ec348a2f4ea47466e7019c6fb9e3
+  revision: db4319bddabbceb62a22190e62790d47cd85803e
   specs:
-    camaleon_cms (2.4.3.1)
+    camaleon_cms (2.4.3.2)
       aws-sdk (~> 2)
       bcrypt
       breadcrumbs_on_rails
