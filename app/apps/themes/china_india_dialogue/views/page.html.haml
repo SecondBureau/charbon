@@ -23,7 +23,7 @@
   .col-12.col-lg-1.hidden-print
   
   .col-12.col-lg-3.hidden-print
-    = render partial: theme_view("posts/related_articles"), locals: {posts: current_site.the_posts('post').limit(5).to_a, title: t(:recent_posts)}
+    = render partial: theme_view("posts/related_articles"), locals: {posts: current_site.the_posts('post').limit(5).to_a, title: t(:recent_posts, scope: :cid)}
     
     
 :javascript

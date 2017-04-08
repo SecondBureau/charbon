@@ -14,10 +14,11 @@ en:
     results:
       one: "One result, on %{min_date}"
       other: "%{count} results, between %{min_date} and %{max_date}"
-    contact_form: Contact form
+    contact_form: Contact us
     address: Address
     partners: Partners
     related_articles: Related articles
+    recent_posts: Recent posts
     load_more: Load More
   
 zh-CN:
@@ -40,5 +41,6 @@ zh-CN:
     address: 地址
     partners: 伙伴
     related_articles: 相关文章
+    recent_posts: 最近的帖子
     load_more: Load More
   
