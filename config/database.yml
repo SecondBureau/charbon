@@ -18,7 +18,7 @@ default: &default
 development:
   adapter: postgresql
   encoding: unicode
-  database: charbon_development
+  database: <%= ENV.fetch('LOCAL_DB') { 'charbon_development' } %>
   pool: 5
   host: localhost
 

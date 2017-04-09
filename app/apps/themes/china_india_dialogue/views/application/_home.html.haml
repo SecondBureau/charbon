@@ -1,7 +1,7 @@
 .row.mb-6
   .col-12.col-lg-8
     = render partial: theme_view('blocks/posts'), locals: {template: 'slider', count:5, slug: 'spotlight'}
-  .col-12.col-lg-4.text-center
+  .col-12.col-lg-4.text-center.last-issue.mt-1
     = current_theme.the_field('last_issue').html_safe
 
 
@@ -62,3 +62,8 @@
     %h2 Partners:
   .col-md-10
     = current_theme.the_field("partners").html_safe
+    
+:javascript
+  $(function() {
+    $(".last-issue img").attr('width','').addClass('img-fluid');
+    });
