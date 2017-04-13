@@ -1,59 +1,61 @@
-.row.mb-6
-  .col-12.col-lg-8
-    = render partial: theme_view('blocks/posts'), locals: {template: 'slider', count:5, slug: 'spotlight'}
-  .col-12.col-lg-4.text-center.last-issue.mt-1
-    = current_theme.the_field('last_issue').html_safe
+- cache [I18n.locale, current_site.the_posts('post').order(published_at: :desc).first] do
+
+  .row.mb-6
+    .col-12.col-lg-8
+      = render partial: theme_view('blocks/posts'), locals: {template: 'slider', count:5, slug: 'spotlight'}
+    .col-12.col-lg-4.text-center.last-issue.mt-1
+      = current_theme.the_field('last_issue').html_safe
 
 
-.row.mb-6
-  .col-12.col-lg-8.d-flex
-    = render partial: theme_view('blocks/posts'), locals: {css: 'outline', rows: 2, thumbnail: false, count:2, slug: 'business', color: 'red'}
-  .col-12.hidden-lg-up
-    .mb-6
-  .col-12.col-lg-4.d-flex
-    = render partial: theme_view('blocks/posts'), locals: {css: 'fill', thumbnail: false, count:1, slug: 'policy', color: 'orange'}
+  .row.mb-6
+    .col-12.col-lg-8.d-flex
+      = render partial: theme_view('blocks/posts'), locals: {css: 'outline', rows: 2, thumbnail: false, count:2, slug: 'business', color: 'red'}
+    .col-12.hidden-lg-up
+      .mb-6
+    .col-12.col-lg-4.d-flex
+      = render partial: theme_view('blocks/posts'), locals: {css: 'fill', thumbnail: false, count:1, slug: 'policy', color: 'orange'}
 
-.row
-  .col-md-4
-    = render partial: theme_view('blocks/posts'), locals: {thumbnail: true, count:2, slug: 'industry', color: 'blue'}
-  .col-md-4
-    = render partial: theme_view('blocks/posts'), locals: {thumbnail: true, count:2, slug: 'internet', color: 'green'}
-  .col-md-4
-    = render partial: theme_view('blocks/posts'), locals: {thumbnail: true, count:2, slug: 'society', color: 'violet'}
+  .row
+    .col-md-4
+      = render partial: theme_view('blocks/posts'), locals: {thumbnail: true, count:2, slug: 'industry', color: 'blue'}
+    .col-md-4
+      = render partial: theme_view('blocks/posts'), locals: {thumbnail: true, count:2, slug: 'internet', color: 'green'}
+    .col-md-4
+      = render partial: theme_view('blocks/posts'), locals: {thumbnail: true, count:2, slug: 'society', color: 'violet'}
     
-.row.mb-6.hidden-md-down{:style => "overflow: hidden"}
-  .col-md-4
-    %center
-      = current_theme.the_field('ad_left').html_safe
-  .col-md-8
-    %center.cid-ad-grey
-      = current_theme.the_field('ad_right').html_safe
+  .row.mb-6.hidden-md-down{:style => "overflow: hidden"}
+    .col-md-4
+      %center
+        = current_theme.the_field('ad_left').html_safe
+    .col-md-8
+      %center.cid-ad-grey
+        = current_theme.the_field('ad_right').html_safe
 
-.row.mb-6
-  .col-12
-    = render partial: theme_view('blocks/posts'), locals: {template: 'contributors', count:4, slug: 'column', color: 'light-blue'}
+  .row.mb-6
+    .col-12
+      = render partial: theme_view('blocks/posts'), locals: {template: 'contributors', count:4, slug: 'column', color: 'light-blue'}
     
-.row.mb-6
-  .col-12
-    = render partial: theme_view('blocks/posts'), locals: {css: 'outline', rows: 4, count:4, slug: 'hindi', color: 'orange', thumbnail: false}
+  .row.mb-6
+    .col-12
+      = render partial: theme_view('blocks/posts'), locals: {css: 'outline', rows: 4, count:4, slug: 'hindi', color: 'orange', thumbnail: false}
     
 
-.row.mb-6
-  .col-12.col-lg-4.d-flex
-    = render partial: theme_view('blocks/posts'), locals: {css: 'fill', thumbnail: false, count:1, slug: 'one-road-one-belt', color: 'light-blue'}
-  .col-12.hidden-lg-up
-    .mb-6
-  .col-12.col-lg-8.d-flex
-    = render partial: theme_view('blocks/posts'), locals: {template: 'floating_thumb', thumbnail: true, count:1, slug: 'environment', color: 'green'}
+  .row.mb-6
+    .col-12.col-lg-4.d-flex
+      = render partial: theme_view('blocks/posts'), locals: {css: 'fill', thumbnail: false, count:1, slug: 'one-road-one-belt', color: 'light-blue'}
+    .col-12.hidden-lg-up
+      .mb-6
+    .col-12.col-lg-8.d-flex
+      = render partial: theme_view('blocks/posts'), locals: {template: 'floating_thumb', thumbnail: true, count:1, slug: 'environment', color: 'green'}
 
 
-.row.mb-6
-  .col-12.col-md-3.col-xl-4.mb-6.mb-md-0
-    .hidden-sm-down= render partial: theme_view('blocks/posts'), locals: {thumbnail: false, count:1, slug: 'culture', color: 'light-green'}
-    .hidden-md-up= render partial: theme_view('blocks/posts'), locals: {thumbnail: false, count:3, slug: 'culture', color: 'light-green'}
+  .row.mb-6
+    .col-12.col-md-3.col-xl-4.mb-6.mb-md-0
+      .hidden-sm-down= render partial: theme_view('blocks/posts'), locals: {thumbnail: false, count:1, slug: 'culture', color: 'light-green'}
+      .hidden-md-up= render partial: theme_view('blocks/posts'), locals: {thumbnail: false, count:3, slug: 'culture', color: 'light-green'}
     
-  .col-12.col-md-9.col-xl-8
-    = render partial: theme_view('blocks/posts'), locals: {template: 'carousel', thumbnail: true, count:10, slug: 'travel-image', color: 'violet'}
+    .col-12.col-md-9.col-xl-8
+      = render partial: theme_view('blocks/posts'), locals: {template: 'carousel', thumbnail: true, count:10, slug: 'travel-image', color: 'violet'}
 
 %hr
 
