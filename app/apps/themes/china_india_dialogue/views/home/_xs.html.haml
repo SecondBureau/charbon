@@ -1,0 +1,1 @@
+= render partial: 'categories/layout', locals: {title: nil, posts: current_site.the_posts('post').paginate(:page => params[:page], :per_page => 30), template: nil}

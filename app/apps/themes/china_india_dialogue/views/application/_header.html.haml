@@ -1,39 +1,71 @@
-%nav.navbar.navbar-light.bg-faded.fixed-top.mb-5.hidden-print
+%nav.navbar.navbar-inverse.bg-inverse.hidden-sm-up
+  .container-fluid
+    .pull-left
+      = link_to current_site.the_url do
+        = theme_image_tag 'logo-mini.png', width: "136", height: "50", alt: current_site.the_title
+      
+    .pull-right= raw draw_menu({menu_slug: "menu_xs", container_id: "navbar-xs", container_class: "nav navbar-nav flex-space-between", item_current: 'nav-item active h6 strong', item_class: 'nav-item h6 strong', link_class: 'nav-link'})
+
+
+%nav.navbar.navbar-inverse.bg-inverse.fixed-top.mb-5.hidden-print.hidden-xs-down
+
+  .container
+
+    .row.hidden-print
+      .col-10.col-sm-4.col-md-3.col-lg-2.col-xl-2
+
+        = link_to current_site.the_url do
+          = theme_image_tag 'logo-mini.png', width: "136", height: "50", alt: current_site.the_title
+
+      .col-2.col-sm-8.col-md-9.col-lg-10.col-xl-10
+        - { sm: 'hidden-md-up hidden-xs-down', md: 'hidden-lg-up hidden-sm-down', lg: 'hidden-xl-up hidden-md-down', xl: 'hidden-lg-down' }.each do |size, css|
+          = raw draw_menu({menu_slug: "menu_#{size.to_s}", container_id: "navbar-#{size.to_s}", container_class: "nav navbar-nav flex-space-between #{css}", item_current: 'nav-item active h6 strong', item_class: 'nav-item h6 strong', link_class: 'nav-link'})
+
+
+
+    .row
+      .col-12
+
+
+        = render partial: "/camaleon_cms/flash_messages.html.erb", locals:{ flash: (flash[:cama_subscriber] || {}).with_indifferent_access }
+
+
+%nav.navbar.navbar-light.bg-faded.fixed-top.mb-5.hidden-print.minifable.hidden-xs-down
   
   .row.cid-md-header
   
+    .container
     
+      .row
     
-    .col-md-4
-      %center
-        .header-social
+        .col-sm-3.col-md-4
+          .header-social
+            = link_to current_theme.the_field('social_facebook'), class: 'text-white text-no-decoration' do
+              %i.fa.fa-fw.fa-facebook
           
-          = link_to current_theme.the_field('social_facebook') do
-            = theme_image_tag 'icons/weweka/facebook.png', width: '35', height: '35', alt: 'Check out our facebook page'
+            = link_to current_theme.the_field('social_twitter'), class: 'text-white text-no-decoration' do
+              %i.fa.fa-fw.fa-twitter
+          
+            = link_to current_theme.the_field('social_linkedin'), class: 'text-white text-no-decoration' do
+              %i.fa.fa-fw.fa-linkedin
+          
+            = link_to current_theme.the_field('social_wechat'), class: 'text-white text-no-decoration' do
+              %i.fa.fa-fw.fa-wechat
             
-          = link_to current_theme.the_field('social_twitter') do
-            = theme_image_tag 'icons/weweka/twitter.png', width: '35', height: '35', alt: 'Follow us on twitter'
-            
-          = link_to current_theme.the_field('social_linkedin') do
-            = theme_image_tag 'icons/weweka/linkedin.png', width: '35', height: '35', alt: 'Follow us on LinkedIn'
-            
-          = link_to current_theme.the_field('social_wechat') do
-            = theme_image_tag 'icons/weweka/wechat.png', width: '35', height: '35', alt: 'Follow us on Wechat'
-            
-    .col-md-4
-      %center
-        = link_to current_site.the_url do
-          = theme_image_tag 'logo.png', width: "275", height: "150", alt: current_site.the_title
-    .col-md-4
-    
-      = raw current_site.draw_languages("language list-inline d-flex mt-5", true)
+        .col-sm-4.col-md-4
+          %center
+            = link_to current_site.the_url do
+              = theme_image_tag 'logo.png', width: "275", height: "150", alt: current_site.the_title
+        .col-sm-5.col-md-4.text-right
+          = raw current_site.draw_languages("language list-inline", true)
+      
       
   .container
   
     .row.hidden-print
       .col-12
         - { sm: 'hidden-md-up hidden-xs-down', md: 'hidden-lg-up hidden-sm-down', lg: 'hidden-xl-up hidden-md-down', xl: 'hidden-lg-down' }.each do |size, css|
-          = raw draw_menu({menu_slug: "menu_#{size.to_s}", container_id: "navbar-#{size.to_s}", container_class: "nav navbar-nav flex-space-between #{css}", item_current: 'nav-item active h6 strong', item_class: 'nav-item h6 strong', link_class: 'nav-link'})
+          = raw draw_menu({menu_slug: "menu_#{size.to_s}", container_id: "navbar-minifable-#{size.to_s}", container_class: "nav navbar-nav flex-space-between #{css}", item_current: 'nav-item active h6 strong', item_class: 'nav-item h6 strong', link_class: 'nav-link'})
   
         
 
@@ -42,6 +74,37 @@
         
         
         = render partial: "/camaleon_cms/flash_messages.html.erb", locals:{ flash: (flash[:cama_subscriber] || {}).with_indifferent_access }
+        
+        
+:javascript
+  $(function() {
+    var lastScrollTop = 160;
+    var didScroll;
+
+    window.addEventListener("scroll", function(){  
+      didScroll = true;
+    });
+    
+    setInterval(function() {
+      if (didScroll) {
+        hasScrolled();
+        didScroll = false;
+      }
+    }, 250);
+    
+    function hasScrolled() {
+       var st = window.pageYOffset || document.documentElement.scrollTop;  
+       if (st > lastScrollTop){
+           $('.minifable').addClass('minify', {duration:500});
+       } else {
+          $('.minifable').removeClass('minify', {duration:500});
+       }
+       
+    };
+    
+    $('.navbar-inverse .dropdown-menu').find('a').addClass('text-dark-grey');
+  });
+
 
 
 
