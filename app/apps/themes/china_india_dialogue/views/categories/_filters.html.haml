@@ -42,3 +42,14 @@
 
 
   %button.btn.btn-secondary.w-100.mt-4= t :search, scope: :cid
+  
+:javascript
+  $(function() {
+    $('a#search-clear').on('click', function(e) {
+      e.preventDefault();
+      $('input[name="q"]').val('')
+      $('form.form-search').submit()
+      });
+    });
+  
+  
