@@ -11,6 +11,23 @@
     = render theme_view('application/woopra') if $woopra_domain_name.present?
     
   %body
+    .modal.fade{id: 'wechatmodal', tabindex: '-1', role: 'dialog', aria: {labelledby: 'qrCodeModal', hidden: true}} 
+      .modal-dialog{role: :document}
+        .modal-content
+          .modal-header
+            %h6.modal-title
+              China India Dialogue
+              .small
+                %i 
+                  Scan with 
+                  %i.fa.fa-wechat.text-wechat
+                  wechat to share
+            %button.close{type: :button, data: {dismiss: :modal}, aria: {label: :close}}
+              %span{aria: {hidden: true}} &times;
+          .modal-body.text-center
+            .qrcode
+              %img{src: current_theme.the_field('social_wechat'), class: "qr-code"}
+              
     = render theme_view('application/header')
     .container
       .content

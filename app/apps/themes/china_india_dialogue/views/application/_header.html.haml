@@ -39,18 +39,7 @@
       .row
     
         .col-sm-3.col-md-4
-          .header-social
-            = link_to current_theme.the_field('social_facebook'), class: 'text-white text-no-decoration' do
-              %i.fa.fa-fw.fa-facebook
-          
-            = link_to current_theme.the_field('social_twitter'), class: 'text-white text-no-decoration' do
-              %i.fa.fa-fw.fa-twitter
-          
-            = link_to current_theme.the_field('social_linkedin'), class: 'text-white text-no-decoration' do
-              %i.fa.fa-fw.fa-linkedin
-          
-            = link_to current_theme.the_field('social_wechat'), class: 'text-white text-no-decoration' do
-              %i.fa.fa-fw.fa-wechat
+          = render partial: theme_view('application/social')
             
         .col-sm-4.col-md-4
           %center
