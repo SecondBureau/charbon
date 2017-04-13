@@ -1,1 +1,10 @@
-= render partial: 'categories/layout', locals: {title: nil, posts: current_site.the_posts('post').paginate(:page => params[:page], :per_page => 30), template: nil}
+- posts = current_site.the_posts('post').paginate(:page => params[:page], :per_page => 30)
+
+.row.mt-3
+  .col-12
+    = render partial: theme_view("posts/xs"), collection: posts, as: :post
+    .text-center.mb-5
+      .paginate= will_paginate posts, renderer: BootstrapPagination::Rails
+      .show_more{style: 'display:none;'}= link_to t(:load_more, scope: :cid), '/', remote: true, format: :js, class: 'btn btn-secondary w-100'
+    
+  
