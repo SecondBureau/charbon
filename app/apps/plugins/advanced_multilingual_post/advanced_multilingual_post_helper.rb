@@ -47,7 +47,7 @@ module Plugins::AdvancedMultilingualPost::AdvancedMultilingualPostHelper
   def plugin_advanced_multilingual_post_list(post)
     ret = ''
     current_site.object.get_languages.each do |lang|
-      checked = post.get_meta('enabled_languages').include?(lang.to_s) ? 'checked="checked"' : ''
+      checked = (post.get_meta('enabled_languages').present? && post.get_meta('enabled_languages').include?(lang.to_s)) ? 'checked="checked"' : ''
       ret += "<li><label><input type='checkbox' value='#{lang.to_s}' #{checked} name='meta[enabled_languages][]'>#{t(lang.to_s, scope: :languages)}</label></li>"
     end
     ret
