@@ -2,7 +2,7 @@
 
 - if category  = current_site.categories.where(slug: slug).first
   
-  - posts     = category.posts.published.where("(#{CamaleonCms::Post.table_name}.published_at is not null and #{CamaleonCms::Post.table_name}.published_at <= ?)", Time.now).where("visibility != 'private'").reorder(published_at: :desc).limit(count)
+  - posts     = category.posts.joins("LEFT OUTER JOIN cama_metas ON cama_metas.objectid = cama_posts.id AND cama_metas.object_class = 'Post' AND cama_metas.key = 'enabled_languages'").published.where("(#{CamaleonCms::Post.table_name}.published_at is not null and #{CamaleonCms::Post.table_name}.published_at <= ?)", Time.now).where("visibility != 'private'").where('cama_metas.value is null or cama_metas.value like ?', "%#{current_locale}%").reorder(published_at: :desc).limit(count)
   
   .home-block
   

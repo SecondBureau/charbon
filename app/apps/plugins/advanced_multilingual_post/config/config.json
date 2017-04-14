@@ -1,0 +1,24 @@
+{
+  "title": "Advanced Multilingual Posts",
+  "descr": "Permit to select which language to display</a>",
+  "version": "0.1",
+  "key": "advanced_multilingual_post",
+  "helpers": [
+    "Plugins::AdvancedMultilingualPost::AdvancedMultilingualPostHelper"
+  ],
+  "options": [
+  ],
+  "hooks": {
+    "on_active": ["plugin_advanced_multilingual_post_on_active"],
+    "on_inactive": ["plugin_advanced_multilingual_post_on_inactive"],
+    "list_post": [],
+    "new_post":["plugin_advanced_multilingual_new_post"],
+    "edit_post":["plugin_advanced_multilingual_new_post"],
+    "created_post":["plugin_advanced_multilingual_create_post"],
+    "updated_post":["plugin_advanced_multilingual_create_post"],
+    "post_the_content": ["plugin_advanced_multilingual_post_the_content"],
+    "filter_post": ["plugin_advanced_multilingual_filter_post"],
+    "post_can_visit": ["plugin_advanced_multilingual_can_visit"],
+    "list_post_extra_columns": []
+  }
+}
