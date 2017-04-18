@@ -1,3 +1,23 @@
+CamaleonCms::UserDecorator.class_eval do
+  
+  def get_locale
+    object.get_field('locale')
+  end
+end
+
+CamaleonCms::AdminController.class_eval do
+
+  def admin_init_actions
+    I18n.locale = current_user.get_locale || current_site.get_admin_language
+    @_admin_menus = {}
+    @_admin_breadcrumb = []
+    @_extra_models_for_fields = []
+    @cama_i18n_frontend = current_site.get_languages.first
+  end
+
+end
+
+
 CamaleonCms::SiteDecorator.class_eval do
   
   def draw_languages_text(list_class = "language_list list-inline pull-right", current_page = false, current_class = "current_l", link_class='text-white')
