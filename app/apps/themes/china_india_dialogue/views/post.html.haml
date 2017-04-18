@@ -1,7 +1,7 @@
 
 
 .row.mt-3
-  - cache [I18n.locale, @post] do
+  - cache ['post', I18n.locale, @post] do
     .col-12.col-lg-8
 
       %article.post{itemscope: true, itemtype: 'https://schema.org/Article'}

@@ -5,7 +5,7 @@
     - unless posts.blank?
       - if @posts_size.present?
         %h6.results= t :results, scope: :cid, count: @posts_size, min_date: l(@post_published_at_min.to_date, format: :long), max_date:l(@post_published_at_max.to_date, format: :long)
-      = render partial: theme_view("posts/media"), collection: posts, as: :post
+      = render partial: theme_view("posts/media"), collection: posts, as: :post, cache: Proc.new{|item| ['posts_media', I18n.locale, item]}
     - else
       .row
         .col-12
