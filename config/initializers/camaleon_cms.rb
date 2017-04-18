@@ -1,3 +1,21 @@
+CamaleonCms::SiteDecorator.class_eval do
+  
+  def draw_languages_text(list_class = "language_list list-inline pull-right", current_page = false, current_class = "current_l", link_class='text-white')
+    lan = object.get_languages
+    return  if  lan.size < 2
+    res = ["<ul class='#{list_class}'>"]
+    lan.each do |lang|
+      if I18n.locale.to_s.eql?(lang.to_s)
+      else
+        res << "<li class='#{ current_class if I18n.locale.to_s == lang.to_s}'> <a href='#{h.cama_url_to_fixed(current_page ? "url_for" : "cama_root_url", {locale: lang, cama_set_language: lang})}' class='#{link_class}'>#{I18n.t(lang)}</a> </li>"
+      end
+    end
+    res << "</ul>"
+    res.join("")
+  end
+end
+
+
 CamaleonCms::FrontendController.class_eval do 
   
   

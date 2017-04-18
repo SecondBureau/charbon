@@ -20,6 +20,10 @@ $font-family-monospace:  Menlo, Monaco, Consolas, "Liberation Mono", "Courier Ne
 $font-family-base:       crimson, $font-family-serif !default;
 $headings-font-family:   dax, $font-family-sans-serif !default;
 
+.heading-font {
+  font-family: $headings-font-family;
+}
+
 
 $navbar-light-color: $gray-dark;
 $navbar-light-active-color: $brand-danger;

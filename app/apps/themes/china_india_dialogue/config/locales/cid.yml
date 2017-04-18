@@ -1,4 +1,6 @@
 en:
+  en: English
+  zh-CN: 中文
   cid:
     by: by
     category: category
@@ -22,6 +24,8 @@ en:
     load_more: Load More
   
 zh-CN:
+  en: English
+  zh-CN: 中文
   cid:
     by: ""
     category: 分类

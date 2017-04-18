@@ -6,9 +6,11 @@
       = theme_image_tag 'logo-mini.png', width: "136", height: "50", alt: current_site.the_title
 
     .navbar-toggler-right
-      .pull-right= raw current_site.draw_languages("language list-inline", true)
-      .mr-3.pr-5= render partial: theme_view('application/social')
-      = raw draw_menu({menu_slug: "menu_xs", container_id: "navbar-xs", container_class: "nav navbar-nav flex-space-between", item_current: 'nav-item active h6 strong', item_class: 'nav-item h6 strong', link_class: 'nav-link text-nowrap'})
+      .d-flex
+        = render partial: theme_view('application/social')
+        = raw current_site.draw_languages_text("language list-inline mb-0 pl-2", true, nil, 'text-white heading-font small')
+        
+      = raw draw_menu({menu_slug: "menu_xs", container_id: "navbar-xs", container_class: "nav navbar-nav d-block text-right", item_current: 'nav-item active h6 strong', item_class: 'nav-item h6 strong', link_class: 'nav-link text-nowrap'})
 
 
   %nav.navbar.navbar-inverse.bg-inverse.fixed-top.mb-5.hidden-print.hidden-xs-down
@@ -41,7 +43,7 @@
               = link_to current_site.the_url do
                 = theme_image_tag 'logo.png', width: "275", height: "150", alt: current_site.the_title
           .col-sm-5.col-md-4.text-right
-            = raw current_site.draw_languages("language list-inline", true)
+            = raw current_site.draw_languages_text("language list-inline", true, nil, 'text-white heading-font small')
       
       
     .container
