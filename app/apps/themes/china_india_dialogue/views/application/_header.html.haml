@@ -1,100 +1,90 @@
-%nav.navbar.navbar-inverse.bg-inverse.hidden-sm-up
-  .container-fluid
-    .pull-left
-      = link_to current_site.the_url do
-        = theme_image_tag 'logo-mini.png', width: "136", height: "50", alt: current_site.the_title
-      
-    .pull-right= raw draw_menu({menu_slug: "menu_xs", container_id: "navbar-xs", container_class: "nav navbar-nav flex-space-between", item_current: 'nav-item active h6 strong', item_class: 'nav-item h6 strong', link_class: 'nav-link'})
+- cache [I18n.locale, current_site.categories.reorder(updated_at: :desc).first] do
 
-
-%nav.navbar.navbar-inverse.bg-inverse.fixed-top.mb-5.hidden-print.hidden-xs-down
-
-  .container
-
-    .row.hidden-print
-      .col-10.col-sm-4.col-md-3.col-lg-2.col-xl-2
-
+  %nav.navbar.navbar-inverse.bg-inverse.hidden-sm-up
+    .container-fluid
+      .pull-left
         = link_to current_site.the_url do
           = theme_image_tag 'logo-mini.png', width: "136", height: "50", alt: current_site.the_title
-
-      .col-2.col-sm-8.col-md-9.col-lg-10.col-xl-10
-        - { sm: 'hidden-md-up hidden-xs-down', md: 'hidden-lg-up hidden-sm-down', lg: 'hidden-xl-up hidden-md-down', xl: 'hidden-lg-down' }.each do |size, css|
-          = raw draw_menu({menu_slug: "menu_#{size.to_s}", container_id: "navbar-#{size.to_s}", container_class: "nav navbar-nav flex-space-between #{css}", item_current: 'nav-item active h6 strong', item_class: 'nav-item h6 strong', link_class: 'nav-link'})
+      
+      .pull-right= raw draw_menu({menu_slug: "menu_xs", container_id: "navbar-xs", container_class: "nav navbar-nav flex-space-between", item_current: 'nav-item active h6 strong', item_class: 'nav-item h6 strong', link_class: 'nav-link'})
 
 
+  %nav.navbar.navbar-inverse.bg-inverse.fixed-top.mb-5.hidden-print.hidden-xs-down
 
-    .row
-      .col-12
-
-
-        = render partial: "/camaleon_cms/flash_messages.html.erb", locals:{ flash: (flash[:cama_subscriber] || {}).with_indifferent_access }
-
-
-%nav.navbar.navbar-light.bg-faded.fixed-top.mb-5.hidden-print.minifable.hidden-xs-down
-  
-  .row.cid-md-header
-  
     .container
+
+      .row.hidden-print
+        .col-10.col-sm-4.col-md-3.col-lg-2.col-xl-2
+
+          = link_to current_site.the_url do
+            = theme_image_tag 'logo-mini.png', width: "136", height: "50", alt: current_site.the_title
+
+        .col-2.col-sm-8.col-md-9.col-lg-10.col-xl-10
+          - { sm: 'hidden-md-up hidden-xs-down', md: 'hidden-lg-up hidden-sm-down', lg: 'hidden-xl-up hidden-md-down', xl: 'hidden-lg-down' }.each do |size, css|
+            = raw draw_menu({menu_slug: "menu_#{size.to_s}", container_id: "navbar-#{size.to_s}", container_class: "nav navbar-nav flex-space-between #{css}", item_current: 'nav-item active h6 strong', item_class: 'nav-item h6 strong', link_class: 'nav-link'})
+
+  %nav.navbar.navbar-light.bg-faded.fixed-top.mb-5.hidden-print.minifable.hidden-xs-down
+  
+    .row.cid-md-header
+  
+      .container
     
-      .row
+        .row
     
-        .col-sm-3.col-md-4
-          = render partial: theme_view('application/social')
+          .col-sm-3.col-md-4
+            = render partial: theme_view('application/social')
             
-        .col-sm-4.col-md-4
-          %center
-            = link_to current_site.the_url do
-              = theme_image_tag 'logo.png', width: "275", height: "150", alt: current_site.the_title
-        .col-sm-5.col-md-4.text-right
-          = raw current_site.draw_languages("language list-inline", true)
+          .col-sm-4.col-md-4
+            %center
+              = link_to current_site.the_url do
+                = theme_image_tag 'logo.png', width: "275", height: "150", alt: current_site.the_title
+          .col-sm-5.col-md-4.text-right
+            = raw current_site.draw_languages("language list-inline", true)
       
       
-  .container
+    .container
   
-    .row.hidden-print
-      .col-12
-        - { sm: 'hidden-md-up hidden-xs-down', md: 'hidden-lg-up hidden-sm-down', lg: 'hidden-xl-up hidden-md-down', xl: 'hidden-lg-down' }.each do |size, css|
-          = raw draw_menu({menu_slug: "menu_#{size.to_s}", container_id: "navbar-minifable-#{size.to_s}", container_class: "nav navbar-nav flex-space-between #{css}", item_current: 'nav-item active h6 strong', item_class: 'nav-item h6 strong', link_class: 'nav-link'})
+      .row.hidden-print
+        .col-12
+          - { sm: 'hidden-md-up hidden-xs-down', md: 'hidden-lg-up hidden-sm-down', lg: 'hidden-xl-up hidden-md-down', xl: 'hidden-lg-down' }.each do |size, css|
+            = raw draw_menu({menu_slug: "menu_#{size.to_s}", container_id: "navbar-minifable-#{size.to_s}", container_class: "nav navbar-nav flex-space-between #{css}", item_current: 'nav-item active h6 strong', item_class: 'nav-item h6 strong', link_class: 'nav-link'})
   
         
+        
+  :javascript
+    $(function() {
+      var lastScrollTop = 160;
+      var didScroll;
 
-    .row
-      .col-12
-        
-        
-        = render partial: "/camaleon_cms/flash_messages.html.erb", locals:{ flash: (flash[:cama_subscriber] || {}).with_indifferent_access }
-        
-        
-:javascript
-  $(function() {
-    var lastScrollTop = 160;
-    var didScroll;
-
-    window.addEventListener("scroll", function(){  
-      didScroll = true;
-    });
+      window.addEventListener("scroll", function(){  
+        didScroll = true;
+      });
     
-    setInterval(function() {
-      if (didScroll) {
-        hasScrolled();
-        didScroll = false;
-      }
-    }, 250);
+      setInterval(function() {
+        if (didScroll) {
+          hasScrolled();
+          didScroll = false;
+        }
+      }, 250);
     
-    function hasScrolled() {
-       var st = window.pageYOffset || document.documentElement.scrollTop;  
-       if (st > lastScrollTop){
-           $('.minifable').addClass('minify', {duration:500});
-       } else {
-          $('.minifable').removeClass('minify', {duration:500});
-       }
+      function hasScrolled() {
+         var st = window.pageYOffset || document.documentElement.scrollTop;  
+         if (st > lastScrollTop){
+             $('.minifable').addClass('minify', {duration:500});
+         } else {
+            $('.minifable').removeClass('minify', {duration:500});
+         }
        
-    };
+      };
     
-    $('.navbar-inverse .dropdown-menu').find('a').addClass('text-dark-grey');
-  });
+      $('.navbar-inverse .dropdown-menu').find('a').addClass('text-dark-grey');
+    });
+
+.container
+  .row
+    .col-12
 
 
-
+      = render partial: "/camaleon_cms/flash_messages.html.erb", locals:{ flash: (flash[:cama_subscriber] || {}).with_indifferent_access }
 
 

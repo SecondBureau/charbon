@@ -1,56 +1,57 @@
 
 
 .row.mt-3
-  .col-12.col-lg-8
-  
-    %article.post{itemscope: true, itemtype: 'https://schema.org/Article'}
+  - cache [I18n.locale, @post] do
+    .col-12.col-lg-8
 
-      %meta{itemprop: :url, content: @post.the_url}
-      %meta{itemprop: :mainEntityOfPage, itemscope: true, itemtype: 'https://schema.org/WebPage', itemid: @post.the_url}
-      %meta{itemprop: :headline, content: @post.the_title}
-      %meta{itemprop: :dateModified, content: @post.object.updated_at}
+      %article.post{itemscope: true, itemtype: 'https://schema.org/Article'}
 
-      %div{itemprop: :publisher, itemscope: true, itemtype: 'https://schema.org/Organization'}
-        %div{itemprop: :logo, itemscope: true, itemtype: 'https://schema.org/ImageObject'}
-          %meta{itemprop: :url, content: current_site.the_logo}
-          %meta{itemprop: :width, content: 100}
-          %meta{itemprop: :height, content: 100}
-        %meta{itemprop: :name, content: 'China Pictorial'}
-  
-      %header
-      
-        %h1= @post.the_title
-      
-        .h5= @post.the_excerpt
-      
-        = image_tag @post.the_author.get_meta('avatar'), class: "rounded-circle pull-left columnist px-3 pt-1"
-      
-        .font-italic.text-uppercase.mt-4
-          %span.text-danger
-            = t :by, scope: :cid
-          %span
-            = @post.get_field(:author).try(:translate) || @post.the_author.fullname
+        %meta{itemprop: :url, content: @post.the_url}
+        %meta{itemprop: :mainEntityOfPage, itemscope: true, itemtype: 'https://schema.org/WebPage', itemid: @post.the_url}
+        %meta{itemprop: :headline, content: @post.the_title}
+        %meta{itemprop: :dateModified, content: @post.object.updated_at}
 
-        .published_at.mb-3
-          %i.fa.fa-clock-o
-          %time{datetime:  @post.object.published_at.try(:iso8601), itemprop: :datePublished}= I18n.l @post.object.published_at.to_date, format: :long
-        
-        %figure.image{itemprop: :image, itemscope: "", itemtype: "http://schema.org/ImageObject" }
-          %meta{itemprop: :url, content: @post.the_thumb_url}
-          %meta{itemprop: :width, content: 100}
-          %meta{itemprop: :height, content: 100}
-          = @post.the_thumb(class: 'img-fluid w-100 img-thumbnail')
-          %figcaption.post-caption{itemprop: :description}
-            = @post.the_field(:fimage_caption)
-            %span{itemprop: 'copyrightHolder'}= @post.the_field(:copyright_holder)
+        %div{itemprop: :publisher, itemscope: true, itemtype: 'https://schema.org/Organization'}
+          %div{itemprop: :logo, itemscope: true, itemtype: 'https://schema.org/ImageObject'}
+            %meta{itemprop: :url, content: current_site.the_logo}
+            %meta{itemprop: :width, content: 100}
+            %meta{itemprop: :height, content: 100}
+          %meta{itemprop: :name, content: 'China Pictorial'}
 
-      = render partial: 'partials/social', locals: {post: @post}
+        %header
     
-      .post-body{itemprop: :articleBody}
-        = raw @post.the_content
+          %h1= @post.the_title
+    
+          .h5= @post.the_excerpt
+    
+          = image_tag @post.the_author.get_meta('avatar'), class: "rounded-circle pull-left columnist px-3 pt-1"
+    
+          .font-italic.text-uppercase.mt-4
+            %span.text-danger
+              = t :by, scope: :cid
+            %span
+              = @post.get_field(:author).try(:translate) || @post.the_author.fullname
 
-  .col-12.col-lg-1.hidden-print
+          .published_at.mb-3
+            %i.fa.fa-clock-o
+            %time{datetime:  @post.object.published_at.try(:iso8601), itemprop: :datePublished}= I18n.l @post.object.published_at.to_date, format: :long
+      
+          %figure.image{itemprop: :image, itemscope: "", itemtype: "http://schema.org/ImageObject" }
+            %meta{itemprop: :url, content: @post.the_thumb_url}
+            %meta{itemprop: :width, content: 100}
+            %meta{itemprop: :height, content: 100}
+            = @post.the_thumb(class: 'img-fluid w-100 img-thumbnail')
+            %figcaption.post-caption{itemprop: :description}
+              = @post.the_field(:fimage_caption)
+              %span{itemprop: 'copyrightHolder'}= @post.the_field(:copyright_holder)
+
+        = render partial: 'partials/social', locals: {post: @post}
   
+        .post-body{itemprop: :articleBody}
+          = raw @post.the_content
+
+    .col-12.col-lg-1.hidden-print
+
   .col-12.col-lg-3.hidden-print
     - title = @post.categories.size.eql?(1) ? @post.categories.first.decorate.name.translate : t(:related_articles, scope: :cid)
     = render partial: 'posts/related_articles', locals: {posts: @post.the_related_posts.where('cama_posts.id != ?', @post.id).to_a.sample(10), title: title}
@@ -64,4 +65,4 @@
     });
     $('.post-body figure.image').addClass('#{@post.the_field(:fixed_width_images_class)}');
     $('.post-body figure.image > img').addClass('img-fluid');
-    });
+  });

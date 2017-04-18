@@ -1,5 +1,6 @@
+
 !!!
-%html{:lang => "en"}
+%html{:lang => I18n.locale}
   %head
     %title= current_site.the_title
     %meta{:content => "text/html; charset=utf-8", "http-equiv" => "Content-Type"}/
@@ -9,7 +10,7 @@
     = javascript_include_tag theme_asset_path("js/application")
     = raw the_head
     = render theme_view('application/woopra') if $woopra_domain_name.present?
-    
+  
   %body
     .modal.fade{id: 'wechatmodal', tabindex: '-1', role: 'dialog', aria: {labelledby: 'qrCodeModal', hidden: true}} 
       .modal-dialog{role: :document}
@@ -27,12 +28,12 @@
           .modal-body.text-center
             .qrcode
               %img{src: current_theme.the_field('social_wechat'), class: "qr-code"}
-              
+            
     = render theme_view('application/header')
     .container
       .content
         = yield
-      
+    
     = render theme_view('application/footer')
     / %h1= render theme_view('application/adaptative')
 
