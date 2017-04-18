@@ -44,6 +44,8 @@
                 = theme_image_tag 'logo.png', width: "275", height: "150", alt: current_site.the_title
           .col-sm-5.col-md-4.text-right
             = raw current_site.draw_languages_text("language list-inline", true, nil, 'text-white heading-font small')
+            .search_bar.mt-4.pt-3
+              = render partial: theme_view('application/search_form')
       
       
     .container
@@ -91,4 +93,16 @@
 
       = render partial: "/camaleon_cms/flash_messages.html.erb", locals:{ flash: (flash[:cama_subscriber] || {}).with_indifferent_access }
 
+- unless action_name.eql?('search_cid')
 
+  :javascript
+    $(function() {
+      $('section#search').show();
+    });
+    
+- else
+
+  :javascript
+    $(function() {
+      $('#search-input').val('#{params[:q]}');
+    });
