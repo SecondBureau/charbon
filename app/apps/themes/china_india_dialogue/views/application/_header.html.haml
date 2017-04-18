@@ -2,8 +2,7 @@
     
   %nav.navbar.navbar-inverse.bg-inverse.hidden-sm-up
     
-    = link_to current_site.the_url, class: 'navbar-brand pb-2 pt-3' do
-      = theme_image_tag 'logo-mini.png', width: "136", height: "50", alt: current_site.the_title
+
 
     .navbar-toggler-right
       .d-flex
@@ -11,6 +10,9 @@
         = raw current_site.draw_languages_text("language list-inline mb-0 pl-2", true, nil, 'text-white heading-font small')
         
       = raw draw_menu({menu_slug: "menu_xs", container_id: "navbar-xs", container_class: "nav navbar-nav d-block text-right", item_current: 'nav-item active h6 strong', item_class: 'nav-item h6 strong', link_class: 'nav-link text-nowrap'})
+      
+    = link_to current_site.the_url, class: 'navbar-brand pb-2 pt-3' do
+      = theme_image_tag 'logo-mini.png', width: "156", height: "50", alt: current_site.the_title
 
 
   %nav.navbar.navbar-inverse.bg-inverse.fixed-top.mb-5.hidden-print.hidden-xs-down
