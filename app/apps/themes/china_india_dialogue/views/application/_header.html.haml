@@ -6,7 +6,7 @@
         = link_to current_site.the_url do
           = theme_image_tag 'logo-mini.png', width: "136", height: "50", alt: current_site.the_title
       
-      .pull-right= raw draw_menu({menu_slug: "menu_xs", container_id: "navbar-xs", container_class: "nav navbar-nav flex-space-between", item_current: 'nav-item active h6 strong', item_class: 'nav-item h6 strong', link_class: 'nav-link'})
+      .pull-right= raw draw_menu({menu_slug: "menu_xs", container_id: "navbar-xs", container_class: "nav navbar-nav flex-space-between", item_current: 'nav-item active h6 strong', item_class: 'nav-item h6 strong', link_class: 'nav-link text-nowrap'})
 
 
   %nav.navbar.navbar-inverse.bg-inverse.fixed-top.mb-5.hidden-print.hidden-xs-down
@@ -21,7 +21,7 @@
 
         .col-2.col-sm-8.col-md-9.col-lg-10.col-xl-10
           - { sm: 'hidden-md-up hidden-xs-down', md: 'hidden-lg-up hidden-sm-down', lg: 'hidden-xl-up hidden-md-down', xl: 'hidden-lg-down' }.each do |size, css|
-            = raw draw_menu({menu_slug: "menu_#{size.to_s}", container_id: "navbar-#{size.to_s}", container_class: "nav navbar-nav flex-space-between #{css}", item_current: 'nav-item active h6 strong', item_class: 'nav-item h6 strong', link_class: 'nav-link'})
+            = raw draw_menu({menu_slug: "menu_#{size.to_s}", container_id: "navbar-#{size.to_s}", container_class: "nav navbar-nav flex-space-between #{css}", item_current: 'nav-item active h6 strong', item_class: 'nav-item h6 strong', link_class: 'nav-link text-nowrap'})
 
   %nav.navbar.navbar-light.bg-faded.fixed-top.mb-5.hidden-print.minifable.hidden-xs-down
   
@@ -47,7 +47,7 @@
       .row.hidden-print
         .col-12
           - { sm: 'hidden-md-up hidden-xs-down', md: 'hidden-lg-up hidden-sm-down', lg: 'hidden-xl-up hidden-md-down', xl: 'hidden-lg-down' }.each do |size, css|
-            = raw draw_menu({menu_slug: "menu_#{size.to_s}", container_id: "navbar-minifable-#{size.to_s}", container_class: "nav navbar-nav flex-space-between #{css}", item_current: 'nav-item active h6 strong', item_class: 'nav-item h6 strong', link_class: 'nav-link'})
+            = raw draw_menu({menu_slug: "menu_#{size.to_s}", container_id: "navbar-minifable-#{size.to_s}", container_class: "nav navbar-nav flex-space-between #{css}", item_current: 'nav-item active h6 strong', item_class: 'nav-item h6 strong', link_class: 'nav-link text-nowrap'})
   
         
         
@@ -77,7 +77,7 @@
        
       };
     
-      $('.navbar-inverse .dropdown-menu').find('a').addClass('text-dark-grey');
+      $('.navbar-inverse .dropdown-menu').find('a').addClass('text-gray-dark');
     });
 
 .container
