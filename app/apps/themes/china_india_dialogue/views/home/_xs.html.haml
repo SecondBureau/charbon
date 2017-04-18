@@ -1,4 +1,4 @@
-- posts = current_site.the_posts('post').paginate(:page => params[:page], :per_page => 10)
+- posts = current_site.the_posts('post').reorder(published_at: :desc).paginate(:page => params[:page], :per_page => 10)
 
 .row.mt-3
   .col-12
