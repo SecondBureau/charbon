@@ -44,7 +44,7 @@
                 = theme_image_tag 'logo.png', width: "275", height: "150", alt: current_site.the_title
           .col-sm-5.col-md-4.text-right
             = raw current_site.draw_languages_text("language list-inline", true, nil, 'text-white heading-font small')
-            .search_bar.mt-4.pt-3
+            .search_bar.mt-4.pt-3.hidden-sm-down
               = render partial: theme_view('application/search_form')
       
       
