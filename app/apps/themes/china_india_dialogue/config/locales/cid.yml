@@ -27,24 +27,23 @@ zh-CN:
   en: English
   zh-CN: 中文
   cid:
-    by: ""
-    category: 分类
-    categories: 分类
-    refine_your_search: 优化您的搜索
-    published_since: 自发布以来
-    one_day: 一天
-    one_week: 一周
-    one_month: 一个月
-    one_year: 一年
-    search: 搜索
-    clear_search: 搜索
+    by: 作者 
+    category: 栏目 
+    categories: 栏目 
+    refine_your_search: 高级搜索 
+    published_since: 发布时间 
+    one_day: 一天内 
+    one_week: 一周内 
+    one_month: 一个月内 
+    one_year: 一年内 
+    clear_search: 清除搜索
     results:
-      one: "一个结果, %{min_date}"
-      other: "%{count} 结果, 在%{min_date}和%{max_date}之间"
-    contact_form: 联系表
+      one: "%{min_date}，为您搜索到一个结果" 
+      other: "在%{min_date}和%{max_date}之间，为您搜索到 %{count} 结果"
+    contact_form: 联系我们 
     address: 地址
-    partners: 伙伴
+    partners: 合作伙伴
     related_articles: 相关文章
-    recent_posts: 最近的帖子
-    load_more: Load More
+    recent_posts: 最近发布 
+    load_more: 加载更多
   
