@@ -34,7 +34,8 @@
 
           .published_at.mb-3
             %i.fa.fa-clock-o
-            %time{datetime:  @post.object.published_at.try(:iso8601), itemprop: :datePublished}= I18n.l @post.object.published_at.to_date, format: :long
+            - published_at = @post.object.published_at || Time.now
+            %time{datetime:  published_at.try(:iso8601), itemprop: :datePublished}= I18n.l published_at.to_date, format: :long
       
           %figure.image{itemprop: :image, itemscope: "", itemtype: "http://schema.org/ImageObject" }
             %meta{itemprop: :url, content: @post.the_thumb_url}
