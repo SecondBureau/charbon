@@ -44,37 +44,37 @@
   /   %button.btn.btn-secondary.share{type: :button}
   /     %i.fa.fa-envelope-o
           
-:javascript
+- content_for :javascript do
   $(function() {
-    $('.change-size-plus').click(function() {
-      var matches = $('.post-body').css('font-size').match(/([0-9.]+)([a-z%]+)/);
-      if (matches) {
-        $('.post-body').css('font-size', Number(matches[1]) + 0.5 + matches[2]);
-      }
-    });
-    
-    $('.change-size-minus').click(function() {
-      var matches = $('.post-body').css('font-size').match(/([0-9.]+)([a-z%]+)/);
-      if (matches) {
-        $('.post-body').css('font-size', Number(matches[1]) - 0.5 + matches[2]);
-      }
-    });
-    
-    $('.print').click(function(){
-      window.print();
-    });
-     
-    
-    $('.socialshare.std').ShareLink({
-      title: "#{j post.title}",
-      text: "#{j post.the_excerpt}",
-      image: "#{post.the_thumb_url}",
-      url: "#{post.the_url}",
-      class_prefix: 'std_'
-    });
-    
-    $('.socialshare.short').ShareLink({
-      text: "#{j post.title}",
-      url: "#{post.the_url}",
-      class_prefix: 'short_'
-    })});
+  $('.change-size-plus').click(function() {
+  var matches = $('.post-body').css('font-size').match(/([0-9.]+)([a-z%]+)/);
+  if (matches) {
+  $('.post-body').css('font-size', Number(matches[1]) + 0.5 + matches[2]);
+  }
+  });
+
+  $('.change-size-minus').click(function() {
+  var matches = $('.post-body').css('font-size').match(/([0-9.]+)([a-z%]+)/);
+  if (matches) {
+  $('.post-body').css('font-size', Number(matches[1]) - 0.5 + matches[2]);
+  }
+  });
+
+  $('.print').click(function(){
+  window.print();
+  });
+
+
+  $('.socialshare.std').ShareLink({
+  title: "#{j post.title}",
+  text: "#{j post.the_excerpt}",
+  image: "#{post.the_thumb_url}",
+  url: "#{post.the_url}",
+  class_prefix: 'std_'
+  });
+
+  $('.socialshare.short').ShareLink({
+  text: "#{j post.title}",
+  url: "#{post.the_url}",
+  class_prefix: 'short_'
+  })});

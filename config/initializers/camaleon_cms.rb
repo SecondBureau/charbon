@@ -25,10 +25,11 @@ CamaleonCms::SiteDecorator.class_eval do
     return  if  lan.size < 2
     res = ["<ul class='#{list_class}'>"]
     lan.each do |lang|
-      if hide_active && I18n.locale.to_s.eql?(lang.to_s)
-      else
-        res << "<li class='#{ current_class if I18n.locale.to_s == lang.to_s}'> <a href='#{h.cama_url_to_fixed(current_page ? "url_for" : "cama_root_url", {locale: lang, cama_set_language: lang})}' class='#{link_class}'>#{I18n.t(lang)}</a> </li>"
-      end
+      # if hide_active && I18n.locale.to_s.eql?(lang.to_s)
+      # else
+      #   res << "<li class='#{ current_class if I18n.locale.to_s == lang.to_s}'> <a href='#{h.cama_url_to_fixed(current_page ? "url_for" : "cama_root_url", {locale: lang, cama_set_language: lang})}' class='#{link_class}'>#{I18n.t(lang)}</a> </li>"
+      # end
+     res << "<li class='#{ current_class if I18n.locale.to_s == lang.to_s}'> <a href='#{h.cama_url_to_fixed("cama_root_url", {locale: lang, cama_set_language: lang})}' class='#{link_class}'>#{I18n.t(lang)}</a> </li>" 
     end
     res << "</ul>"
     res.join("")

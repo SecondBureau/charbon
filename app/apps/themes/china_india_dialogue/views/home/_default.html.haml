@@ -65,7 +65,12 @@
   .col-md-10
     = current_theme.the_field("partners").html_safe
     
-:javascript
+- content_for :javascript do
   $(function() {
-    $(".last-issue img").attr('width','').addClass('img-fluid');
-    });
+  $(".last-issue img").attr('width','').addClass('img-fluid');
+  });
+  
+- content_for :javascript do
+  $(function() {
+  $('.flexslider').flexslider();
+  });

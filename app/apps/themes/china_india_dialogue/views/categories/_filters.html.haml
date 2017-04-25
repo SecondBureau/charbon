@@ -43,13 +43,13 @@
 
   %button.btn.btn-secondary.w-100.mt-4= t :search, scope: :cid
   
-:javascript
+- content_for :javascript do
   $(function() {
-    $('a#search-clear').on('click', function(e) {
-      e.preventDefault();
-      $('input[name="q"]').val('')
-      $('form.form-search').submit()
-      });
-    });
+  $('a#search-clear').on('click', function(e) {
+  e.preventDefault();
+  $('input[name="q"]').val('')
+  $('form.form-search').submit()
+  });
+  });
   
   

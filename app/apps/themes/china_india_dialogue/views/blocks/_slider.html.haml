@@ -17,8 +17,3 @@
                 = post.get_field(:author).try(:translate) || post.decorate.the_author.fullname
                 = l post.decorate.published_at.to_date, format: :long
 
-
-:javascript
-  $(function() {
-    $('.flexslider').flexslider();
-  });

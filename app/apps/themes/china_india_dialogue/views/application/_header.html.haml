@@ -1,94 +1,92 @@
-
-  
-%nav.navbar.navbar-inverse.bg-inverse.hidden-sm-up
-  
-
-
-  .navbar-toggler-right
-    .d-flex
-      = render partial: theme_view('application/social')
-      = raw current_site.draw_languages_text("language list-inline mb-0 pl-2", true, nil, 'text-white heading-font small', true)
-      
-    - cache ['menu_xs', I18n.locale, current_site.categories.reorder(updated_at: :desc).first] do
-      = raw draw_menu({menu_slug: "menu_xs", container_id: "navbar-xs", container_class: "nav navbar-nav d-block text-right", item_current: 'nav-item active h6 strong', item_class: 'nav-item h6 strong', link_class: 'nav-link text-nowrap'})
+- cache ['header', I18n.locale, current_site.categories.reorder(updated_at: :desc).first] do
     
-  = link_to current_site.the_url, class: 'navbar-brand pb-2 pt-3' do
-    = theme_image_tag "logo-mini-#{I18n.locale}.png", width: "156", height: "50", alt: current_site.the_title
+  %nav.navbar.navbar-inverse.bg-inverse.hidden-sm-up
+    
 
 
-%nav.navbar.navbar-inverse.bg-inverse.fixed-top.mb-5.hidden-print.hidden-xs-down
+    .navbar-toggler-right
+      .d-flex
+        = render partial: theme_view('application/social')
+        = raw current_site.draw_languages_text("language list-inline mb-0 pl-2", true, nil, 'text-white heading-font small', true)
+        
+      = raw draw_menu({menu_slug: "menu_xs", container_id: "navbar-xs", container_class: "nav navbar-nav d-block text-right", item_current: 'nav-item active h6 strong', item_class: 'nav-item h6 strong', link_class: 'nav-link text-nowrap'})
+      
+    = link_to current_site.the_url, class: 'navbar-brand pb-2 pt-3' do
+      = theme_image_tag "logo-mini-#{I18n.locale}.png", width: "156", height: "50", alt: current_site.the_title
 
-  .container
 
-    .row.hidden-print
-      .col-10.col-sm-4.col-md-3.col-lg-2.col-xl-2
+  %nav.navbar.navbar-inverse.bg-inverse.fixed-top.mb-5.hidden-print.hidden-xs-down
 
-        = link_to current_site.the_url do
-          = theme_image_tag "logo-mini-#{I18n.locale}.png", width: "136", height: "50", alt: current_site.the_title
+    .container
 
-      - cache ['menus', I18n.locale, current_site.categories.reorder(updated_at: :desc).first] do
+      .row.hidden-print
+        .col-10.col-sm-4.col-md-3.col-lg-2.col-xl-2
+
+          = link_to current_site.the_url do
+            = theme_image_tag "logo-mini-#{I18n.locale}.png", width: "136", height: "50", alt: current_site.the_title
+
         .col-2.col-sm-8.col-md-9.col-lg-10.col-xl-10
           - { sm: 'hidden-md-up hidden-xs-down', md: 'hidden-lg-up hidden-sm-down', lg: 'hidden-xl-up hidden-md-down', xl: 'hidden-lg-down' }.each do |size, css|
             = raw draw_menu({menu_slug: "menu_#{size.to_s}", container_id: "navbar-#{size.to_s}", container_class: "nav navbar-nav flex-space-between #{css}", item_current: 'nav-item active h6 strong', item_class: 'nav-item h6 strong', link_class: 'nav-link text-nowrap'})
 
-%nav.navbar.navbar-light.bg-faded.fixed-top.mb-5.hidden-print.minifable.hidden-xs-down
-
-  .row.cid-md-header
-
+  %nav.navbar.navbar-light.bg-faded.fixed-top.mb-5.hidden-print.minifable.hidden-xs-down
+  
+    .row.cid-md-header
+  
+      .container
+    
+        .row
+    
+          .col-sm-3.col-md-4.pt-3
+            = render partial: theme_view('application/social_blue') 
+            
+          .col-sm-4.col-md-4
+            %center
+              = link_to current_site.the_url do
+                = theme_image_tag "logo-#{I18n.locale}.png", width: "275", height: "150", alt: current_site.the_title
+          .col-sm-5.col-md-4.text-right
+            = raw current_site.draw_languages_text("language list-inline", true, nil, 'text-white heading-font small')
+            .search_bar.mt-4.pt-3.hidden-sm-down
+              = render partial: theme_view('application/search_form')
+      
+      
     .container
   
-      .row
+      .row.hidden-print
+        .col-12
+          - { sm: 'hidden-md-up hidden-xs-down', md: 'hidden-lg-up hidden-sm-down', lg: 'hidden-xl-up hidden-md-down', xl: 'hidden-lg-down' }.each do |size, css|
+            = raw draw_menu({menu_slug: "menu_#{size.to_s}", container_id: "navbar-minifable-#{size.to_s}", container_class: "nav navbar-nav flex-space-between #{css}", item_current: 'nav-item active h6 strong', item_class: 'nav-item h6 strong', link_class: 'nav-link text-nowrap'})
   
-        .col-sm-3.col-md-4.pt-3
-          = render partial: theme_view('application/social_blue') 
-          
-        .col-sm-4.col-md-4
-          %center
-            = link_to current_site.the_url do
-              = theme_image_tag "logo-#{I18n.locale}.png", width: "275", height: "150", alt: current_site.the_title
-        .col-sm-5.col-md-4.text-right
-          = raw current_site.draw_languages_text("language list-inline", true, nil, 'text-white heading-font small')
-          .search_bar.mt-4.pt-3.hidden-sm-down
-            = render partial: theme_view('application/search_form')
-    
-    
-  .container
-
-    .row.hidden-print
-      .col-12
-        - { sm: 'hidden-md-up hidden-xs-down', md: 'hidden-lg-up hidden-sm-down', lg: 'hidden-xl-up hidden-md-down', xl: 'hidden-lg-down' }.each do |size, css|
-          = raw draw_menu({menu_slug: "menu_#{size.to_s}", container_id: "navbar-minifable-#{size.to_s}", container_class: "nav navbar-nav flex-space-between #{css}", item_current: 'nav-item active h6 strong', item_class: 'nav-item h6 strong', link_class: 'nav-link text-nowrap'})
-
-      
-      
-:javascript
-  $(function() {
+        
+        
+  - content_for :javascript do
+    $(function() {
     var lastScrollTop = 160;
     var didScroll;
 
     window.addEventListener("scroll", function(){  
-      didScroll = true;
+    didScroll = true;
     });
-  
+
     setInterval(function() {
-      if (didScroll) {
-        hasScrolled();
-        didScroll = false;
-      }
+    if (didScroll) {
+    hasScrolled();
+    didScroll = false;
+    }
     }, 250);
-  
+
     function hasScrolled() {
-       var st = window.pageYOffset || document.documentElement.scrollTop;  
-       if (st > lastScrollTop){
-           $('.minifable').addClass('minify', {duration:500});
-       } else {
-          $('.minifable').removeClass('minify', {duration:500});
-       }
-     
+    var st = window.pageYOffset || document.documentElement.scrollTop;  
+    if (st > lastScrollTop){
+    $('.minifable').addClass('minify', {duration:500});
+    } else {
+    $('.minifable').removeClass('minify', {duration:500});
+    }
+
     };
-  
+
     $('.navbar-inverse .dropdown-menu').find('a').addClass('text-gray-dark');
-  });
+    });
 
 .container
   .row
@@ -99,14 +97,14 @@
 
 - unless action_name.eql?('search_cid')
 
-  :javascript
+  - content_for :javascript do
     $(function() {
-      $('section#search').show();
+    $('section#search').show();
     });
     
 - else
 
-  :javascript
+  - content_for :javascript do
     $(function() {
-      $('#search-input').val('#{params[:q]}');
+    $('#search-input').val('#{params[:q]}');
     });
