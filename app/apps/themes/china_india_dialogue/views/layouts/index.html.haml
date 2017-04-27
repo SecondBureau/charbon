@@ -37,7 +37,8 @@
           = yield
   
       = render theme_view('application/footer')
-      / %h1= render theme_view('application/adaptative')
+      
+      /%h1= render theme_view('application/adaptative')
 
       = javascript_include_tag theme_asset_path("js/application")
       
@@ -54,7 +55,10 @@
             $('.post-body figure.image > img').addClass('img-fluid');
             $('p > img').addClass('img-fluid');
           });
+          
+          #{yield(:javascript)}
     
-    :javascript
-      #{yield(:javascript)}
+    - if !@post
+      :javascript
+        #{yield(:javascript)}
     
