@@ -67,3 +67,15 @@ ul.pagination {
 a.text-no-decoration:hover {
   text-decoration: none;
 }
+
+.header-social .fa, .header-links .fa {
+  @include media-breakpoint-up(md) {
+    font-size: 1.2em !important;
+  } 
+}
+
+.header-links li > a {
+  @include media-breakpoint-up(md) {
+    font-size: 1.1em !important;
+  } 
+}
