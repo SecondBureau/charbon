@@ -7,7 +7,7 @@
   .navbar-toggler-right
     .d-flex
       = render partial: theme_view('application/social')
-      = raw current_site.draw_languages_text("language list-inline mb-0 pl-2", true, nil, 'text-white heading-font small', true)
+      = raw current_site.draw_languages_text("language list-inline mb-0 pl-2", true, nil, 'text-white heading-font small pl-1', true)
       
     = raw draw_menu({menu_slug: "menu_xs", container_id: "navbar-xs", container_class: "nav navbar-nav d-block text-right", item_current: 'nav-item active h6 strong', item_class: 'nav-item h6 strong', link_class: 'nav-link text-nowrap'})
     
@@ -45,7 +45,7 @@
             = link_to current_site.the_url do
               = theme_image_tag "logo-#{I18n.locale}.png", width: "275", height: "150", alt: current_site.the_title
         .col-sm-5.col-md-4.text-right
-          = raw current_site.draw_languages_text("language list-inline", true, nil, 'text-white heading-font small')
+          = raw current_site.draw_languages_text("language list-inline", true, nil, 'text-white heading-font small pl-1')
           .search_bar.mt-4.pt-3.hidden-sm-down
             = render partial: theme_view('application/search_form')
     

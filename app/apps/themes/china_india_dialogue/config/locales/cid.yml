@@ -36,6 +36,7 @@ zh-CN:
     one_week: 一周内 
     one_month: 一个月内 
     one_year: 一年内 
+    search: 搜索
     clear_search: 清除搜索
     results:
       one: "%{min_date}，为您搜索到一个结果" 
