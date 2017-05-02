@@ -36,6 +36,16 @@ CamaleonCms::SiteDecorator.class_eval do
   end
 end
 
+CamaleonCms::PostDecorator.class_eval do
+  def the_thumb_url(default = nil)
+    th = object.get_meta("thumb")
+    begin
+      th.present? ? th.gsub(' ','%20') : (default || object.post_type.get_option('default_thumb', nil) || h.asset_url("camaleon_cms/image-not-found.png"))
+    rescue
+      ""
+    end
+  end
+end
 
 CamaleonCms::FrontendController.class_eval do 
   
