@@ -1,0 +1,7 @@
+http://nvie.com/posts/a-successful-git-branching-model/
+
+04/05/2017 Release 2.0
+ - CIT Milestones : CID 2.0, CID 2.3, CID 2.4
+ - Refactoring CID Theme without angular JS
+ - Chinese back office, Chinese Public Site
+ - Hindi category
