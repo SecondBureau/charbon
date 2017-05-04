@@ -1,0 +1,10 @@
+- posts = current_site.the_posts('post').reorder(published_at: :desc).paginate(:page => params[:page], :per_page => 10)
+
+.row.mt-3
+  .col-12
+    = render partial: theme_view("posts/xs"), collection: posts, as: :post, cache: Proc.new{|item| ['posts_xs', I18n.locale, item]}
+    .text-center.mb-5
+      .paginate= will_paginate posts, renderer: BootstrapPagination::Rails, inner_window: 1, page_links: true, outer_window: 0
+      .show_more{style: 'display:none;'}= link_to t(:load_more, scope: :cid), '/', remote: true, format: :js, class: 'btn btn-secondary w-100'
+    
+  

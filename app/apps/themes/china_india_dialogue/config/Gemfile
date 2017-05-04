@@ -1,0 +1,8 @@
+# gem 'bootstrap', '~> 4.0.0.alpha3.1'
+# gem "font-awesome-rails"
+# source 'https://rails-assets.org' do
+#   gem 'rails-assets-tether', '>= 1.1.0'
+# end
+# gem 'will_paginate-bootstrap', git: "https://github.com/tunecore/will_paginate-bootstrap"
+#
+# gem 'barby',  '~> 0.6.2'

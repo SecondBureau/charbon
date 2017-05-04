@@ -1,0 +1,13 @@
+/ China India Dialogue
+/ std template
+
+.h-100{class: "home-block-#{color} home-block-#{category.slug} home-block-#{css}"}
+  
+  .mb-5
+    = theme_image_tag 'decorations/category.png', width: 15, height: 30, class: 'pull-right', alt: '*'
+    %h2= link_to category.the_title, category.the_url, class: "text-#{color}"
+    
+  .row
+    - posts.each do |post|
+      .div{class: "col-md-#{12/rows}"}
+        = render partial: theme_view('posts/post_mini'), locals: {post: post.decorate, color: color, thumbnail: thumbnail}

@@ -1,0 +1,13 @@
+.widget-container
+
+  %h2.text-danger= title
+
+  .row
+
+    - posts.each do |post|
+
+      .col-12.col-sm-6.col-md-6.col-lg-12 
+
+        .mb-2= link_to post.decorate.the_thumb(class: 'img-fluid img-thumbnail'), post.decorate.the_path
+  
+        %h6.mb-4= link_to post.decorate.the_title, post.decorate.the_path

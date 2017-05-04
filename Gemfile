@@ -34,8 +34,7 @@ gem 'haml'
 # Cameleon
 #gem "camaleon_cms", :github => 'SecondBureau/camaleon-cms'
 gem "camaleon_cms", :git => 'https://github.com/SecondBureau/camaleon-cms.git'
-
-#gem 'camaleon_cms', github:  'owen2345/camaleon-cms'
+#gem 'camaleon_cms', :git => 'https://github.com/owen2345/camaleon-cms'
 gem 'camaleon_ecommerce', :git => 'https://github.com/owen2345/camaleon-ecommerce'
 gem 'cama_subscriber', :git => 'https://github.com/owen2345/cama_subscriber'
 gem 'camaleon_post_order', :git => 'https://github.com/owen2345/camaleon-post-order-plugin'
@@ -52,6 +51,8 @@ gem 'rqrcode'
 
 gem "faker"
 gem 'slugify'
+
+gem 'multi_fetch_fragments'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.

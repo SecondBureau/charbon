@@ -20,10 +20,16 @@
       .text-muted.text-uppercase.mb-3{itemscope:true, itemprop: :author, itemtype:'https://schema.org/Person'}
         - unless (author = @post.the_field(:author)).blank?
           - author_by_value = @post.the_field(:author_by).to_i
-          - author_by = @post.post_type.get_field_groups.where(slug: 'options').first.get_field(:author_by).options[:multiple_options].select{|o| o[:value].eql?(author_by_value)}.first
+          - author_by = @post.post_type.get_field_groups.where(slug: 'options').first.get_field(:author_by).options[:multiple_options].select{|o| o[:value].to_i.eql?(author_by_value)}.first
           = author_by.nil? ? 'Text by' : author_by[:title]
           %strong{itemprop: :name}= author
           %meta{itemprop: :homeLocation, content: 'Beijing'}
+      
+        - unless (author = @post.the_field(:author_2)).blank?
+          - author_by_value = @post.the_field(:author_by_2).to_i
+          - author_by = @post.post_type.get_field_groups.where(slug: 'options').first.get_field(:author_by_2).options[:multiple_options].select{|o| o[:value].to_i.eql?(author_by_value)}.first
+          %span.pl-2= author_by.nil? ? 'Text by' : author_by[:title]
+          %strong= author
         
         .published_at
           %time{datetime:  @post.object.published_at.try(:iso8601), itemprop: :datePublished}= I18n.l @post.object.published_at.to_date, format: :long
@@ -35,6 +41,7 @@
       %meta{itemprop: :url, content: @post.the_thumb_url}
       %meta{itemprop: :width, content: 100}
       %meta{itemprop: :height, content: 100}
+      .post-fimage-caption= @post.the_field(:fimage_caption)
 
   .row.mt-4
     .col-12.col-lg-8.mt-0.mt-lg-4
@@ -48,3 +55,10 @@
       = render partial: theme_view("blocks/thumbnails"), locals: {posts: @post.the_related_posts.where('cama_posts.id != ?', @post.id).to_a.sample(3)} 
 
 
+:javascript
+  $(function() {
+    $("figure.image > img[width]").parent().find('figcaption').each(function(){
+      var width = $(this).parent().find('img[width]').attr('width');
+      $(this).attr('style', 'width:' + width + 'px');
+    });
+    });

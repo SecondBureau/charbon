@@ -1,0 +1,80 @@
+%ul.list-unstyled.offcanvas.mt-2.hidden-print
+  - {facebook: :std, twitter: :short, linkedin: :std}.each do |social, template|
+    %li
+      %button.btn.socialshare.share{type: :button, class: "#{template}_#{social} #{template}"}
+        %i.fa{class: "fa-#{social}"}
+  
+  %li.hidden-sm-down
+    %button.btn.share.s_weixin{type: :button, data: {toggle: :modal, target: '#qrcode'}}
+      %i.fa.fa-weixin
+  
+  %li
+    %button.btn.btn-secondary.share.change-size-plus{type: :button}
+      %i.fa.fa-plus
+      
+  %li
+    %button.btn.btn-secondary.share.change-size-minus{type: :button}
+      %i.fa.fa-minus
+      
+  %li
+    %button.btn.btn-secondary.share.print{type: :button}
+      %i.fa.fa-print
+    
+.modal.fade{id: 'qrcode', tabindex: '-1', role: 'dialog', aria: {labelledby: 'qrCodeModal', hidden: true}} 
+  .modal-dialog.modal-sm{role: :document}
+    .modal-content
+      .modal-header
+        %h6.modal-title
+          = post.the_title
+          .small
+            %i 
+              Scan with 
+              %i.fa.fa-wechat.text-wechat
+              wechat to share
+        %button.close{type: :button, data: {dismiss: :modal}, aria: {label: :close}}
+          %span{aria: {hidden: true}} &times;
+      .modal-body.text-center
+        .qrcode
+          %img{src: generate_qr(post.the_url), class: "qr-code"}
+          / - qrcode = begin RQRCode::QRCode.new(post.the_url, :size => 12, :level => :h) rescue nil end
+          / = raw qrcode.as_html if qrcode
+    
+      
+  / %li
+  /   %button.btn.btn-secondary.share{type: :button}
+  /     %i.fa.fa-envelope-o
+          
+- content_for :javascript do
+  $(function() {
+  $('.change-size-plus').click(function() {
+  var matches = $('.post-body').css('font-size').match(/([0-9.]+)([a-z%]+)/);
+  if (matches) {
+  $('.post-body').css('font-size', Number(matches[1]) + 0.5 + matches[2]);
+  }
+  });
+
+  $('.change-size-minus').click(function() {
+  var matches = $('.post-body').css('font-size').match(/([0-9.]+)([a-z%]+)/);
+  if (matches) {
+  $('.post-body').css('font-size', Number(matches[1]) - 0.5 + matches[2]);
+  }
+  });
+
+  $('.print').click(function(){
+  window.print();
+  });
+
+
+  $('.socialshare.std').ShareLink({
+  title: "#{j post.the_title}",
+  text: "#{j post.the_excerpt}",
+  image: "#{post.the_thumb_url}",
+  url: "#{post.the_url}",
+  class_prefix: 'std_'
+  });
+
+  $('.socialshare.short').ShareLink({
+  text: "#{j post.the_title}",
+  url: "#{post.the_url}",
+  class_prefix: 'short_'
+  })});

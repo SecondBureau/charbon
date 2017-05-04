@@ -1,0 +1,20 @@
+- post = post.decorate
+
+.row.mb-2
+  .col-3
+    = post.the_thumb(class: 'img-fluid')
+  .col-9
+    %h4.mt-0= link_to post.the_title, post.the_path
+    %p.font-italic
+      %span
+        = t :by, scope: :cid
+      %span
+        = post.get_field(:author).try(:translate) || post.the_author.fullname
+        = l post.published_at.to_date, format: :long
+
+    %p.excerpt.hidden-xs= post.the_excerpt
+
+.row
+  .col-12
+    %hr.pb-3
+

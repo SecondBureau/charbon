@@ -1,0 +1,64 @@
+= render theme_view('posts/related_articles_loader') if @post
+
+!!!
+%html{:lang => I18n.locale}
+  %head
+    %title= current_site.the_title
+    %meta{:content => "text/html; charset=utf-8", "http-equiv" => "Content-Type"}/
+    %meta{:content => "IE=edge", "http-equiv" => "X-UA-Compatible"}/
+    %meta{:content => "width=device-width, initial-scale=1", :name => "viewport"}/
+    = stylesheet_link_tag theme_asset_path("css/application"), media: 'screen, print'
+    = raw the_head
+    = render theme_view('application/woopra') if $woopra_domain_name.present?
+
+  %body
+    - cache_if @post, ['fullpost', I18n.locale, @post, current_site.categories.reorder(updated_at: :desc).first] do
+    
+      .modal.fade{id: 'wechatmodal', tabindex: '-1', role: 'dialog', aria: {labelledby: 'qrCodeModal', hidden: true}} 
+        .modal-dialog{role: :document}
+          .modal-content
+            .modal-header
+              %h6.modal-title
+                China India Dialogue
+                .small
+                  %i 
+                    Scan with 
+                    %i.fa.fa-wechat.text-wechat
+                    wechat to share
+              %button.close{type: :button, data: {dismiss: :modal}, aria: {label: :close}}
+                %span{aria: {hidden: true}} &times;
+            .modal-body.text-center
+              .qrcode
+                %img{src: current_theme.the_field('social_wechat'), class: "qr-code"}
+          
+      = render theme_view('application/header')
+      .container
+        .content
+          = yield
+  
+      = render theme_view('application/footer')
+      
+      /%h1= render theme_view('application/adaptative')
+
+      = javascript_include_tag theme_asset_path("js/application")
+      
+      - if @post
+      
+        :javascript
+      
+          $(function() {
+            $("figure.image > img[width]").parent().find('figcaption').each(function(){
+              var width = $(this).parent().find('img[width]').attr('width');
+              $(this).attr('style', 'width:' + width + 'px');
+            });
+            $('.post-body figure.image').addClass('#{@post.the_field(:fixed_width_images_class)}');
+            $('.post-body figure.image > img').addClass('img-fluid');
+            $('p > img').addClass('img-fluid');
+          });
+          
+          #{yield(:javascript)}
+    
+    - if !@post
+      :javascript
+        #{yield(:javascript)}
+    

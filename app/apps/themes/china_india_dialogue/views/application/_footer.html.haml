@@ -1,0 +1,31 @@
+.cid-footer.cid-footer1.hidden-print
+  .container
+    .row.pb-3
+      
+      .col-md-2
+        = raw draw_menu(menu_slug:'footer_1', container_class: 'nav d-block', item_class: 'nav-item h6 py-0')
+      
+      .col-md-2
+        = raw draw_menu(menu_slug:'footer_2', container_class: 'nav d-block', item_class: 'nav-item h6 py-0')
+      
+      .col-md-5
+        .footer-block
+          = theme_image_tag 'decorations/footer.png', width: 72, height: 4, alt: "----"
+          %h6= t('contact_form', scope: :cid)
+          = raw do_shortcode('[forms slug=cid]')
+          
+          
+      .col-md-3
+        .footer-block
+          = theme_image_tag 'decorations/footer.png', width: 72, height: 4, alt: "----"
+          = raw current_theme.the_field(:address)
+  
+  .cid-footer.cid-footer2
+    .container
+      .row
+        .col-md-12
+          %p
+            &copy;
+            = Time.now.strftime('%Y')
+            = current_site.name
+

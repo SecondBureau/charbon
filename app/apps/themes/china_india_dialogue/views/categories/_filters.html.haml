@@ -1,0 +1,55 @@
+%h1.text-white FILTERS
+.h4.text-center.background-line-danger
+  %span.text-capitalize.background-white.px-2= t :refine_your_search, scope: :cid
+
+
+
+= form_tag(cidsearch_path, method: :get, class: "form-search form-horizontal search-form") do
+
+  %section{id: :filters}
+  
+    %label{for: 'search-input'}
+      %i.fa.fa-search{aria: {hidden: true}}
+      %span.sr-only= t("camaleon_cms.common.search")
+
+    = text_field_tag :q, params[:q], id: 'search-input', class: 'form-control form-control-sm', placeholder:"#{t("camaleon_cms.common.search")}...", autocomplete: "off", spellcheck: "false", autocorrect: "off", tabindex:"1"
+
+    = link_to '/', class: "fa fa-times-circle #{params[:q].nil? ? 'invisible' : ''}", aria: {hidden: true}, id: 'search-clear' do
+      %span.sr-only= t(:clear_search, scope: :cid)
+  
+  %h5.mt-4
+    %i.text-danger.fa.fa-clock-o
+    %span.text-capitalize= t :published_since, scope: :cid
+  
+  .row
+    - { one_day: 1, one_week: 7, one_month: 30, one_year: 365}.each do |label, days|
+      .col-6
+        %label.form-check-label{for: "published_#{days.to_s}"}
+          = radio_button_tag :p, days.to_s, params[:p] && params[:p].eql?(days.to_s), class: 'form-check-input'
+          = t(label, scope: :cid).capitalize
+      
+  %h5.mt-3.border-bottom-1
+    %i.text-danger.fa.fa-list-ul
+    %span.text-capitalize= t :categories, scope: :cid
+
+  .row
+    - CamaleonCms::PostType.find_by_slug('post').categories.each do |category|
+      - unless category.slug.eql?('uncategorized')
+        .col-4
+          %label.form-check-label.text-nowrap{for: "category_#{category.slug}"}
+            = check_box_tag 'c[]', category.id, params[:c] && params[:c].include?(category.id.to_s) || @category && @category.id.eql?(category.id), class: 'form-check-input', id: "category_#{category.slug}"
+            = category.decorate.name.translate
+
+
+  %button.btn.btn-secondary.w-100.mt-4= t :search, scope: :cid
+  
+- content_for :javascript do
+  $(function() {
+  $('a#search-clear').on('click', function(e) {
+  e.preventDefault();
+  $('input[name="q"]').val('')
+  $('form.form-search').submit()
+  });
+  });
+  
+  

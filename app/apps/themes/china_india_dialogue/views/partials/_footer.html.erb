@@ -40,7 +40,7 @@
               <textarea ng-focus='f.gotFocus()' ng-model="f.message" name="message" id="message" max-length="500" class="form-control default input-sm" required placeholder= "Your message"></textarea>
               <span class="help-block error" ng-show="f.filling && contactForm.message.$error.required">Required!</span>
             </div>
-            <button ng-show='f.filling && !contactForm.from.$error.required && !contactForm.from.$error.email && !contactForm.from.$error.required && !contactForm.message.$error.required' class="submit_btn btn btn-default btm-sm pull-right">Send</button>
+            <button ng-show-disabled='f.filling && !contactForm.from.$error.required && !contactForm.from.$error.email && !contactForm.from.$error.required && !contactForm.message.$error.required' class="submit_btn btn btn-default btm-sm pull-right">Send</button>
           </form>
         </div>
       </div>
