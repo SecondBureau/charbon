@@ -1,67 +1,65 @@
-//# cache ['header', I18n.locale, current_site.categories.reorder(updated_at: :desc).first] do
+- cache ['header', I18n.locale, current_site.categories.reorder(updated_at: :desc).first] do
     
-%nav.navbar.navbar-inverse.bg-inverse.hidden-sm-up
+  %nav.navbar.navbar-inverse.bg-inverse.hidden-sm-up
   
-
-
-  .navbar-toggler-right
-    .d-flex
-      = render partial: theme_view('application/social')
-      = raw current_site.draw_languages_text("language list-inline mb-0 pl-2", true, nil, 'text-white heading-font small pl-1', true)
-      = link_to cidsearch_path, class: 'text-white heading-font pl-2' do 
-        %i.fa.fa-search
+    .navbar-toggler-right
+      .d-flex
+        = render partial: theme_view('application/social')
+        = raw current_site.draw_languages_text("language list-inline mb-0 pl-2", true, nil, 'text-white heading-font small pl-1', true)
+        = link_to cidsearch_path, class: 'text-white heading-font pl-2' do 
+          %i.fa.fa-search
       
-    = raw draw_menu({menu_slug: "menu_xs", container_id: "navbar-xs", container_class: "nav navbar-nav d-block text-right", item_current: 'nav-item active h6 strong', item_class: 'nav-item h6 strong', link_class: 'nav-link text-nowrap'})
+      = raw draw_menu({menu_slug: "menu_xs", container_id: "navbar-xs", container_class: "nav navbar-nav d-block text-right", item_current: 'nav-item active h6 strong', item_class: 'nav-item h6 strong', link_class: 'nav-link text-nowrap'})
     
-  = link_to current_site.the_url, class: 'navbar-brand pb-2 pt-3' do
-    = theme_image_tag "logo-mini-#{I18n.locale}.png", width: "156", height: "50", alt: current_site.the_title
+    = link_to current_site.the_url, class: 'navbar-brand pb-2 pt-3' do
+      = theme_image_tag "logo-mini-#{I18n.locale}.png", width: "156", height: "50", alt: current_site.the_title
 
 
-%nav.navbar.navbar-inverse.bg-inverse.fixed-top.mb-5.hidden-print.hidden-xs-down
-
-  .container
-
-    .row.hidden-print
-      .col-10.col-sm-4.col-md-3.col-lg-2.col-xl-2
-
-        = link_to current_site.the_url do
-          = theme_image_tag "logo-mini-#{I18n.locale}.png", width: "136", height: "50", alt: current_site.the_title
-
-      .col-2.col-sm-8.col-md-9.col-lg-10.col-xl-10
-        - { sm: 'hidden-md-up hidden-xs-down', md: 'hidden-lg-up hidden-sm-down', lg: 'hidden-xl-up hidden-md-down', xl: 'hidden-lg-down' }.each do |size, css|
-          = raw draw_menu({menu_slug: "menu_#{size.to_s}", container_id: "navbar-#{size.to_s}", container_class: "nav navbar-nav flex-space-between #{css}", item_current: 'nav-item active h6 strong', item_class: 'nav-item h6 strong', link_class: 'nav-link text-nowrap'})
-
-%nav.navbar.navbar-light.bg-faded.fixed-top.mb-5.hidden-print.minifable.hidden-xs-down
-
-  .row.cid-md-header
+  %nav.navbar.navbar-inverse.bg-inverse.fixed-top.mb-5.hidden-print.hidden-xs-down
 
     .container
+
+      .row.hidden-print
+        .col-10.col-sm-4.col-md-3.col-lg-2.col-xl-2
+
+          = link_to current_site.the_url do
+            = theme_image_tag "logo-mini-#{I18n.locale}.png", width: "136", height: "50", alt: current_site.the_title
+
+        .col-2.col-sm-8.col-md-9.col-lg-10.col-xl-10
+          - { sm: 'hidden-md-up hidden-xs-down', md: 'hidden-lg-up hidden-sm-down', lg: 'hidden-xl-up hidden-md-down', xl: 'hidden-lg-down' }.each do |size, css|
+            = raw draw_menu({menu_slug: "menu_#{size.to_s}", container_id: "navbar-#{size.to_s}", container_class: "nav navbar-nav flex-space-between #{css}", item_current: 'nav-item active h6 strong', item_class: 'nav-item h6 strong', link_class: 'nav-link text-nowrap'})
+
+  %nav.navbar.navbar-light.bg-faded.fixed-top.mb-5.hidden-print.minifable.hidden-xs-down
+
+    .row.cid-md-header
+
+      .container
   
-      .row
+        .row
   
-        .col-sm-3.col-md-4.mt-5.pt-3
-          /= render partial: theme_view('application/social_blue') 
-          = render partial: theme_view('application/social')
+          .col-sm-3.col-md-4.mt-5.pt-3
+            /= render partial: theme_view('application/social_blue') 
+            = render partial: theme_view('application/social')
           
-        .col-sm-4.col-md-4
-          %center
-            = link_to current_site.the_url do
-              = theme_image_tag "logo-#{I18n.locale}.png", width: "275", height: "150", alt: current_site.the_title
-        .col-sm-5.col-md-4.text-right
-          .mt-5.pt-3.header-links
-            = raw current_site.draw_languages_text("language list-inline", true, nil, 'text-white heading-font small pl-1')
-            = link_to cidsearch_path, class: 'text-white heading-font pl-1' do 
-              %i.fa.fa-search
+          .col-sm-4.col-md-4
+            %center
+              = link_to current_site.the_url do
+                = theme_image_tag "logo-#{I18n.locale}.png", width: "275", height: "150", alt: current_site.the_title
+          .col-sm-5.col-md-4.text-right
+            .mt-5.pt-3.header-links
+              = raw current_site.draw_languages_text("language list-inline", true, nil, 'text-white heading-font small pl-1')
+              = link_to cidsearch_path, class: 'text-white heading-font pl-1' do 
+                %i.fa.fa-search
     
     
-  .container
+    .container
 
-    .row.hidden-print
-      .col-12
-        - { sm: 'hidden-md-up hidden-xs-down', md: 'hidden-lg-up hidden-sm-down', lg: 'hidden-xl-up hidden-md-down', xl: 'hidden-lg-down' }.each do |size, css|
-          = raw draw_menu({menu_slug: "menu_#{size.to_s}", container_id: "navbar-minifable-#{size.to_s}", container_class: "nav navbar-nav flex-space-between #{css}", item_current: 'nav-item active h6 strong', item_class: 'nav-item h6 strong', link_class: 'nav-link text-nowrap'})
+      .row.hidden-print
+        .col-12
+          - { sm: 'hidden-md-up hidden-xs-down', md: 'hidden-lg-up hidden-sm-down', lg: 'hidden-xl-up hidden-md-down', xl: 'hidden-lg-down' }.each do |size, css|
+            = raw draw_menu({menu_slug: "menu_#{size.to_s}", container_id: "navbar-minifable-#{size.to_s}", container_class: "nav navbar-nav flex-space-between #{css}", item_current: 'nav-item active h6 strong', item_class: 'nav-item h6 strong', link_class: 'nav-link text-nowrap'})
 
-      
+  // END OF CACHE    
       
 - content_for :javascript do
   $(function() {
@@ -92,7 +90,7 @@
   $('.navbar-inverse .dropdown-menu').find('a').addClass('text-gray-dark');
   });
   
-// END OF CACHE
+
 
 .container
   .row
