@@ -5,3 +5,6 @@ http://nvie.com/posts/a-successful-git-branching-model/
  - Refactoring CID Theme without angular JS
  - Chinese back office, Chinese Public Site
  - Hindi category
+
+05/05/2017 Hotfix 2.0.1
+ - Cache header
