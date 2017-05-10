@@ -8,3 +8,6 @@ http://nvie.com/posts/a-successful-git-branching-model/
 
 05/05/2017 Hotfix 2.0.1
  - Cache header
+ 
+10/05/2017 Hotfix 2.0.2
+ - CIT 3879 - Post list on XS
