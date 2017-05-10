@@ -29,7 +29,7 @@
           .font-italic.text-uppercase.mt-4
             %span.text-danger
               = t :by, scope: :cid
-            %span
+            %span.px-1
               = @post.get_field(:author).try(:translate) || @post.the_author.fullname
 
           .published_at.mb-3

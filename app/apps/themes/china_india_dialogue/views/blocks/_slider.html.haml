@@ -13,7 +13,10 @@
               %span.title= link_to post.decorate.the_title, post.decorate.the_path
               %br
               %span.font-italic 
-                = t :by, scope: :cid
-                = post.get_field(:author).try(:translate) || post.decorate.the_author.fullname
-                = l post.decorate.published_at.to_date, format: :long
+                %span
+                  = t :by, scope: :cid
+                %span.px-1
+                  = post.get_field(:author).try(:translate) || post.decorate.the_author.fullname
+                %span
+                  = l post.decorate.published_at.to_date, format: :long
 

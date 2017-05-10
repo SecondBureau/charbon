@@ -8,8 +8,9 @@
     %p.font-italic
       %span
         = t :by, scope: :cid
-      %span
+      %span.px-1
         = post.get_field(:author).try(:translate) || post.the_author.fullname
+      %span
         = l post.published_at.to_date, format: :long
 
     %p.excerpt.hidden-xs= post.the_excerpt

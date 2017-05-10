@@ -3,8 +3,9 @@
 %p.font-italic
   %span{class: "text-#{color}"}
     = t :by, scope: :cid
-  %span.text-dark-grey
+  %span.text-dark-grey.px-1
     = post.get_field(:author).try(:translate) || post.the_author.fullname
+  %span.text-dark-grey
     = l post.published_at.to_date, format: :long
 
 %p= post.the_excerpt
