@@ -34,6 +34,16 @@ CamaleonCms::SiteDecorator.class_eval do
     res << "</ul>"
     res.join("")
   end
+  
+  def the_posts_cid
+    object.posts.published
+    .joins("LEFT OUTER JOIN cama_metas cm ON cm.objectid = cama_posts.id AND cm.object_class = 'Post' AND cm.key = 'enabled_languages'")
+    .where("(#{CamaleonCms::Post.table_name}.published_at is not null and #{CamaleonCms::Post.table_name}.published_at <= ?)", Time.now)
+    .where("visibility != 'private'")
+    .where('cm.value is null or cm.value like ?', "%#{I18n.locale.to_s}%")
+    .where("#{CamaleonCms::TermTaxonomy.table_name}.slug = ?", 'post')
+    .reorder(published_at: :desc)
+  end
 end
 
 CamaleonCms::PostDecorator.class_eval do
@@ -45,6 +55,30 @@ CamaleonCms::PostDecorator.class_eval do
       ""
     end
   end
+  
+  def the_related_posts_cid
+    self.the_post_type.posts.published.joins(:categories)
+    .joins("LEFT OUTER JOIN cama_metas cm ON cm.objectid = cama_posts.id AND cm.object_class = 'Post' AND cm.key = 'enabled_languages'")
+    .where("(#{CamaleonCms::Post.table_name}.published_at is not null and #{CamaleonCms::Post.table_name}.published_at <= ?)", Time.now)
+    .where("visibility != 'private'")
+    .where('cm.value is null or cm.value like ?', "%#{I18n.locale.to_s}%")
+    .where("#{CamaleonCms::TermRelationship.table_name}" => {term_taxonomy_id: the_categories.pluck(:id)})
+    .where('cama_posts.id != ?', id)
+    .reorder(published_at: :desc)
+  end
+end
+
+CamaleonCms::CategoryDecorator.class_eval do
+
+  def the_posts_cid
+    self.posts.published
+    .joins("LEFT OUTER JOIN cama_metas cm ON cm.objectid = cama_posts.id AND cm.object_class = 'Post' AND cm.key = 'enabled_languages'")
+    .where("(#{CamaleonCms::Post.table_name}.published_at is not null and #{CamaleonCms::Post.table_name}.published_at <= ?)", Time.now)
+    .where("visibility != 'private'")
+    .where('cm.value is null or cm.value like ?', "%#{I18n.locale.to_s}%")
+    .reorder(published_at: :desc)
+  end
+
 end
 
 CamaleonCms::FrontendController.class_eval do 
@@ -59,13 +93,7 @@ CamaleonCms::FrontendController.class_eval do
     r = {layout: layout_, render: "search", posts: nil}; hooks_run("on_render_search", r)
     #params[:q] = (params[:q] || '').downcase
     #@posts = current_site.posts.published
-    @posts = current_site.the_posts('post').published
-      .joins("LEFT OUTER JOIN cama_metas ON cama_metas.objectid = cama_posts.id AND cama_metas.object_class = 'Post' AND cama_metas.key = 'enabled_languages'")
-      .where("(#{CamaleonCms::Post.table_name}.published_at is not null and #{CamaleonCms::Post.table_name}.published_at <= ?)", Time.now)
-      .where("visibility != 'private'")
-      .where('cama_metas.value is null or cama_metas.value like ?', "%#{current_locale}%")
-      .reorder(published_at: :desc)
-      
+    @posts = current_site.the_posts_cid
       
     unless (keyword = params[:q]).blank?
       @title = "#{ct('search_msg', default: 'Text searched: ')} #{params[:q]}"
@@ -126,7 +154,8 @@ CamaleonCms::FrontendController.class_eval do
   def category
     
     logger.debug "*****"
-    logger.debug "*** Category List ***" 
+    logger.debug "*** Category List FOR CID ***" 
+    logger.debug "*** Should not be used for CP ***" 
     logger.debug "*****"
     
     begin
@@ -137,13 +166,7 @@ CamaleonCms::FrontendController.class_eval do
     end
     @cama_visited_category = @category
     @children = @category.children.no_empty.decorate
-    @posts = @category.posts
-      .published
-      .joins("LEFT OUTER JOIN cama_metas cm ON cm.objectid = cama_posts.id AND cm.object_class = 'Post' AND cm.key = 'enabled_languages'")
-      .where('cm.value is null or cm.value like ?', "%#{current_locale}%")
-      .where("(#{CamaleonCms::Post.table_name}.published_at is null or #{CamaleonCms::Post.table_name}.published_at <= ?)", Time.now)
-      .where("visibility != 'private'")
-      .reorder(published_at: :desc)
+    @posts = @category.decorate.the_posts_cid  ## WARNING THIS IS FOR CID
       
     @posts_size = @posts.size
     @post_published_at_min = @posts.select{|_| _.published_at.present?}.collect{|_| _.published_at}.min
