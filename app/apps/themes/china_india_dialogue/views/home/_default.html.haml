@@ -8,11 +8,11 @@
 
 
   .row.mb-6
-    .col-12.col-lg-8.d-flex
+    .col-12.col-lg-8.d-flex-iefix
       = render partial: theme_view('blocks/posts'), locals: {css: 'outline', rows: 2, thumbnail: false, count:2, slug: 'business', color: 'red'}
     .col-12.hidden-lg-up
       .mb-6
-    .col-12.col-lg-4.d-flex
+    .col-12.col-lg-4.d-flex-iefix
       = render partial: theme_view('blocks/posts'), locals: {css: 'fill', thumbnail: false, count:1, slug: 'policy', color: 'orange'}
 
   .row
@@ -41,11 +41,11 @@
     
 
   .row.mb-6
-    .col-12.col-lg-4.d-flex
+    .col-12.col-lg-4.d-flex-iefix
       = render partial: theme_view('blocks/posts'), locals: {css: 'fill', thumbnail: false, count:1, slug: 'one-road-one-belt', color: 'light-blue'}
     .col-12.hidden-lg-up
       .mb-6
-    .col-12.col-lg-8.d-flex
+    .col-12.col-lg-8.d-flex-iefix
       = render partial: theme_view('blocks/posts'), locals: {template: 'floating_thumb', thumbnail: true, count:1, slug: 'environment', color: 'green'}
 
 

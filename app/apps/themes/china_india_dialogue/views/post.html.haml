@@ -23,8 +23,12 @@
           %h1= @post.the_title
     
           .h5= @post.the_excerpt
-    
-          = image_tag @post.the_author.get_meta('avatar'), class: "rounded-circle pull-left columnist px-3 pt-1"
+          
+          / BUG IE Cf CIT 3552
+          - if (avatar=@post.the_author.get_meta('avatar'))
+            .pull-left
+              .px-3.py-1
+                = image_tag avatar, class: "rounded-circle max-width-70"
     
           .font-italic.text-uppercase.mt-4
             %span.text-danger
