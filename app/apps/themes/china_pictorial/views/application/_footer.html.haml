@@ -15,7 +15,7 @@
     .h6 Follow Us 
     %p Follow China Pictorial on social media to keep up-to-date with our latest articles!
     - %w(facebook twitter linkedin).each do |social|
-      = link_to current_theme.the_field("social-#{social}"), class: 'pr-3' do
+      = link_to current_theme.the_field("social_#{social}"), class: 'pr-3' do
         %i.fa.fa-2x{class: "fa-#{social}"}
   
   .col-12.col-md-4.col-lg-3.pt-0.pt-md-3.mt-4.mt-md-0
