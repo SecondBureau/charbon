@@ -15,3 +15,6 @@ http://nvie.com/posts/a-successful-git-branching-model/
 12/05/2017 Hotfix 2.0.3
  - CIT 3880 - Related posts non filtered
  - CIT 3881 - Recents posts non filtered
+ 
+15/05/2017 Hotfix 2.0.4
+ - CIT 3552 - IE Fix
