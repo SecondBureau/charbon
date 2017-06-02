@@ -17,14 +17,4 @@
     = render partial: theme_view('categories/filters')
     
     
-- content_for :javascript do
-  $(function() {
-  var target = $('.paginate').find('a[rel=next]').attr('href');
-  if (target !== undefined) {
-  $('.show_more a').attr('href',target );
-  $('.paginate').hide();
-  $('.show_more').show();
-  }
-  });
-  
-  
+-# Load more Javascript removed (2/6/2017)

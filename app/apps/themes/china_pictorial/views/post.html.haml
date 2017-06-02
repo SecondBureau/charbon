@@ -32,7 +32,8 @@
           %strong= author
         
         .published_at
-          %time{datetime:  @post.object.published_at.try(:iso8601), itemprop: :datePublished}= I18n.l @post.object.published_at.to_date, format: :long
+          - published_at = @post.object.published_at || Time.now
+          %time{datetime:  published_at.try(:iso8601), itemprop: :datePublished}= I18n.l published_at.to_date, format: :long
 
         
   .row

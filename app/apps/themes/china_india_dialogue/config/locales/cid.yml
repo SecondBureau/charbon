@@ -1,6 +1,9 @@
 en:
   en: English
   zh-CN: 中文
+  date:
+    formats:
+      long: "%B %-d, %Y"
   cid:
     by: by
     category: category
@@ -26,6 +29,9 @@ en:
 zh-CN:
   en: English
   zh-CN: 中文
+  date:
+    formats:
+      long: "%Y年%-m月%-d日"
   cid:
     by: 作者 
     category: 栏目 

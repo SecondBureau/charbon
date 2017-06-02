@@ -24,7 +24,7 @@
     = form_tag(plugins_cama_subscriber_subscribe_url, class: 'form-inline', id: "subscriber_form") do
       = hidden_field_tag :group_id, 1
       .form-group.pr-1
-        = text_field_tag :email, nil, class: 'form-control form-control-danger', placeholder: 'votre email', id: :email, type: :email, required: true
+        = text_field_tag :email, nil, class: 'form-control form-control-danger', placeholder: 'your email', id: :email, type: :email, required: true
       
       %button.btn.btn-outline-danger.text-uppercase.btn-subcription 
         %span.small Subscribe

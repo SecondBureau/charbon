@@ -17,8 +17,11 @@ $font-family-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto"
 $font-family-serif:      Georgia, "Times New Roman", Times, serif !default;
 $font-family-monospace:  Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !default;
 
-$font-family-base:       crimson, $font-family-serif !default;
-$headings-font-family:   dax, $font-family-sans-serif !default;
+$chinese-font-family-sans-serif: "Microsoft YaHei New", "Microsoft Yahei", "微软雅黑", 宋体, SimSun, STXihei, "华文细黑";
+$chinese-font-family-serif: "FangSong", "仿宋", STFangSong, "华文仿宋";
+
+$font-family-base:       crimson, $font-family-serif, $chinese-font-family-serif !default;
+$headings-font-family:   dax, $font-family-sans-serif, $chinese-font-family-sans-serif !default;
 
 .heading-font {
   font-family: $headings-font-family;
