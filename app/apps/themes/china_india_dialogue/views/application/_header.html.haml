@@ -6,6 +6,7 @@
       .d-flex
         = render partial: theme_view('application/social')
         = raw current_site.draw_languages_text("language list-inline mb-0 pl-2", true, nil, 'text-white heading-font small pl-1', true)
+        = link_to 'हिन्दी', 'category/182-hindi?cama_set_language=en', class: 'text-white heading-font small pl-2'
         = link_to cidsearch_path, class: 'text-white heading-font pl-2' do 
           %i.fa.fa-search
       
@@ -48,6 +49,7 @@
           .col-sm-5.col-md-4.text-right
             .mt-5.pt-3.header-links
               = raw current_site.draw_languages_text("language list-inline", true, nil, 'text-white heading-font small pl-1')
+              = link_to 'हिन्दी', 'category/182-hindi?cama_set_language=en', class: 'text-white heading-font small pl-1'
               = link_to cidsearch_path, class: 'text-white heading-font pl-1' do 
                 %i.fa.fa-search
     
