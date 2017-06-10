@@ -1,4 +1,4 @@
-- posts = current_site.the_posts_cid.paginate(:page => params[:page], :per_page => 10)
+- posts = current_site.the_posts_cid(cat_slugs: ['hindi']).paginate(:page => params[:page], :per_page => 10)
 
 .row.mt-3
   .col-12

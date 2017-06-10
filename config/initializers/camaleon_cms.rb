@@ -35,14 +35,30 @@ CamaleonCms::SiteDecorator.class_eval do
     res.join("")
   end
   
-  def the_posts_cid
-    object.posts.published
+  def the_posts_cid(options={})
+    
+    excluded_cat_ids = []
+    unless options[:cat_slugs].blank?
+      excluded_cat_ids = options[:cat_slugs].collect{|_| CamaleonCms::Category.find_by_slug(_).try(:id)}.compact 
+    end
+    
+    posts = object.posts.published
     .joins("LEFT OUTER JOIN cama_metas cm ON cm.objectid = cama_posts.id AND cm.object_class = 'Post' AND cm.key = 'enabled_languages'")
     .where("(#{CamaleonCms::Post.table_name}.published_at is not null and #{CamaleonCms::Post.table_name}.published_at <= ?)", Time.now)
     .where("visibility != 'private'")
     .where('cm.value is null or cm.value like ?', "%#{I18n.locale.to_s}%")
     .where("#{CamaleonCms::TermTaxonomy.table_name}.slug = ?", 'post')
     .reorder(published_at: :desc)
+    
+    unless excluded_cat_ids.blank?
+      posts = posts
+      .joins("INNER JOIN cama_term_relationships ctr ON ctr.objectid = #{CamaleonCms::Post.table_name}.id")
+      .joins("INNER JOIN cama_term_taxonomy ctt ON ctt.id = ctr.term_taxonomy_id AND ctt.taxonomy = 'category'")
+      .where('ctt.id not in (?)', excluded_cat_ids)
+      .distinct
+    end
+    
+    posts
   end
 end
 
