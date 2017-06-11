@@ -33,7 +33,7 @@ gem 'haml'
 
 # Cameleon
 #gem "camaleon_cms", :github => 'SecondBureau/camaleon-cms'
-gem "camaleon_cms", :git => 'https://github.com/SecondBureau/camaleon-cms.git'
+gem "camaleon_cms", :git => 'https://github.com/SecondBureau/camaleon-cms'
 #gem 'camaleon_cms', :git => 'https://github.com/owen2345/camaleon-cms'
 gem 'camaleon_ecommerce', :git => 'https://github.com/owen2345/camaleon-ecommerce'
 gem 'cama_subscriber', :git => 'https://github.com/owen2345/cama_subscriber'
@@ -41,7 +41,7 @@ gem 'camaleon_post_order', :git => 'https://github.com/owen2345/camaleon-post-or
 gem 'cama_contact_form', :git => 'https://github.com/owen2345/cama_contact_form'
 
 gem 'vzaar_uploader'
-gem 'vzaar_api', git: 'git@github.com:vzaar/vzaar-api-ruby.git', branch: 'version-2.0.0-alpha'
+gem 'vzaar_api', git: 'https://github.com/vzaar/vzaar-api-ruby', branch: 'version-2.0.0-alpha'
 
 # An opinionated micro-framework for creating REST-like APIs in Ruby. http://www.ruby-grape.org
 gem 'grape'
