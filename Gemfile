@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 ruby '2.3.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 4.2'
+gem 'rails', '~> 4.2.6'
 gem 'sprockets-rails', '~> 2.3'
 
 # Use postgresql as the database for Active Record
@@ -39,6 +39,9 @@ gem 'camaleon_ecommerce', :git => 'https://github.com/owen2345/camaleon-ecommerc
 gem 'cama_subscriber', :git => 'https://github.com/owen2345/cama_subscriber'
 gem 'camaleon_post_order', :git => 'https://github.com/owen2345/camaleon-post-order-plugin'
 gem 'cama_contact_form', :git => 'https://github.com/owen2345/cama_contact_form'
+
+gem 'vzaar_uploader'
+gem 'vzaar_api', git: 'git@github.com:vzaar/vzaar-api-ruby.git', branch: 'version-2.0.0-alpha'
 
 # An opinionated micro-framework for creating REST-like APIs in Ruby. http://www.ruby-grape.org
 gem 'grape'

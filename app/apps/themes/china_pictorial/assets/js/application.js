@@ -7,3 +7,4 @@
 //= require ./jquery.touchSwipe.min
 //= require ./reflection.js
 //= require ./jquery.socialshare.js
+//= require plugins/vzaar_uploader/vzaar
