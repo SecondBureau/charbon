@@ -1,4 +1,4 @@
-= link_to post.decorate.the_thumb(class: 'img-fluid'), post.decorate.the_path
+= render partial: 'partials/featured', locals: {post: post}
 
 .title.pt-1
   .text-muted.pt-3.text-uppercase.small.float-right
