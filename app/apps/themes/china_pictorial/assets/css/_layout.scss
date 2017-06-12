@@ -115,3 +115,11 @@ a.no-decoration {
 div [data-href] {
   cursor: pointer;
 }
+
+.featured_video {
+  z-index: 2;
+}
+
+.above-featured_video {
+  z-index: 3;
+}

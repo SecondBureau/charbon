@@ -21,6 +21,14 @@ GIT
       will_paginate-bootstrap
 
 GIT
+  remote: https://github.com/SecondBureau/vzaar_uploader
+  revision: 81fbc60219c2a4203f73eec6fa173c8caa5d5cc1
+  specs:
+    vzaar_uploader (0.1.0)
+      camaleon_cms (>= 2.4.3.7)
+      rails (>= 4.1)
+
+GIT
   remote: https://github.com/owen2345/cama_contact_form
   revision: 07c12a2bd3511c37bf54eaa9084af81f630d131e
   specs:
@@ -361,9 +369,6 @@ GEM
       coercible (~> 1.0)
       descendants_tracker (~> 0.0, >= 0.0.3)
       equalizer (~> 0.0, >= 0.0.9)
-    vzaar_uploader (0.1.0)
-      camaleon_cms (>= 2.4.3.7)
-      rails (>= 4.1)
     web-console (2.3.0)
       activemodel (>= 4.0)
       binding_of_caller (>= 0.7.2)
@@ -418,7 +423,7 @@ DEPENDENCIES
   twitter-bootstrap-rails
   uglifier (>= 1.3.0)
   vzaar_api!
-  vzaar_uploader
+  vzaar_uploader!
   web-console (~> 2.0)
   will_paginate-bootstrap!
 
