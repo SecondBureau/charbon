@@ -22,7 +22,7 @@ GIT
 
 GIT
   remote: https://github.com/SecondBureau/vzaar_uploader
-  revision: 81fbc60219c2a4203f73eec6fa173c8caa5d5cc1
+  revision: e04c440cbb4740109cd9b5b40f5b50091afec83e
   specs:
     vzaar_uploader (0.1.0)
       camaleon_cms (>= 2.4.3.7)
