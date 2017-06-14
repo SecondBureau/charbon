@@ -41,7 +41,8 @@ gem 'camaleon_post_order', :git => 'https://github.com/owen2345/camaleon-post-or
 gem 'cama_contact_form', :git => 'https://github.com/owen2345/cama_contact_form'
 
 #gem 'vzaar_uploader', :git => 'https://github.com/SecondBureau/vzaar_uploader'
-gem 'vzaar_uploader', :git => 'https://github.com/camaleon-cms/vzaar_uploader'
+#gem 'vzaar_uploader', :git => 'https://github.com/camaleon-cms/vzaar_uploader'
+gem 'vzaar_uploader'
 gem 'vzaar_api', git: 'https://github.com/vzaar/vzaar-api-ruby', branch: 'version-2.0.0-alpha'
 
 # An opinionated micro-framework for creating REST-like APIs in Ruby. http://www.ruby-grape.org
