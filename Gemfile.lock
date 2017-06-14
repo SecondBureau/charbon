@@ -22,9 +22,9 @@ GIT
 
 GIT
   remote: https://github.com/camaleon-cms/vzaar_uploader
-  revision: d7ef8673100b660adb8ba440e71e81c4cdd23026
+  revision: 5519059dd99845c1e056b00df1ea96370f98f395
   specs:
-    vzaar_uploader (0.1.4)
+    vzaar_uploader (0.1.5)
       camaleon_cms (>= 2.4.3.7)
       rails (>= 4.1)
 
