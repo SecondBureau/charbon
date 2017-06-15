@@ -54,6 +54,7 @@
             $('.post-body figure.image').addClass('#{@post.the_field(:fixed_width_images_class)}');
             $('.post-body figure.image > img').addClass('img-fluid');
             $('p > img').addClass('img-fluid');
+            $('.post-body iframe[id^="vzvd"]').parent().addClass('embed-responsive embed-responsive-4by3');
           });
           
           #{yield(:javascript)}
