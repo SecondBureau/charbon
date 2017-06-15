@@ -1,0 +1,19 @@
+%form{:name => "contactForm", "ng-show" => "!f.submitted", "ng-submit" => "f.submit()"}
+  .form-group{"ng-class" => "{'has-error': f.filling  (contactForm.from.$error.required  || contactForm.from.$error.email)}"}
+    .input-group
+      .input-group-addon
+        %span.glyphicon.glyphicon-envelope
+      %input#from.form-control.input-sm{:name => "from", "ng-focus" => "f.gotFocus()", "ng-model" => "f.from", :placeholder => "Your email address", :type => "email"}
+      %span.help-block.error{"ng-show" => "f.filling  contactForm.from.$error.required"} Required!
+      %span.help-block.error{"ng-show" => "contactForm.from.$error.email"} Not valid email!
+    .form-group{"ng-class" => "{'has-error': f.filling  contactForm.title.$error.required}"}
+      .input-group
+        .input-group-addon
+          %span.glyphicon.glyphicon-pushpin
+        %input#title.form-control.input-sm{:name => "title", "ng-focus" => "f.gotFocus()", "ng-model" => "f.title", :placeholder => "Object", :type => "text"}
+        %span.help-block.error{"ng-show" => "f.filling  contactForm.title.$error.required"} Required!
+      .form-group{"ng-class" => "{'has-error': f.filling  contactForm.message.$error.required}"}
+        %textarea#message.form-control.default.input-sm{"max-length" => "500", :name => "message", "ng-focus" => "f.gotFocus()", "ng-model" => "f.message"}>
+        placeholder= "Your message"&gt;
+      %span.help-block.error{"ng-show" => "f.filling  contactForm.message.$error.required"} Required!
+    %button.submit_btn.btn.btn-default.btm-sm.pull-right{"ng-show-disabled" => "f.filling  !contactForm.from.$error.required  !contactForm.from.$error.email  !contactForm.from.$error.required  !contactForm.message.$error.required"} Send

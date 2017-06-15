@@ -1,0 +1,20 @@
+.row.mt-3
+  .col-lg-8.col-md-12
+    - unless title.blank?
+      .pl-1{class: template.eql?(:category) ? 'text-danger h1' : 'h3 pb-2'}= title
+    - unless posts.blank?
+      - if @posts_size.present?
+        %h6.results= t :results, scope: :cid, count: @posts_size, min_date: l(@post_published_at_min.to_date, format: :long), max_date:l(@post_published_at_max.to_date, format: :long)
+      = render partial: theme_view("posts/media"), collection: posts, as: :post, cache: Proc.new{|item| ['posts_media', I18n.locale, item]}
+    - else
+      .row
+        .col-12
+          .alert.alert-warning= raw ct('no_contents_found', default: 'No contents found')
+    .text-center.mb-5
+      .paginate= will_paginate posts, renderer: BootstrapPagination::Rails
+      .show_more{style: 'display:none;'}= link_to t(:load_more, scope: :cid), '/', remote: true, format: :js, class: 'btn btn-secondary w-100'
+  .col-lg-4.col-md-12
+    = render partial: theme_view('categories/filters')
+    
+    
+-# Load more Javascript removed (2/6/2017)

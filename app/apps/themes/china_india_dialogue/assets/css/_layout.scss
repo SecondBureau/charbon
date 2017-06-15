@@ -1,0 +1,190 @@
+body {
+  padding-top: 220px;
+  
+  @media print {
+    padding-top: 10px;
+  }
+  
+  @include media-breakpoint-only(xs) {
+    padding-top: 0px;
+  }
+}
+
+.minify {
+  top: -250px;
+}
+
+.minifable {
+  transition: top 0.2s ease-in-out;
+}
+
+
+@each $name, $color in $colors {
+  @include text-emphasis-variant('.text-' +$name, $color);
+}
+
+.cid-md-header {
+  height: 150px;
+  overflow: hidden;
+  background: #000 cid-image_url('backgrounds/header.png');
+}
+
+.header-social {
+  margin: 2px 0;
+}
+
+
+.home-block {
+  
+  .home-block-outline {
+    
+    border: #000 solid 1px;
+    padding: 3em;
+    
+    @each $name, $color in $colors {
+      &.home-block-#{$name} {
+        border-color: $color;
+      }
+    }
+    
+  }
+  
+  .home-block-fill {
+    
+    color: $white;
+    background: $blue;
+    padding: 3em;
+    
+    a {
+      color: $white;
+    }
+    
+    @each $name, $color in $colors {
+      @include text-emphasis-variant('.text-' +$name, $white);
+    }
+    
+    @each $name, $color in $colors {
+      &.home-block-#{$name} {
+        background-color: $color;
+      }
+    }
+  }
+  
+  .home-block-column {
+    padding: 3em;
+    background-image: cid-image-url('backgrounds/column.png');
+  }
+}
+
+.columnist {
+  max-width:90px;
+}
+
+.pl-105 {
+  padding-left: 105px;
+}
+
+.dropdown-toggle {
+  @include media-breakpoint-only(xs) {
+    padding-top: 0px;
+    font-size: 40px;
+  }
+}
+
+
+.cid-footer  {
+  color: #fff;
+  z-index: 3;
+  position: relative;
+}
+
+.cid-footer1 {
+  min-height: 200px;
+  overflow: hidden;
+  background: #595757;
+  padding: 10px 0 10px 0;
+}
+
+.cid-footer1 ul.nav {
+  padding-top: 23px;
+}
+
+.cid-footer1 .nav > li > a {
+  color: #fff;
+  padding: 0;
+  font-weight: 300;
+
+}
+
+.cid-footer1 .nav > li > a:hover{
+  color: #595757;
+  text-decoration: none;
+}
+
+
+.cid-footer2 {
+  min-height: 30px;
+  background: #000;
+}
+
+.cid-footer2 p {
+  padding-top: 10px;
+}
+
+
+
+.cid-footer li:hover{
+  background: #eee;
+}
+
+.results 
+{
+  background: $red;
+  padding: 5px 0 5px 10px;
+  color: white;
+}
+
+.widget-container {
+  background: #fcfcfc;
+  
+  padding: 0px;
+  
+  h2 {
+    color: $red;
+    padding: 15px 0 15px 0;
+    border-top: solid 15px $red;
+    border-bottom: solid 1px $grey;
+  }
+}
+
+#search, #filters {
+  position: relative;
+  
+  label {
+      position: absolute;
+      left: 17px;
+      top: 3px;
+  }
+  
+  #search-input {
+    padding-left: 43px;
+    padding-right: 43px;
+  }
+  
+  #search-clear {
+    text-decoration: none;
+    position: absolute;
+    right: 10px;
+    top: 3px;
+    color: #b3b3b3;
+  }
+}
+
+ul.language {
+  display: inline;
+  
+  li {
+    display: inline;
+  }
+}
+

@@ -1,0 +1,18 @@
+/ China India Dialogue
+/ Carousel
+
+.h-100{class: "home-block-#{color} home-block-#{category.slug} home-block-#{css}"}
+  
+  .mb-5
+    = theme_image_tag 'decorations/category.png', width: 15, height: 30, class: 'pull-right', alt: '*'
+    %h2= link_to category.the_title, category.the_url, class: "text-#{color}"
+    
+  .row.d-block
+    #slick
+      - posts.each do |post|
+        .div.d-block{style: "padding:0 5px 0 5px"}
+          .border
+            = post.decorate.the_thumb(class: 'img-fluid')
+          %p.slick-caption
+            %span.title= link_to post.decorate.the_title, post.decorate.the_path
+

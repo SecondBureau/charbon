@@ -1,0 +1,25 @@
+
+
+
+%form
+  .form-group
+    .input-group
+      .input-group-addon
+        %span.fa.fa-envelope
+      %input#from.form-control.form-control-sm{name: :from, placeholder: "Your email address", type: :email}
+    .form-control-feedback
+      %span{style: 'display:none'} Required!
+      %span{style: 'display:none'} Not valid email!
+    
+  .form-group
+    .input-group
+      .input-group-addon
+        %span.fa.fa-pencil
+      %input#title.form-control.form-control-sm{name: :title, placeholder: "Object", type: :text}
+    .form-control-feedback{style: 'display:none'} Required!
+      
+  .form-group
+    %textarea#message.form-control.default.form-control-sm{"max-length" => "500", name: :message, placeholder: "Your message"}
+    .form-control-feedback{style: 'display:none'} Required!
+    
+  %button.btn.btn-default.btm-sm.pull-right{type: :submit} Send

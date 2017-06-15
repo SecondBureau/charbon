@@ -1,0 +1,22 @@
+/ China India Dialogue
+/ Slider
+
+.h-100{class: "home-block-#{color} home-block-#{category.slug} home-block-#{css}"}
+    
+  .row.d-block
+    .flexslider
+      %ul.slides
+        - posts.each do |post|
+          %li
+            = post.decorate.the_thumb(class: 'img-fluid')
+            %p.flex-caption
+              %span.title= link_to post.decorate.the_title, post.decorate.the_path
+              %br
+              %span.font-italic 
+                %span
+                  = t :by, scope: :cid
+                %span.px-1
+                  = post.get_field(:author).try(:translate) || post.decorate.the_author.fullname
+                %span
+                  = l post.decorate.published_at.to_date, format: :long
+

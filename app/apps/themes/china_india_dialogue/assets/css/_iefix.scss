@@ -1,0 +1,19 @@
+.max-width-70 {
+  max-width: 70px;
+}
+
+.d-flex-iefix {
+  @extend .d-flex;
+}
+
+
+@media all and (-ms-high-contrast:none)
+{
+       
+  .d-flex-iefix {
+    display: block !important;
+  }
+  
+
+
+}

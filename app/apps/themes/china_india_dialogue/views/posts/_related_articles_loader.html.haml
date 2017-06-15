@@ -1,0 +1,7 @@
+- title = @post.categories.size.eql?(1) ? @post.categories.first.decorate.name.translate : t(:related_articles, scope: :cid)
+- content = @post.post_type.slug.eql?('post') ? j(render(partial: 'posts/related_articles', locals: {posts: @post.the_related_posts_cid.to_a.sample(10), title: title})) : j(render(partial: theme_view("posts/related_articles"), locals: {posts: current_site.the_posts_cid.limit(5).to_a, title: t(:recent_posts, scope: :cid)}))
+
+- content_for :javascript do
+  $(function() {
+  $('.related_articles').html('#{content}');
+  });

@@ -1,0 +1,18 @@
+
+.header-social.mt-4.pt-3
+  = link_to current_theme.the_field('social_facebook'), class: 'text-white text-no-decoration' do
+    = theme_image_tag 'icons/weweka/facebook.png', width: '35', height: '35', alt: 'Check out our facebook page'
+
+  = link_to current_theme.the_field('social_twitter'), class: 'text-white text-no-decoration' do
+    = theme_image_tag 'icons/weweka/twitter.png', width: "35", height: "35", alt: "Follow us on twitter"
+
+  = link_to current_theme.the_field('social_linkedin'), class: 'text-white text-no-decoration' do
+    = theme_image_tag 'icons/weweka/linkedin.png', width: "35", height: "35", alt: "Follow us on LinkedIn"
+
+  = link_to "#", class: 'text-white text-no-decoration', data: {toggle: "modal", target: "#wechatmodal"} do
+    = theme_image_tag 'icons/weweka/wechat.png', width: "35", height: "35", alt: "Follow us on Wechat"
+    
+    
+    
+    
+    

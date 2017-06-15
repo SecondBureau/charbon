@@ -1,6 +1,6 @@
 
 .row.mt-3
   .col-12.col-sm-6.col-md-4
-    = link_to post.decorate.the_thumb(class: 'img-fluid'), post.decorate.the_path
+    = render partial: 'partials/featured', locals: {post: post}
   .col-12.col-sm-6.col-md-8.mt-3.mt-sm-0
     = render partial: 'partials/excerpt', locals: {post: post}
