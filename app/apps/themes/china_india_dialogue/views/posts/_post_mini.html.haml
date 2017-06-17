@@ -12,4 +12,4 @@
 
 - if thumbnail
 
-  = post.the_thumb(class: 'img-fluid mb-5')
+  = render partial: 'partials/featured', locals: {post: post, thumbcss: 'img-fluid mb-5', videocss: 'embed-responsive-4by3 mb-5'}

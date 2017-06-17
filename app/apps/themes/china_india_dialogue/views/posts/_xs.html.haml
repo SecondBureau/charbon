@@ -2,8 +2,7 @@
 
 .row.mb-2
   .col-10.offset-1
-    = link_to post.the_path do
-      = post.the_thumb(class: 'img-fluid')
+    = render partial: 'partials/featured', locals: {post: post.object}
     %h4.mt-1= link_to post.the_title, post.the_path
     %p.font-italic
       %span

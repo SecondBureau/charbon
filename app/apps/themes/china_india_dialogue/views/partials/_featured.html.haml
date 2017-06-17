@@ -1,0 +1,8 @@
+- thumbcss = 'img-fluid' unless local_assigns.has_key?(:thumbcss)
+- videocss = 'embed-responsive-4by3' unless local_assigns.has_key?(:videocss)
+
+- if post.get_meta('featured_video').blank?
+  = link_to post.decorate.the_thumb(class: thumbcss), post.decorate.the_path
+- else
+  .featured_video.embed-responsive{class: videocss}
+    = video_tag post.get_meta('featured_video')
