@@ -26,3 +26,7 @@ http://nvie.com/posts/a-successful-git-branching-model/
 15/06/2017 Release 2.2
  - Release for CP
  - Video Streaming
+ 
+17/06/2017 Release 2.3
+ - Release for CID
+ - Video streaming
