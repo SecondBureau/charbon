@@ -63,28 +63,40 @@ h1, .h1 {
   }
 }
 
-li.nav-item.dropdown {
-  @include media-breakpoint-down(xs) {
-    font-size: 150%;
+.cp-menu {
+  
+  li.nav-item.dropdown {
+    @include media-breakpoint-down(xs) {
+      font-size: 150%;
+    }
+  }
+
+  .dropdown-toggle {
+    &::after {
+      content: none;
+    }
+  }
+
+  .dropdown-menu {
+    right: 1em;
+    left: auto;
+  }
+
+  .dropdown-menu {
+    .nav-item {
+      margin-left: 1rem;
+    }
+  }
+  
+}
+
+.language-selector {
+  .dropdown-menu {
+    left: auto;
+    right: 0;
   }
 }
 
-.dropdown-toggle {
-  &::after {
-    content: none;
-  }
-}
-
-.dropdown-menu {
-  right: 1em;
-  left: auto;
-}
-
-.dropdown-menu {
-  .nav-item {
-    margin-left: 1rem;
-  }
-}
 
 .carousel-item, .container-carousel {
   height: 500px;

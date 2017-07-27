@@ -30,3 +30,6 @@ http://nvie.com/posts/a-successful-git-branching-model/
 17/06/2017 Release 2.3
  - Release for CID
  - Video streaming
+ 
+27/07/2017 Hotfix 2.3.1
+ - CIT 3932 (CID Theme)

@@ -1,0 +1,11 @@
+- nav_menu = current_site.nav_menus.find_by_slug("languages")
+- if nav_menu.present? && nav_menu.children.count > 1
+  - children = nav_menu.children.reorder(:term_order)
+  .dropdown.float-right.language-selector
+    %button.btn.btn-secondary.btn-sm.mb-1.dropdown-toggle{type: :button, id: "languageSelector", data: {toggle: :dropdown}, aria: {haspopup: true, expanded: false}}
+      = children.first.name
+    .dropdown-menu{aria: {labelledby: "languageSelector"}}
+      - children.drop(1).each do |item|
+        = link_to item.name, item.description, class: 'dropdown-item'
+  .clearfix
+      
