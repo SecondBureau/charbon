@@ -86,6 +86,10 @@ group :production do
   gem "newrelic_rpm"
 end
 
+# The middleware is not inserted for the test environment.
+# https://github.com/heroku/rack-timeout
+gem "rack-timeout"
+
 
 #################### Camaleon CMS include all gems for plugins and themes #################### 
 require './lib/plugin_routes' 
