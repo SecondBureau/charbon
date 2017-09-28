@@ -45,3 +45,6 @@ http://nvie.com/posts/a-successful-git-branching-model/
  
 28/09/2017 Release 2.3.5
   - Added Cache to CP
+  
+28/09/2017 Release 2.3.6
+  - added cache to blocks_portrait view
