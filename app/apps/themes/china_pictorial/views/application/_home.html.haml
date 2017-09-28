@@ -33,7 +33,7 @@
 
 .row.hidden-sm-up
   .col-12
-    = render partial: theme_view('blocks/post'), collection: current_site.the_posts('post').reorder(published_at: :desc).limit(20), as: :post
+    = render partial: theme_view('blocks/post'), collection: current_site.the_posts('post').reorder(published_at: :desc).limit(20), as: :post, cache: Proc.new{|item| ['blocks_post', I18n.locale, item]}
 
 .row
   .col-12

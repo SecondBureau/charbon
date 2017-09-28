@@ -1,3 +1,7 @@
+= render theme_view('partials/post_related_loader') if @post
+= render theme_view('partials/flash_loader') if flash[:cama_subscriber].present?
+
+
 !!!
 %html{:lang => "en"}
   %head
@@ -6,20 +10,40 @@
     %meta{:content => "IE=edge", "http-equiv" => "X-UA-Compatible"}/
     %meta{:content => "width=device-width, initial-scale=1", :name => "viewport"}/
     = stylesheet_link_tag theme_asset_path("css/application"), media: 'screen, print'
-    = javascript_include_tag theme_asset_path("js/application")
     = raw the_head
     = render theme_view('application/woopra') if $woopra_domain_name.present?
     
   %body
-    = render theme_view('application/header')
-    - if action_name.eql?('index')
-      .container-fluid.mt-1.pt-1.hidden-xs-down.hidden-print
-        = render theme_view('application/carousel')
-    .container
-      .content
-        = yield
-      %footer
-        = render theme_view('application/footer')
-        -#= render theme_view('application/adaptative')
-
+    - cache_if @post, ['fullpost', I18n.locale, @post, current_site.categories.reorder(updated_at: :desc).first] do
+      = render theme_view('application/header')
+      - if action_name.eql?('index')
+        .container-fluid.mt-1.pt-1.hidden-xs-down.hidden-print
+          = render theme_view('application/carousel')
+      .container
+        .content
+          = yield
+        %footer
+          = render theme_view('application/footer')
+          -#= render theme_view('application/adaptative')
+          
+      = javascript_include_tag theme_asset_path("js/application")
+      
+      - if @post
+        :javascript
+          $(function() {
+            $("figure.image > img[width]").parent().find('figcaption').each(function(){
+              var width = $(this).parent().find('img[width]').attr('width');
+              $(this).attr('style', 'width:' + width + 'px');
+            });
+            $('.post-body iframe[id^="vzvd"]').parent().addClass('embed-responsive embed-responsive-4by3');
+            });
+          
+          #{yield(:javascript)}
+          
+    - if !@post
+      :javascript
+        #{yield(:javascript)}
     
+    - if @post
+      :javascript
+        #{yield(:related_articles)}

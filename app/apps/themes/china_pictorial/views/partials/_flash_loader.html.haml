@@ -1,0 +1,6 @@
+- content = j(render(partial: "/camaleon_cms/flash_messages.html.erb", locals:{ flash: (flash[:cama_subscriber] || {}).with_indifferent_access }))
+
+- content_for :javascript do
+  $(function() {
+  $('.flash_message').html('#{content}');
+  }); 

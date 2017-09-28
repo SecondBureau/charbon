@@ -1,11 +1,12 @@
-%h5= link_to post.decorate.the_title, post.decorate.the_path
-.excerpt.hidden-sm-up= post.decorate.the_excerpt.truncate(250)
-.excerpt.hidden-md-up.hidden-xs-down= post.decorate.the_excerpt.truncate(250)
-.excerpt.hidden-lg-up.hidden-sm-down= post.decorate.the_excerpt.truncate(250)
-.excerpt.hidden-xl-up.hidden-md-down= post.decorate.the_excerpt.truncate(250)
-.excerpt.hidden-lg-down= post.decorate.the_excerpt.truncate(250)
-.text-muted.mt-2.mb-0.text-uppercase.small
-  = l(post.decorate.published_at, format: "%d.%m.%Y")
-  &mdash;
-  = post.get_meta('visits', 0)
-  views
+- cache ['partials_excerpt', I18n.locale, post] do
+  %h5= link_to post.decorate.the_title, post.decorate.the_path
+  .excerpt.hidden-sm-up= post.decorate.the_excerpt.truncate(250)
+  .excerpt.hidden-md-up.hidden-xs-down= post.decorate.the_excerpt.truncate(250)
+  .excerpt.hidden-lg-up.hidden-sm-down= post.decorate.the_excerpt.truncate(250)
+  .excerpt.hidden-xl-up.hidden-md-down= post.decorate.the_excerpt.truncate(250)
+  .excerpt.hidden-lg-down= post.decorate.the_excerpt.truncate(250)
+  .text-muted.mt-2.mb-0.text-uppercase.small
+    = l(post.decorate.published_at, format: "%d.%m.%Y")
+    &mdash;
+    = post.get_meta('visits', 0)
+    views

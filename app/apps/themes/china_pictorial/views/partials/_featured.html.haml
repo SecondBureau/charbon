@@ -1,7 +1,7 @@
+- cache ['partials_featured', I18n.locale, post] do
 
-
-- if post.get_meta('featured_video').blank?
-  = link_to post.decorate.the_thumb(class: 'img-fluid'), post.decorate.the_path
-- else
-  .featured_video.embed-responsive.embed-responsive-4by3
-    = video_tag post.get_meta('featured_video')
+  - if post.get_meta('featured_video').blank?
+    = link_to post.decorate.the_thumb(class: 'img-fluid'), post.decorate.the_path
+  - else
+    .featured_video.embed-responsive.embed-responsive-4by3
+      = video_tag post.get_meta('featured_video')

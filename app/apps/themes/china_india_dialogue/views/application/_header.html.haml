@@ -1,4 +1,4 @@
-- cache ['header', I18n.locale || 'bots', current_site.categories.reorder(updated_at: :desc).first] do
+- cache ['header', I18n.locale, current_site.categories.reorder(updated_at: :desc).first] do
     
   %nav.navbar.navbar-inverse.bg-inverse.hidden-sm-up
   
