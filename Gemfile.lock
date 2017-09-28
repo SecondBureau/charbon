@@ -153,6 +153,7 @@ GEM
     coffee-script-source (1.12.2)
     commonjs (0.2.7)
     concurrent-ruby (1.0.5)
+    connection_pool (2.2.1)
     countries (1.2.5)
       currencies (~> 0.4.2)
       i18n_data (~> 0.7.0)
@@ -388,6 +389,7 @@ DEPENDENCIES
   camaleon_ecommerce!
   camaleon_post_order!
   coffee-rails (~> 4.1.0)
+  connection_pool
   dalli
   dotenv-rails
   faker
