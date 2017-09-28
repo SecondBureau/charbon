@@ -36,3 +36,6 @@ http://nvie.com/posts/a-successful-git-branching-model/
  
 27/09/2017 Release 2.3.2
  - Added Rack Timeout
+ 
+28/09/2017 Release 2.3.3
+ - Added Memcached + Dalli
