@@ -15,14 +15,14 @@
                   %h6= issue.decorate.the_title
             
 
-:javascript
+- content_for :javascript do
   $(function() {
-    $('.issues-carousel').coverflow({
-      index: parseInt("#{current_site.the_posts('issue').count - 1}"),
-      density: 4,
-      innerOffset:  20,
-      innerScale:    .7,
-      enableWheel: false});
+  $('.issues-carousel').coverflow({
+  index: parseInt("#{current_site.the_posts('issue').count - 1}"),
+  density: 4,
+  innerOffset:  20,
+  innerScale:    .7,
+  enableWheel: false});
   });  
 
 

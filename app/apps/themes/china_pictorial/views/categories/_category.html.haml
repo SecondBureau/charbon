@@ -4,4 +4,4 @@
       - post = group.shift
       = render partial: theme_view('categories/post_wide'), locals: {post: post}
   .row
-    = render partial: theme_view('categories/post'), collection: group, as: :post
+    = render partial: theme_view('categories/post'), collection: group, as: :post, cache: Proc.new{|item| ['categories_post', I18n.locale, item]}

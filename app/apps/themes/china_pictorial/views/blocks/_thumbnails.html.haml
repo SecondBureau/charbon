@@ -1,17 +1,17 @@
-
-.hidden-md-down      
-  %ul.list-group.d-block
-    - posts.each do |post|
-      %li.list-group-item.pt-0.pl-0.pr-0.border-0.d-block
-        = render partial: 'partials/featured', locals: {post: post, imgcss: 'img-fluid mb-1'}
-        %h5.mb-1.title= link_to post.decorate.the_title, post.decorate.the_path
-        %small.text-muted.mt-0.text-uppercase
-          = l(post.decorate.published_at, format: "%d.%m.%Y")
-          &mdash;
-          = post.get_meta('visits', 0)
-          views
+- cache ['blocks_thumbnails', I18n.locale, posts.collect(&:id).sort.join('-'), posts.collect(&:updated_at).max.to_i ] do
+  .hidden-md-down      
+    %ul.list-group.d-block
+      - posts.each do |post|
+        %li.list-group-item.pt-0.pl-0.pr-0.border-0.d-block
+          = render partial: 'partials/featured', locals: {post: post, imgcss: 'img-fluid mb-1'}
+          %h5.mb-1.title= link_to post.decorate.the_title, post.decorate.the_path
+          %small.text-muted.mt-0.text-uppercase
+            = l(post.decorate.published_at, format: "%d.%m.%Y")
+            &mdash;
+            = post.get_meta('visits', 0)
+            views
         
 
-.hidden-lg-up
-  -#= render partial: theme_view("blocks/post"), collection: posts
-  = render partial: theme_view("blocks/portrait"), locals:{posts: posts.slice(0,current_theme.get_option('cat4_count_md_down'))}
+  .hidden-lg-up
+    -#= render partial: theme_view("blocks/post"), collection: posts
+    = render partial: theme_view("blocks/portrait"), locals:{posts: posts.slice(0,current_theme.get_option('cat4_count_md_down'))}

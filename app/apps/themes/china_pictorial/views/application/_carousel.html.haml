@@ -24,10 +24,10 @@
 
 -# remove Disabled (line 10) to activate
 
-:javascript
+- content_for :javascript do
   $(function() {
-    $("div [data-href]").on('click', function() {
-      window.location.href = $(this).data('href');
-    });
+  $("div [data-href]").on('click', function() {
+  window.location.href = $(this).data('href');
+  });
   });
   

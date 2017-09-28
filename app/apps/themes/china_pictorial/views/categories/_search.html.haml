@@ -1,1 +1,1 @@
-= render partial: theme_view('blocks/post'), collection: posts, as: :post
+= render partial: theme_view('blocks/post'), collection: posts, as: :post, cache: Proc.new{|item| ['blocks_post', I18n.locale, item]}
