@@ -90,6 +90,9 @@ end
 # https://github.com/heroku/rack-timeout
 gem "rack-timeout"
 
+gem 'dalli'
+gem 'connection_pool'
+
 
 #################### Camaleon CMS include all gems for plugins and themes #################### 
 require './lib/plugin_routes' 

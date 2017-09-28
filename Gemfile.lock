@@ -153,6 +153,7 @@ GEM
     coffee-script-source (1.12.2)
     commonjs (0.2.7)
     concurrent-ruby (1.0.5)
+    connection_pool (2.2.1)
     countries (1.2.5)
       currencies (~> 0.4.2)
       i18n_data (~> 0.7.0)
@@ -160,6 +161,7 @@ GEM
       countries (~> 1.2.0)
       sort_alphabetical (~> 1.0)
     currencies (0.4.2)
+    dalli (2.7.6)
     debug_inspector (0.0.3)
     descendants_tracker (0.0.4)
       thread_safe (~> 0.3, >= 0.3.1)
@@ -269,6 +271,7 @@ GEM
       rack (>= 0.4)
     rack-test (0.6.3)
       rack (>= 1.0)
+    rack-timeout (0.4.2)
     rails (4.2.8)
       actionmailer (= 4.2.8)
       actionpack (= 4.2.8)
@@ -386,6 +389,8 @@ DEPENDENCIES
   camaleon_ecommerce!
   camaleon_post_order!
   coffee-rails (~> 4.1.0)
+  connection_pool
+  dalli
   dotenv-rails
   faker
   font-awesome-rails
@@ -404,6 +409,7 @@ DEPENDENCIES
   ngannotate-rails
   pg
   puma
+  rack-timeout
   rails (~> 4.2.6)
   rails-assets-tether (>= 1.1.0)!
   rqrcode
