@@ -1,4 +1,4 @@
-- cache ['blocks_thumbnails', I18n.locale, @posts.collect(&:id).sort.join('-'), @posts.collect(&:updated_at).max.to_i ] do
+- cache ['blocks_thumbnails', I18n.locale, Time.now.strftime('%Y%m%d').to_i ] do
   .hidden-md-down      
     %ul.list-group.d-block
       - @posts.each do |post|
