@@ -1,4 +1,5 @@
-- cache ['blocks_thumbnails', I18n.locale, posts.collect(&:id).sort.join('-'), posts.collect(&:updated_at).max.to_i ] do
+- cache ['blocks_thumbnails', I18n.locale, @post, Time.now.strftime('%Y%m%d').to_i ] do
+  - posts = @post.decorate.the_related_posts.where('cama_posts.id != ?', @post.id).to_a.sample(3)
   .hidden-md-down      
     %ul.list-group.d-block
       - posts.each do |post|

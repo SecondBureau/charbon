@@ -7,14 +7,14 @@
         .pos-a-b.ml-3.mb-3.pr-3.hidden-xs-down.above-featured_video
           %h5.text-danger.text-uppercase 
           %h2= link_to post.decorate.the_title, post.decorate.the_path, class: 'text-white text-shadow strong'
-        = render partial: 'partials/featured', locals: {post: post}
+        = render partial: theme_view('partials/featured'), locals: {post: post}
       .col-12.mt-3.hidden-sm-up
-        = render partial: 'partials/excerpt', locals: {post: post}
+        = render partial: theme_view('partials/excerpt'), locals: {post: post}
     
 
   - posts.each do |post|
     .row.mt-5.mt-sm-3
       .col-12.col-sm-6.col-md-4
-        = render partial: 'partials/featured', locals: {post: post}
+        = render partial: theme_view('partials/featured'), locals: {post: post}
       .col-12.col-sm-6.col-md-8.mt-3.mt-sm-0
-        = render partial: 'partials/excerpt', locals: {post: post}
+        = render partial: theme_view('partials/excerpt'), locals: {post: post}

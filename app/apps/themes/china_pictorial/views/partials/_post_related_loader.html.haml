@@ -1,7 +1,9 @@
-
-- content = j(render(partial: theme_view("blocks/thumbnails"), locals: {posts: @post.the_related_posts.where('cama_posts.id != ?', @post.id).to_a.sample(3)}))
-
 - content_for :related_articles do
   $(function() {
-  $('.related_articles').html('#{content}');
-  }); 
+  $.ajax({
+  url: "/api/cp_related_posts/#{@post.id}"
+  }).then(function(data) {
+  $('.related_articles').html(data);
+  });}) 
+  
+-# content = j(render(partial: theme_view("blocks/thumbnails"), locals: {posts: @post.the_related_posts.where('cama_posts.id != ?', @post.id).to_a.sample(3)}))

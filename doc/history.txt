@@ -54,3 +54,9 @@ http://nvie.com/posts/a-successful-git-branching-model/
   
 28/09/2017 Hotfix 2.3.8
   - Bugfix
+  
+03/10/2017 Release 2.3.9
+  - refactoring related posts with asynchronous loading
+  
+03/10/2017 Release 2.3.10
+  - Optimized Cache for CP Posts
