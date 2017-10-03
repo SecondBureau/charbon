@@ -1,7 +1,8 @@
-- cache ['blocks_thumbnails', I18n.locale, Time.now.strftime('%Y%m%d').to_i ] do
+- cache ['blocks_thumbnails', I18n.locale, @post, Time.now.strftime('%Y%m%d').to_i ] do
+  - posts = @post.decorate.the_related_posts.where('cama_posts.id != ?', @post.id).to_a.sample(3)
   .hidden-md-down      
     %ul.list-group.d-block
-      - @posts.each do |post|
+      - posts.each do |post|
         %li.list-group-item.pt-0.pl-0.pr-0.border-0.d-block
           = render partial: theme_view('partials/featured'), locals: {post: post, imgcss: 'img-fluid mb-1'}
           %h5.mb-1.title= link_to post.decorate.the_title, post.decorate.the_path
@@ -14,4 +15,4 @@
 
   .hidden-lg-up
     -#= render partial: theme_view("blocks/post"), collection: posts
-    = render partial: theme_view("blocks/portrait"), locals:{posts: @posts.slice(0,current_theme.get_option('cat4_count_md_down'))}
+    = render partial: theme_view("blocks/portrait"), locals:{posts: posts.slice(0,current_theme.get_option('cat4_count_md_down'))}
